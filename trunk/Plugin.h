@@ -1,0 +1,69 @@
+//
+//  Plugin.h
+//  Eavesdrop
+//
+//  Created by Eric Baur on 7/18/06.
+//  Copyright 2006 Eric Shore Baur. All rights reserved.
+//
+
+#import <Cocoa/Cocoa.h>
+
+#import "PluginDefaults.h"
+#import "BHDebug.h"
+
+@protocol Plugin <NSObject>
+
+#pragma mark META-DATA
++ (NSDictionary *)keyNames;															/* REQUIRED */
+
++ (NSArray *)keys;																	/* FREEBIE	*/
+- (NSArray *)allKeys;																/* FREEBIE	*/
+- (NSDictionary *)allKeyNames;														/* FREEBIE	*/
+
+#pragma mark DECODE CHECK
++ (BOOL)canDecodePacket:(NSObject<Plugin> *)testPacket;								/* FREEBIE	*/
+
+#pragma mark PROPERTIES
+- (NSNumber *)number;																/* FREEBIE  */
+- (NSString *)sourceString;															/* RECOMMENDED */
+- (NSString *)destinationString;													/* RECOMMENDED */
+- (NSString *)typeString;															/* RECOMMENDED */
+- (NSString *)infoString;															/* RECOMMENDED */
+- (NSString *)flagsString;															/* RECOMMENDED */
+- (NSString *)descriptionString;													/* RECOMMENDED */
+
+- (NSString *)protocolString;														/* REQUIRED */
+
+#pragma mark COLLECTIONS
+- (NSArray *)detailsArray;															/* FREEBIE	*/
+- (NSDictionary *)detailsDictionary;												/* FREEBIE	*/
+- (NSArray *)protocolsArray;														/* FREEBIE	*/
+
+#pragma mark VIEW METHODS
+- (NSArray *)payloadViewArray;
+
+@end
+
+
+@interface Plugin : NSObject <Plugin> {
+	int dissectorNumber;
+
+	NSData *headerData;
+	NSData *payloadData;
+	NSData *packetData;
+}
+
+#pragma mark REGISTRATION METHODS
++ (id)registerDissectorAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
++ (void)_registerDissector:(Class)dissector forProtocol:(NSString *)protoName decodes:(NSArray *)decodesArray;
++ (id)registerAggregateAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
++ (void)_registerAggregate:(Class)aggregateClass withName:(NSString *)aggregateName;
+
++ (Class)dissectorClassForProtocol:(NSString *)protoName;
++ (PluginDefaults *)pluginDefaultsForClass:(Class)pluginClass;
++ (PluginDefaults *)pluginDefaultsForClassName:(NSString *)pluginClassName;
+
++ (NSDictionary *)registeredDissectors;
+- (NSDictionary *)registeredDissectors;
+
+@end

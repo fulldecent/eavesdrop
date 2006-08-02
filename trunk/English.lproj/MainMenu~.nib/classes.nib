@@ -1,0 +1,29 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {cancelPreferences = id; launchCaptureServer = id; savePreferences = id; }; 
+            CLASS = EavesdropAppDelegate; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {pluginsController = PluginsController; preferencesWindow = NSWindow; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {"" = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {savePluginPreferences = id; }; 
+            CLASS = PluginsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                appDelegate = id; 
+                decoderPrefsBox = NSBox; 
+                pluginsArrayController = NSArrayController; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}
