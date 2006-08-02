@@ -10,7 +10,8 @@
 
 
 @implementation Plugin
-static int dissectorCount;
+
+static int pluginCount;
 
 static NSMutableDictionary *registeredDissectors;
 static NSMutableDictionary *registeredProtocolClasses;
@@ -21,8 +22,8 @@ static NSMutableDictionary *registeredDefaults;
 {
 	ENTRY( @"initialize" );
 	if ( (self = [Plugin class]) && !registeredDissectors ) {
-		dissectorCount = 0;
-
+		pluginCount = 0;
+		
 		registeredDissectors = [[NSMutableDictionary alloc] init];
 		registeredProtocolClasses = [[NSMutableDictionary alloc] init];
 		registeredAggregators = [[NSMutableDictionary alloc] init];
@@ -149,6 +150,18 @@ static NSMutableDictionary *registeredDefaults;
 }
 
 #pragma mark -
+#pragma mark Setup methods
+
+- (id)init
+{
+	self = [super init];
+	if (self) {
+		pluginNumber = ++pluginCount;
+	}
+	return self;
+}
+
+#pragma mark -
 #pragma mark View Methods
 
 - (NSArray *)payloadViewArray
@@ -165,7 +178,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return [NSNumber numberWithInt:dissectorNumber];
+		return [NSNumber numberWithInt:pluginNumber];
 }
 
 - (NSString *)sourceString

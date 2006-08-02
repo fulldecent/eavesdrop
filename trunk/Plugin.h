@@ -46,11 +46,7 @@
 
 
 @interface Plugin : NSObject <Plugin> {
-	int dissectorNumber;
-
-	NSData *headerData;
-	NSData *payloadData;
-	NSData *packetData;
+	int pluginNumber;
 }
 
 #pragma mark REGISTRATION METHODS
