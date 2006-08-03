@@ -1,0 +1,14 @@
+{
+    IBClasses = (
+        {CLASS = Aggregate; LANGUAGE = ObjC; SUPERCLASS = Plugin; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = Plugin; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = TCPAggregate; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {tcpPayloadView = NSView; }; 
+            SUPERCLASS = Aggregate; 
+        }
+    ); 
+    IBVersion = 1; 
+}

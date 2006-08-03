@@ -1,0 +1,1914 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<HTML>
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<META name="copyright" content="&copy; 1996-2006 Richard Akerman">
+<TITLE>TCP/IP Ports</TITLE>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+//<![CDATA[
+_uacct = "UA-118428-1";
+urchinTracker();
+//]]>
+</script>
+
+</HEAD>
+
+<BODY>
+
+<!--navigation bar-->
+
+<P ALIGN="CENTER">
+[ <A HREF="http://www.akerman.ca/">Home</A> |
+  <A HREF="http://www.akerman.ca/contact.html">Contact Me</A>
+]
+</P>
+
+<HR>
+
+<UL>
+<LI><A HREF="#Table">Table of Ports for Internet Services</A>
+<LI><A HREF="#IANA">Official TCP/IP Port List</A> (IANA assigned port numbers)
+<LI><A HREF="#search">Searchable Port Lists</A>
+<LI>Complex Services:
+    <A HREF="#iSCSI">iSCSI</A>,
+    <A HREF="#printing">printing</A>,
+    <A HREF="#email-ports">email</A>,
+    <A HREF="#oracle-ports">Oracle database</A>
+<LI><A HREF="#Understanding">Understanding TCP/IP</A>
+<LI><A HREF="#Articles">Articles and Related Resources</A>:
+    <a href="#Articles-Windows">Windows Articles</a>
+<LI><A HREF="#Protocols">Network Protocols</A>
+<LI><A HREF="#Related">Related Info: Trojan Ports, Firewall Books</A>
+<LI><A HREF="#Questions">Questions</A>    
+</UL>
+
+<HR>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+google_ad_client = 'pub-7212722924903011';
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = '468x60_as';
+google_ad_channel ="2843188112";
+// -->
+</script>
+<script language="JavaScript" type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7212722924903011";
+google_ad_width = 120;
+google_ad_height = 60;
+google_ad_format = "120x60_as_rimg";
+google_cpa_choice = "CAAQ5ZaazgEaCFpxEHuGkQUbKIHD93M";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<HR>
+
+<P ALIGN="CENTER">
+<BIG>Any Port in a Datastorm</BIG>
+</P>
+
+<P>
+It seems like every day there is a new Internet service that uses some
+new set of poorly-documented, unregistered ports. I created this page to
+gather together all the information I could find about the ports used by
+these new services, for use by firewall administrators and other network
+monitors.</P>
+
+<UL>
+<LI>&quot;dyn&quot; in the ports field denotes dynamically allocated port(s),
+    usually in the range &gt;=1024 &lt;=65535
+<LI>A name in the ports field (e.g. LDAP) indicates that service is also required
+<LI>A plus sign + in the ports field indicates the service may use a series of
+    ports starting at the specified one
+<LI>An asterisk * in the Notes field indicates that the ports are IANA registered
+</UL>
+
+<P>
+When a specific port is registered it is usually assigned for both TCP and UDP
+even though only one or the other may be required.
+Where possible I have only shown the required ones.
+</P>
+
+<P>
+This is not intended to list old, well-documented services such as telnet,
+FTP etc. You can find these in the <A HREF="#IANA">IANA list</A>.</P>
+
+<P>
+You may <A HREF="contact.html">contact me</A> by email
+with any suggestions or corrections, or post a message to the
+<a href="http://www.quicktopic.com/12/H/kEJgdn6FFtZ2b" >TCP/IP Ports discussion</a>.
+</P>
+
+<H1><A NAME="Table">Ports for Internet Services</A></H1>
+
+<TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+
+<!-- This table is copyright 1996-2006 Richard Akerman, http://www.akerman.ca/ -->
+
+<TR>
+<TH>Service</TH>
+<TH>TCP</TH>
+<TH>UDP</TH>
+<TH>Notes</TH>
+</TR>
+
+<TR>
+<TD>SSH</TD>
+<TD>22</TD>
+<TD></TD>
+<TD>Secure Shell *</TD>
+</TR>
+
+<TR>
+<TD><A NAME="HTTP" HREF="http://www.w3.org/Protocols/">HTTP</A></TD>
+<TD>80</TD>
+<TD></TD>
+<TD>HyperText Transfer Protocol * (e.g. for web browsing).
+    Currently (2003-07-05) HTTP/1.1 is officially described in
+    <a href="http://www.faqs.org/rfcs/rfc2616.html">RFC 2616</a>.</TD>
+</TR>
+
+<TR>
+<TD>HOSTS2 Name Server</TD>
+<TD>81</TD>
+<TD>81</TD>
+<TD>* An interesting story.  The name attached to this port in the IANA list, Earl Killian,
+    says he shouldn't be.  He says "I don't know what 81 is, or whether it is still in use."
+    Since Mr. Killian doesn't know what HOSTS2 is/was, and with Postel gone,
+    I wonder if there's anyone left in the world who knows what 81 was/is for and who actually
+    requested it.
+</TD> 
+</TR>
+
+<TR>
+<TD>XFER Utility</TD>
+<TD>82</TD>
+<TD>82</TD>
+<TD>* Another interesting story.  The name attached to this port in the IANA list, Thomas M. Smith
+    of Lockheed Martin,
+    says
+    <Q>Sorry... there is no publicly available information regarding the details of the XFER Utility
+       and its use of tcp and udp port # 82. 
+       XFER employs a proprietary protocol which has not been disclosed.</Q> 
+</TD>
+</TR>
+
+<TR>
+<TD>RPC Endpoint Mapper</TD>
+<TD>135</TD>
+<TD>135</TD>
+<TD>* registered as "epmap - DCE endpoint resolution".
+    Used by Microsoft for RPC locator service.
+    See <A HREF="#MS-RPC">additional information</A>.
+</TD>
+</TR>
+    
+<TR>
+<TD><A NAME="LDAP">LDAP</A></TD>
+<TD>389</TD>
+<TD>389</TD>
+<TD>Lightweight Directory Access Protocol *</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://support.microsoft.com/support/kb/articles/Q158/6/23.asp">MS NetMeeting</A></TD>
+<TD><A HREF="#LDAP">LDAP</A> or <A HREF="#ULP">ULP</A>,
+    dyn &gt;=1024, 1503,
+    <A HREF="#H323-HostCall">H.323 HostCall</A>,
+    <A HREF="#MS-ICCP">MS ICCP</A></TD>
+<TD>dyn &gt;=1024</TD>
+<TD>videoconferencing</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.netopia.com/support/technotes/software/tb2mac/TPM_031.html">Timbuktu</A></TD>
+<TD>407, 1417-1420</TD>
+<TD>407</TD>
+<TD>remote control *</TD>
+</TR>
+
+<TR>
+<TD><a href="http://www.srvloc.org/">SLP</a></TD>
+<TD>427</TD>
+<TD>427</TD>
+<TD>Service Location Protocol * 
+    Used by MacOS and NetWare.</TD>
+</TR>
+    
+<TR>
+<TD>HTTPs</TD>
+<TD>443</TD>
+<TD></TD>
+<TD>secure HTTP (SSL) *</TD>
+</TR>
+
+<TR>
+<TD><A NAME="lpd" HREF="http://www.faqs.org/rfcs/rfc1179.html">LPD / printer</A></TD>
+<TD>515</TD>
+<TD>515</TD>
+<TD>printing * LPD stands for Line Printer Daemon.
+    Also see <A HREF="#printing">printing</A> section.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="ULP">ULP</A></TD>
+<TD>522</TD>
+<TD>522</TD>
+<TD>User Location Protocol (Microsoft) *</TD>
+</TR>
+
+<TR>
+<TD>AppleTalk Filing Protocol (AFP)</TD>
+<TD>548</TD>
+<TD>548</TD>
+<TD>*</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.apple.com/quicktime/resources/qt4/us/proxy/proxy.html">QuickTime 4</A></TD>
+<TD><A HREF="#RTSP">RTSP</A></TD>
+<TD><A HREF="#RTP-QT4">RTP-QT4</A></TD>
+<TD>streaming audio, video *</TD>
+</TR>
+
+<TR>
+<TD><A NAME="RTSP">RTSP</A></TD>
+<TD>554</TD>
+<TD></TD>
+<TD>Real Time Streaming Protocol *.
+    Currently (2003-07-05) described in
+    <A HREF="http://www.rfc-editor.org/rfc/rfc2326.txt">RFC 2326</A>.
+</TD>
+</TR>
+
+<TR>
+<TD>NNTPs</TD>
+<TD>563</TD>
+<TD></TD>
+<TD>secure NNTP news (SSL) *</TD>
+</TR>
+
+<TR>
+<TD><a name="ipp" href="http://www.pwg.org/ipp/">Internet Printing Protocol</a> (IPP)</TD>
+<TD>631</TD>
+<TD>631</TD>
+<TD>print remotely to any IPP enabled printer through the Internet *
+    The <a href="http://www.cups.org/">Common Unix Printing System</a> (CUPS) is based on IPP.
+    Also see <A HREF="#printing">printing</A> section.
+</TD> 
+</TR>
+
+<TR>
+<TD>LDAPs</TD>
+<TD>636</TD>
+<TD>636</TD>
+<TD>secure LDAP * (LDAP protocol over TLS/SSL)</TD>
+</TR>
+
+<TR>
+<TD>Doom</TD>
+<TD>666</TD>
+<TD>666</TD>
+<TD>network game *</TD>
+</TR>
+
+<TR>
+<TD>Remotely Possible (ControlIT)</TD>
+<TD>799</TD>
+<TD></TD>
+<TD>remote control.  CA <A HREF="http://support.ca.com/controlitsupp.html">ControlIT support</A>.</TD>
+</TR>
+
+<TR>
+<TD><a href="http://www.vmware.com/support/gsx3/doc/manage_portnum_gsx.html">VMware Virtual Machine Console</a></TD>
+<TD>902</TD>
+<TD></TD>
+<TD>remote control and viewing of virtual machines.  vmware-authd.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="SOCKS" HREF="http://www.socks.permeo.com/">SOCKS</A></TD>
+<TD>1080</TD>
+<TD></TD>
+<TD>internet proxy *.  Also used by <A HREF="trojan-port-table.html#1080">Trojans</A>.</TD>
+</TR>
+
+<tr>
+<td><a href="http://openvpn.sourceforge.net/">OpenVPN</a></td>
+<td>1194</td>
+<td>1194</td>
+<td>*</td>
+</tr>
+
+<TR>
+<TD><A HREF="http://www.kazaa.com/us/help/faq/gettingstarted.htm#FAQ_started_3">Kazaa</A></TD>
+<TD>1214</TD>
+<TD>1214</TD>
+<TD>peer-to-peer file sharing *</TD>
+</TR>
+
+<tr>
+<td><a href="http://en.wikipedia.org/wiki/WASTE">WASTE</a></td>
+<td>1337</td>
+<td>1337</td>
+<td>peer-to-peer.
+    Also see <a href="http://www.infoanarchy.org/wiki/index.php/WASTE#FAQ">InfoAnarchy WASTE FAQ</a>.
+    This port is officially registered for <a href="http://www.menandmice.com/">Men and Mice</a> DNS
+    (<a href="http://kbase.menandmice.com/view.html?rec=33">QuickDNS Remote</a>).
+</td>
+</tr>
+
+<TR>
+<TD>Lotus Notes Domino</TD>
+<TD>1352</TD>
+<TD></TD>
+<TD>*</TD>
+</TR>
+
+<TR>
+<TD>VocalTec Internet Phone</TD>
+<TD>1490, 6670, 25793</TD>
+<TD>22555</TD>
+<TD>videoconferencing *</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://support.citrix.com/kb/entry!default.jspa?categoryID=118&entryID=2075">
+    Citrix ICA</A></TD>
+<TD>1494, dyn &gt;=1023</TD>
+<TD>1604, dyn &gt;=1023</TD>
+<TD>remote application access *</TD>
+</TR>
+
+<TR>
+<TD><A NAME="VP">Virtual Places</A></TD>
+<TD>1533</TD>
+<TD></TD>
+<TD>conferencing *, also see <A HREF="#VP-voice">VP voice</A></TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.xingtech.com/developer/streamworks/firewall_facts.html">Xing StreamWorks</A></TD>
+<TD></TD>
+<TD>1558</TD>
+<TD>streaming video *</TD>
+</TR>
+
+<TR>
+<TD><a href="http://support.novell.com/cgi-bin/search/searchtid.cgi?%2F2937514.htm">Novell GroupWise (Remote Client)</a></TD>
+<TD>1677</TD>
+<TD>1677</TD>
+<TD>group collaboration * NOTE: Other features of GroupWise use many other ports.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="H323-HostCall">H.323 Host Call</A></TD>
+<TD>1720</TD>
+<TD>1720</TD>
+<TD>H.323 host call *</TD>
+</TR>
+
+<TR>
+<TD>PPTP</TD>
+<TD>1723</TD>
+<TD></TD>
+<TD>virtual private network (VPN) *
+    Note PPTP also uses the GRE <A HREF="#Protocols">protocol</A>.
+    However Microsoft says in 
+    <A HREF="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnwebtool/html/understanding_pptp.asp">
+    Understanding PPTP</A>:
+    "PPTP can be used with most firewalls and routers by enabling traffic destined for port 1723 to be
+    routed through the firewall or router."
+</TD>
+</TR>
+
+<TR>
+<TD><A NAME="MS-ICCP">MS ICCP</A></TD>
+<TD>1731</TD>
+<TD>1731</TD>
+<TD>audio call control (Microsoft) *</TD>
+</TR>
+
+<TR>
+<TD>MS NetShow</TD>
+<TD>1755</TD>
+<TD>1755, dyn &gt;=1024 &lt;=5000</TD>
+<TD>streaming video *</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://messenger.msn.com/">MSN Messenger</A></TD>
+<TD>1863</TD>
+<TD></TD>
+<TD>instant messenging *.
+    <STRONG>NOTE:</STRONG>
+    For detailed info on ports for file transfers, voice and video,
+    see the <A HREF="#WinMess">Windows and MSN Messenger</A> section below.</TD>
+</TR>
+
+<TR>
+<TD><a href="http://www.netopia.com/en-us/support/technotes/software/netoctopus/NTO_016.html">
+    Netopia netOctopus</a></TD>
+<TD>1917, 1921</TD>
+<TD>1917</TD>
+<TD>network management *</TD>
+</TR>
+
+<tr>
+<td><a href="http://www.bb4.org/features.html">Big Brother</a></td>
+<td>1984</td>
+<td>1984</td>
+<td>network monitoring *</td>
+</tr>
+
+<TR>
+<TD><A HREF="http://www.icuii.com/">ICU II</A></TD>
+<TD>2000-2003</TD>
+<TD></TD>
+<TD>videoconferencing.
+    <STRONG>NOTE:</STRONG>
+    security risk on TCP port 50000</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.iSpQ.com/support/firewallFAQ.asp">iSpQ</A></TD>
+<TD>2000-2003</TD>
+<TD></TD>
+<TD>videoconferencing. Note: support docs are inconsistent on what ports are required</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.webglimpse.org/glimpseserverhelp.html#sect3">glimpseserver</A></TD>
+<TD>2001</TD>
+<TD></TD>
+<TD>search engine</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.distributed.net//docs/tutor_netopt.php#no_firewall">Distributed.Net RC5/DES</A></TD>
+<TD>2064</TD>
+<TD></TD>
+<TD>distributed computation</TD>
+</TR>
+
+<TR>
+<TD>SoulSeek</TD>
+<TD>2234, 5534</TD>
+<TD>2234, 5534</TD>
+<TD>file sharing</TD>
+</TR>
+
+<TR>
+<TD><a name="directplay7" href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q240429">
+    Microsoft DirectX gaming (DirectPlay) 7</a></TD>
+<TD>2300-2400, 47624</TD>
+<TD>2300-2400</TD>
+<TD>networked multiplayer games, * only 47624 is registered as "Direct Play Server",
+    if needed also see <A HREF="#msn-zone">MSN Gaming Zone</A></TD>
+</TR>
+
+<TR>
+<TD><a name="directplay8" href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q240429">
+    Microsoft DirectX gaming (DirectPlay) 8</a></TD>
+<TD></TD>
+<TD>2302-2400, 6073</TD>
+<TD>networked multiplayer games, * only 6073 is registered as DirectPlay8,
+    if needed also see <A HREF="#msn-zone">MSN Gaming Zone</A></TD>
+</TR>
+
+<TR>
+<TD>MADCAP - Multicast Address Dynamic Client Allocation Protocol</TD>
+<TD>2535</TD>
+<TD>2535</TD>
+<TD>* defined in
+    <A HREF="http://www.faqs.org/rfcs/rfc2730.html">
+    RFC 2730 - Multicast Address Dynamic Client Allocation Protocol (MADCAP)</A>.
+    Also used by <A HREF="trojan-port-table.html#2535">Trojans</A>.
+</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.netrek.org/">Netrek</A></TD>
+<TD>2592</TD>
+<TD></TD>
+<TD>network game *</TD>
+</TR>
+
+<tr>
+<td><a href="http://www.laplink.com/support/faq/faq2.asp?ID=255">ShareDirect</a></td>
+<td>2705</td>
+<td>2705</td>
+<td>peer-to-peer (P2P) filesharing.  Officially registered for Sun SDS Admin.</td>
+</tr>
+
+<TR>
+<TD><A NAME="URBISNET" HREF="http://www.urbis.net">URBISNET</A></TD>
+<TD>2745</TD>
+<TD>2745</TD>
+<TD>* Alex Tronin reports <Q>was used for Urbis geolocation service...
+    now not operational, but may be revived.</Q>
+    Also used by <A HREF="trojan-port-table.html#2745">Trojans</A>.</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.borland.com/interbase/">Borland Interbase database</A></TD>
+<TD>3050</TD>
+<TD>3050</TD>
+<TD>* gds_db.
+    See <A HREF="http://www.cert.org/advisories/CA-2001-01.html">CERT Advisory CA-2001-01</A>
+    for potential security risk.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="squid" HREF="http://www.squid-cache.org/">squid</A></TD>
+<TD>3128</TD>
+<TD>3130</TD>
+<TD>web proxy cache.  Also used by <A HREF="trojan-port-table.html#3128">Trojans</A>.</TD>
+</TR>
+
+<TR>
+<TD><a href="http://www.networksorcery.com/enp/protocol/isns.htm">iSNS</a></TD>
+<TD>3205</TD>
+<TD>3205</TD>
+<TD>* Internet Storage Name Service, see <A HREF="#iSCSI">iSCSI</A> section</TD>
+</TR>
+
+<TR>
+<TD>iSCSI default port</TD>
+<TD>3260</TD>
+<TD>3260</TD>
+<TD>* SCSI over IP, see <A HREF="#iSCSI">iSCSI</A> section</TD>
+</TR>
+
+<TR>
+<TD><A NAME="RDP" HREF="http://msdn.microsoft.com/library/en-us/termserv/termserv/remote_desktop_protocol.asp">
+    Windows Remote Desktop Protocol (RDP)</A></TD>
+<TD>3389</TD>
+<TD></TD>
+<TD>* registered as ms-wbt-server. 
+    RDP 5.1 is the current version.
+    See below for <A HREF="#RDP-more">more information</A>.
+    Remote Desktop Web Connection also uses <A HREF="#HTTP">HTTP</A>.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="networklens-ssl" HREF="http://www.networklens.com/">NetworkLens SSL Event</A></TD>
+<TD>3410</TD>
+<TD>3410</TD>
+<TD>* Also used by <A HREF="trojan-port-table.html#3410">Trojans</A>.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="VP-voice">Virtual Places Voice Chat</A></TD>
+<TD>3450, 8000-9000</TD>
+<TD></TD>
+<TD>voice chat, also see <A HREF="#VP">Virtual Places</A></TD>
+</TR>
+
+<TR>
+<TD>Apple iTunes music sharing (DAAP)</TD>
+<TD>3689</TD>
+<TD>3689</TD>
+<TD>Digital Audio Access Protocol *</TD>
+</TR>
+
+<TR>
+<TD>Mirabilis ICQ</TD>
+<TD>dyn &gt;=1024</TD>
+<TD>4000</TD>
+<TD>locator, chat (note: see newer <A HREF="#AOL-ICQ">AOL ICQ</A>)</TD>
+</TR>
+
+<TR>
+<TD>Blizzard / <A HREF="http://www.battle.net/">Battle.net</A></TD>
+<TD>4000, 6112-6119</TD>
+<TD>4000, 6112-6119</TD>
+<TD>network gaming -
+    <A HREF="blizzard-battlenet.txt">support</A> (captured 2001-11-11), 
+    <A HREF="http://www.blizzard.com/support/?id=adb0243p">proxy and firewall info</A></TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://support.abacast.com/faq/firewall.html">Abacast</A></TD>
+<TD>4000-4100, 4500, 9000-9100</TD>
+<TD></TD>
+<TD>peer-to-peer audio and video streaming.
+    NOTE: This software will create <STRONG>OUTGOING</STRONG> streams to other users if it can.</TD>
+</TR>    
+
+<TR>
+<TD><a href="http://www.globalchat.com/support/">GlobalChat</a> client, server</TD>
+<TD>4020</TD>
+<TD>4020</TD>
+<TD>chat rooms, used to be called ichat</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.pgpi.org/products/pgpfone/">PGPfone</A></TD>
+<TD></TD>
+<TD>4747</TD>
+<TD>secure phone</TD>
+</TR>
+
+<TR>
+<TD>PlayLink</TD>
+<TD>4747, 4748, 10090</TD>
+<TD>6144</TD>
+<TD>online games</TD>
+</TR>
+
+<TR>
+<TD><a NAME="radmin" href="http://www.radmin.com/support/faq.html#2_9">radmin</a></TD>
+<TD>4899</TD>
+<TD>4899</TD>
+<TD>remote control *</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://vc.yahoo.com:5001/">Yahoo Messenger - Voice Chat</A></TD>
+<TD>5000-5001</TD>
+<TD>5000-5010</TD>
+<TD>voice chat</TD>
+</TR>
+
+<TR>
+<TD><a href="http://www.gnomemeeting.org/index.php?rub=3&pos=0&faqpage=x269.html">GnomeMeeting</a></TD>
+<TD><A HREF="#H323-HostCall">H.323 HostCall</A>, 30000-30010</TD>
+<TD>5000-5003, 5010-5013</TD>
+<TD>audio and videoconference.  5000-5003 is RTP and RTCP range for this app.</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://help.yahoo.com/help/us/mesg/use/use-17.html">Yahoo Messenger - messages</A></TD>
+<TD>5050</TD>
+<TD></TD>
+<TD>messaging.  NOTE: It will try ports 5050, 80, any port.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="SIP">SIP</A></TD>
+<TD>5060</TD>
+<TD>5060</TD>
+<TD>Session Initiation Protocol *.
+    For audio and video.
+    Currently (2003-07-05) see RFCs
+    <A HREF="http://www.faqs.org/rfcs/rfc3261.html">3261</A>,
+    <A HREF="http://www.faqs.org/rfcs/rfc3262.html">3262</A>,
+    <A HREF="http://www.faqs.org/rfcs/rfc3263.html">3263</A>,
+    <A HREF="http://www.faqs.org/rfcs/rfc3264.html">3264</A>,
+    <A HREF="http://www.faqs.org/rfcs/rfc3265.html">3265</A>
+</TD>
+</TR>
+
+<TR>
+<TD><a href="http://docs.info.apple.com/article.html?artnum=93208">Apple iChat AV</a></TD>
+<TD></TD>
+<TD><A HREF="#SIP">SIP</A>, <A HREF="#RTP-iChatAV">RTP-iChatAV</A></TD>
+<TD>audio and video conferencing.  May also need <A HREF="#ichat-local">iChat local port</A>.</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://help.yahoo.com/help/us/mesg/webcams/webcams-13.html">Yahoo Messenger - Webcams</A></TD>
+<TD>5100</TD>
+<TD></TD>
+<TD>video</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.aim.aol.com/netscape/help.html#troubleusingIM">AOL Instant Messenger</A> (AIM)</TD>
+<TD>5190</TD>
+<TD>5190</TD>
+<TD>America OnLine *
+    Also used by Apple <a href="http://www.apple.com/macosx/jaguar/ichat.html">iChat</a>
+    (in AIM compatibility mode).</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.aim.com/help_faq/using/win/video_im.adp">AIM Video IM</A></TD>
+<TD>1024-5000 ?</TD>
+<TD>1024-5000 ?</TD>
+<TD>video chat.  It is unclear from their FAQ whether you need to open both TCP and UDP ports.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="AOL-ICQ" HREF="http://www.icq.com/icqtour/firewall/netadmin.html">AOL ICQ</A></TD>
+<TD>5190, dyn &gt;=1024</TD>
+<TD></TD>
+<TD>messaging</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.aol.com/">AOL</A></TD>
+<TD>5190-5193</TD>
+<TD>5190-5193</TD>
+<TD>America OnLine *</TD>
+</TR>
+
+<tr>
+<td>XMPP / <a href="http://support.jabber.com/troubleshooting/know_base/s2s-security.html">Jabber</a></td>
+<td>5222, 5269</td>
+<td>5222, 5269</td>
+<td>* Extensible Messaging and Presence Protocol.
+    Also see <a href="http://web.amessage.info/firewalled/">Using Jabber behind firewalls</a>. 
+    Defined by <a href="http://www.xmpp.org/specs/">XMPP specs</a> (RFCs now issued),
+    specs created by <a href="http://www.ietf.org/html.charters/xmpp-charter.html">IETF group</a>.
+</td>    
+</tr>
+
+<tr>
+<td><a href="http://www.qnext.com/supp_faq.html#f6">Qnext</a></td>
+<td>5235-5237</td>
+<td>5235-5237</td>
+<td>audio / video conference, fileshare, everything.  Port 5236 is officially assigned to "padl2sim".</td>
+</tr>
+
+<TR>
+<TD><a NAME="ichat-local" href="http://docs.info.apple.com/article.html?artnum=107192">
+    iChat local traffic</a></TD>
+<TD>5298</TD>
+<TD>5298</TD>
+<TD>Some Rendezvous thing.</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.multicastdns.org/">Multicast DNS</A></TD>
+<TD>5353</TD>
+<TD>5353</TD>
+<TD>* <a href="http://docs.info.apple.com/article.html?artnum=107174">
+      Mac OS X 10.2: About Multicast DNS</a>.
+    Related to
+    <a href="http://www.zeroconf.org/">Zeroconf</a>
+    which Apple has implemented as
+    <a href="http://developer.apple.com/macosx/rendezvous/">Rendezvous</a>.
+    (Note: the regular Domain Name Service port is 53.)</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.expressresponse.com/cgi-bin/progsnp/dialpad/srchjnnp?search_type=vdocument&search_input=0064.html&session_id=990797928.6930.5&service=dialpadbasic&category=TroubleShooting&search_erproduct=troubleshooting">Dialpad.com</A></TD>
+<TD>5354, 7175, 8680-8890, 9000, 9450-9460</TD>
+<TD>dyn &gt;=1024</TD>
+<TD>telephony</TD>
+</TR>
+
+<TR>
+<TD><a href="http://www.homenethelp.com/p2p/hotline/hotline-nat.asp">HotLine</a></TD>
+<TD>5500-5503</TD>
+<TD></TD>
+<TD>peer-to-peer filesharing.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="sgi-esp-http">SGI ESP HTTP</A></TD>
+<TD>5554</TD>
+<TD>5554</TD>
+<TD>* SGI Embedded Support Partner (ESP) web server.
+    Also used by <A HREF="trojan-port-table.html#5554">Trojans</A>,
+    see <a href="ftp://patches.sgi.com/support/free/security/advisories/20040501-01-I.asc">
+        SGI Security Advisory 20040501-01-I</a>.
+</TD>
+</TR>
+    
+<TR>
+<TD>InfoSeek Personal Agent</TD>
+<TD>5555</TD>
+<TD>5555</TD>
+<TD>* I don't know if InfoSeek Personal Agent exists anymore.
+    This port is commonly used by
+    <A HREF="http://www.hp.com/go/dataprotector">HP OpenView Storage Data Protector</A>
+    (formerly HP OmniBack).
+</TD>
+</TR>
+
+<TR>
+<TD><a NAME="pcanywhere" href="http://service1.symantec.com/SUPPORT/pca.nsf/8d67bc594d5802c288256d2e006abd37/8ecb3a8aa231167dc1256915002c5eb2?OpenDocument&prod=Symantec%20pcAnywhere&ver=11.0%20for%20Windows%2098/Me/NT/2000/XP&src=ent&pcode=spca&dtype=corp&svy=&prev=&miniver=spca_11">
+    pcAnywhere</a></TD>
+<TD>5631</TD>
+<TD>5632</TD>
+<TD>remote control *</TD>
+</TR>
+
+<TR>
+<TD>eShare Chat Server</TD>
+<TD>5760</TD>
+<TD></TD>
+<TD></TD>
+</TR>
+
+<TR>
+<TD>eShare Web Tour</TD>
+<TD>5761</TD>
+<TD></TD>
+<TD></TD>
+</TR>
+
+<TR>
+<TD>eShare Admin Server</TD>
+<TD>5764</TD>
+<TD></TD>
+<TD></TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.realvnc.com/faq.html#firewall">VNC</A></TD>
+<TD>5800+, 5900+</TD>
+<TD></TD>
+<TD>remote control</TD>
+</TR>
+
+<TR>
+<TD>GNUtella</TD>
+<TD>6346, 6347</TD>
+<TD>6346, 6347</TD>
+<TD>peer-to-peer file sharing *</TD>
+</TR>
+
+<TR>
+<TD>Netscape Conference</TD>
+<TD><A HREF="#H323-HostCall">H.323 HostCall</A>, 6498, 6502</TD>
+<TD>2327</TD>
+<TD>audioconferencing</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.netop.com/tech/support/configuration/firewalls/netop_and_firewalls.htm">
+    Danware NetOp Remote Control</A></TD>
+<TD>6502</TD>
+<TD>6502</TD>
+<TD>remote control</TD>
+</TR>
+
+<TR>
+<TD>common IRC</TD>
+<TD>6665-6669</TD>
+<TD></TD>
+<TD>Internet Relay Chat *</TD>
+</TR>
+
+<TR>
+<TD><A NAME="net2phone" HREF="http://web.net2phone.com/consumer/commcenter/helpfirewall.asp">
+    Net2Phone CommCenter</A></TD>
+<TD>selected</TD>
+<TD>6801, selected</TD>
+<TD>telephony, admin should select one TCP and UDP port in the range 1-3000.
+    Same ports are used by <A HREF="http://help.yahoo.com/help/us/mesg/phone/phone-19.html">Yahoo Messenger - PC-to-Phone</A>.</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.dessent.net/btfaq/#ports">BitTorrent</A></TD>
+<TD>6881-6889, 6969</TD>
+<TD></TD>
+<TD>distributed data download, newer versions TCP 6881-6999.
+    <A HREF="http://btfaq.com/serve/cache/25.html">Alternate FAQ link</A>.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="RTP-QT4">RTP-QT4</A></TD>
+<TD></TD>
+<TD>6970-6999</TD>
+<TD>Realtime Transport Protocol.
+    (These ports are specifically for the Apple QT4 version.)
+</TD>
+</TR>
+
+<TR>
+<TD>VDOLive</TD>
+<TD>7000</TD>
+<TD>user-specified</TD>
+<TD>streaming video</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://service.real.com/firewall/">Real Audio &amp; Video</A></TD>
+<TD><A HREF="#RTSP">RTSP</A>, 7070</TD>
+<TD>6970-7170</TD>
+<TD>streaming audio and video</TD>
+</TR>
+
+<TR>
+<TD>CU-SeeMe,
+    Enhanced CUSM</TD>
+<TD>7648, 7649, <A HREF="#LDAP">LDAP</A></TD>
+<TD>7648-7652, 24032</TD>
+<TD>videoconferencing</TD>
+</TR>
+
+<TR>
+<TD>common HTTP</TD>
+<TD>8000, 8001, 8080</TD>
+<TD></TD>
+<TD></TD>
+</TR>
+
+<TR>
+<TD>Apache JServ Protocol v12 (ajp12)</TD>
+<TD>8007</TD>
+<TD>8007</TD>
+<TD>(default port)
+    See <A HREF="http://jakarta.apache.org/tomcat/tomcat-4.1-doc/jk2/jk/workershowto.html">
+        Workers HowTo</A> for config info.</TD>
+</TR>
+
+<TR>
+<TD><a href="http://jakarta.apache.org/tomcat/tomcat-4.1-doc/jk2/common/AJPv13.html">
+    Apache JServ Protocol v13 (ajp13)</a></TD>
+<TD>8009</TD>
+<TD>8009</TD>
+<TD>(default port)
+    e.g. Apache mod_jk Tomcat connector using ajp13.
+    See <A HREF="http://jakarta.apache.org/tomcat/tomcat-4.1-doc/jk2/jk/workershowto.html">
+        Workers HowTo</A> for config info.</TD>
+</TR>
+
+<tr>
+<td><a href="http://www.grouper.com/support/techspecs.aspx#routable">Grouper</a></td>
+<td>8038</td>
+<td>8038</td>
+<td>peer-to-peer (P2P) filesharing</td>
+</tr>
+
+<TR>
+<TD><A NAME="pdl-datastream">PDL datastream</A></TD>
+<TD>9100</TD>
+<TD>9100</TD>
+<TD>printing * PDL is Page Description Language.  Used commonly by HP printers and by Apple.
+    Also see <A HREF="#printing">printing</A> section.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="monkeycom" HREF="http://www.random-grp.com/kuwatec/Products/MonkeyCom/">MonkeyCom</A></TD>
+<TD>9898</TD>
+<TD>9898</TD>
+<TD>* video-chat, also used by <A HREF="trojan-port-table.html#9898">Trojans</A></TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.ivisit.com/">iVisit</A></TD>
+<TD></TD>
+<TD>9943, 9945, 56768</TD>
+<TD>videoconferencing</TD>
+</TR>
+
+<TR>
+<TD>The Palace</TD>
+<TD>9992-9997</TD>
+<TD>9992-9997</TD>
+<TD>chat environment *</TD>
+</TR>
+
+<TR>
+<TD>common Palace</TD>
+<TD>9998</TD>
+<TD></TD>
+<TD>chat environment</TD>
+</TR>
+
+<TR>
+<TD><a NAME="NDMP" href="http://www.ndmp.org/">NDMP</a></TD>
+<TD>10000</TD>
+<TD>10000</TD>
+<TD>Network Data Management Protocol *.  Used for storage backup.
+    Also used by <A HREF="trojan-port-table.html#10000">Trojans</A>.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="Amanda"
+    HREF="http://amanda.sourceforge.net/cgi-bin/fom?_highlightWords=10080&file=139">Amanda</A></TD>
+<TD>10080</TD>
+<TD>10080</TD>
+<TD>backup software *.  Also used by <A HREF="trojan-port-table.html#10080">Trojans</A>.</TD>
+</TR>
+
+<TR>
+<TD><a href="http://help.yahoo.com/help/ca/games/games-05.html">Yahoo Games</a></TD>
+<TD>11999</TD>
+<TD></TD>
+<TD>network games</TD>
+</TR>
+
+<TR>
+<TD><A NAME="italk12345" HREF="http://italk.sourceforge.net/">Italk</A></TD>
+<TD>12345</TD>
+<TD>12345</TD>
+<TD>network chat supporting multiple access methods * Appears mostly used in Japan.
+    There are many other applications calling themselves "italk".
+    TrendMicro OfficeScan antivirus also uses this port.
+    Commonly used by <A HREF="trojan-port-table.html#12345">Trojans</A>.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="RTP-iChatAV">RTP-iChatAV</A></TD>
+<TD></TD>
+<TD>16384-16403</TD>
+<TD>Used by Apple iChat AV.</TD>
+</TR>
+
+<TR>
+<TD><A NAME="RTP">RTP</A></TD>
+<TD></TD>
+<TD>16384-32767</TD>
+<TD>Realtime Transport Protocol.
+    RTP in general is described in <A HREF="http://www.faqs.org/rfcs/rfc3550.html">RFC 3550</A>.
+    This range is not registered (it never could be, being so broad) but it seems to be 
+    somewhat common.
+    See <A HREF="http://www.cs.columbia.edu/~hgs/rtp/faq.html#ports">
+    Are there specific ports assigned to RTP?</A>
+</TD>
+</TR>
+
+<TR>
+<TD>Palm Computing Network Hotsync</TD>
+<TD>14237</TD>
+<TD>14238</TD>
+<TD>data synchronization</TD>
+</TR> 
+ 
+<TR>
+<TD><A HREF="http://www.liquidaudio.com/support/player/firewall_support/answers/lan_problems.jsp">Liquid Audio</A></TD>
+<TD>18888</TD>
+<TD></TD>
+<TD>streaming audio</TD>
+</TR>
+
+<TR>
+<TD>FreeTel</TD>
+<TD></TD>
+<TD>21300-21303</TD>
+<TD>audioconferencing</TD>
+</TR>
+
+<TR>
+<TD>VocalTec Internet Conference</TD>
+<TD>22555</TD>
+<TD>22555</TD>
+<TD>audio &amp; document conferencing *</TD>
+</TR>
+
+<TR>
+<TD>Quake</TD>
+<TD>26000</TD>
+<TD>26000</TD>
+<TD>network game *</TD>
+</TR>
+
+<TR>
+<TD><A NAME="msn-zone" HREF="http://support.microsoft.com/support/kb/articles/Q159/0/31.asp">MSN Gaming Zone</A></TD>
+<TD>28800-29100</TD>
+<TD>28800-29100</TD>
+<TD>network gaming (zone.com, zone.msn.com), also see
+    <A HREF="#directplay7">DirectPlay 7</A> and <A HREF="#directplay8">DirectPlay 8</A></TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://www.sygate.com/support/documents/fix.htm">Sygate Manager</A></TD>
+<TD></TD>
+<TD>39213</TD>
+<TD></TD>
+</TR>
+
+</TABLE>
+
+<H2><A NAME="iSCSI">iSCSI</A></H2>
+
+<P>
+iSCSI is specified in
+<A HREF="http://www.faqs.org/rfcs/rfc3720.html">RFC 3720 - Internet Small Computer Systems Interface</A>.
+</P>
+
+<BLOCKQUOTE>
+The well-known user TCP port number for iSCSI connections assigned 
+by IANA is <strong>3260</strong> and this is the default iSCSI port. Implementations 
+needing a system TCP port number may use port <strong>860</strong>, the port assigned 
+by IANA as the iSCSI system port; however in order to use port 860, 
+it MUST be explicitly specified - implementations MUST NOT default 
+to use of port 860, as 3260 is the only allowed default. 
+</BLOCKQUOTE>
+
+<P>
+Also associated with iSCSI is iSNS, Internet Storage Name Service, on port <STRONG>3205</STRONG>.
+</P>
+
+<P>
+These services essentially open up your storage to the Internet in ways even more deep than CIFS, 
+NFS and other file-level sharing services.  Therefore you should be very careful about security
+and may want to block these ports completely, or tightly limit access to them.
+</P>
+
+<H2><A NAME="printing">Printing</A></H2>
+
+<P>
+There are several port numbers that may be involved with printing.
+</P>
+
+<P>
+<A HREF="http://members.cruzio.com/~jeffl/sco/lp/printservers.htm">Print Server Port Numbers</A>
+is a useful guide.
+</P>
+
+<P>
+The three main ones are
+<A HREF="#lpd">LPD ("printer") on port 515</A>,
+<A HREF="#ipp">IPP on 631</A>,
+and 
+<A HREF="#pdl-datastream">PDL-datastream on 9100</A>.
+</P>
+
+<P>
+Apple MacOS X
+<A HREF="http://developer.apple.com/macosx/rendezvous/RendezvousPrinting.pdf">Rendezvous Printing</A> (PDF)
+will discover printers that are advertising their services.
+They give the example
+</P>
+<PRE>
+For example, the Apple LaserWriter 8500 would register the following services,
+assuming the default domain is "local."
+
+Apple LaserWriter 8500._printer._tcp.local.        Port 515
+Apple LaserWriter 8500._ipp._tcp.local.            Port 631
+Apple LaserWriter 8500._pdl-datastream._tcp.local. Port 9100
+</PRE>
+
+<H2><A NAME="Napster">Napster</A></H2>
+
+<P>
+After examining Napster, I decided it was such a complex protocol that it deserved its own section.
+The first thing to be aware of is that there are two versions of Napster.  The "original" flavor is
+what most people will be interested in.  This is the full music file-sharing service.  This original
+service provided by <A HREF="http://www.napster.com/">Napster.com</A> has now been shut down.
+Napster.com will be providing
+a new service with much more controlled music sharing.  However, the original protocol lives on,
+and the protocol has been analyzed so that people could write compatible applications for many 
+different operating systems.
+</P>
+
+<P>
+There is information on the protocol (and how to get it through your firewall) from:
+</P>
+
+<UL>
+<LI><A HREF="http://support.microsoft.com/support/kb/articles/Q275/2/36.ASP">Microsoft Support Q275236</A>
+<LI><A HREF="http://opennap.sourceforge.net/napster.txt">opennap.sourceforge.net</A>
+<LI><A HREF="http://david.weekly.org/code/napster.php3">david.weekly.org</A>
+</UL>
+
+<P>
+Here is a summary of the TCP ports it uses.  I have put the notation (primary) after the main port,
+if more than one port is listed.
+</P>
+
+<UL>
+<LI>metaserver / redirector: 8875
+<LI>directory servers: 4444, 5555, 6666, 7777, 8888 (primary)
+<LI>client: 6600 to 6699 (primary)
+</UL>
+
+<H2><A NAME="PalTalk">PalTalk</A></H2>
+
+<P>
+PalTalk is another messy service that uses many ports, more than I want to summarize here.
+Visit their support page:
+<A HREF="http://www.paltalk.com/PalTalkSite/support/network/networksup.html">
+PalTalk Networking Support</A>.
+</P>
+
+<H2><A NAME="UltimaOnline">Ultima Online</A></H2>
+
+<P>
+Information from
+<a href="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_sid=1vvAjE5h&p_lva=&p_faqid=1042&p_created=986930324&p_sp=cF9zcmNoPTEmcF9ncmlkc29ydD0mcF9yb3dfY250PTImcF9zZWFyY2hfdGV4dD1maXJld2FsbCZwX3BhZ2U9MQ**&p_li=">
+What are the port numbers I need to play UO behind a firewall or proxy server?</a> 
+</P>
+
+<TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+
+<TR>
+<TH>Service</TH>
+<TH>Ports</TH>
+<TH>Notes</TH>
+</TR>
+
+<TR>
+<TD>Game</TD>
+<TD>5001-5010</TD>
+<TD></TD>
+</TR>
+
+<TR>
+<TD>Login</TD>
+<TD>7775-7777</TD>
+<TD></TD>
+</TR>
+
+<TR>
+<TD>Patch</TD>
+<TD>8888</TD>
+<TD>overlaps with common HTTP port</TD>
+</TR>
+
+<TR>
+<TD>UO Messenger</TD>
+<TD>8800-8900</TD>
+<TD>includes port 8866 which is also used by <A HREF="trojan-port-table.html#8866">Trojan</A></TD>
+</TR>
+
+<TR>
+<TD>Patch</TD> 
+<TD>9999</TD>
+<TD></TD>
+</TR>
+
+</TABLE>
+
+<H2><A NAME="WinMess">Windows and MSN Messenger <EM>Application</EM></A></H2>
+
+<P>
+A related note: the Messenger Service that runs at the Windows SERVICE level is 
+<EM>different</EM> from the <A HREF="http://messenger.microsoft.com/">Windows Messenger</A>
+or MSN Messenger application.  For information about the Messenger APPLICATION see
+</P>
+
+<UL>
+<LI>For file transfer or voice chat ports and NAT information for MSN Messenger 3 see MS Support article
+    <A HREF="http://support.microsoft.com/default.aspx?scid=kb;EN-US;q278887">Q278887</A>.</LI>
+<LI>Microsoft Knowledge Base Article
+    <A HREF="http://support.microsoft.com/default.aspx?scid=kb;en-us;324214">
+    Q324214 - You cannot make phone calls or start voice or video conversations with Windows Messenger</A></LI>     
+<LI><A HREF="http://www.microsoft.com/technet/prodtechnol/winxppro/deploy/natfw.mspx">
+    Windows Messenger 5.0 in Windows XP: Working With Firewalls and Network Address Translation Devices</A></LI>
+<LI>Microsoft Support WebCast -
+    <A HREF="http://support.microsoft.com/default.aspx?scid=/servicedesks/webcasts/wc071702/WCT071702.asp">
+    Microsoft Windows Messenger for Windows XP: New Features, Common Issues, and Troubleshooting</A>
+    July 17, 2002</LI>
+</UL>
+
+<TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+
+<!-- This table is copyright 2004-2006 Richard Akerman, http://www.akerman.ca/ -->
+
+<TR>
+<TH>Service</TH>
+<TH>TCP</TH>
+<TH>UDP</TH>
+<TH>Notes</TH>
+</TR>
+
+<TR>
+<TD>Windows Messenger - voice (computer to phone)</TD>
+<TD></TD>
+<TD>2001-2120, 6801, 6901</TD>
+<TD>from Q324214.  NOTE: 6801 is <A HREF="#net2phone">Net2Phone</A>.</TD>
+</TR>
+
+<TR>
+<TD>MSN Messenger - file transfers</TD>
+<TD>6891-6900</TD>
+<TD></TD>
+<TD>from Q278887.  Allows up to 10 simultaneous transfers.</TD>
+</TR>
+
+<TR>
+<TD>MSN Messenger - voice communications (computer to computer)</TD>
+<TD>6901</TD>
+<TD>6901</TD>
+<TD>from Q278887</TD>
+</TR>
+
+</TABLE>
+
+<P>
+For Windows Messenger in a non-UPnP environment, 
+unfortunately Microsoft requires dynamic UDP ports across a very wide range.
+This is a tremendous security risk.  Try to establish a UPnP environment if possible.
+Nevertheless, here is what they say
+<Q>To support [audio and video] in both directions through the firewall,
+all UDP ports between 5004 and 65535 must be opened to allow signaling (SIP) and media streams (RTP)
+to traverse the firewall.</Q>
+</P> 
+
+<P>
+Also note: I don't know how much information for WINDOWS Messenger applies to MSN Messenger and vice
+versa.  I also don't know how much information for MSN Messenger Windows version applies to
+MSN Messenger Mac version.  And last but not least, there are multiple different versions of Messenger,
+which may differ in various ways.
+</P>
+    
+<H2><A NAME="email-ports">Email Ports</A></H2>
+
+<P>
+Email is sent around the Internet mainly from server to server using SMTP.
+Once delivered, clients may access it in a variety of ways, including POP3 and IMAP.
+This section DOES NOT cover Microsoft Exchange or other proprietary mail protocols.
+</P>
+
+<P>
+The major upcoming change to email is the use of TCP port 587 "submission" for email, as defined in
+section 3.1 of <A HREF="#RFC2476">RFC 2476 - Message Submission</A>.
+This is planned to replace the traditional use of TCP port 25, SMTP.
+</P>
+
+<BLOCKQUOTE>
+    3.1. Submission Identification<BR><BR>
+
+    Port 587 is reserved for email message submission as specified in
+    this document. Messages received on this port are defined to be
+    submissions. The protocol used is ESMTP [SMTP-MTA, ESMTP], with
+    additional restrictions as specified here.<BR><BR>
+
+    While most email clients and servers can be configured to use port
+    587 instead of 25, there are cases where this is not possible or
+    convenient. A site MAY choose to use port 25 for message submission,
+    by designating some hosts to be MSAs and others to be MTAs.
+</BLOCKQUOTE>
+
+<P>
+This initiative is being promoted by, amongst others, the Anti-Spam Technical Alliance.
+See 
+<A HREF="http://docs.yahoo.com/docs/pr/pdf/asta_soi.pdf">
+Anti-Spam Technical Alliance Technology and Policy Proposal, Version 1.0, 22 June 2004</A> (PDF)    
+</P>
+
+<BLOCKQUOTE>
+We further recommend that SMTP authentication be implemented on the standard Mail
+Submission Port, port 587, and that ISPs encourage their customers to switch their mail
+client software (for example, MS Outlook, Eudora, and so on) to this port. Using this port
+will provide seamless connectivity that does not depend on if a network allows port 25
+traffic.
+</BLOCKQUOTE>
+
+<P>
+In addition to SMTP, the other main email protocols are POP3 and IMAP, these are protocols for
+email clients to access their mailboxes.  There are many other topics that are outside the scope
+of this page.  For example, email addresses are described in
+<a href="http://www.faqs.org/rfcs/rfc2822.html">RFC 2822</a> (obsoletes RFC 822), and
+SMTP authentication is covered in
+<A HREF="http://www.faqs.org/rfcs/rfc2554.html">RFC 2554 - SMTP Service Extension for Authentication</A>.
+Transport Layer Security (TLS) is covered in
+<A HREF="http://www.faqs.org/rfcs/rfc2246.html">RFC 2246 - The TLS Protocol Version 1.0</A>.
+SMTP over TLS is covered in
+<A HREF="http://www.faqs.org/rfcs/rfc3207.html">
+RFC 3207 - SMTP Service Extension for Secure SMTP over Transport Layer Security</A>.
+</P>
+
+<P>
+The Network Sorcery RFC Sourcebook entry for
+<A HREF="http://www.networksorcery.com/enp/protocol/smtp.htm">SMTP</A>
+also links to many relevant RFCs that cover the details of the protocol itself.
+</P>
+
+<TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+
+<!-- This table is copyright 2004-2006 Richard Akerman, http://www.akerman.ca/ -->
+
+<TR>
+<TH>Service</TH>
+<TH>TCP Port</TH>
+<TH>Notes</TH>
+</TR>
+
+<TR>
+<TD>SMTP - Simple Mail Transfer Protocol</TD>
+<TD>25</TD>
+<TD>* As part of the anti-spam best practices,
+    you should block this outgoing for any machine that doesn't need to send email directly.</TD>
+</TR>
+
+<TR>
+<TD>SMTPs - secure SMTP</TD>
+<TD>465</TD>
+<TD>Port 465 shows up Appendix A of the 1996 non-standard standard
+    <a href="http://wp.netscape.com/eng/ssl3/draft302.txt">The SSL Protocol Version 3.0</a> as
+    "Simple Mail Transfer Protocol with SSL".
+    Unfortunately, it's not registered for SMTPs, it's registered for 
+    URD - "URL Rendesvous Directory for SSM" by Cisco.
+    The recommended approach, at least for authentication, 
+    is to use START TLS encryption on submission port 587.</TD>
+</TR>
+
+<TR>
+<TD>(SMTP email) submission</TD>
+<TD>587</TD>
+<TD>* See
+    <A NAME="RFC2476" HREF="http://www.ietf.org/rfc/rfc2476.txt">
+    RFC 2476 - Message Submission</A>.</TD>
+</TR>
+   
+<TR>
+<TD>POP2 - Post Office Protocol 2</TD>
+<TD>109</TD>
+<TD>* obsolete</TD>
+</TR>
+
+<TR>
+<TD>POP3 - Post Office Protocol 3</TD>
+<TD>110</TD>
+<TD>*</TD>
+</TR>
+
+<TR>
+<TD>POP3s - secure POP3</TD>
+<TD>995</TD>
+<TD>* Full description is "pop3 protocol over TLS/SSL (was spop3)".</TD>
+</TR>
+
+<TR>
+<TD>IMAP3 - Interactive Mail Access Protocol v3</TD>
+<TD>220</TD>
+<TD>* obsolete</TD>
+</TR>
+
+<TR>
+<TD>IMAP4 - Internet Message Access Protocol 4</TD>
+<TD>143</TD>
+<TD>* Also referred to by version as IMAP4.</TD>
+</TR>
+
+<TR>
+<TD>IMAPs - secure IMAP</TD>
+<TD>993</TD>
+<TD>* Full description is "imap4 protocol over TLS/SSL".
+    Use 993 instead of TCP port 585 "imap4-ssl", which is deprecated.</TD>
+</TR>
+
+</TABLE>
+    
+<H2><A NAME="oracle-ports">Oracle Database TCP/IP Ports</A></H2>
+
+<P>
+I have a <A HREF="oracle-port-table.html">separate page</A> for Oracle ports.
+</P>
+
+<H2><A NAME="Obsolete">Obsolete Services</A></H2>
+
+<P>
+Apple released QuickTime 4 some time ago.  I am unsure of the status of their older QuickTime
+Conferencing (MovieTalk) protocol.  All of the applications that supported it 
+(Connectix VideoPhone, Apple VideoPhone, Netscape CoolTalk, QuickTime TV) are no longer 
+supported and the QuickTime Conferencing website is gone.
+</P>
+
+<TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+
+<!-- This table is copyright 1996-2006 Richard Akerman, http://www.akerman.ca/ -->
+
+<TR>
+<TH>Service</TH>
+<TH>TCP</TH>
+<TH>UDP</TH>
+<TH>Notes</TH>
+</TR>
+
+<TR>
+<TD><A NAME="MovieTalk">
+    QuickTime Conferencing (MovieTalk)</A></TD>
+<TD>458</TD>
+<TD>458, dyn &gt;= 7000</TD>
+<TD>videoconferencing *</TD>
+</TR>
+
+<TR>
+<TD>Apple VideoPhone</TD>
+<TD><A HREF="#MovieTalk">MovieTalk</A></TD>
+<TD><A HREF="#MovieTalk">MovieTalk</A></TD>
+<TD>videoconferencing *</TD>
+</TR>
+
+<TR>
+<TD>Connectix VideoPhone</TD>
+<TD><A HREF="#MovieTalk">MovieTalk</A></TD>
+<TD><A HREF="#MovieTalk">MovieTalk</A>, dyn &gt;=1024, 4242</TD>
+<TD>videoconferencing</TD>
+</TR>
+
+<TR>
+<TD><A HREF="http://help.netscape.com/kb/consumer/19970605-17.html">Netscape CoolTalk</A></TD>
+<TD>6499, 6500</TD>
+<TD>13000</TD>
+<TD>videoconferencing</TD>
+</TR>
+
+</TABLE>
+
+<H1>Official TCP/IP Port Assignments</H1>
+
+<UL>
+  <LI><A NAME="IANA" HREF="http://www.iana.org/assignments/port-numbers">
+         IANA - TCP/IP Port Assignments</A> (585K)
+</UL>
+
+<P>
+Also note, although you will sometimes see mention of
+<A HREF="http://www.faqs.org/rfcs/rfc1700.html">RFC 1700</A> "Assigned Numbers" (dated October 1994)
+it was <EM>long ago</EM> obsoleted by the official IANA list.
+<STRONG>Do not</STRONG> use RFC 1700 as a reference.
+This fact is now officially documented by
+<a href="http://www.faqs.org/rfcs/rfc3232.html">RFC 3232</a>
+"Assigned Numbers: RFC 1700 is Replaced by an On-line Database".
+</P>
+
+<P>
+Network Sorcery lists the IANA
+<a href="http://www.networksorcery.com/enp/protocol/ip/ports00000.htm">TCP/UDP Ports</a> 
+with links to pages describing some protocols in detail, as part of its incredibly useful
+<a href="http://www.networksorcery.com/enp/">RFC Sourcebook</a>.
+</P>
+
+<H1><A NAME="search">Searchable Port Lists</A></H1>
+
+<P>
+These cover registered, unregistered, and trojan ports - note that many ports have legitimate,
+required uses, even though people have also used them as trojan ports.
+</P>
+
+<UL>
+<LI>Andrew Daviel's <a href="http://andrew.triumf.ca/cgi-bin/port">Network Service Query</a>
+    is a very nice port metasearch engine
+<LI><a href="http://ports.tantalo.net/">Tantalo.net Ports database</a>
+<LI><A HREF="http://www.neohapsis.com/neolabs/neo-ports/">Neohapsis Ports List</A>
+<LI>PC Flank <A HREF="http://www.pcflank.com/ports_services.htm">Ports Database</A>
+<LI><a href="http://www.portsdb.org/">portsdb.org Ports Database</a>
+<LI><A HREF="http://www.snort.org/ports.html">Snort Ports Database</A>
+<LI><A HREF="http://www.securitystats.com/tools/portsearch.asp">SecurityStats.Com TCP/UDP Port Search</A>
+<LI><a href="http://lists.gpick.com/portlist/lookup.asp">Dave's Port Lookup</a>
+    lists registered services along with known trojans
+<LI>WeetHet
+    <A HREF="http://www.weethet.nl/english/ipports.php">in English</A> or
+    <A HREF="http://www.weethet.nl/dutch/ipports.php">in Dutch</A>
+    lists both registered and trojan ports
+<LI><A HREF="http://www.uponelevel.com/ports/">UpOneLevel Network Port listing</A>
+<LI><A HREF="http://www.pvcasa.com/techs/">Techeez Port Search</A></LI>      
+</UL>
+
+<H1><A NAME="Understanding">Understanding TCP/IP</A></H1>
+
+<P>
+The IBM RedBooks are an amazing resource for many technical topics.
+They have a
+<a href="http://publib-b.boulder.ibm.com/Redbooks.nsf/9445fa5b416f6e32852569ae006bb65f/dd2f20357e4f664a852569f50070b892?OpenDocument">
+TCP/IP Tutorial and Technical Overview</a>
+available as <a href="http://www.redbooks.ibm.com/redbooks/GG243376.html">HTML</a>
+or 7.7 MB <a href="http://www.redbooks.ibm.com/pubs/pdfs/redbooks/gg243376.pdf">PDF</a>.
+</P>
+
+<P>
+Cisco also provides excellent information online.
+<A HREF="http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/ip.htm">Internet Protocols</A>
+is just one section of their
+<a href="http://www.cisco.com/univercd/cc/td/doc/cisintwk/ito_doc/">Internetworking Technology Handbook</a>.
+</P>
+
+<P>
+There is information on IP (the protocol on which TCP and UDP are built) in
+<CITE>Internet Core Protocols: The Definitive Guide</CITE>
+<A HREF="http://www.oreilly.com/catalog/coreprot/chapter/ch02.html">Sample Chapter 2: The Internet Protocol [IP]</A>.
+</P>
+
+<H1><A NAME="Articles">Articles and Related Resources</A></H1>
+
+<H2><A NAME="Articles-Windows">Windows</A></H2>
+
+<p>
+This section discusses specific port information related to Microsoft or provided by them.
+If you are looking for information about Windows firewalls, including XP Service Pack 2,
+see the <a href="trojan-port-table.html#Protect-Soft-Win">Windows Security Software</a>
+and <a href="trojan-port-table.html#Protect-Soft-Win-Builtin">Built-in Windows Firewalls</a>
+sections of my Trojan TCP/IP Ports page.
+</p>
+
+<p> 
+Microsoft has announced a new Windows Firewall in Windows XP Service Pack 2,
+it replaces the Internet Connection Firewall (ICF) in previous versions of Windows.
+</p>
+
+<UL>
+<li><a href="http://support.microsoft.com/default.aspx?kbid=842242">
+    MS KB 842242 - Some programs seem to stop working after you install Windows XP Service Pack 2</a>
+    has a section "Identifying and opening ports" and also a fairly extensive list of ports in
+    "Programs that may require you to open ports manually",
+    although for all of the games it says "see the documentation" in the Ports column
+    which is not exactly helpful information.</li>
+
+<li><a href="http://www.microsoft.com/athome/security/protect/ports.mspx">
+    How to Open Ports in the Windows XP Internet Connection Firewall</a>
+    has a list of ports followed by instructions</li>
+    
+<LI><A HREF="http://support.microsoft.com/default.aspx?scid=kb;en-us;832017">
+    Port Requirements for the Microsoft Windows Server System (KB 832017)</A></LI>
+
+<LI><A HREF="http://www.microsoft.com/technet/treeview/default.asp?url=/technet/prodtechnol/windows2000serv/reskit/tcpip/part4/tcpappc.asp">TCP and UDP Port Assignments</A>
+    (Windows 2000 Server - Resource Kits - TCP/IP Core Networking Guide - Appendix C)
+<LI><a href="http://web.archive.org/web/20020308070923/http://www.microsoft.com/windows2000/techinfo/reskit/en/cnet/cnbc_imp_wcug.htm">
+    NetBIOS Over TCP/IP</a> [original page removed; using archive.org version]
+<LI><a href="http://www.microsoft.com/windows/windowsmedia/serve/firewall.asp">
+    Firewall Information - Windows Media Technologies</a>
+<LI>Microsoft has provided a good list of
+    <A HREF="http://support.microsoft.com/default.aspx?scid=kb;EN-US;q150543">
+    Windows NT, Terminal Server, and Microsoft Exchange Services Use TCP/IP Ports</A>
+<LI><a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q278339">
+    TCP/UDP Ports Used By Exchange 2000 Server</a>    
+<LI><A HREF="http://www.microsoft.com/technet/treeview/default.asp?url=/TechNet/prodtechnol/ad/windows2000/deploy/confeat/adrepfir.asp">
+    Active Directory Replication over Firewalls</A></LI>    
+<LI><a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q178517">
+    TCP, UDP, and RPC Ports Used by MSMQ</a> (Microsoft Message Queue Server)
+<LI><a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q289241">
+    A List of the Windows 2000 Domain Controller Default Ports</a>        
+</UL>
+
+<H3><A NAME="RDP-more">More information about Windows Remote Desktop Protocol (RDP)</A></H3>
+
+<P>
+As indicated in the <A HREF="#RDP">RDP</A> section above, this protocol uses a registered TCP port.
+
+It is used for XP Pro
+<a href="http://www.microsoft.com/windowsxp/remotedesktop/faq.asp">Remote Desktop</a>
+and XP Remote Assistance
+(read
+<A HREF="http://www.microsoft.com/windowsxp/pro/techinfo/administration/adminra/default.asp">
+Administering Remote Assistance</A> for a very good overview of firewall, NAT and blocking issues).
+Also used for
+<a href="http://www.microsoft.com/ntserver/ProductInfo/terminal/">WinNT4 Terminal Server</a>,
+
+Win2000 <a href="http://www.microsoft.com/windows2000/technologies/terminal/">Terminal Services</a>, and
+
+Win .NET Server 2003
+<a href="http://www.microsoft.com/windows.netserver/evaluation/overview/technologies/terminalserver.mspx">
+Terminal Server</a>.
+</P>
+
+<H3><A NAME="MS-RPC">Windows Remote Procedure Call (RPC) and Distributed COM (DCOM)</A></H3>
+
+<P>
+In some cases, Microsoft uses port 135 as an RPC Endpoint Mapper.
+Runs as RPCSS on (some versions of?) Windows.
+This is a sort of "RPC directory" service which can be used to lookup what ports other services are
+running on.  For some additional information, see
+<a href="http://www.microsoft.com/WINDOWS2000/techinfo/reskit/en/CNET/cnad_arc_plgn.htm">
+Windows 2000 Network Architecture: Remote Procedure Call</a> and
+<A HREF="http://www.ntsecurity.net/Articles/Index.cfm?ArticleID=21956">
+NT Gatekeeper: RPC and Firewall Configuration</A>.
+</P>
+
+<P>
+MS-RPC on port 135 is required for some Exchange Server and Active Directory communications.
+See e.g.
+<a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q176466">
+TCP Ports and Microsoft Exchange: In-depth Discussion</a> and
+<a href="http://support.microsoft.com/default.aspx?scid=kb;en-us;Q224196">
+Restricting Active Directory Replication Traffic to a Specific Port</a>.
+<BR>
+However this port also poses a <STRONG>security risk</STRONG>, as indicated in the
+<A HREF="trojan-port-table.html#netsend">NET SEND</A> section of my broadband security page.
+</P>
+
+<P>
+<STRONG>UPDATE 2003-08-13</STRONG>: Also see the
+<A HREF="trojan-port-table.html#blaster">Blaster Worm</A> section for
+information about this additional security risk.
+</P>
+
+<P>
+Additional information:
+</P>
+
+<UL>
+<LI><a href="http://www.microsoft.com/com/wpaper/dcomfw.asp">Using Distributed COM with Firewalls</a>
+<LI><a href="http://www.ntsecurity.net/Articles/Index.cfm?ArticleID=21956">
+    RPC and Firewall Configuration</a><BR>
+    Sidebar: <a href="http://www.ntsecurity.net/Articles/Index.cfm?ArticleID=22206">
+    RPC Dynamic Port Allocation</a>
+</UL>
+
+<H2>Mac</H2>
+
+<P>
+OpenDoor (makers of DoorStop) have a nice
+<a href="http://www.opendoor.com/doorstop/ports.html">list</a> of MacOS-related ports,
+with hyperlinks to relevant information.
+</P>
+
+<P>
+Apple support has provided a list of 
+<A HREF="http://docs.info.apple.com/article.html?artnum=106439">
+"Well Known" TCP and UDP Ports Used By Apple Software Products</A>.
+</P>
+
+<P>
+Although it doesn't give any port numbers, you may find
+<A HREF="http://developer.apple.com/qa/qa2001/qa1312.html">
+Rendezvous service types being used by Mac OS X</A> useful.
+</P>
+
+<H2>Novell (NetWare)</H2>
+
+<UL>
+<LI><A HREF="http://www.novell.com/documentation/lg/nw6p/index.html?page=/documentation/lg/nw6p/adminenu/data/aclkn27.html">
+    Novell Documentation: NetWare 6 - Port Number Assignments</A>
+<LI><A HREF="http://support.novell.com/cgi-bin/search/searchtid.cgi?/10065719.htm">
+    Matrix of Ports used in NetWare 6 - TID 10065719</A>
+<LI><a href="http://support.novell.com/cgi-bin/search/searchtid.cgi?/10014320.htm">
+    TCP/IP Port Numbers used by Novell Products - TID 10014320</a> (NetWare 5.0 and earlier)
+</UL>
+
+<H2>IBM (WebSphere)</H2>
+
+<UL>
+<LI><A HREF="http://www-106.ibm.com/developerworks/websphere/techjournal/0310_alcott/alcott.html">
+    Firewall Port Assignments in WebSphere Application Server V5</A>
+</UL>
+    
+<H2>IP Telephony / Voice over IP (VoIP) / <A NAME="H323">H.323</A> / SIP / RTP</H2>
+
+<P>
+Some applications that use H.323 include:
+<a href="http://www.openh323.org/docs/ohphone_man.html">ohphone</a>,
+<A HREF="http://xmeeting.sourceforge.net/ohphoneX-docs/ohphoneX.html">ohphoneX</A>, 
+...
+</P>
+
+<P>
+Getting H.323 audio/video conferencing through firewalls is particularly problematic.
+I have used Google cache to rescue an Intel document 
+<A HREF="articles/ig-h323_firewalls.html">The Problems and Pitfalls of Getting H.323 Safely Through Firewalls</A>.
+Note in particular that RTCP (Real Time Control Protocol) has no fixed port, an RTCP session
+is paired with an RTP session, if you have an RTP stream on even numbered UDP port <VAR>x</VAR>,
+RTCP is on <VAR>x</VAR> + 1.
+</P>
+
+<UL>
+<LI><A HREF="http://www.teamsolutions.co.uk/tsfirewall.html">
+    IP Ports and Protocols used by H.323 Devices</A>
+<LI><A HREF="http://www.cisco.com/en/US/tech/tk652/tk701/technologies_tech_note09186a00800f2853.shtml">
+    Cisco: IP Telephony / VoIP Traversal of NAT and Firewall</A>
+</UL>
+
+<H2>General</H2>
+
+<P>
+The white paper
+<A HREF="http://www.cisco.com/warp/public/cc/pd/fw/sqfw500/tech/nat_wp.htm">
+Cisco PIX Firewall and Stateful Firewall Security</A> contains some useful information
+about the ports and connection protocols for VDOnet, CU-SeeMe, and RealAudio.
+</P>
+
+<P>
+Ed Bott's article 
+<A HREF="http://www.techrepublic.com/article.jhtml?id=r00120000504bot01.htm">Block those ports!</A> 
+contains some useful information, and also a kind review of this web page.
+</P>
+
+<P>
+You can check out 
+<A HREF="http://www.interhack.net/pubs/fwfaq/">Internet Firewalls: Frequently Asked Questions</A>.
+As of this writing it was last updated 2000/12/01 but it still has lots of good information.
+</P>
+
+<P>
+<a href="http://www.netgear-support.com/ts/doc/port_applications.htm">NetGear's Applications Port List</a>
+lists a lot of games.
+</P>
+
+<P>
+Tim Williams' list of
+<A HREF="http://www.u.arizona.edu/~trw/games/ports.htm">Ports Used by Computer Games</A>
+has lots of good info.
+</P>
+
+<P>
+By popular request: a page on
+<A HREF="http://nscsysop.hypermart.net/no_chat.html">Blocking Chat Programs</A>.
+</P>
+
+<P>
+More and more good resources are becoming available, particularly for people with home networks.
+If you haven't found what you were looking for here, you can try:
+</P>
+
+<UL>
+<LI>PracticallyNetworked:
+    <UL>
+    <LI><A HREF="http://www.practicallynetworked.com/sharing/specialapps.htm">
+        Handling Special Applications</A>
+    <LI><A HREF="http://www.practicallynetworked.com/sharing/app_ports.htm">
+        Special Applications - Opening Ports</A> 
+    <LI><A HREF="http://www.practicallynetworked.com/sharing/app_port_list.htm">
+        Special Applications - Port List</A>
+    </UL>
+<LI>HomeNetHelp:
+    <UL>
+    <LI><A HREF="http://www.homenethelp.com/web/explain/port-forwarding-dmz.asp">
+        Explaining DMZs and Port Forwarding</A>
+    <LI><A HREF="http://www.homenethelp.com/web/howto/apps-behind-router.asp">
+        Port list for running a server through a router</A>
+    <LI><A HREF="http://www.homenethelp.com/web/howto/game-behind-router.asp">
+        Port list for running a game server through a router or firewall</A>
+    </UL>       
+</UL>
+
+<H1><A NAME="Protocols">Network Protocols</A></H1>
+
+<P>
+Note that certain services such as
+IPSec
+and
+Microsoft's PPTP
+use non-TCP/UDP protocols so they may be more complicated to use.
+In particular, PPTP uses GRE (protocol 47)
+and IPSec uses ESP (protocol 50) and AH (protocol 51).
+Protocol numbers are <STRONG>not the same</STRONG> as port numbers.
+IANA maintains the
+<A HREF="http://www.iana.org/assignments/protocol-numbers">
+Assigned Internet Protocol Numbers</A>.
+</P>
+
+<H1><A NAME="Related">Related Information: Trojan TCP/IP Ports, Free Firewall Book</A></H1>
+
+<P>
+Those of you concerned with Internet security may wish to also check out my companion page,
+<A HREF="trojan-port-table.html">Trojan TCP/IP Ports</A> for a list of ports used by 
+trojan horse and backdoor programs.
+Also I have a link to <a href="trojan-port-table.html#Book">firewall books</a> there
+(including a free book).
+</P>
+
+<HR>
+
+<H1><A NAME="Questions">Questions</A></H1>
+
+<P>
+If you have questions, comments or suggestions specifically about this page or
+<EM>TCP/IP ports</EM> then you can email me or use my QuickTopic:
+<a NAME="Comments" href="http://www.quicktopic.com/12/H/kEJgdn6FFtZ2b" >Discuss TCP/IP Ports</a>.
+</P>
+
+<P>
+For firewall questions I suggest the USENET group comp.security.firewalls
+via <a href="http://groups.google.com/groups?&group=comp.security.firewalls">groups.google.com</a>
+or <A HREF="news:comp.security.firewalls">your newsreader</A>.
+</P>
+
+<P>
+If your question is Microsoft-specific, you may want to try the USENET
+<a href="http://groups.google.com/groups?&group=microsoft.public">microsoft.public</a>
+groups, in particular:
+</P>
+
+<UL>
+<LI>microsoft.public.msn.messenger:
+    <a href="http://groups.google.com/groups?&group=microsoft.public.msn.messenger">Google Groups</a>
+    or <A HREF="news:microsoft.public.msn.messenger">newsreader</A>
+<LI>microsoft.public.windowsxp.messenger:
+    <a href="http://groups.google.com/groups?&group=microsoft.public.windowsxp.messenger">Google Groups</a>
+    or <A HREF="news:microsoft.public.windowsxp.messenger">newsreader</A>
+<LI>microsoft.public.internet.mschat:
+    <a href="http://groups.google.com/groups?&group=microsoft.public.internet.mschat">Google Groups</a>
+    or <A HREF="news:microsoft.public.internet.mschat">newsreader</A>
+<LI>microsoft.public.internet.netmeeting:
+    <a href="http://groups.google.com/groups?&group=microsoft.public.internet.netmeeting">Google Groups</a>
+    or <A HREF="news:microsoft.public.internet.netmeeting">newsreader</A>
+</UL>
+
+<HR>
+
+<P>
+<STRONG>Copyright &copy; 1996-2006 Richard Akerman.</STRONG> All rights reserved.
+No mirroring without prior written consent.
+</P>
+
+<P>
+If you wish to mirror this page, contact me by email.
+The requirements are:
+</P>
+
+<UL>
+<LI>The page content including my copyright notice remains intact
+<LI>The official permanent link to this page is
+    <A HREF="http://www.akerman.ca/port-table.html">http://www.akerman.ca/port-table.html</A>
+<LI>The date of the mirror and the frequency of updates must be indicated
+<LI>Use metatags or robots.txt to prevent your mirror from being indexed by search engines
+<LI>There can be no other copyright notices
+    <STRONG>or advertising/promotion of any kind</STRONG> on the mirror page
+</UL>
+
+<HR>
+
+<!--navigation bar-->
+
+<P ALIGN="CENTER">
+[ <A HREF="http://www.akerman.ca/">Home</A> |
+  <A HREF="http://www.akerman.ca/contact.html">Contact Me</A>
+]
+</P>
+
+</BODY>
+
+</HTML>
