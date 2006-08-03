@@ -1,0 +1,698 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F02F5A806B13953008D2A20 /* ColorizationRules.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F02F5A606B13953008D2A20 /* ColorizationRules.h */; };
+		3F02F5A906B13953008D2A20 /* ColorizationRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F02F5A706B13953008D2A20 /* ColorizationRules.m */; };
+		3F10E6A00748E3DF003E23F4 /* CaptureHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F10E69F0748E3DF003E23F4 /* CaptureHandler.h */; };
+		3F2F46B9071BFBB800AC3C99 /* Authorization.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F46B8071BFBB800AC3C99 /* Authorization.c */; };
+		3F2F46BA071BFBB800AC3C99 /* Authorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2F46B7071BFBB800AC3C99 /* Authorization.h */; };
+		3F2F46BB071BFBB800AC3C99 /* Authorization.c in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F46B8071BFBB800AC3C99 /* Authorization.c */; };
+		3F3644BD072C3F8B00866B95 /* CaptureTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F88791B0712E6D6002226EC /* CaptureTool */; };
+		3F364669072CBDC200866B95 /* Capture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6671E406A65A0000ECF6A7 /* Capture.m */; };
+		3F4ACED007793EA4005B581D /* GC-Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F4ACECF07793EA4005B581D /* GC-Constants.h */; };
+		3F5BBE5606B2D138001C0443 /* Ear Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3F5BBE5506B2D138001C0443 /* Ear Icon.icns */; };
+		3F6671EA06A65A0100ECF6A7 /* Capture.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6671E306A65A0000ECF6A7 /* Capture.h */; };
+		3F6671EC06A65A0100ECF6A7 /* Conversation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6671E506A65A0000ECF6A7 /* Conversation.h */; };
+		3F6671ED06A65A0100ECF6A7 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6671E606A65A0100ECF6A7 /* Conversation.m */; };
+		3F6671EE06A65A0100ECF6A7 /* CaptureController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6671E706A65A0100ECF6A7 /* CaptureController.h */; };
+		3F6671EF06A65A0100ECF6A7 /* CaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6671E806A65A0100ECF6A7 /* CaptureController.m */; };
+		3F6671F006A65A0100ECF6A7 /* sniff.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6671E906A65A0100ECF6A7 /* sniff.h */; };
+		3F6674EB06A8C6D100ECF6A7 /* libpcap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6674EA06A8C6D100ECF6A7 /* libpcap.dylib */; };
+		3F6D7BD706C594FF00B194EF /* CD-Delegates.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6D7BD606C594FF00B194EF /* CD-Delegates.m */; };
+		3F88791D0712E6E0002226EC /* Capture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6671E406A65A0000ECF6A7 /* Capture.m */; };
+		3F8879240712E6E7002226EC /* libpcap.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6674EA06A8C6D100ECF6A7 /* libpcap.dylib */; };
+		3F88792C0712E745002226EC /* CaptureTool_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F88792A0712E73F002226EC /* CaptureTool_main.m */; };
+		3F88798C0712E9C2002226EC /* PacketHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F88798B0712E9C2002226EC /* PacketHandler.h */; };
+		3F887A3F0713762A002226EC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F887A3D0713762A002226EC /* CoreFoundation.framework */; };
+		3F887A400713762A002226EC /* SecurityFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F887A3E0713762A002226EC /* SecurityFoundation.framework */; };
+		3F965E020798D9FB009E5B5F /* GPL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F965E010798D9FB009E5B5F /* GPL.txt */; };
+		3FAA186C07748EC30031B0CF /* SM2DGraphView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAA186B07748EC30031B0CF /* SM2DGraphView.framework */; };
+		3FAA187307748EE20031B0CF /* SM2DGraphView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FAA186B07748EC30031B0CF /* SM2DGraphView.framework */; };
+		3FAA18820774B94D0031B0CF /* GraphController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAA18800774B94D0031B0CF /* GraphController.h */; };
+		3FAA18830774B94E0031B0CF /* GraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAA18810774B94D0031B0CF /* GraphController.m */; };
+		3FAA191A0774C82F0031B0CF /* DataSet.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FAA19180774C82F0031B0CF /* DataSet.h */; };
+		3FAA191B0774C82F0031B0CF /* DataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAA19190774C82F0031B0CF /* DataSet.m */; };
+		3FB5322807809B3B001171AA /* CaptureGraphController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB5322607809B3B001171AA /* CaptureGraphController.h */; };
+		3FB5322907809B3C001171AA /* CaptureGraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5322707809B3B001171AA /* CaptureGraphController.m */; };
+		3FCF42F607579ACF00E09FCB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		3FCF441407579B2800E09FCB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCF441307579B2800E09FCB /* Security.framework */; };
+		3FCF441507579B2800E09FCB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FCF441307579B2800E09FCB /* Security.framework */; };
+		3FDC32FA06BF466300A62BB7 /* CaptureQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2CE89A06BD978300BE9192 /* CaptureQueue.h */; };
+		3FDC32FB06BF467600A62BB7 /* CaptureQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2CE89B06BD978300BE9192 /* CaptureQueue.m */; };
+		8D15AC290486D014006FF6A4 /* Eavesdrop_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32DBCF750370BD2300C91783 /* Eavesdrop_Prefix.pch */; };
+		8D15AC2A0486D014006FF6A4 /* CaptureDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A37F4AEFDCFA73011CA2CEA /* CaptureDocument.h */; };
+		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
+		8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */; };
+		8D15AC2E0486D014006FF6A4 /* CaptureDocument.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B4FDCFA73011CA2CEA /* CaptureDocument.nib */; };
+		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
+		8D15AC310486D014006FF6A4 /* CaptureDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* CaptureDocument.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC320486D014006FF6A4 /* Eavesdrop_main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* Eavesdrop_main.m */; settings = {ATTRIBUTES = (); }; };
+		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F3644B8072C3E2F00866B95 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F88791A0712E6D6002226EC;
+			remoteInfo = CaptureTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3F3644BC072C3EDD00866B95 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				3F3644BD072C3F8B00866B95 /* CaptureTool in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3FAA186D07748ED10031B0CF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3FAA187307748EE20031B0CF /* SM2DGraphView.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		2A37F4ACFDCFA73011CA2CEA /* CaptureDocument.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CaptureDocument.m; sourceTree = "<group>"; };
+		2A37F4AEFDCFA73011CA2CEA /* CaptureDocument.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CaptureDocument.h; sourceTree = "<group>"; };
+		2A37F4B0FDCFA73011CA2CEA /* Eavesdrop_main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Eavesdrop_main.m; sourceTree = "<group>"; };
+		2A37F4B5FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/CaptureDocument.nib; sourceTree = "<group>"; };
+		2A37F4B7FDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32DBCF750370BD2300C91783 /* Eavesdrop_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Eavesdrop_Prefix.pch; sourceTree = "<group>"; };
+		3F02F5A606B13953008D2A20 /* ColorizationRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorizationRules.h; sourceTree = "<group>"; };
+		3F02F5A706B13953008D2A20 /* ColorizationRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorizationRules.m; sourceTree = "<group>"; };
+		3F10E69F0748E3DF003E23F4 /* CaptureHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureHandler.h; sourceTree = "<group>"; };
+		3F2CE89A06BD978300BE9192 /* CaptureQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureQueue.h; sourceTree = "<group>"; };
+		3F2CE89B06BD978300BE9192 /* CaptureQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureQueue.m; sourceTree = "<group>"; };
+		3F2F46B7071BFBB800AC3C99 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authorization.h; sourceTree = "<group>"; };
+		3F2F46B8071BFBB800AC3C99 /* Authorization.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Authorization.c; sourceTree = "<group>"; };
+		3F4ACECF07793EA4005B581D /* GC-Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GC-Constants.h"; sourceTree = "<group>"; };
+		3F5BBE5506B2D138001C0443 /* Ear Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = "Ear Icon.icns"; path = "Images/Ear Icon.icns"; sourceTree = "<group>"; };
+		3F6671E306A65A0000ECF6A7 /* Capture.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Capture.h; sourceTree = "<group>"; };
+		3F6671E406A65A0000ECF6A7 /* Capture.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Capture.m; sourceTree = "<group>"; };
+		3F6671E506A65A0000ECF6A7 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
+		3F6671E606A65A0100ECF6A7 /* Conversation.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
+		3F6671E706A65A0100ECF6A7 /* CaptureController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CaptureController.h; sourceTree = "<group>"; };
+		3F6671E806A65A0100ECF6A7 /* CaptureController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CaptureController.m; sourceTree = "<group>"; };
+		3F6671E906A65A0100ECF6A7 /* sniff.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = sniff.h; sourceTree = "<group>"; };
+		3F6674EA06A8C6D100ECF6A7 /* libpcap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcap.dylib; path = /usr/lib/libpcap.A.dylib; sourceTree = "<absolute>"; };
+		3F6D7BD606C594FF00B194EF /* CD-Delegates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CD-Delegates.m"; sourceTree = "<group>"; };
+		3F87199B073FB3890029029C /* CaptureTool_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CaptureTool_Prefix.pch; sourceTree = "<group>"; };
+		3F88791B0712E6D6002226EC /* CaptureTool */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CaptureTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F88792A0712E73F002226EC /* CaptureTool_main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureTool_main.m; sourceTree = "<group>"; };
+		3F88798B0712E9C2002226EC /* PacketHandler.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PacketHandler.h; sourceTree = "<group>"; };
+		3F887A3D0713762A002226EC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		3F887A3E0713762A002226EC /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = /System/Library/Frameworks/SecurityFoundation.framework; sourceTree = "<absolute>"; };
+		3F965E010798D9FB009E5B5F /* GPL.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = GPL.txt; sourceTree = "<group>"; };
+		3FAA186B07748EC30031B0CF /* SM2DGraphView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SM2DGraphView.framework; path = /Library/Frameworks/SM2DGraphView.framework; sourceTree = "<absolute>"; };
+		3FAA18800774B94D0031B0CF /* GraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphController.h; sourceTree = "<group>"; };
+		3FAA18810774B94D0031B0CF /* GraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphController.m; sourceTree = "<group>"; };
+		3FAA19180774C82F0031B0CF /* DataSet.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = DataSet.h; sourceTree = "<group>"; };
+		3FAA19190774C82F0031B0CF /* DataSet.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = DataSet.m; sourceTree = "<group>"; };
+		3FB5322607809B3B001171AA /* CaptureGraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureGraphController.h; sourceTree = "<group>"; };
+		3FB5322707809B3B001171AA /* CaptureGraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureGraphController.m; sourceTree = "<group>"; };
+		3FCDF03E08D6A27D001E97FA /* Release Notes.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "Release Notes.rtf"; path = "Documentation/Release Notes.rtf"; sourceTree = "<group>"; };
+		3FCF441307579B2800E09FCB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
+		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* Eavesdrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eavesdrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F8879190712E6D6002226EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FCF42F607579ACF00E09FCB /* Cocoa.framework in Frameworks */,
+				3F8879240712E6E7002226EC /* libpcap.dylib in Frameworks */,
+				3F887A3F0713762A002226EC /* CoreFoundation.framework in Frameworks */,
+				3F887A400713762A002226EC /* SecurityFoundation.framework in Frameworks */,
+				3FCF441507579B2800E09FCB /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D15AC330486D014006FF6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
+				3F6674EB06A8C6D100ECF6A7 /* libpcap.dylib in Frameworks */,
+				3FCF441407579B2800E09FCB /* Security.framework in Frameworks */,
+				3FAA186C07748EC30031B0CF /* SM2DGraphView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FB0FE9D524F11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D15AC370486D014006FF6A4 /* Eavesdrop.app */,
+				3F88791B0712E6D6002226EC /* CaptureTool */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A37F4AAFDCFA73011CA2CEA /* Eavesdrop */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4ABFDCFA73011CA2CEA /* Classes */,
+				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
+				2A37F4B8FDCFA73011CA2CEA /* Resources */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
+				19C28FB0FE9D524F11CA2CBB /* Products */,
+			);
+			name = Eavesdrop;
+			sourceTree = "<group>";
+		};
+		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3F66723A06A6BC4600ECF6A7 /* Headers */,
+				3F6671E406A65A0000ECF6A7 /* Capture.m */,
+				3F2CE89B06BD978300BE9192 /* CaptureQueue.m */,
+				3F6671E606A65A0100ECF6A7 /* Conversation.m */,
+				3FAA18810774B94D0031B0CF /* GraphController.m */,
+				3F02F5A706B13953008D2A20 /* ColorizationRules.m */,
+				3FB5322707809B3B001171AA /* CaptureGraphController.m */,
+				3F6671E806A65A0100ECF6A7 /* CaptureController.m */,
+				2A37F4ACFDCFA73011CA2CEA /* CaptureDocument.m */,
+				3F6D7BD606C594FF00B194EF /* CD-Delegates.m */,
+				3FAA19190774C82F0031B0CF /* DataSet.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		2A37F4AFFDCFA73011CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3F2F46BC071BFBD500AC3C99 /* Headers */,
+				3F2F46B8071BFBB800AC3C99 /* Authorization.c */,
+				2A37F4B0FDCFA73011CA2CEA /* Eavesdrop_main.m */,
+				3F88792A0712E73F002226EC /* CaptureTool_main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F965E010798D9FB009E5B5F /* GPL.txt */,
+				3FCDF03E08D6A27D001E97FA /* Release Notes.rtf */,
+				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
+				2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */,
+				2A37F4B4FDCFA73011CA2CEA /* CaptureDocument.nib */,
+				8D15AC360486D014006FF6A4 /* Info.plist */,
+				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				3F5BBE5506B2D138001C0443 /* Ear Icon.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FAA186B07748EC30031B0CF /* SM2DGraphView.framework */,
+				3FCF441307579B2800E09FCB /* Security.framework */,
+				3F887A3D0713762A002226EC /* CoreFoundation.framework */,
+				3F887A3E0713762A002226EC /* SecurityFoundation.framework */,
+				3F6674EA06A8C6D100ECF6A7 /* libpcap.dylib */,
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F2F46BC071BFBD500AC3C99 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				3F2F46B7071BFBB800AC3C99 /* Authorization.h */,
+				32DBCF750370BD2300C91783 /* Eavesdrop_Prefix.pch */,
+				3F87199B073FB3890029029C /* CaptureTool_Prefix.pch */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		3F66723A06A6BC4600ECF6A7 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				3F6671E906A65A0100ECF6A7 /* sniff.h */,
+				3F6671E306A65A0000ECF6A7 /* Capture.h */,
+				3F10E69F0748E3DF003E23F4 /* CaptureHandler.h */,
+				3F2CE89A06BD978300BE9192 /* CaptureQueue.h */,
+				3F88798B0712E9C2002226EC /* PacketHandler.h */,
+				3F6671E506A65A0000ECF6A7 /* Conversation.h */,
+				3F02F5A606B13953008D2A20 /* ColorizationRules.h */,
+				3FAA18800774B94D0031B0CF /* GraphController.h */,
+				3F4ACECF07793EA4005B581D /* GC-Constants.h */,
+				3FB5322607809B3B001171AA /* CaptureGraphController.h */,
+				3F6671E706A65A0100ECF6A7 /* CaptureController.h */,
+				2A37F4AEFDCFA73011CA2CEA /* CaptureDocument.h */,
+				3FAA19180774C82F0031B0CF /* DataSet.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8D15AC280486D014006FF6A4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC290486D014006FF6A4 /* Eavesdrop_Prefix.pch in Headers */,
+				8D15AC2A0486D014006FF6A4 /* CaptureDocument.h in Headers */,
+				3F6671EA06A65A0100ECF6A7 /* Capture.h in Headers */,
+				3F6671EC06A65A0100ECF6A7 /* Conversation.h in Headers */,
+				3F6671EE06A65A0100ECF6A7 /* CaptureController.h in Headers */,
+				3F6671F006A65A0100ECF6A7 /* sniff.h in Headers */,
+				3F02F5A806B13953008D2A20 /* ColorizationRules.h in Headers */,
+				3FDC32FA06BF466300A62BB7 /* CaptureQueue.h in Headers */,
+				3F88798C0712E9C2002226EC /* PacketHandler.h in Headers */,
+				3F2F46BA071BFBB800AC3C99 /* Authorization.h in Headers */,
+				3F10E6A00748E3DF003E23F4 /* CaptureHandler.h in Headers */,
+				3FAA18820774B94D0031B0CF /* GraphController.h in Headers */,
+				3FAA191A0774C82F0031B0CF /* DataSet.h in Headers */,
+				3F4ACED007793EA4005B581D /* GC-Constants.h in Headers */,
+				3FB5322807809B3B001171AA /* CaptureGraphController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3F88791A0712E6D6002226EC /* CaptureTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F94415A09852D50001FEC45 /* Build configuration list for PBXNativeTarget "CaptureTool" */;
+			buildPhases = (
+				3F8879180712E6D6002226EC /* Sources */,
+				3F8879190712E6D6002226EC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CaptureTool;
+			productName = CaptureTool;
+			productReference = 3F88791B0712E6D6002226EC /* CaptureTool */;
+			productType = "com.apple.product-type.tool";
+		};
+		8D15AC270486D014006FF6A4 /* Eavesdrop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F94415E09852D50001FEC45 /* Build configuration list for PBXNativeTarget "Eavesdrop" */;
+			buildPhases = (
+				8D15AC280486D014006FF6A4 /* Headers */,
+				8D15AC2B0486D014006FF6A4 /* Resources */,
+				8D15AC300486D014006FF6A4 /* Sources */,
+				8D15AC330486D014006FF6A4 /* Frameworks */,
+				3F3644BC072C3EDD00866B95 /* CopyFiles */,
+				3FAA186D07748ED10031B0CF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F3644B9072C3E2F00866B95 /* PBXTargetDependency */,
+			);
+			name = Eavesdrop;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Eavesdrop;
+			productReference = 8D15AC370486D014006FF6A4 /* Eavesdrop.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 3F94416209852D50001FEC45 /* Build configuration list for PBXProject "Eavesdrop" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Eavesdrop */;
+			projectDirPath = "";
+			targets = (
+				8D15AC270486D014006FF6A4 /* Eavesdrop */,
+				3F88791A0712E6D6002226EC /* CaptureTool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D15AC2B0486D014006FF6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
+				8D15AC2D0486D014006FF6A4 /* MainMenu.nib in Resources */,
+				8D15AC2E0486D014006FF6A4 /* CaptureDocument.nib in Resources */,
+				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				3F5BBE5606B2D138001C0443 /* Ear Icon.icns in Resources */,
+				3F965E020798D9FB009E5B5F /* GPL.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F8879180712E6D6002226EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F88792C0712E745002226EC /* CaptureTool_main.m in Sources */,
+				3F88791D0712E6E0002226EC /* Capture.m in Sources */,
+				3F2F46B9071BFBB800AC3C99 /* Authorization.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D15AC300486D014006FF6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F364669072CBDC200866B95 /* Capture.m in Sources */,
+				8D15AC310486D014006FF6A4 /* CaptureDocument.m in Sources */,
+				8D15AC320486D014006FF6A4 /* Eavesdrop_main.m in Sources */,
+				3FDC32FB06BF467600A62BB7 /* CaptureQueue.m in Sources */,
+				3F6671ED06A65A0100ECF6A7 /* Conversation.m in Sources */,
+				3F6671EF06A65A0100ECF6A7 /* CaptureController.m in Sources */,
+				3F02F5A906B13953008D2A20 /* ColorizationRules.m in Sources */,
+				3F6D7BD706C594FF00B194EF /* CD-Delegates.m in Sources */,
+				3F2F46BB071BFBB800AC3C99 /* Authorization.c in Sources */,
+				3FAA18830774B94E0031B0CF /* GraphController.m in Sources */,
+				3FAA191B0774C82F0031B0CF /* DataSet.m in Sources */,
+				3FB5322907809B3C001171AA /* CaptureGraphController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F3644B9072C3E2F00866B95 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F88791A0712E6D6002226EC /* CaptureTool */;
+			targetProxy = 3F3644B8072C3E2F00866B95 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C165FFE840EACC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1660FE840EACC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2A37F4B4FDCFA73011CA2CEA /* CaptureDocument.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4B5FDCFA73011CA2CEA /* English */,
+			);
+			name = CaptureDocument.nib;
+			sourceTree = "<group>";
+		};
+		2A37F4B6FDCFA73011CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4B7FDCFA73011CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A37F4BAFDCFA73011CA2CEA /* English */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F94415B09852D50001FEC45 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CaptureTool_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = "$(LIBRARY_SEARCH_PATHS_QUOTED_1)";
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "/Users/ebaur/Projects/Current\\ Projects/Eavesdrop";
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CaptureTool;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		3F94415C09852D50001FEC45 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CaptureTool_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = "$(LIBRARY_SEARCH_PATHS_QUOTED_1)";
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "/Users/ebaur/Projects/Current\\ Projects/Eavesdrop";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CaptureTool;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		3F94415D09852D50001FEC45 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				FRAMEWORK_SEARCH_PATHS = "$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)";
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "/Users/ebaur/Projects/Current\\ Projects/Eavesdrop";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CaptureTool_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = "$(LIBRARY_SEARCH_PATHS_QUOTED_1)";
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "/Users/ebaur/Projects/Current\\ Projects/Eavesdrop";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = CaptureTool;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Default;
+		};
+		3F94415F09852D50001FEC45 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Eavesdrop_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = /usr/include;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = /usr/lib;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = Eavesdrop;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		3F94416009852D50001FEC45 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Eavesdrop_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = /usr/include;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = /usr/lib;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Eavesdrop;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		3F94416109852D50001FEC45 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_ENABLE_TRIGRAPHS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Eavesdrop_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = /usr/include;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = /usr/lib;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = Eavesdrop;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		3F94416309852D50001FEC45 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		3F94416409852D50001FEC45 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		3F94416509852D50001FEC45 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F94415A09852D50001FEC45 /* Build configuration list for PBXNativeTarget "CaptureTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F94415B09852D50001FEC45 /* Development */,
+				3F94415C09852D50001FEC45 /* Deployment */,
+				3F94415D09852D50001FEC45 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		3F94415E09852D50001FEC45 /* Build configuration list for PBXNativeTarget "Eavesdrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F94415F09852D50001FEC45 /* Development */,
+				3F94416009852D50001FEC45 /* Deployment */,
+				3F94416109852D50001FEC45 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		3F94416209852D50001FEC45 /* Build configuration list for PBXProject "Eavesdrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F94416309852D50001FEC45 /* Development */,
+				3F94416409852D50001FEC45 /* Deployment */,
+				3F94416509852D50001FEC45 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
+}

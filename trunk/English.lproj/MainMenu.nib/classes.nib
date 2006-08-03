@@ -1,0 +1,23 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {refreshGraph = id; saveData = id; swapVariables = id; }; 
+            CLASS = CaptureGraphController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {conversationController = NSArrayController; parentGraphView = SM2DGraphView; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = GraphController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                conversationController = NSArrayController; 
+                parentGraphView = SM2DGraphView; 
+                parentPieChartView = SMPieChartView; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}
