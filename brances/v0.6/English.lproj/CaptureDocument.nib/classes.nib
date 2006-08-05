@@ -1,0 +1,52 @@
+{
+    IBClasses = (
+        {CLASS = BHOutlineView; LANGUAGE = ObjC; SUPERCLASS = NSOutlineView; }, 
+        {
+            ACTIONS = {
+                applyAggregates = id; 
+                chooseFile = id; 
+                connectToCaptureServer = id; 
+                killServer = id; 
+                launchServer = id; 
+                refreshData = id; 
+                saveSettings = id; 
+                showSettings = id; 
+                startCapture = id; 
+                stopCapture = id; 
+                updateDetails = id; 
+            }; 
+            CLASS = CaptureDocument; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                aggregateArrayController = NSArrayController; 
+                aggregateTreeController = NSTreeController; 
+                appDelegate = id; 
+                collectorProxy = id; 
+                documentWindow = NSWindow; 
+                packetDetailWindow = NSWindow; 
+                packetInfoDrawer = NSDrawer; 
+                packetOutlineView = NSOutlineView; 
+                serverProxy = id; 
+                settingsWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSDocument; 
+        }, 
+        {
+            CLASS = DetailController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                detailWindow = NSWindow; 
+                packetTableView = NSTableView; 
+                payloadViewsPopup = NSPopUpButton; 
+                pluginsBox = NSBox; 
+                selectedObjectController = NSObjectController; 
+                selectedPacketsArrayController = NSArrayController; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = Dissector; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSPersistentDocument; LANGUAGE = ObjC; SUPERCLASS = NSDocument; }
+    ); 
+    IBVersion = 1; 
+}

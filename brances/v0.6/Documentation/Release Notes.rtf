@@ -1,0 +1,129 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf330
+{\fonttbl\f0\fswiss\fcharset77 Helvetica-Bold;\f1\fswiss\fcharset77 Helvetica;\f2\fswiss\fcharset77 Helvetica-Oblique;
+\f3\froman\fcharset77 Times-Bold;\f4\froman\fcharset77 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+
+\f0\b\fs72 \cf0 Eavesdrop
+\f1\b0\fs24 \
+
+\f2\i listen in on your network\
+\
+
+\f1\i0 \'a9 
+\fs20 Copyright 2005 Eric Shore Baur\
+This application is licensed under the GPL.  Please see GPL.txt (distributed with this file) for more information on the license. If this distribution did not come with source, you can get it at\
+	http://www.baurhome.net/software/\
+or contact the author at:\
+	baurfamily@gmail.com\
+	
+\fs24 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f3\b\fs28 \cf0 Eavesdrop
+\f4\b0  is an application for listening in on TCP conversations on the network your computer is attached to.  It can also open up tcpdump / Ethereal capture files for analysis.
+\fs24 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f3\b\fs28 \cf0 \ul \ulc0 Quick Start:
+\f4\b0\fs24 \ulnone \
+	For most users with a single network connection (ie: only ethernet or airport active, not both), you can simply start up the application and click "Start Capture" (you will be asked to authenticate).  The application will start to list any TCP conversations it sees on the network.\
+\
+
+\f3\b\fs28 \ul Licensing:
+\f4\b0\fs24 \ulnone \
+	This application is 
+\f3\b freeware
+\f4\b0  and licensed under the 
+\f3\b GPL
+\f4\b0 .  If you have some reason that you would like to license it from me in some manner other than the GPL, please contact me.  I am open to discussions for other uses.\
+	I have no plans to ever charge for it, although I may setup a PayPal account for donations, if anyone wants to contribute to development.   Although my work has inspired the writing of this application, I do all the development on my own time.  I have learned and accomplished a lot because of Free and Open Source Software and would like to give something back to the community.\
+	I hope that anyone using this application finds that it gives them information they couldn't get from another app, or inspires them to learn more about what their computers are doing in the background.  For more advanced users, it can give some insight into the performance of client / server communications.\
+\
+
+\f3\b\fs28 \ul Acknowledgments:
+\f4\b0\fs24 \ulnone \
+	I would like to thank Jean-Edouard Babin for his code contributions.  He added support for PNG graphics and fixed a display bug in the ASCII / HEX view.  I would also like to thank
+\f1  
+\f4 Snowmint Creative solutions (http://developer.snowmintcs.com) for their excellent graphing classes for Cocoa.  The graphing features look a lot better than they would have under my design alone.  The code related to graphing is not covered under the GPL and is not public domain, please see their web site for details on their open source license.\
+
+\f3\b\fs28 \ul \
+Requirements:
+\f4\b0\fs24 \ulnone \
+	\'a5 Mac OS X 10.3 or greater\
+	\'a5 administrative rights (for live captures)\
+	\'a5 network connection (ethernet/airport) or tcpdump capture files\
+\
+
+\f3\b\fs28 \ul Features:
+\f4\b0\fs24 \ulnone \
+	\'a5 TCP conversation tracking\
+	\'a5 show last TCP flags sent and flag history\
+	\'a5 tcpdump filter syntax\
+	\'a5 live syntax checking\
+	\'a5 payload reconstruction - display in ASCII or HEX\
+	\'a5 read tcpdump files\
+	\'a5 remove or hide idle conversations to save memory or simplify the interface\
+	\'a5 display images contained in the capture\
+	\'a5 search for an IP or payload contents\
+	\'a5 graphing of conversation meta-data (can also export data)\
+\
+
+\f3\b\fs28 \ul To-Do List:
+\f4\b0\fs24 \ulnone \
+	\'a5 save images\
+	\'a5\'caTCP sequence analysis\
+	\'a5 preferences (for font, colors & maybe more...)\
+	\'a5 better statistical data\
+	\'a5 better graphs (more than one dependent variable, for example)\
+	\'a5 dynamic data columns in capture window\
+	... and I'm open to suggestions!\
+\
+
+\f3\b\fs28 \ul Known Issues:
+\f4\b0\fs24 \ulnone \
+	\'a5 packet info can be edited in conversation window\
+	\'a5 no image details\
+	\'a5 missing statistics\
+	\'a5 "CaptureTool" process can get zombied when app crashes or window is closed during a capture\
+	\'a5 a capture file can be processed by re-running the capture, this results in duplicated information\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f3\b \cf0 \ul \ulc0 v0.5a3u
+\f4\b0 \ulnone \
+	Compiled as a Universal Binary.  Limited release only (to specific testers).\
+	\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+
+\f3\b \cf0 \ul v0.5a3
+\f4\b0 \ulnone \
+	Fixed promiscuous mode.\
+\
+
+\f3\b \ul v0.5a2
+\f4\b0 \ulnone \
+	Added more graphing options.  Not released publically.\
+\
+
+\f3\b \ul v0.5a1
+\f4\b0 \ulnone \
+	Added graphing capabilities.  Moved around a lot of the user interface to (hopefully) be a little less cluttered.  There are a lot more sub-sections now, but I think it layed out more logically.\
+	I had started to add some HTML support, but it was so far from complete that I took the interfaces for it back out.  The graphing support was more important to me (in order to use this for analysis of data) and so it got worked on first.\
+	CPU performance used to go through the roof when running a capture and then remain high after the capture was stopped.  Now, the CPU is still busy during (although not as much) and goes back to normal afterwards.  On a related note, this version will not leave around orphaned or zombied processes under normal usage (although I have seen issues when a capture is not stopped before closing a window).\
+	This is considered an alpha release because the graphs are implemented in an inconsistant mannor and the statistics are not in place yet.\
+\
+
+\f3\b \ul v0.4b3
+\f4\b0 \ulnone \
+	Major change in this version was getting authentication working properly.  While working on this, I've split the app into separate display and capture applications.  This should help some with performance as well.  Some other minor bugs and irritations have been solved as well.\
+\
+
+\f3\b \ul v0.4b1
+\f4\b0 \ulnone \
+	First public release.  Major features are complete with some remaining issues and interface elements that don't do anything.  This is a major reworking from the previous version, which worked better (in some ways), but had performance issues and dropped packets.\
+\
+}

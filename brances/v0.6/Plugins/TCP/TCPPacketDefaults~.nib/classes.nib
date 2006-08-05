@@ -1,0 +1,14 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {save = id; }; 
+            CLASS = PluginDefaults; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {defaultsView = NSView; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = TCPPacketDefaults; LANGUAGE = ObjC; SUPERCLASS = PluginDefaults; }
+    ); 
+    IBVersion = 1; 
+}
