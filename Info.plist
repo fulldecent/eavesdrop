@@ -9,46 +9,58 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>eavesdrop</string>
+				<string>cap</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string></string>
 			<key>CFBundleTypeName</key>
-			<string>DocumentType</string>
+			<string>CaptureDocument</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
 			<key>NSDocumentClass</key>
 			<string>CaptureDocument</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>InMemory</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>cap</string>
+				<string>edplugin</string>
 			</array>
 			<key>CFBundleTypeName</key>
-			<string>TCPDump</string>
+			<string>Plugin</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>BNDL</string>
+			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
-			<key>NSDocumentClass</key>
-			<string>CaptureDocument</string>
+			<key>LSTypeIsPackage</key>
+			<true/>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>XML</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>Eavesdrop</string>
+	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>Ear Icon.icns</string>
+	<string>Ear icon</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.baurhome.eavesdrop</string>
+	<string>net.baurhome.Eavesdrop</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.6.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.5a4</string>
+	<string>0.6.0 pre-release</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu.nib</string>
+	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

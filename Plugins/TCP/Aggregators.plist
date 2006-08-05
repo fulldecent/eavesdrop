@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>dissectorClassName</key>
+		<string>TCPPacket</string>
+		<key>aggregateClassName</key>
+		<string>TCPAggregate</string>
+		<key>name</key>
+		<string>TCP Conversations</string>
+		<key>protocol</key>
+		<string>TCP</string>
+		<key>defaultsClassName</key>
+		<string>TCPAggregateDefaults</string>
+		<key>payloadViews</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Text</string>
+				<key>viewKey</key>
+				<string>payloadTextView</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Images</string>
+				<key>viewKey</key>
+				<string>payloadImageView</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

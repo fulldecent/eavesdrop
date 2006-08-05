@@ -3,14 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>BuildVersion</key>
-	<string>1</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>9</string>
 	<key>CFBundleVersion</key>
-	<string>0.1</string>
+	<string>1.0</string>
 	<key>ProjectName</key>
 	<string>NibPBTemplates</string>
 	<key>SourceVersion</key>
-	<string>1160200</string>
+	<string>1200000</string>
 </dict>
 </plist>

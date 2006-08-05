@@ -2,287 +2,615 @@
 //  CaptureDocument.m
 //  Eavesdrop
 //
-//  Created by Eric Baur on Wed Jul 14 2004.
-//  Copyright (c) 2004 Eric Shore Baur. All rights reserved.
+//  Created by Eric Baur on 5/16/06.
+//  Copyright Eric Shore Baur 2006 . All rights reserved.
 //
 
 #import "CaptureDocument.h"
 
 @implementation CaptureDocument
 
-- (id)init
+#pragma mark -
+#pragma mark Setup methods
+
++ (void)initialize
 {
+	ENTRY( @"initialize" );
+}
+
+- (id)init 
+{
+	ENTRY( @"init" );
     self = [super init];
     if (self) {
-        // Add your subclass-specific initialization here.
-        // If an error occurs here, send a [self release] message and return nil.
+		identifier = [[self description] retain];
+		queueIdentifier = [NSString stringWithFormat:@"%@ (queue)", identifier];
+
+		DEBUG( @"detach PacketQueue thread" );
+		[NSThread
+			detachNewThreadSelector:@selector(startCollectorWithIdentifier:)
+			toTarget:[PacketQueue class]
+			withObject:queueIdentifier
+		];
+		isRefreshing = NO;
+
+		packetListArray = [[NSMutableArray alloc] init];
+
+		appDelegate = [[NSApp delegate] retain];
+		[self setAggregate:@"Aggregate"];
     }
-    return self;
-}
-
-- (NSString *)windowNibName
-{
-    return @"CaptureDocument";
-}
-
-- (void)windowControllerDidLoadNib:(NSWindowController *) aController
-{
-    [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
-}
-
-- (BOOL)writeToFile:(NSString *)fileName ofType:(NSString *)docType
-{
-	return NO;
-}
-
-- (BOOL)readFromFile:(NSString *)fileName ofType:(NSString *)docType
-{
-	readFilename = fileName;
-	[readFilename retain];
-	return YES;
+	EXIT( @"done with init" );
+	
+	return self;
 }
 
 - (void)awakeFromNib
 {
-	[unifiedTable setTarget:self];
-	[unifiedTable setDoubleAction:@selector(openHistory:)];
+	[packetOutlineView setIntercellSpacing:NSMakeSize(0,1) ];
 	
-	[dividedTable setTarget:self];
-	[dividedTable setDoubleAction:@selector(openHistory:)];
-	
-	[dataTable setTarget:self];
-	[dataTable setDoubleAction:@selector(openHistory:)];
-
-	[captureController setTables:[NSArray arrayWithObjects:unifiedTable, dividedTable, dataTable, nil] ];
-	
-	NSArray *tempArray = [Capture interfaces];
-	NSEnumerator *en = [tempArray objectEnumerator];
-	NSString *tempString;
-	while (tempString = [en nextObject]) {
-		[interfaceComboBox addItemWithObjectValue:tempString];
-	}
-	[interfaceComboBox setStringValue:[tempArray objectAtIndex:0] ];
-	
-	if (readFilename) {
-		[captureController setReadFilename:readFilename];
-		[readFilenameField setStringValue:readFilename];
-		[dataTabView selectTabViewItemWithIdentifier:@"offline"];
-	}
-
-	// set up the packetSearch field with its default menu	
-	NSMenu *packetSearchMenu = [[[NSMenu alloc] initWithTitle:@"Search Menu"] autorelease];
-
-	int i=0;
-    NSMenuItem *item;
-    id searchCell = [packetSearchField cell];
-	//item = [[NSMenuItem alloc] initWithTitle:@"Intelligent Search"
-	//							action:@selector(changeSearchCategory:)
-	//							keyEquivalent:@""];
-	//[item setState:NSOnState];
-	//[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"Hosts"
-								action:nil
-								keyEquivalent:@""];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Either IP"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-	[item setState:NSOnState];
-    [item setTag:CCHostIPSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Client IP"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCClientIPSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Server IP"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCServerIPSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"Ports"
-								action:nil
-								keyEquivalent:@""];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Either Port"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCPortSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Client Port"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCClientPortSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Server Port"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCServerPortSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"Payloads"
-								action:nil
-								keyEquivalent:@""];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Either"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCPayloadSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Client Payload"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCClientPayloadSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-	item = [[NSMenuItem alloc] initWithTitle:@"  Server Payload"
-								action:@selector(changeSearchCategory:)
-								keyEquivalent:@""];
-    [item setTag:CCServerPayloadSearchTag];
-	[packetSearchMenu insertItem:item atIndex:i++];
-/*
-    item = [[NSMenuItem alloc] initWithTitle:@"Recent Searches"
-                                action:NULL
-                                keyEquivalent:@""];
-    [item setTag:NSSearchFieldRecentsTitleMenuItemTag];
-    [packetSearchMenu insertItem:item atIndex:i++];
-    [item release];
-    item = [[NSMenuItem alloc] initWithTitle:@"Recents"
-                                action:NULL
-                                keyEquivalent:@""];
-    [item setTag:NSSearchFieldRecentsMenuItemTag];
-    [cellMenu insertItem:item atIndex:i++];
-    [item release];
-	[packetSearchMenu insertItem:[NSMenuItem separatorItem] atIndex:i++];
-    item = [[NSMenuItem alloc] initWithTitle:@"Clear"
-                                action:NULL
-                                keyEquivalent:@""];
-    [item setTag:NSSearchFieldClearRecentsMenuItemTag];
-    [packetSearchMenu insertItem:item atIndex:i++];
-    [item release];
-*/
-    [searchCell setSearchMenuTemplate:packetSearchMenu];
-}
-
-- (IBAction)openHistory:(id)sender
-{
-	[historyWindow makeKeyAndOrderFront:self];
-}
-
-- (IBAction)openSettings:(id)sender
-{
-	[NSApp
-		beginSheet:settingsPanel
-		modalForWindow:captureWindow
-		modalDelegate:nil
-		didEndSelector:nil
-		contextInfo:nil
+	[[NSNotificationCenter defaultCenter]
+		addObserver:self
+		selector:@selector(updateDetails:)
+		name:@"NSOutlineViewSelectionDidChangeNotification"
+		object:nil
 	];
+	
+	//this is here because I can't get the settings to stick in IB
+	[packetInfoDrawer setContentSize:NSMakeSize(300,400)];
+	
+	[packetOutlineView setDoubleAction:@selector(makeKeyAndOrderFront:)];
+	[packetOutlineView setTarget:packetDetailWindow];
 }
 
-- (IBAction)closeSettings:(id)sender
+- (NSString *)windowNibName 
 {
-	[NSApp endSheet:settingsPanel];
-	[settingsPanel orderOut:self];
-	[settingsPanel makeFirstResponder:settingsPanel];   //this is to force the textField to update
+    return @"CaptureDocument";
+}
+
+- (void)windowControllerDidLoadNib:(NSWindowController *)windowController 
+{
+    [super windowControllerDidLoadNib:windowController];
+    // user interface preparation code
+	
+	[self connectToCaptureServer:self];
+}
+
+- (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
+{
+	ENTRY2( @"readFromURL:%@ ofType:%@ error:(out)", [absoluteURL description], typeName );
+	[self setReadFile:[absoluteURL path] ];
+	BOOL readFile = [[[[NSUserDefaultsController sharedUserDefaultsController]
+		values] valueForKey:@"readFileOnOpen"] boolValue];
+	if (readFile)
+		[self startCapture:self];
+		
+	return YES;
+}
+
+- (void)setDefaults
+{
+	NSDictionary *defaultsDict = [[NSUserDefaultsController sharedUserDefaultsController] values];
+	
+	[self setInterface:[defaultsDict valueForKey:@"interface"] ];
+	[self setPromiscuous:[[defaultsDict valueForKey:@"promiscuous"] boolValue] ];
+	[self setTableRefresh:[[defaultsDict valueForKey:@"tableRefresh"] intValue] ];
+}
+
+- (PacketQueue *)packetQueue
+{
+	if (!packetQueue) {	
+		packetQueue = [PacketQueue collectorWithIdentifier:queueIdentifier];
+		if (packetQueue) {
+			DEBUG1( @"got packetQueue proxy: %@", [packetQueue description] );
+		} else {
+			ERROR( @"failed to get packetQueue proxy!" );
+		}
+	}
+	return packetQueue;
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)connectToCaptureServer:(id)sender
+{
+	[self willChangeValueForKey:@"serverProxy"];
+	ENTRY( @"connectToCaptureServer" );
+
+	NSString *tempHost = nil;
+	NSString *tempIdentifier = @"CaptureServer";
+	if (CDRemoteCaptureType==captureType) {
+		DEBUG2( @"looking for '%@' at: %@", remoteHostIdentifier, remoteHostAddress );
+		tempHost = remoteHostAddress;
+		tempIdentifier = remoteHostIdentifier;
+	}
+	
+	serverProxy = [[DOHelpers
+		getProxyWithName:tempIdentifier
+		protocol:@protocol(CaptureServer)
+		host:tempHost
+	] retain];
+	if (serverProxy) {
+		DEBUG1(@"got serverProxy: %@",[serverProxy description]);
+		[serverProxy addCaptureForClient:queueIdentifier ];
+	} else {
+		WARNING(@"failed to get serverProxy" );
+	}
+	[self didChangeValueForKey:@"serverProxy"];
+	
+	[self setDefaults];
+}
+
+- (IBAction)startCapture:(id)sender
+{
+	if ( [self isActive] ) {
+		ERROR( @"Cannot start, a capture is already active" );
+		return;
+	}
+	
+	[self willChangeValueForKey:@"isActive"];
+	if (fileCaptureThread) {
+		[NSThread detachNewThreadSelector:@selector(startCapture) toTarget:fileCaptureThread withObject:nil];
+	} else if (serverProxy) {
+		[serverProxy startCaptureForClient:queueIdentifier ];
+	}
+	[self setTableRefresh:refreshMilliseconds];
+	[self didChangeValueForKey:@"isActive"];
 }
 
 - (IBAction)stopCapture:(id)sender
 {
-	[captureController stopCapture:self];
+	if (fileCaptureThread)
+		[fileCaptureThread stopCapture];
+		
+	if (serverProxy)
+		[serverProxy stopCaptureForClient:queueIdentifier];
 	
-	[sender setTitle:@"Start Capture"];
-	[sender setAction:@selector(startCapture:)];
+	//[self setTableRefresh:0];
+	[self refreshData:self];
+	
+	[PacketQueue stopCollectorWithIdentifier:queueIdentifier];
 }
 
-- (IBAction)toggleSelectNew:(id)sender
+- (IBAction)refreshData:(id)sender
 {
-	[conversationController setSelectsInsertedObjects:[sender state]];
-}
-
-- (IBAction)toggleFollowHistory:(id)sender
-{
-	[historyController setSelectsInsertedObjects:[sender state]];
-}
-
-- (IBAction)toggleRequiresSyn:(id)sender
-{	//this needs to change (it shouldn't be global, but it is)
-	[Conversation setRequiresSyn:[sender state] ];
-}
-
-- (IBAction)changeThumbnailSize:(id)sender
-{
-	[thumbnailTableView setRowHeight:[sender intValue] ];
-}
-
-- (IBAction)changePayloadView:(id)sender
-{
-	ENTRY(NSLog( @"[CaptureDocument changePayloadView:]" ));
-	switch([[payloadViewPopup selectedItem] tag]) {
-		case CCAnyHostTag:
-			[payloadTextView bind:@"data" toObject:conversationController
-				withKeyPath:@"selection.payloadAsRTFData" options:nil ];
-			break;
-		case CCClientHostTag:
-			[payloadTextView bind:@"data" toObject:conversationController
-				withKeyPath:@"selection.clientPayloadAsRTFData" options:nil ];
-			break;
-		case CCServerHostTag:
-			[payloadTextView bind:@"data" toObject:conversationController
-				withKeyPath:@"selection.serverPayloadAsRTFData" options:nil ];
-			break;
-		default:
-			NSLog( @"No valid payload view specified." );
+	if (isRefreshing) {
+		DEBUG( @"already refreshing - returning" );
+		return;
 	}
+	isRefreshing = YES;
+	//ENTRY( @"refreshData:" );	
+
+	NSArray *tempArray = nil;
+	@try {
+		if (aggregateUsed) {
+			tempArray = [[self packetQueue] flushNewAggregateArray];
+		} else {
+			tempArray = [[self packetQueue] flushNewPacketArray];
+		}
+	}
+	@catch (NSException *e) {
+		ERROR1( @"exception in refreshing data: %@", [e reason] );
+		[serverProxy release];
+		serverProxy = nil;
+		[tableTimer invalidate];
+		[PacketQueue stopCollectorWithIdentifier:queueIdentifier];
+	}
+	
+	if ( [tempArray count] ) {
+		[packetListArray addObjectsFromArray:tempArray];
+		[packetOutlineView reloadData];
+	}
+	
+	isRefreshing = NO;
 }
 
-- (IBAction)clearList:(id)sender
+- (IBAction)updateDetails:(id)sender
 {
-	[conversationController removeObjectsAtArrangedObjectIndexes:[NSIndexSet
-		indexSetWithIndexesInRange:NSMakeRange(0,[[conversationController arrangedObjects] count])]
+	NSIndexSet *indexSet = [packetOutlineView selectedRowIndexes];
+	//DEBUG1( @"updateDetails: with indexSet: %@", [indexSet description] );
+	
+	[self willChangeValueForKey:@"selectedPacket"];
+	[self willChangeValueForKey:@"packetDetailsArray"];
+	[packetDetailsArray release];
+	packetDetailsArray = nil;
+	if ( [indexSet count]==1 ) {
+		selectedPacket = [packetOutlineView itemAtRow:[indexSet firstIndex]];
+		packetDetailsArray = [selectedPacket detailsArray];
+		
+	}
+	[self didChangeValueForKey:@"packetDetailsArray"];
+	[self didChangeValueForKey:@"selectedPacket"];
+}
+
+- (IBAction)killServer:(id)sender
+{
+	[self willChangeValueForKey:@"serverProxy"];
+	[serverProxy killServer];
+	[self didChangeValueForKey:@"serverProxy"];
+}
+
+- (IBAction)showSettings:(id)sender
+{
+	[NSApp
+		beginSheet:settingsWindow
+		modalForWindow:documentWindow
+		modalDelegate:self
+		didEndSelector:@selector(settingsSheetDidEnd:returnCode:contextInfo:)
+		contextInfo:nil
 	];
 }
 
-- (IBAction)packetsearch:(id)sender
+- (IBAction)saveSettings:(id)sender
 {
-	[captureController searchForString:[sender stringValue] ];
+	[NSApp endSheet:settingsWindow];
 }
 
-- (IBAction)changeSearchCategory:(id)sender
+- (IBAction)launchServer:(id)sender
 {
-	[[[sender menu] itemWithTag:[captureController searchCategory]] setState:NSOffState];
-	[sender setState:NSOnState];
-	[captureController setSearchCategory:[sender tag] ];
+	[appDelegate performSelector:@selector(launchCaptureServer:) withObject:self];
+	[self connectToCaptureServer:self];
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
+- (IBAction)chooseFile:(id)sender
 {
+	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	[openPanel
+		beginSheetForDirectory:nil
+		file:nil
+		types:[NSArray arrayWithObject:@"cap"]
+		modalForWindow:settingsWindow
+		modalDelegate:self
+		didEndSelector:@selector(chooseFilePanelDidEnd:returnCode:contextInfo:)
+		contextInfo:nil
+	];
+}
+
+- (IBAction)applyAggregates:(id)sender
+{
+	[packetListArray removeAllObjects];
+	[[self packetQueue] resetNewPacketIndex];
+
+	NSArray *tempArray = [aggregateArrayController arrangedObjects];
+	if ( !tempArray || [tempArray count]==0 ) {
+		aggregateUsed = NO;
+	} else {
+		aggregateUsed = YES;
+	}
+	[[self packetQueue] setAggregateClassArray:tempArray ];
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setCaptureType:(CDCaptureType)newType
+{
+	ENTRY( @"setCaptureType:" );
+
+	[self willChangeValueForKey:@"captureType"];	
+	[self willChangeValueForKey:@"serverProxy"];
+	[self willChangeValueForKey:@"fileCaptureThread"];
+	[self willChangeValueForKey:@"readFile"];
+	if ( CDLocalCaptureType==captureType && CDFileCaptureType==newType ) {
+		[serverProxy release];
+		serverProxy = nil;
+	} else if ( CDLocalCaptureType==captureType && CDRemoteCaptureType==newType ) {
+		//do something to move from a local server to remote server
+	} else if ( CDFileCaptureType==captureType && CDLocalCaptureType==newType ) {
+		[fileCaptureThread release];
+		fileCaptureThread = nil;
+		[self connectToCaptureServer:self];
+	} else if ( CDFileCaptureType==captureType && CDRemoteCaptureType==newType ) {
+		[fileCaptureThread release];
+		fileCaptureThread = nil;
+		//connect to remote server somehow
+	} else if ( CDRemoteCaptureType==captureType && CDLocalCaptureType==newType ) {
+		//do something
+		[self connectToCaptureServer:self];
+	} else if ( CDRemoteCaptureType==captureType && CDFileCaptureType==newType ) {
+		//do something
+	}
+	
+	captureType = newType;
+	
+	[self didChangeValueForKey:@"captureType"];
+	[self didChangeValueForKey:@"serverProxy"];
+	[self didChangeValueForKey:@"fileCaptureThread"];
+	[self didChangeValueForKey:@"readFile"];
+}
+
+- (int)tableRefresh
+{
+	return refreshMilliseconds;
+}
+
+- (void)setTableRefresh:(int)newRefresh
+{
+	[tableTimer invalidate];
+	[tableTimer release];
+	tableTimer = nil;
+	
+	if ( newRefresh ) {
+		refreshMilliseconds = newRefresh;
+		tableTimer = [[NSTimer
+			scheduledTimerWithTimeInterval:( refreshMilliseconds / 1000.0 )
+			target:self
+			selector:@selector(refreshData:)
+			userInfo:nil
+			repeats:YES
+		] retain];
+	} else {
+		DEBUG( @"table refresh timer turned off" );
+	}
+}
+
+- (NSString *)aggregate
+{
+	return [[self packetQueue] aggregateClassName];
+}
+
+- (void)setAggregate:(NSString *)newAggregate
+{
+	ENTRY1( @"setAggregate: %@", newAggregate );
+
+	[packetListArray removeAllObjects];
+	[[self packetQueue] resetNewPacketIndex];
+
+	aggregateUsed = ! [newAggregate isEqualToString:[Aggregate className]];
+	[[self packetQueue] setAggregateClassName:newAggregate];
+	
+	[self refreshData:self];
+}
+
+#pragma mark -
+#pragma mark Capture Properties
+
+- (NSMutableArray *)interfaces
+{
+	//this isn't doing what I want it to...
+	// ... it should be able to bind to the combo box
+	NSArray *serverInterfaces;
+	NSMutableArray *tempArray = [NSMutableArray array];
+	if (serverProxy)
+		serverInterfaces = [serverProxy interfaces];
+	else
+		serverInterfaces = [NSArray array];
+		
+	NSEnumerator *en = [serverInterfaces objectEnumerator];
+	NSString *tempString;
+	while ( tempString = [en nextObject] ) {
+		[tempArray addObject:
+			[NSMutableDictionary dictionaryWithObject:tempString forKey:@"name"]
+		];
+	}
+	return tempArray;
+}
+
+- (NSString *)saveFile
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread saveFile];
+		
+	if (serverProxy)
+		return [serverProxy saveFileForClient:queueIdentifier];
+		
 	return nil;
 }
 
-/* added by Will Darling - feb. 24 */
-/* save the image that's currently in the imagewell as a tiff */
-- (IBAction)saveImage:(id)sender
+- (void)setSaveFile:(NSString *)saveFile
 {
-	NSData *imgAsData;
-	NSSavePanel *sp;
-	
-	imgAsData = [[imageBox image] TIFFRepresentation];
-	
-	sp = [NSSavePanel savePanel];
-	[sp setRequiredFileType:@"tiff"];
-	[sp beginSheetForDirectory:NSHomeDirectory() file:@""
-		modalForWindow:historyWindow
-		modalDelegate:nil
-		didEndSelector:nil
-		contextInfo:nil
-	];
-	
-	if([sp runModal] == NSFileHandlingPanelOKButton)
-	{
-		NSString *path = [sp filename];
-		[imgAsData writeToFile:path atomically:YES];
+	if (fileCaptureThread)
+		return [fileCaptureThread setSaveFile:saveFile];
+		
+	if (serverProxy)
+		return [serverProxy setSaveFile:saveFile forClient:queueIdentifier];
+}
+
+- (NSString *)readFile
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread readFile];
+		
+	if (serverProxy)
+		return [serverProxy readFileForClient:queueIdentifier];
+		
+	return nil;
+}
+
+- (void)setReadFile:(NSString *)readFile
+{
+	//this is the only property method that doesn't set
+	//both the local file thread and the server proxy
+	[self willChangeValueForKey:@"fileCaptureThread"];
+	[self willChangeValueForKey:@"readFile"];
+	[self willChangeValueForKey:@"captureType"];
+	if (readFile) {
+		captureType = CDFileCaptureType;
+		if (!fileCaptureThread) {
+			fileCaptureThread = [[CaptureThread alloc] init];
+		}
+		[fileCaptureThread setClient:queueIdentifier];
+		[fileCaptureThread setReadFile:readFile];
+	} else {
+		captureType = CDLocalCaptureType;
+		[fileCaptureThread release];
+		fileCaptureThread = nil;
 	}
+	[self didChangeValueForKey:@"captureType"];
+	[self didChangeValueForKey:@"readFile"];
+	[self didChangeValueForKey:@"fileCaptureThread"];
+}
+
+- (NSString *)captureFilter
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread captureFilter];
+		
+	if (serverProxy)
+		return [serverProxy captureFilterForClient:queueIdentifier ];
+
+	return @"";
+}
+
+- (void)setCaptureFilter:(NSString *)filterString
+{
+	if (fileCaptureThread)
+		[fileCaptureThread setCaptureFilter:filterString];
+		
+	if (serverProxy)
+		[serverProxy setCaptureFilter:filterString forClient:queueIdentifier ];
+}
+
+- (NSString *)interface
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread interface];
+		
+	if (serverProxy)
+		return [serverProxy interfaceForClient:queueIdentifier ];
+
+	return @"";
+}
+
+- (void)setInterface:(NSString *)newInterface
+{
+	ENTRY1( @"setInterface:%@", newInterface );
+	if (fileCaptureThread)
+		[fileCaptureThread setInterface:newInterface];
+		
+	if (serverProxy)
+		[serverProxy setInterface:newInterface forClient:queueIdentifier ];
+}
+
+- (BOOL)promiscuous
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread promiscuous];
+		
+	if (serverProxy)
+		return [serverProxy promiscuousForClient:queueIdentifier ];
+
+	return YES;
+}
+
+- (void)setPromiscuous:(BOOL)promiscuousMode
+{
+	if (fileCaptureThread)
+		[fileCaptureThread setPromiscuous:promiscuousMode];
+		
+	if (serverProxy)
+		[serverProxy setPromiscuous:promiscuousMode forClient:queueIdentifier ];
+}
+
+- (BOOL)capturesPayload
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread capturesPayload];
+		
+	if (serverProxy)
+		return [serverProxy capturesPayloadForClient:queueIdentifier ];
+
+	return YES;
+}
+
+- (void)setCapturesPayload:(BOOL)shouldCapture
+{
+	if (fileCaptureThread)
+		[fileCaptureThread setCapturesPayload:shouldCapture];
+		
+	if (serverProxy)
+		[serverProxy setCapturesPayload:shouldCapture forClient:queueIdentifier ];
+}
+
+- (BOOL)isActive
+{
+	if (fileCaptureThread)
+		return [fileCaptureThread isActive];
+		
+	if (serverProxy)
+		return [serverProxy isActiveForClient:queueIdentifier ];
+
+	return NO;
+}
+
+#pragma mark -
+#pragma mark Observers
+
+- (void)settingsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
+{
+	[sheet orderOut:self];
+}
+
+- (void)chooseFilePanelDidEnd:(NSOpenPanel *)sheet returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
+{
+	if ( NSOKButton == returnCode ) {
+		[self setReadFile:[sheet filename] ];
+	}
+	[sheet orderOut:self];
+}
+
+#pragma mark -
+#pragma mark Window Delegate methods
+
+- (void)windowWillClose:(NSNotification *)aNotification
+{
+	ENTRY( @"windowWillClose:" );
+	[tableTimer invalidate];
+	[self stopCapture:self];
+}
+
+#pragma mark -
+#pragma mark NSOutlineView Datasource methods
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
+{
+	return ( 
+		[item respondsToSelector:@selector(packetArray)]
+		//&& [[item performSelector:@selector(packetArray)] count]
+	);
+}
+
+- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+{
+	if (item)
+		return [[item performSelector:@selector(packetArray)] count];
+	else
+		return [packetListArray count];
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
+{
+	if (item)
+		return [[item performSelector:@selector(packetArray)] objectAtIndex:index];
+	else
+		return [packetListArray objectAtIndex:index];
+}
+
+- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
+{
+	if (item) {
+		return [item valueForKey:[tableColumn identifier] ];	
+	} else {
+		return nil;
+	}
+}
+
+#pragma mark -
+#pragma mark NSOutlineView Delegate methods
+
+- (void)outlineView:(NSOutlineView *)outlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	[cell setDrawsBackground:YES];
+	[cell setBackgroundColor:[[Dissector pluginDefaultsForClass:[item class]] valueForKey:@"backgroundColor"] ];
+}
+
+- (void)outlineView:(NSOutlineView *)outlineView willDisplayOutlineCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item
+{
+	//this is used to draw the arrow button
+	//[cell setBackgroundColor:[[Dissector pluginDefaultsForClass:[item class]] valueForKey:@"backgroundColor"] ];
 }
 
 
 @end
+
+

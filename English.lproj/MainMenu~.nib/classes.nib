@@ -1,20 +1,26 @@
 {
     IBClasses = (
         {
-            ACTIONS = {refreshGraph = id; saveData = id; swapVariables = id; }; 
-            CLASS = CaptureGraphController; 
+            ACTIONS = {cancelPreferences = id; launchCaptureServer = id; savePreferences = id; }; 
+            CLASS = EavesdropAppDelegate; 
             LANGUAGE = ObjC; 
-            OUTLETS = {conversationController = NSArrayController; parentGraphView = SM2DGraphView; }; 
+            OUTLETS = {pluginsController = PluginsController; preferencesWindow = NSWindow; }; 
             SUPERCLASS = NSObject; 
         }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            CLASS = GraphController; 
+            ACTIONS = {"" = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {savePluginPreferences = id; }; 
+            CLASS = PluginsController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
-                conversationController = NSArrayController; 
-                parentGraphView = SM2DGraphView; 
-                parentPieChartView = SMPieChartView; 
+                appDelegate = id; 
+                decoderPrefsBox = NSBox; 
+                pluginsArrayController = NSArrayController; 
             }; 
             SUPERCLASS = NSObject; 
         }

@@ -28,13 +28,13 @@
 #include <Security/Authorization.h>
 #include <sys/param.h>
 
-//#define DEBUG		/* Log actions to stderr */
+#define DEBUG_ON		/* Log actions to stderr */
 
-//#if defined(DEBUG)
-//# define IFDEBUG(code)		code
-//#else
-//# define IFDEBUG(code)		/* no-op */
-//#endif
+#if defined(DEBUG_ON)
+# define IFDEBUG(code)		code
+#else
+# define IFDEBUG(code)		/* no-op */
+#endif
 
 
 // Command Ids

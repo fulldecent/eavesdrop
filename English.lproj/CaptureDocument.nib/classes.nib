@@ -1,77 +1,52 @@
 {
     IBClasses = (
-        {CLASS = Capture; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {
-            ACTIONS = {flushData = id; startCapture = id; stopCapture = id; }; 
-            CLASS = CaptureController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {conversationController = NSArrayController; }; 
-            SUPERCLASS = NSObject; 
-        }, 
+        {CLASS = BHOutlineView; LANGUAGE = ObjC; SUPERCLASS = NSOutlineView; }, 
         {
             ACTIONS = {
-                changePayloadView = id; 
-                changeSearchCategory = id; 
-                changeThumbnailSize = id; 
-                clearList = id; 
-                closeSettings = id; 
-                openHistory = id; 
-                openSettings = id; 
-                packetsearch = id; 
-                saveImage = id; 
-                toggleFollowHistory = id; 
-                toggleSelectNew = id; 
+                applyAggregates = id; 
+                chooseFile = id; 
+                connectToCaptureServer = id; 
+                killServer = id; 
+                launchServer = id; 
+                refreshData = id; 
+                saveSettings = id; 
+                showSettings = id; 
+                startCapture = id; 
+                stopCapture = id; 
+                updateDetails = id; 
             }; 
             CLASS = CaptureDocument; 
             LANGUAGE = ObjC; 
             OUTLETS = {
-                captureController = CaptureController; 
-                captureWindow = NSWindow; 
-                conversationController = NSArrayController; 
-                dataTabView = NSTabView; 
-                dataTable = NSTableView; 
-                dividedTable = NSTableView; 
-                filterTextField = NSTextField; 
-                historyController = NSArrayController; 
-                historyWindow = NSWindow; 
-                imageBox = NSImageView; 
-                imagesController = NSArrayController; 
-                interfaceComboBox = NSComboBox; 
-                packetSearchField = NSSearchField; 
-                payloadController = NSObjectController; 
-                payloadTextView = NSTextView; 
-                payloadViewPopup = NSPopUpButton; 
-                readFilenameField = NSTextField; 
-                saveFilenameField = NSTextField; 
-                settingsPanel = NSPanel; 
-                thumbnailTableView = NSTableView; 
-                unifiedTable = NSTableView; 
+                aggregateArrayController = NSArrayController; 
+                aggregateTreeController = NSTreeController; 
+                appDelegate = id; 
+                collectorProxy = id; 
+                documentWindow = NSWindow; 
+                packetDetailWindow = NSWindow; 
+                packetInfoDrawer = NSDrawer; 
+                packetOutlineView = NSOutlineView; 
+                serverProxy = id; 
+                settingsWindow = NSWindow; 
             }; 
             SUPERCLASS = NSDocument; 
         }, 
         {
-            ACTIONS = {refreshGraph = id; saveData = id; swapVariables = id; }; 
-            CLASS = CaptureGraphController; 
+            CLASS = DetailController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
-                conversationController = NSArrayController; 
-                parentGraphView = SM2DGraphView; 
-                refreshProgress = NSProgressIndicator; 
+                detailWindow = NSWindow; 
+                packetTableView = NSTableView; 
+                payloadViewsPopup = NSPopUpButton; 
+                pluginsBox = NSBox; 
+                selectedObjectController = NSObjectController; 
+                selectedPacketsArrayController = NSArrayController; 
             }; 
             SUPERCLASS = NSObject; 
         }, 
-        {CLASS = Conversation; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = Dissector; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {
-            CLASS = GraphController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                conversationController = NSArrayController; 
-                parentGraphView = SM2DGraphView; 
-                parentPieChartView = SMPieChartView; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }
+        {CLASS = NSPersistentDocument; LANGUAGE = ObjC; SUPERCLASS = NSDocument; }
     ); 
     IBVersion = 1; 
 }
