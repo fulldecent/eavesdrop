@@ -17,9 +17,11 @@
 
 	IBOutlet NSTableView *packetTableView;
 	IBOutlet NSPopUpButton *payloadViewsPopup;
-	IBOutlet NSBox *pluginsBox;
+	IBOutlet NSTabView *pluginsTabView;
 
 	Plugin *selectedObject;
+	
+	id pluginDisplayIndex;
 }
 
 - (void)updatePluginBox;

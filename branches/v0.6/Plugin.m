@@ -181,14 +181,6 @@ static NSMutableDictionary *registeredDefaults;
 {
 	return [NSArray array];
 }
-/*
-- (NSView *)payloadView
-{
-	if (!payloadView)
-		payloadView = [[NSView alloc] init];
-	return payloadView;
-}
-*/
 
 #pragma mark -
 #pragma mark Protocol Instance methods

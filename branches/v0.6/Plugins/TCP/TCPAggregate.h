@@ -15,7 +15,6 @@
 	NSObject<Dissector> *firstPacket;
 	BOOL isTCP;
 	
-	IBOutlet NSView *tcpPayloadView;
 	IBOutlet NSView *tcpPayloadTextView;
 	IBOutlet NSView *tcpPayloadImageView;
 }

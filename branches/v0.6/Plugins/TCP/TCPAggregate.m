@@ -104,14 +104,6 @@ static NSView *staticPayloadImageView;
 #pragma mark -
 #pragma mark View methods
 
-/*
-- (NSArray *)payloadViewArray
-{
-	ENTRY( @"payloadViewArray" );
-	return [NSArray arrayWithObject:payloadView];
-}
-*/
-
 - (NSView *)payloadTextView
 {
 	ENTRY( @"payloadTextView" );
@@ -119,7 +111,7 @@ static NSView *staticPayloadImageView;
 		if ( ![NSBundle loadNibNamed:@"TCPAggregate" owner:self] ) {
 			ERROR( @"failed to load TCPAggregate nib" );
 		} else {
-			staticPayloadTextView = [tcpPayloadView retain];
+			staticPayloadTextView = [tcpPayloadTextView retain];
 		}
 	}
 	return staticPayloadTextView;
@@ -132,25 +124,11 @@ static NSView *staticPayloadImageView;
 		if ( ![NSBundle loadNibNamed:@"TCPAggregate" owner:self] ) {
 			ERROR( @"failed to load TCPAggregate nib" );
 		} else {
-			staticPayloadImageView = [tcpPayloadView retain];
+			staticPayloadImageView = [tcpPayloadImageView retain];
 		}
 	}
 	return staticPayloadImageView;
 }
 
-/*
-- (NSView *)payloadView
-{
-	ENTRY( @"payloadView" );
-	if (!staticPayloadView) {
-		if ( ![NSBundle loadNibNamed:@"TCPAggregate" owner:self] ) {
-			ERROR( @"failed to load TCPAggregate nib" );
-		} else {
-			staticPayloadView = [tcpPayloadView retain];
-		}
-	}
-	return staticPayloadView;
-}
-*/
 
 @end
