@@ -6,11 +6,7 @@
         {
             CLASS = TCPAggregate; 
             LANGUAGE = ObjC; 
-            OUTLETS = {
-                tcpPayloadImageView = NSView; 
-                tcpPayloadTextView = NSView; 
-                tcpPayloadView = NSView; 
-            }; 
+            OUTLETS = {tcpPayloadImageView = NSView; tcpPayloadTextView = NSView; }; 
             SUPERCLASS = Aggregate; 
         }
     ); 

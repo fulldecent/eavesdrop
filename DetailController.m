@@ -32,11 +32,16 @@
 
 - (void)updatePluginBox
 {
-	//ENTRY( @"updatePluginBox" );
-	NSView *payloadView = [selectedObject valueForKey:@"payloadTextView"];	//cheating
+	NSArray *viewsInfoArray = [selectedObject valueForKey:@"payloadViewArray"];
+	INFO1( @"updatePluginBox:\n%@", [viewsInfoArray description] );
 	
-	NSArray *viewsArray = [selectedObject valueForKey:@"payloadViewArray"];
-	INFO1( @"updatePluginBox:\n%@", [viewsArray description] );
+	if ([[[[NSUserDefaultsController sharedUserDefaultsController] values] valueForKey:@"payloadViewAsTabs"] boolValue]) {
+		[payloadViewsPopup setHidden:TRUE];
+		[pluginsTabView setTabViewType:NSTopTabsBezelBorder];
+	} else {
+		[payloadViewsPopup setHidden:NO];
+		[pluginsTabView setTabViewType:NSNoTabsBezelBorder];
+	}
 	
 	NSMenu *menu = [payloadViewsPopup menu];
 	NSEnumerator *en = [[menu itemArray] objectEnumerator];
@@ -45,13 +50,22 @@
 		[menu removeItem:item];
 	}
 	
-	en = [viewsArray objectEnumerator];
-	NSDictionary *tempDict;
-	while ( tempDict=[en nextObject] ) {
-		[menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
+	en = [[pluginsTabView tabViewItems] objectEnumerator];
+	while ( item=[en nextObject] ) {
+		[pluginsTabView removeTabViewItem:item];
 	}
 	
-	[pluginsBox setContentView:payloadView];
+	en = [viewsInfoArray objectEnumerator];
+	NSDictionary *tempDict;
+	NSTabViewItem *tempItem;
+	while ( tempDict=[en nextObject] ) {
+		[menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
+		
+		tempItem = [[[NSTabViewItem alloc] initWithIdentifier:nil] autorelease];
+		[tempItem setLabel:[tempDict objectForKey:@"name"] ];
+		[tempItem setView:[selectedObject valueForKey:[tempDict valueForKey:@"viewKey"]] ];
+		[pluginsTabView addTabViewItem:tempItem];
+	}
 }
 
 - (void)updateTableView
