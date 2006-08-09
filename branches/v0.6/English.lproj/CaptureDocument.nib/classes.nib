@@ -38,7 +38,8 @@
                 detailWindow = NSWindow; 
                 packetTableView = NSTableView; 
                 payloadViewsPopup = NSPopUpButton; 
-                pluginsBox = NSBox; 
+                pluginDisplayIndex = id; 
+                pluginsTabView = NSTabView; 
                 selectedObjectController = NSObjectController; 
                 selectedPacketsArrayController = NSArrayController; 
             }; 
