@@ -25,7 +25,7 @@
 	if ( tempValue )
 		return tempValue;
 	else
-		return @"n/a";
+		return nil;
 }
 
 - (NSString *)sourceString

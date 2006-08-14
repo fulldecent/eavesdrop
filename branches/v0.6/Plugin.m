@@ -179,7 +179,7 @@ static NSMutableDictionary *registeredDefaults;
 
 - (NSArray *)payloadViewArray
 {
-	return [NSArray array];
+	return nil;
 }
 
 #pragma mark -

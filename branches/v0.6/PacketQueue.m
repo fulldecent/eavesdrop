@@ -70,6 +70,7 @@ static NSMutableDictionary *collectors;
 		packetArray = [[NSMutableArray alloc] init];
 		
 		newAggregateArray = [[NSMutableArray alloc] init];
+		newLeftoversArray = [[NSMutableArray alloc] init];
 		aggregateDict = [[NSMutableDictionary alloc] init];
 
 		collectionTimer = [[NSTimer
@@ -163,6 +164,9 @@ static NSMutableDictionary *collectors;
 	[arrayLock unlock];
 }
 
+#pragma mark -
+#pragma mark Processing methods
+
 - (void)collectPackets
 {
 	if (!(hasData && [headerDataArray count] && [packetDataArray count]) ) return;
@@ -203,15 +207,21 @@ static NSMutableDictionary *collectors;
 {
 	if ([aggregateClass conformsToProtocol:@protocol(Aggregate)]) {
 		NSString *aggregateIdentifier = [aggregateClass aggregateIdentifierForPacket:newPacket];
-		NSObject<Aggregate> *aggregate = [aggregateDict objectForKey:aggregateIdentifier];
-		if (aggregate) {
-			[aggregate addPacket:newPacket];
+		if (aggregateIdentifier) {
+			NSObject<Aggregate> *aggregate = [aggregateDict objectForKey:aggregateIdentifier];
+			if (aggregate) {
+				[aggregate addPacket:newPacket];
+			} else {
+				//DEBUG1( @"new ID: %@", aggregateIdentifier );
+				aggregate = [[aggregateClass alloc] initWithPacket:newPacket usingSubAggregates:aggregateClassArray];
+				[arrayLock lock];
+				[aggregateDict setObject:aggregate forKey:aggregateIdentifier];
+				[newAggregateArray addObject:aggregate];
+				[arrayLock unlock];
+			}
 		} else {
-			//DEBUG1( @"new ID: %@", aggregateIdentifier );
-			aggregate = [[aggregateClass alloc] initWithPacket:newPacket usingSubAggregates:aggregateClassArray];
 			[arrayLock lock];
-			[aggregateDict setObject:aggregate forKey:aggregateIdentifier];
-			[newAggregateArray addObject:aggregate];
+			[newLeftoversArray addObject:newPacket];
 			[arrayLock unlock];
 		}
 	}
@@ -259,6 +269,22 @@ static NSMutableDictionary *collectors;
 	}
 	NSArray *tempArray = [newAggregateArray copy];
 	[newAggregateArray removeAllObjects];
+	
+	[arrayLock unlock];
+	return tempArray;
+}
+
+- (NSArray *)flushNewLeftoverArray
+{
+	[arrayLock lock];
+	
+	int count = [newLeftoversArray count];
+	if ( count==0 ) {
+		[arrayLock unlock];
+		return nil;
+	}
+	NSArray *tempArray = [newLeftoversArray copy];
+	[newLeftoversArray removeAllObjects];
 	
 	[arrayLock unlock];
 	return tempArray;

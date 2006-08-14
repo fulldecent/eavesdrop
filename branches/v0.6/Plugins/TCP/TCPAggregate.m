@@ -43,7 +43,8 @@ static NSView *staticPayloadImageView;
 			];
 		}
 	} else {
-		return [newPacket valueForKey:@"typeString"];
+		return nil;
+		//return [newPacket valueForKey:@"typeString"];
 	}
 	return nil;
 }

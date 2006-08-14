@@ -34,7 +34,8 @@
 		];
 		isRefreshing = NO;
 
-		packetListArray = [[NSMutableArray alloc] init];
+		packetList = [[NSMutableArray alloc] init];
+		leftoverPacketList = [[NSMutableArray alloc] init];
 
 		appDelegate = [[NSApp delegate] retain];
 		[self setAggregate:@"Aggregate"];
@@ -182,9 +183,11 @@
 	//ENTRY( @"refreshData:" );	
 
 	NSArray *tempArray = nil;
+	NSArray *leftoverArray = nil;
 	@try {
 		if (aggregateUsed) {
 			tempArray = [[self packetQueue] flushNewAggregateArray];
+			leftoverArray = [[self packetQueue] flushNewLeftoverArray];
 		} else {
 			tempArray = [[self packetQueue] flushNewPacketArray];
 		}
@@ -198,8 +201,12 @@
 	}
 	
 	if ( [tempArray count] ) {
-		[packetListArray addObjectsFromArray:tempArray];
+		[packetList addObjectsFromArray:tempArray];
 		[packetOutlineView reloadData];
+	}
+	if ( [leftoverArray count] ) {
+		[leftoverPacketList addObjectsFromArray:leftoverArray];
+		[leftoverOutlineView reloadData];
 	}
 	
 	isRefreshing = NO;
@@ -268,7 +275,9 @@
 
 - (IBAction)applyAggregates:(id)sender
 {
-	[packetListArray removeAllObjects];
+	[packetList removeAllObjects];
+	[leftoverPacketList removeAllObjects];
+	
 	[[self packetQueue] resetNewPacketIndex];
 
 	NSArray *tempArray = [aggregateArrayController arrangedObjects];
@@ -353,7 +362,12 @@
 {
 	ENTRY1( @"setAggregate: %@", newAggregate );
 
-	[packetListArray removeAllObjects];
+	[packetList removeAllObjects];
+	[leftoverPacketList removeAllObjects];
+
+	[packetOutlineView reloadData];
+	[leftoverOutlineView reloadData];
+	
 	[[self packetQueue] resetNewPacketIndex];
 
 	aggregateUsed = ! [newAggregate isEqualToString:[Aggregate className]];
@@ -572,22 +586,40 @@
 
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
 {
+	//if we're not at the root, we can call the same child methods
 	if (item)
 		return [[item performSelector:@selector(packetArray)] count];
-	else
-		return [packetListArray count];
+
+	if ( outlineView==packetOutlineView ) {
+		return [packetList count];
+	} else if ( outlineView==leftoverOutlineView ) {
+		return [leftoverPacketList count];
+	} else {
+		ERROR( @"delegate method called w/no known parent outlineView" );
+		return nil;
+	}
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
 {
+	//if we're not at the root, we can call the same child method
 	if (item)
 		return [[item performSelector:@selector(packetArray)] objectAtIndex:index];
-	else
-		return [packetListArray objectAtIndex:index];
+
+	//at the root, we need to pick which array we use as the base
+	if ( outlineView==packetOutlineView ) {
+		return [packetList objectAtIndex:index];
+	} else if ( outlineView==leftoverOutlineView ) {
+		return [leftoverPacketList objectAtIndex:index];
+	} else {
+		ERROR( @"delegate method called w/no known parent outlineView" );
+		return nil;
+	}
 }
 
 - (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
 {
+	//we're assuming any outline view that calls this is configured the same
 	if (item) {
 		return [item valueForKey:[tableColumn identifier] ];	
 	} else {
