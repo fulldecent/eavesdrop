@@ -37,10 +37,12 @@
 	IBOutlet NSWindow *documentWindow;
 	IBOutlet NSWindow *settingsWindow;
 	
-	NSMutableArray *packetListArray;
+	NSMutableArray *packetList;
+	NSMutableArray *leftoverPacketList;
 	IBOutlet NSArrayController *aggregateArrayController;
 	IBOutlet NSTreeController *aggregateTreeController;
 	IBOutlet NSOutlineView *packetOutlineView;
+	IBOutlet NSOutlineView *leftoverOutlineView;
 	IBOutlet NSDrawer *packetInfoDrawer;
 	IBOutlet NSWindow *packetDetailWindow;
 	

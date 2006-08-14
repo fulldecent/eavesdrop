@@ -34,6 +34,7 @@
 	NSMutableArray *packetArray;
 	
 	NSMutableArray *newAggregateArray;
+	NSMutableArray *newLeftoversArray;
 	NSMutableDictionary *aggregateDict;
 	
 	Class aggregateClass;
@@ -63,6 +64,7 @@
 - (void)resetNewPacketIndex;
 - (NSArray *)flushNewPacketArray;
 - (NSArray *)flushNewAggregateArray;
+- (NSArray *)flushNewLeftoverArray;
 - (NSDictionary *)aggregateDict;
 
 @end

@@ -23,6 +23,7 @@
                 appDelegate = id; 
                 collectorProxy = id; 
                 documentWindow = NSWindow; 
+                leftoverOutlineView = NSOutlineView; 
                 packetDetailWindow = NSWindow; 
                 packetInfoDrawer = NSDrawer; 
                 packetOutlineView = NSOutlineView; 
