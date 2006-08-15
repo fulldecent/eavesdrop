@@ -64,7 +64,6 @@
 - (IBAction)startCapture:(id)sender;
 - (IBAction)stopCapture:(id)sender;
 - (IBAction)refreshData:(id)sender;
-- (IBAction)updateDetails:(id)sender;
 - (IBAction)killServer:(id)sender;
 
 - (IBAction)showSettings:(id)sender;
@@ -75,6 +74,10 @@
 - (IBAction)chooseFile:(id)sender;
 
 - (IBAction)applyAggregates:(id)sender;
+
+- (void)updateDetailsFromMainOutlineView;
+- (void)updateDetailsFromLeftoverOutlineView;
+- (void)updateDetailsFromOutlineView:(NSOutlineView *)sourceOutlineView;
 
 - (void)setCaptureType:(CDCaptureType)newType;
 - (int)tableRefresh;
