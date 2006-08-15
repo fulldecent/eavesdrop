@@ -51,9 +51,16 @@
 	
 	[[NSNotificationCenter defaultCenter]
 		addObserver:self
-		selector:@selector(updateDetails:)
+		selector:@selector(updateDetailsFromMainOutlineView)
 		name:@"NSOutlineViewSelectionDidChangeNotification"
-		object:nil
+		object:packetOutlineView
+	];
+	
+	[[NSNotificationCenter defaultCenter]
+		addObserver:self
+		selector:@selector(updateDetailsFromLeftoverOutlineView)
+		name:@"NSOutlineViewSelectionDidChangeNotification"
+		object:leftoverOutlineView
 	];
 	
 	//this is here because I can't get the settings to stick in IB
@@ -212,24 +219,6 @@
 	isRefreshing = NO;
 }
 
-- (IBAction)updateDetails:(id)sender
-{
-	NSIndexSet *indexSet = [packetOutlineView selectedRowIndexes];
-	//DEBUG1( @"updateDetails: with indexSet: %@", [indexSet description] );
-	
-	[self willChangeValueForKey:@"selectedPacket"];
-	[self willChangeValueForKey:@"packetDetailsArray"];
-	[packetDetailsArray release];
-	packetDetailsArray = nil;
-	if ( [indexSet count]==1 ) {
-		selectedPacket = [packetOutlineView itemAtRow:[indexSet firstIndex]];
-		packetDetailsArray = [selectedPacket detailsArray];
-		
-	}
-	[self didChangeValueForKey:@"packetDetailsArray"];
-	[self didChangeValueForKey:@"selectedPacket"];
-}
-
 - (IBAction)killServer:(id)sender
 {
 	[self willChangeValueForKey:@"serverProxy"];
@@ -287,6 +276,34 @@
 		aggregateUsed = YES;
 	}
 	[[self packetQueue] setAggregateClassArray:tempArray ];
+}
+
+- (void)updateDetailsFromMainOutlineView
+{
+	[self updateDetailsFromOutlineView:packetOutlineView];
+}
+
+- (void)updateDetailsFromLeftoverOutlineView
+{
+	[self updateDetailsFromOutlineView:leftoverOutlineView];
+}
+
+- (void)updateDetailsFromOutlineView:(NSOutlineView *)sourceOutlineView
+{
+	NSIndexSet *indexSet = [sourceOutlineView selectedRowIndexes];
+	//DEBUG1( @"updateDetails: with indexSet: %@", [indexSet description] );
+	
+	[self willChangeValueForKey:@"selectedPacket"];
+	[self willChangeValueForKey:@"packetDetailsArray"];
+	[packetDetailsArray release];
+	packetDetailsArray = nil;
+	if ( [indexSet count]==1 ) {
+		selectedPacket = [sourceOutlineView itemAtRow:[indexSet firstIndex]];
+		packetDetailsArray = [selectedPacket detailsArray];
+		
+	}
+	[self didChangeValueForKey:@"packetDetailsArray"];
+	[self didChangeValueForKey:@"selectedPacket"];
 }
 
 #pragma mark -
