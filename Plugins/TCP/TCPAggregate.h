@@ -13,8 +13,7 @@
 
 @interface TCPAggregate : Aggregate {
 	NSObject<Dissector> *firstPacket;
-	BOOL isTCP;
-	
+
 	IBOutlet NSView *tcpPayloadTextView;
 	IBOutlet NSView *tcpPayloadImageView;
 }

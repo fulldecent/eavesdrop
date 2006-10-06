@@ -54,7 +54,7 @@
 	while ( item=[en nextObject] ) {
 		[pluginsTabView removeTabViewItem:item];
 	}
-	
+
 	en = [viewsInfoArray objectEnumerator];
 	NSDictionary *tempDict;
 	NSTabViewItem *tempItem;
@@ -66,11 +66,39 @@
 		[tempItem setView:[selectedObject valueForKey:[tempDict valueForKey:@"viewKey"]] ];
 		[pluginsTabView addTabViewItem:tempItem];
 	}
+	
+	if ( [[menu itemArray] count]==0 ) {
+		[payloadViewsPopup setHidden:YES];
+		[pluginsTabView setHidden:YES];
+	} else {
+		[payloadViewsPopup setHidden:NO];
+		[pluginsTabView setHidden:NO];
+	}
 }
 
 - (void)updateTableView
 {
+	ENTRY( @"updateTableView" );
+	NSArray *detailColumnsArray = [selectedObject valueForKey:@"detailColumnsArray"];
 
+	NSEnumerator *en = [[packetTableView tableColumns] objectEnumerator];
+	NSTableColumn *tempColumn;
+	while ( tempColumn=[en nextObject] ) {
+		[packetTableView removeTableColumn:tempColumn];
+	}
+	
+	en = [detailColumnsArray objectEnumerator];
+	while ( tempColumn=[en nextObject] ) {
+		[tempColumn
+			bind:NSValueBinding
+			toObject:selectedPacketsArrayController
+			withKeyPath:[NSString stringWithFormat:@"arrangedObjects.%@", [tempColumn identifier]]
+			options:nil
+		];
+		[packetTableView addTableColumn:tempColumn];
+	}
+	
+	//INFO1( @"detailColumnsArray: %@", [detailColumnsArray description] );
 }
 
 #pragma mark -
@@ -78,7 +106,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	//ENTRY( @"observeValueForKeyPath:ofObject:change:context:" );
+	ENTRY( @"observeValueForKeyPath:ofObject:change:context:" );
 	[selectedObject release];
 	selectedObject = [[object valueForKeyPath:keyPath] retain];
 	

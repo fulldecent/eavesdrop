@@ -68,6 +68,8 @@
 	
 	[packetOutlineView setDoubleAction:@selector(makeKeyAndOrderFront:)];
 	[packetOutlineView setTarget:packetDetailWindow];
+	[leftoverOutlineView setDoubleAction:@selector(makeKeyAndOrderFront:)];
+	[leftoverOutlineView setTarget:packetDetailWindow];
 }
 
 - (NSString *)windowNibName 
@@ -280,18 +282,24 @@
 
 - (void)updateDetailsFromMainOutlineView
 {
-	[self updateDetailsFromOutlineView:packetOutlineView];
+	if ( [packetOutlineView numberOfSelectedRows] ) {
+		[leftoverOutlineView deselectAll:self];
+		[self updateDetailsFromOutlineView:packetOutlineView];
+	}
 }
 
 - (void)updateDetailsFromLeftoverOutlineView
 {
-	[self updateDetailsFromOutlineView:leftoverOutlineView];
+	if ( [leftoverOutlineView numberOfSelectedRows] ) {
+		[packetOutlineView deselectAll:self];
+		[self updateDetailsFromOutlineView:leftoverOutlineView];	
+	}
 }
 
 - (void)updateDetailsFromOutlineView:(NSOutlineView *)sourceOutlineView
 {
 	NSIndexSet *indexSet = [sourceOutlineView selectedRowIndexes];
-	//DEBUG1( @"updateDetails: with indexSet: %@", [indexSet description] );
+	DEBUG2( @"updateDetailsFromOutlineView: %@ (with indexSet: %@)", [sourceOutlineView description], [indexSet description] );
 	
 	[self willChangeValueForKey:@"selectedPacket"];
 	[self willChangeValueForKey:@"packetDetailsArray"];

@@ -11,7 +11,6 @@
 
 @implementation TCPAggregate
 
-static NSView *staticPayloadView;
 static NSView *staticPayloadTextView;
 static NSView *staticPayloadImageView;
 
@@ -54,46 +53,32 @@ static NSView *staticPayloadImageView;
 	self = [super initWithPacket:newPacket usingSubAggregates:subAggregates];
 	if (self) {
 		firstPacket = [newPacket retain];
-		isTCP = [firstPacket respondsToSelector:@selector(tcpSourcePort)];
+		//isTCP = [firstPacket respondsToSelector:@selector(tcpSourcePort)];
 	}
 	return self;
 }
 
 - (NSString *)sourceString
 {
-	if (isTCP)
-		return [NSString stringWithFormat:@"Client: %@", [firstPacket valueForKey:@"ipSource"] ];
-	else
-		return @"<multiple>";
+	return [NSString stringWithFormat:@"Client: %@", [firstPacket valueForKey:@"ipSource"] ];
 }
 
 - (NSString *)destinationString
 {
-	if (isTCP)
-		return [NSString stringWithFormat:@"Server: %@", [firstPacket valueForKey:@"ipDestination"] ];
-	else
-		return @"<multiple>";
+	return [NSString stringWithFormat:@"Server: %@", [firstPacket valueForKey:@"ipDestination"] ];
 }
 
 - (NSString *)typeString
 {
-	if (isTCP) {
-		return @"TCP Conversation";
-	} else {
-		return identifier;
-	}
+	return @"TCP Conversation";
 }
 
 - (NSString *)timeString
 {
-	if (isTCP) {
-		return [NSString stringWithFormat:@"%f sec.", [(NSDate *)[lastPacket valueForKey:@"timestamp"]
-				timeIntervalSinceDate:[firstPacket valueForKey:@"timestamp"]
-			]
-		];
-	} else {
-		return @"<n/a>";
-	}
+	return [NSString stringWithFormat:@"%f sec.", [(NSDate *)[lastPacket valueForKey:@"timestamp"]
+			timeIntervalSinceDate:[firstPacket valueForKey:@"timestamp"]
+		]
+	];
 }
 
 - (NSString *)flagsString

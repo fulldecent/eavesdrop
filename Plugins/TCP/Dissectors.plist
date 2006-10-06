@@ -13,6 +13,41 @@
 		</array>
 		<key>defaultsClassName</key>
 		<string>TCPPacketDefaults</string>
+		<key>detailColumns</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Type</string>
+				<key>columnKey</key>
+				<string>typeString</string>
+				<key>width</key>
+				<string>40</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Time</string>
+				<key>columnKey</key>
+				<string>timeString</string>
+				<key>width</key>
+				<string>80</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Source</string>
+				<key>columnKey</key>
+				<string>sourceString</string>
+				<key>width</key>
+				<string>80</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Destination</string>
+				<key>columnKey</key>
+				<string>destinationString</string>
+				<key>width</key>
+				<string>80</string>
+			</dict>
+		</array>
 	</dict>
 </array>
 </plist>

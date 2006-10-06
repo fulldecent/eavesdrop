@@ -57,7 +57,8 @@
 
 #pragma mark REGISTRATION METHODS
 + (id)registerDissectorAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
-+ (void)_registerDissector:(Class)dissector forProtocol:(NSString *)protoName decodes:(NSArray *)decodesArray;
+//+ (void)_registerDissector:(Class)dissector forProtocol:(NSString *)protoName decodes:(NSArray *)decodesArray;
++ (void)_registerDissector:(Class)dissector withSettings:(NSDictionary *)defaultSettings;
 + (id)registerAggregateAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
 //+ (void)_registerAggregate:(Class)aggregateClass withName:(NSString *)aggregateName;
 + (void)_registerAggregate:(Class)aggregateClass withSettings:(NSDictionary *)defaultSettings;
