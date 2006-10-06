@@ -45,4 +45,6 @@
 
 + (id)packetWithHeaderData:(NSData *)newHeader packetData:(NSData *)newPacket;
 
+- (NSArray *)detailColumnsArray;
+
 @end

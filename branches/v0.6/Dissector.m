@@ -39,21 +39,25 @@ static int dissectorCount;
 	NSString *tempDissectorString;
 
 	while (nextPacket) {
+		//DEBUG1( @"nextPacket is now: ", [nextPacket description] );
 		tempPacket = nextPacket;
 		nextPacket = nil;
 		
 		//give the current dissector a chance to request a dissector (eg. IP->TCP)
 		tempDissectorString = [tempPacket preferedDissectorProtocol];
 		if (tempDissectorString) {
+			//DEBUG1( @"preferedDissector set, using %@", tempDissectorString );
 			tempClass = [[[super registeredDissectors] valueForKey:tempDissectorString] valueForKey:@"dissectorClassName"];
 			nextPacket = [[tempClass alloc] initFromParent:tempPacket];
 		} else {
 		//look for an appropriate dissector based on what is registered
 			NSDictionary *tempDict = [[super registeredDissectors] objectForKey:[tempPacket protocolString]];
+			//INFO1( @"subDissectors -> %@", [tempDict description] );
 			NSEnumerator *en = [[tempDict objectForKey:@"subDissectors"] objectEnumerator];
 
 			while ( tempDissectorString=[en nextObject] ) {
 				tempClass = [[[super registeredDissectors] objectForKey:tempDissectorString] objectForKey:@"dissectorClassName"];
+				//DEBUG1( @"checking class: %@", tempDissectorString );
 				if ( [tempClass canDecodePacket:tempPacket] ) {
 					nextPacket = [[[tempClass alloc] initFromParent:tempPacket] autorelease];
 					break;
@@ -263,6 +267,37 @@ static int dissectorCount;
 	
 	return [tempArray copy];
 }
+
+#pragma mark -
+#pragma mark View methods
+
+- (NSArray *)detailColumnsArray
+{
+	ENTRY( @"detailColumnsArray" );
+	NSArray *columnDicts = [[[self registeredDissectors] valueForKey:[self className]] valueForKey:@"detailColumns"];
+	
+	NSEnumerator *en = [columnDicts objectEnumerator];
+	NSDictionary *tempDict;
+	NSMutableArray *tempArray = [NSMutableArray array];
+	NSTableColumn *tempColumn;
+	NSTableHeaderCell *tempHeaderCell;
+	while ( tempDict=[en nextObject] ) {
+		tempColumn = [[NSTableColumn alloc] initWithIdentifier:[tempDict valueForKey:@"columnKey"] ];
+		tempHeaderCell = [[NSTableHeaderCell alloc] init];
+		
+		[tempHeaderCell setStringValue:[tempDict valueForKey:@"name"] ];
+		
+		[tempColumn setWidth:[[tempDict valueForKey:@"width"] floatValue] ];
+		[tempColumn setHeaderCell:tempHeaderCell];
+		
+		[[tempColumn dataCell] setFont:[NSFont fontWithName:@"Lucida Grande" size:9.0] ];
+		
+		[tempArray addObject:tempColumn];
+	}
+	
+	return tempArray;
+}
+
 
 #pragma mark -
 #pragma mark Overriden methods
