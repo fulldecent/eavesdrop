@@ -30,8 +30,10 @@ static NSMutableDictionary *registeredDefaults;
 		registeredDefaults = [[NSMutableDictionary alloc] init];
 
 		[Plugin registerDissectorAndGetDefaultsWithSettings:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-			@"Plugin",	@"dissectorClassName",
-			@"",		@"protocol",
+			@"Plugin",					@"dissectorClassName",
+			@"",						@"protocol",
+			[NSDictionary dictionary],	@"detailColumns",
+			[NSArray array],			@"decodes",
 			nil]
 		];
 	}
@@ -47,38 +49,46 @@ static NSMutableDictionary *registeredDefaults;
 	
 	[self
 		_registerDissector:NSClassFromString( [pluginDefaults valueForKey:@"dissectorClassName"] )
-		forProtocol:[pluginDefaults valueForKey:@"protocol"]
-		decodes:[pluginDefaults valueForKey:@"decodes"]
+		withSettings:defaultSettings
 	];
-	
+		
 	return pluginDefaults;
 }
 
-+ (void)_registerDissector:(Class)dissector forProtocol:(NSString *)protoName decodes:(NSArray *)decodesArray
++ (void)_registerDissector:(Class)dissector withSettings:(NSDictionary *)defaultSettings
 {
-	ENTRY2( @"registerDissector:%@ forProtocol:%@ decodes:(...)", [dissector className], protoName );
-	INFO1( @"decodes array:\n%@", [decodesArray description] );
+	NSString *protoName = [defaultSettings valueForKey:@"protocol"];
+
+	ENTRY2( @"_registerDissector:%@ forProtocol:%@ decodes:(...)", [dissector className], protoName );
+	INFO1( @"decodes array:\n%@", [[defaultSettings valueForKey:@"decodes"] description] );
 
 	if ( [registeredDissectors objectForKey:protoName] ) {
 		WARNING1( @"key already exists: %@", protoName );
 		return;
 	}
 
+	/* need to do something slightly different */
+	NSDictionary *detailColumns = [defaultSettings valueForKey:@"detailColumns"];
+	if (!detailColumns)
+		detailColumns = [NSDictionary dictionary];
+
 	NSMutableArray *blankArray = [[[NSMutableArray alloc] init] autorelease];
 	//this creates a node for the new dissector
 	[registeredDissectors
 		setObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-			dissector,				@"dissectorClassName",
-			protoName,				@"protocol",
-			decodesArray,			@"decodes",
-			blankArray,				@"subDissectors",
+			dissector,										@"dissectorClassName",
+			[defaultSettings valueForKey:@"protocol"],		@"protocol",
+			[defaultSettings valueForKey:@"decodes"],		@"decodes",
+			[defaultSettings valueForKey:@"detailColumns"],	@"detailColumns",
+			blankArray,										@"subDissectors",
 			nil
 		]
 		forKey:protoName
 	];
 	[registeredProtocolClasses setObject:protoName forKey:dissector ];
+	INFO( [[registeredDissectors objectForKey:protoName] description] );
 
-	NSEnumerator *en = [decodesArray objectEnumerator];
+	NSEnumerator *en = [[defaultSettings valueForKey:@"decodes"] objectEnumerator];
 	NSString *tempString;
 	while ( tempString=[en nextObject] ) {
 		NSMutableDictionary *tempDict = [registeredDissectors objectForKey:tempString];
@@ -98,28 +108,27 @@ static NSMutableDictionary *registeredDefaults;
 	
 	[NSClassFromString( [pluginDefaults valueForKey:@"dissectorClassName"] )
 		_registerAggregate:NSClassFromString( [pluginDefaults valueForKey:@"aggregateClassName"] )
-		//withName:[pluginDefaults valueForKey:@"name"]
 		withSettings:defaultSettings
 	];
 	
 	return pluginDefaults;
 }
 
-//+ (void)_registerAggregate:(Class)aggregateClass withName:(NSString *)aggregateName
 + (void)_registerAggregate:(Class)aggregateClass withSettings:(NSDictionary *)defaultSettings
 {
 	ENTRY2( @"_registerAggregate:%@ withName:%@", [aggregateClass className], [defaultSettings valueForKey:@"name"] );
 	[registeredAggregators
 		setObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			[self className],								@"dissectorClassName",
-			[defaultSettings valueForKey:@"name"],			@"name",
-			aggregateClass,									@"aggregateClassName",
-			[defaultSettings valueForKey:@"payloadViews"],	@"payloadViews",
-			/*[aggregateClass allKeyNames],	@"keys",*/
+			[self className],									@"dissectorClassName",
+			[defaultSettings valueForKey:@"name"],				@"name",
+			aggregateClass,										@"aggregateClassName",
+			[defaultSettings valueForKey:@"payloadViews"],		@"payloadViews",
+			[defaultSettings valueForKey:@"primaryProtocol"],	@"primaryProtocol",
 			nil
 		]
 		forKey:[aggregateClass className]
 	];
+	INFO( [[registeredAggregators objectForKey:[aggregateClass className]] description] );
 }
 
 + (Class)dissectorClassForProtocol:(NSString *)protoName

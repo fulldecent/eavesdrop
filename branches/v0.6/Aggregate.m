@@ -194,13 +194,40 @@ static int aggregateNumber;
 
 - (NSArray *)payloadViewArray
 {
-	NSEnumerator *en = [[[[self registeredAggregators] valueForKey:[self className]] valueForKey:@"payloadViews"] objectEnumerator];
-	NSMutableArray *tempArray = [NSMutableArray array];
+	return [[[self registeredAggregators] valueForKey:[self className]] valueForKey:@"payloadViews"];
+}
+
+- (NSArray *)detailColumnsArray
+{
+	ENTRY( @"detailColumnsArray" );
+	NSString *primaryProtocol = [[[self registeredAggregators] valueForKey:[self className]] valueForKey:@"primaryProtocol"];
+
+	NSArray *columnDicts;
+	if (!primaryProtocol)
+		primaryProtocol = @"packet";
+
+	columnDicts = [[[self registeredDissectors] valueForKey:primaryProtocol] valueForKey:@"detailColumns"];
+	
+	NSEnumerator *en = [columnDicts objectEnumerator];
 	NSDictionary *tempDict;
+	NSMutableArray *tempArray = [NSMutableArray array];
+	NSTableColumn *tempColumn;
+	NSTableHeaderCell *tempHeaderCell;
 	while ( tempDict=[en nextObject] ) {
-		[tempArray addObject:tempDict];
+		tempColumn = [[NSTableColumn alloc] initWithIdentifier:[tempDict valueForKey:@"columnKey"] ];
+		tempHeaderCell = [[NSTableHeaderCell alloc] init];
+		
+		[tempHeaderCell setStringValue:[tempDict valueForKey:@"name"] ];
+		
+		[tempColumn setWidth:[[tempDict valueForKey:@"width"] floatValue] ];
+		[tempColumn setHeaderCell:tempHeaderCell];
+		
+		[[tempColumn dataCell] setFont:[NSFont fontWithName:@"Lucida Grande" size:9.0] ];
+		
+		[tempArray addObject:tempColumn];
 	}
-	return [tempArray copy];
+	
+	return tempArray;
 }
 
 #pragma mark -
