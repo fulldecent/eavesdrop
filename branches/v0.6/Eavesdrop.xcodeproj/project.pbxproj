@@ -44,6 +44,8 @@
 		3F3E23C30A37FB92001C4087 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3E23B10A37FB4B001C4087 /* CoreData.framework */; };
 		3F3E26D60A3BE413001C4087 /* CaptureThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F043BB80A295FFF00380C99 /* CaptureThread.m */; };
 		3F3E28110A3CE9D3001C4087 /* PacketQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F043E790A2A44AD00380C99 /* PacketQueue.m */; };
+		3F49B7900AD88FD800633242 /* Dissectors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B78F0AD88FD800633242 /* Dissectors.plist */; };
+		3F49B7CD0AD8A8EB00633242 /* Aggregators.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */; };
 		3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		3F49FEB80A1C1614004C6514 /* CaptureServer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F49FEB60A1C1613004C6514 /* CaptureServer.h */; };
 		3F49FEB90A1C1614004C6514 /* CaptureServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F49FEB70A1C1613004C6514 /* CaptureServer.m */; };
@@ -282,6 +284,8 @@
 		3F3E23B10A37FB4B001C4087 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		3F3E258E0A3A95AB001C4087 /* TCPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPPacket.h; path = TCP/TCPPacket.h; sourceTree = "<group>"; };
 		3F3E258F0A3A95AB001C4087 /* TCPPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPPacket.m; path = TCP/TCPPacket.m; sourceTree = "<group>"; };
+		3F49B78F0AD88FD800633242 /* Dissectors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Dissectors.plist; sourceTree = "<group>"; };
+		3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Aggregators.plist; sourceTree = "<group>"; };
 		3F49FEB60A1C1613004C6514 /* CaptureServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureServer.h; sourceTree = "<group>"; };
 		3F49FEB70A1C1613004C6514 /* CaptureServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureServer.m; sourceTree = "<group>"; };
 		3F49FEBE0A1C1684004C6514 /* CaptureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureHandlers.h; sourceTree = "<group>"; };
@@ -524,6 +528,8 @@
 		3F043E870A2A486400380C99 /* Plugin Framework */ = {
 			isa = PBXGroup;
 			children = (
+				3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */,
+				3F49B78F0AD88FD800633242 /* Dissectors.plist */,
 				3FB356FA0A6DE1360086E5F3 /* Plugin.h */,
 				3FB356FB0A6DE1360086E5F3 /* Plugin.m */,
 				3F3E232B0A37F398001C4087 /* PacketHandler-Info.plist */,
@@ -968,6 +974,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F49B7900AD88FD800633242 /* Dissectors.plist in Resources */,
+				3F49B7CD0AD8A8EB00633242 /* Aggregators.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

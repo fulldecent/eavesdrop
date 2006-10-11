@@ -17,35 +17,43 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Type</string>
+				<string>Source Port</string>
 				<key>columnKey</key>
-				<string>typeString</string>
+				<string>tcpSourcePort</string>
 				<key>width</key>
-				<string>40</string>
+				<integer>20</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Time</string>
+				<string>Destination Port</string>
 				<key>columnKey</key>
-				<string>timeString</string>
+				<string>tcpDestinationPort</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>80</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Source</string>
+				<string>Acknoledgment</string>
 				<key>columnKey</key>
-				<string>sourceString</string>
+				<string>tcpAcknoledgment</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>80</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Destination</string>
+				<string>Sequence</string>
 				<key>columnKey</key>
-				<string>destinationString</string>
+				<string>tcpSequence</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>80</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Window</string>
+				<key>columnKey</key>
+				<string>tcpWindow</string>
+				<key>width</key>
+				<integer>40</integer>
 			</dict>
 		</array>
 	</dict>

@@ -230,20 +230,6 @@ static int dissectorCount;
 	return @"";
 }
 
-+ (NSDictionary *)keyNames
-{
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"#",			@"number",
-		@"Source",		@"sourceString",
-		@"Destination",	@"destinationString",
-		@"Type",		@"typeString",
-		@"Flags",		@"flagsString",
-		@"Info",		@"infoString",
-		@"Description",	@"descriptionString",
-		nil
-	];
-}
-
 #pragma mark -
 #pragma mark Meta data
 

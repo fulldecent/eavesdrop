@@ -13,12 +13,6 @@
 #pragma mark -
 #pragma mark Protocol Class methods
 
-+ (NSDictionary *)keyNames
-{
-	//no additional keys defined for this aggregator
-	return [NSDictionary dictionary];
-}
-
 + (NSString *)aggregateIdentifierForPacket:(NSObject<Dissector> *)newPacket
 {
 	NSString *tempValue = [newPacket valueForKey:@"ipSource"];

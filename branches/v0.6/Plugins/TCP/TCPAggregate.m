@@ -19,12 +19,6 @@ static NSView *staticPayloadImageView;
 	ENTRY( @"initialize" );
 }
 
-+ (NSDictionary *)keyNames
-{
-	//no additional keys defined at this time...
-	return [NSDictionary dictionary];
-}
-
 + (NSString *)aggregateIdentifierForPacket:(NSObject<Dissector> *)newPacket
 {
 	if ( [newPacket respondsToSelector:@selector(tcpSourcePort)] ) {

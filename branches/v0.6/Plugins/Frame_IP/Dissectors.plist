@@ -15,35 +15,35 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Type</string>
+				<string>Source MAC Address</string>
 				<key>columnKey</key>
-				<string>typeString</string>
+				<string>ethernetSource</string>
 				<key>width</key>
-				<string>40</string>
+				<integer>40</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Time</string>
+				<string>Destination MAC Address</string>
 				<key>columnKey</key>
-				<string>timeString</string>
+				<string>ethernetDestination</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>40</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Source</string>
+				<string>Ethernet Protocol</string>
 				<key>columnKey</key>
-				<string>sourceString</string>
+				<string>ethernetProtocol</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>20</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Destination</string>
+				<string>Ethernet Protocol Name</string>
 				<key>columnKey</key>
-				<string>destinationString</string>
+				<string>ethernetProtocolString</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>40</integer>
 			</dict>
 		</array>
 	</dict>
@@ -60,35 +60,35 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Type</string>
+				<string>IP Source</string>
 				<key>columnKey</key>
-				<string>typeString</string>
+				<string>ipSource</string>
 				<key>width</key>
-				<string>40</string>
+				<integer>40</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Time</string>
+				<string>IP Destination</string>
 				<key>columnKey</key>
-				<string>timeString</string>
+				<string>ipDestination</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>40</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Source</string>
+				<string>IP Protocol</string>
 				<key>columnKey</key>
-				<string>sourceString</string>
+				<string>ipProtocol</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>20</integer>
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Destination</string>
+				<string>IP Protocol Name</string>
 				<key>columnKey</key>
-				<string>destinationString</string>
+				<string>ipProtocolString</string>
 				<key>width</key>
-				<string>80</string>
+				<integer>40</integer>
 			</dict>
 		</array>
 	</dict>

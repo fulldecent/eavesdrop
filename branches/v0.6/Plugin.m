@@ -68,19 +68,28 @@ static NSMutableDictionary *registeredDefaults;
 	}
 
 	/* need to do something slightly different */
-	NSDictionary *detailColumns = [defaultSettings valueForKey:@"detailColumns"];
+	NSArray *detailColumns = [defaultSettings valueForKey:@"detailColumns"];
 	if (!detailColumns)
-		detailColumns = [NSDictionary dictionary];
+		detailColumns = [NSArray array];
+		
+	NSMutableDictionary *tempKeyNames = [NSMutableDictionary dictionary];
+	NSEnumerator *en = [detailColumns objectEnumerator];
+	id tempDict;
+	while ( tempDict=[en nextObject] ) {
+		[tempKeyNames setObject:[tempDict objectForKey:@"name"] forKey:[tempDict objectForKey:@"columnKey"] ];
+	}
+	NSDictionary *keyNames = [tempKeyNames copy];
 
 	NSMutableArray *blankArray = [[[NSMutableArray alloc] init] autorelease];
 	//this creates a node for the new dissector
 	[registeredDissectors
 		setObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-			dissector,										@"dissectorClassName",
-			[defaultSettings valueForKey:@"protocol"],		@"protocol",
-			[defaultSettings valueForKey:@"decodes"],		@"decodes",
-			[defaultSettings valueForKey:@"detailColumns"],	@"detailColumns",
-			blankArray,										@"subDissectors",
+			dissector,									@"dissectorClassName",
+			[defaultSettings valueForKey:@"protocol"],	@"protocol",
+			[defaultSettings valueForKey:@"decodes"],	@"decodes",
+			detailColumns,								@"detailColumns",
+			blankArray,									@"subDissectors",
+			keyNames,									@"keyNames",
 			nil
 		]
 		forKey:protoName
@@ -88,7 +97,7 @@ static NSMutableDictionary *registeredDefaults;
 	[registeredProtocolClasses setObject:protoName forKey:dissector ];
 	INFO( [[registeredDissectors objectForKey:protoName] description] );
 
-	NSEnumerator *en = [[defaultSettings valueForKey:@"decodes"] objectEnumerator];
+	en = [[defaultSettings valueForKey:@"decodes"] objectEnumerator];
 	NSString *tempString;
 	while ( tempString=[en nextObject] ) {
 		NSMutableDictionary *tempDict = [registeredDissectors objectForKey:tempString];
@@ -262,22 +271,18 @@ static NSMutableDictionary *registeredDefaults;
 	return @"";
 }
 
-+ (NSDictionary *)keyNames
-{	//ENTRY( @"keyNames" );
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"#",			@"number",
-		@"Source",		@"sourceString",
-		@"Destination",	@"destinationString",
-		@"Type",		@"typeString",
-		@"Info",		@"infoString",
-		@"Flags",		@"flagsString",
-		@"Description",	@"descriptionString",
-		nil
-	];
-}
-
 #pragma mark -
 #pragma mark Meta data
+
++ (NSDictionary *)keyNames
+{	//ENTRY( @"keyNames" );
+	return [
+		[registeredDissectors objectForKey:
+			[registeredProtocolClasses objectForKey:
+				[self class]] ]
+		valueForKey:@"keyNames"
+	];
+}
 
 + (NSArray *)keys
 {	//ENTRY( @"keys" );

@@ -10,12 +10,6 @@
 
 @implementation IPDestinationAggregate
 
-+ (NSDictionary *)keyNames
-{
-	//no additional keys defined for this aggregator
-	return [NSDictionary dictionary];
-}
-
 + (NSString *)aggregateIdentifierForPacket:(NSObject<Dissector> *)newPacket
 {
 	NSString *tempValue = [newPacket valueForKey:@"ipDestination"];

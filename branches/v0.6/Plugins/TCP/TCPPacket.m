@@ -177,18 +177,6 @@
 	return @"I need to fill this in...";
 }
 
-+ (NSDictionary *)keyNames
-{
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"Acknoledgment",			@"tcpAcknowledgement",
-		@"Destination Port",		@"tcpDestinationPort",
-		@"Sequence",				@"tcpSequence",
-		@"Source Port",				@"tcpSourcePort",
-		@"Window",					@"tcpWindow",
-		nil
-	];
-}
-
 - (NSArray *)payloadViewArray
 {
 	ENTRY( @"payloadViewArray" );
