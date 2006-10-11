@@ -83,18 +83,4 @@ static int packetCount;
 	return @"packet";
 }
 
-#pragma mark -
-#pragma mark Protocol methods
-
-+ (NSDictionary *)keyNames
-{
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"Cap. Length",	@"captureLength",
-		@"Length",		@"length",
-		@"Timestamp",	@"timestamp",
-		@"Time",		@"timeString",
-		nil
-	];
-}
-
 @end

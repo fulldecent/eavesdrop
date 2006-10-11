@@ -30,33 +30,10 @@
 	[self willChangeValueForKey:@"aggregateDefaultsArray"];
 	[self willChangeValueForKey:@"pluginDefaultsArray"];
 	
-	//load the Packet Dissector
-	[dissectorDefaultsArray addObject:[Dissector registerDissectorAndGetDefaultsWithSettings:
-		[NSMutableDictionary dictionaryWithObjectsAndKeys:
-			@"Packet",						@"dissectorClassName",
-			@"packet",						@"protocol",
-			[NSNumber numberWithBool:YES],	@"enabled",
-			[NSArchiver archivedDataWithRootObject:[NSColor whiteColor] ],
-											@"backgroundColor",
-			[NSArchiver archivedDataWithRootObject:[NSColor blackColor] ],
-											@"textColor",
-			nil]
-		]
-	];
-	[aggregateDefaultsArray addObject:[Dissector registerAggregateAndGetDefaultsWithSettings:
-		[NSMutableDictionary dictionaryWithObjectsAndKeys:
-			@"Aggregate",					@"aggregateClassName",
-			@"Packet",						@"dissectorClassName",
-			@"None",						@"name",
-			[NSNumber numberWithBool:YES],	@"enabled",
-			[NSArchiver archivedDataWithRootObject:[NSColor whiteColor] ],
-											@"backgroundColor",
-			[NSArchiver archivedDataWithRootObject:[NSColor blackColor] ],
-											@"textColor",
-			nil]
-		]
-	];
+	//load the default plugins
+	[self activatePlugin:[[NSBundle bundleForClass:[Plugin class]] bundlePath] ];
 
+	//load any found plugins
 	NSString* folderPath = [[NSBundle mainBundle] builtInPlugInsPath];
 	if (folderPath) {
 		NSEnumerator* enumerator = [[NSBundle pathsForResourcesOfType:@"edplugin"
@@ -69,14 +46,7 @@
 	}
 	INFO1( @"Packet classes:\n%@", [dissectorDefaultsArray description] );
 	INFO1( @"Aggregate classes:\n%@", [aggregateDefaultsArray description] );
-/*	
-	// need to move this to the right key?
-	NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
-	[defaults setInitialValues:[NSDictionary dictionaryWithObject:dissectorDefaultsArray forKey:@"DissectorPlugins"] ];
-	[defaults setInitialValues:[NSDictionary dictionaryWithObject:aggregateDefaultsArray forKey:@"AggregatePlugins"] ];
-	
-	[defaults save:self];
-*/	
+
 	[pluginDefaultsArray addObjectsFromArray:dissectorDefaultsArray];
 	[pluginDefaultsArray addObjectsFromArray:aggregateDefaultsArray];
 	

@@ -149,16 +149,4 @@ static NSArray *protocolsArray;
 	return @"IP";
 }
 
-- (NSDictionary *)keyNames
-{
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"Destination IP Address",	@"ipDestination",
-		@"IP Protocol",				@"ipProtocol",
-		@"IP Protocol Name",		@"ipProtocolString",
-		@"Source IP Address",		@"ipSource",
-		nil
-	];
-}
-
-
 @end

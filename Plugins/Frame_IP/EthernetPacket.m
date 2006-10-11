@@ -104,15 +104,4 @@
 	return @"Ethernet";
 }
 
-+ (NSDictionary *)keyNames
-{
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"Destination MAC Address",	@"ethernetDestination",
-		@"Ethernet Protocol",		@"ethernetProtocol",
-		@"Ethernet Protocol Name",	@"ethernetProtocolString",
-		@"Source MAC Address",		@"ethernetSource",
-		nil
-	];
-}
-
 @end
