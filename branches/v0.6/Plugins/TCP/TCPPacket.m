@@ -177,6 +177,11 @@
 	return @"I need to fill this in...";
 }
 
+- (NSString *)protocolString
+{
+	return @"TCP";
+}
+
 - (NSArray *)payloadViewArray
 {
 	ENTRY( @"payloadViewArray" );

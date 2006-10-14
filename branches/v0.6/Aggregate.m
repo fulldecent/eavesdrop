@@ -202,31 +202,10 @@ static int aggregateNumber;
 	ENTRY( @"detailColumnsArray" );
 	NSString *primaryProtocol = [[[self registeredAggregators] valueForKey:[self className]] valueForKey:@"primaryProtocol"];
 
-	NSArray *columnDicts;
 	if (!primaryProtocol)
 		primaryProtocol = @"packet";
 
-	columnDicts = [[[self registeredDissectors] valueForKey:primaryProtocol] valueForKey:@"detailColumns"];
-	
-	NSEnumerator *en = [columnDicts objectEnumerator];
-	NSDictionary *tempDict;
-	NSMutableArray *tempArray = [NSMutableArray array];
-	NSTableColumn *tempColumn;
-	NSTableHeaderCell *tempHeaderCell;
-	while ( tempDict=[en nextObject] ) {
-		tempColumn = [[NSTableColumn alloc] initWithIdentifier:[tempDict valueForKey:@"columnKey"] ];
-		tempHeaderCell = [[NSTableHeaderCell alloc] init];
-		
-		[tempHeaderCell setStringValue:[tempDict valueForKey:@"name"] ];
-		
-		[tempColumn setWidth:[[tempDict valueForKey:@"width"] floatValue] ];
-		[tempColumn setHeaderCell:tempHeaderCell];
-		
-		[[tempColumn dataCell] setFont:[NSFont fontWithName:@"Lucida Grande" size:9.0] ];
-		
-		[tempArray addObject:tempColumn];
-	}
-	
+	NSArray *tempArray = [lastPacket valueForKey:@"detailColumnsArray"];
 	return tempArray;
 }
 
