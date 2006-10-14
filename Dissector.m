@@ -260,11 +260,18 @@ static int dissectorCount;
 - (NSArray *)detailColumnsArray
 {
 	ENTRY( @"detailColumnsArray" );
-	NSArray *columnDicts = [[[self registeredDissectors] valueForKey:[self className]] valueForKey:@"detailColumns"];
+	
+	NSMutableArray *tempArray = [NSMutableArray array];
+	if (parent)
+		[tempArray addObjectsFromArray:[parent detailColumnsArray] ];
+
+	DEBUG1( @"looking up columns dict: %@", [self protocolString] );
+	NSArray *columnDicts = [[[self registeredDissectors] valueForKey:[self protocolString]] valueForKey:@"detailColumns"];
+	DEBUG1( @"got %d columns", [columnDicts count] );
 	
 	NSEnumerator *en = [columnDicts objectEnumerator];
 	NSDictionary *tempDict;
-	NSMutableArray *tempArray = [NSMutableArray array];
+
 	NSTableColumn *tempColumn;
 	NSTableHeaderCell *tempHeaderCell;
 	while ( tempDict=[en nextObject] ) {
@@ -281,6 +288,7 @@ static int dissectorCount;
 		[tempArray addObject:tempColumn];
 	}
 	
+	DEBUG1( @"there are now %d table columns", [tempArray count] );
 	return tempArray;
 }
 

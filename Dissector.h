@@ -29,6 +29,8 @@
 - (const void *)payloadBytes;														/* FREEBIE	*/
 - (const void *)packetBytes;														/* FREEBIE	*/
 
+- (NSArray *)detailColumnsArray;
+
 @end
 
 
@@ -44,7 +46,5 @@
 }
 
 + (id)packetWithHeaderData:(NSData *)newHeader packetData:(NSData *)newPacket;
-
-- (NSArray *)detailColumnsArray;
 
 @end
