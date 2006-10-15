@@ -35,9 +35,6 @@ static NSView *staticPayloadImageView;
 				[newPacket valueForKey:@"ipSource"], sport
 			];
 		}
-	} else {
-		return nil;
-		//return [newPacket valueForKey:@"typeString"];
 	}
 	return nil;
 }
