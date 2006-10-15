@@ -66,5 +66,17 @@
 			</dict>
 		</array>
 	</dict>
+	<dict>
+		<key>dissectorClassName</key>
+		<string>TCPPacket</string>
+		<key>aggregateClassName</key>
+		<string>TCPLowPortAggregate</string>
+		<key>name</key>
+		<string>TCP Low Port</string>
+		<key>protocol</key>
+		<string>TCP</string>	
+		<key>primaryProtocol</key>
+		<string>TCP</string>
+	</dict>
 </array>
 </plist>
