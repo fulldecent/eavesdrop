@@ -12,7 +12,7 @@
 #import <EDPlugin/Aggregate.h>
 
 @interface TCPLowPortAggregate : Aggregate {
-	int lowPort;
+
 }
 
 @end
