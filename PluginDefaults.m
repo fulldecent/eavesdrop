@@ -23,6 +23,11 @@
 	return [[[PluginDefaults alloc] initWithSettings:settingsDict] autorelease];
 }
 
+- (NSString *)settingsNibName
+{
+	return nil;
+}
+
 - (id)initWithSettings:(NSDictionary *)settingsDict
 {
 	ENTRY( @"initWithSettings:" );
@@ -57,6 +62,14 @@
 		else
 			enabled = YES;
 			
+		//load the settings NIB, if there is one
+		if ( [self settingsNibName] ) {
+			DEBUG1( @"loading NIB: %@", [self settingsNibName] );
+			if ( ![NSBundle loadNibNamed:[self settingsNibName] owner:self] ) {
+				ERROR1( @"failed to load %@ nib", [self settingsNibName] );
+			}
+		}
+		
 		[self setInitialDefaults];
 		[self getDefaultValues];
 	}
