@@ -14,17 +14,9 @@
 #pragma mark -
 #pragma mark Setup methods
 
-- (id)initWithSettings:(NSDictionary *)settingsDict
+- (NSString *)settingsNibName
 {
-	ENTRY( @"initWithSettings:" );
-	self = [super initWithSettings:settingsDict];
-	if (self) {
-		//nothing yet
-		if ( ![NSBundle loadNibNamed:@"TCPPacketDefaults" owner:self] ) {
-			ERROR( @"failed to load TCPPacketsDefaults nib" );
-		}
-	}
-	return self;
+	return @"TCPPacketDefaults";
 }
 
 #pragma mark -
@@ -36,6 +28,7 @@
 		flagsArray = [[NSMutableArray arrayWithContentsOfFile:
 			[[NSBundle bundleForClass:[self class]] pathForResource:@"TCPFlags" ofType:@"plist"]
 		] retain];
+		currentFlagSelection = [flagsArray objectAtIndex:0];
 	}
 	return flagsArray;
 }
@@ -57,7 +50,23 @@
 
 - (void)getDefaultsFromDictionary:(NSDictionary *)defaultsDict
 {
+	ENTRY( @"getDefaultsFromDictionary" );
 	[super getDefaultsFromDictionary:defaultsDict];
+
+	NSDictionary *defaultsColors = [defaultsDict valueForKey:@"flagColors"];
+	NSEnumerator *en = [[self flagsArray] objectEnumerator];
+	NSMutableDictionary *tempDict;
+	while ( tempDict=[en nextObject] ) {
+		NSColor *tempColor = [NSUnarchiver unarchiveObjectWithData:
+			[defaultsColors objectForKey:
+				[tempDict objectForKey:@"shortName"]
+			]
+		];
+		if (tempColor) {
+			[tempDict setObject:tempColor forKey:@"color"];
+		}
+	}
+	INFO( [flagsArray description] );
 }
 
 - (NSDictionary *)defaultsDict
@@ -70,11 +79,11 @@
 		while ( flagDict=[en nextObject] ) {
 			[tempDict
 				setObject:[NSArchiver archivedDataWithRootObject:[flagDict objectForKey:@"color"]]
-				forKey:[NSString stringWithFormat:@"%@color",[flagDict objectForKey:@"shortName"]]
+				forKey:[flagDict objectForKey:@"shortName"]
 			];
 		}
 	}
-	[defaultsDict setObject:tempDict forKey:@"flags"];
+	[defaultsDict setObject:tempDict forKey:@"flagColors"];
 	return [defaultsDict copy];
 }
 

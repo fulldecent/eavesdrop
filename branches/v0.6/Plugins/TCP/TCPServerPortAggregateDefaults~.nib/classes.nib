@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {save = id; }; 
+            CLASS = PluginDefaults; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {defaultsView = NSView; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            CLASS = TCPServerPortAggregateDefaults; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {portsArray = NSMutableArray; }; 
+            SUPERCLASS = PluginDefaults; 
+        }
+    ); 
+    IBVersion = 1; 
+}
