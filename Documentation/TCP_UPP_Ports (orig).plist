@@ -1,0 +1,3232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>port</key>
+		<string>0</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Reserved; do not use (but is a permissible source port value if the sending process does not expect messages in response)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/TCPMUX" title="TCPMUX"&gt;TCPMUX&lt;/a&gt; (TCP port service multiplexer)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Remote_Job_Entry" title="Remote Job Entry"&gt;RJE&lt;/a&gt; (Remote Job Entry)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>7</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/ECHO_protocol" title="ECHO protocol"&gt;ECHO&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>9</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/DISCARD" title="DISCARD"&gt;DISCARD&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>11</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/SYSTAT" title="SYSTAT"&gt;SYSTAT&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>13</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/DAYTIME" title="DAYTIME"&gt;DAYTIME&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>17</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/QOTD" title="QOTD"&gt;QOTD&lt;/a&gt; (Quote of the Day) protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>18</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Message Send Protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>19</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/CHARGEN" title="CHARGEN"&gt;CHARGEN&lt;/a&gt; (Character Generator) protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>20</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/File_transfer_protocol" title="File transfer protocol"&gt;FTP&lt;/a&gt; - data port</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>21</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/File_transfer_protocol" title="File transfer protocol"&gt;FTP&lt;/a&gt; - control (command) port</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>22</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Secure_shell" title="Secure shell"&gt;SSH&lt;/a&gt; (Secure Shell) - used for secure logins, file transfers (&lt;a href="/wiki/Secure_copy" title="Secure copy"&gt;scp&lt;/a&gt;, &lt;a href="/wiki/SSH_file_transfer_protocol" title="SSH file transfer protocol"&gt;sftp&lt;/a&gt;) and port forwarding</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>23</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Telnet" title="Telnet"&gt;Telnet&lt;/a&gt; protocol - unencrypted text communications</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>25</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Simple_Mail_Transfer_Protocol" title="Simple Mail Transfer Protocol"&gt;SMTP&lt;/a&gt; - used for e-mail routing between mailservers &lt;a href="/wiki/E-mail" title="E-mail"&gt;E-mails&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>26</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=RSFTP&amp;action=edit" class="new" title="RSFTP"&gt;RSFTP&lt;/a&gt; - A simple FTP-like protocol</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>35</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/QMS_Magicolor_2_printer" title="QMS Magicolor 2 printer"&gt;QMS Magicolor 2 printer&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>37</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/TIME_protocol" title="TIME protocol"&gt;TIME&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>38</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Route Access Protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>39</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Resource Location Protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>41</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Graphics</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>42</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Host Name Server</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>43</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/WHOIS" title="WHOIS"&gt;WHOIS&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>49</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/TACACS" title="TACACS"&gt;TACACS&lt;/a&gt; Login Host protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>53</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Domain_Name_System" title="Domain Name System"&gt;DNS&lt;/a&gt; (Domain Name System)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>57</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>MTP, Mail Transfer Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>67</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/BOOTP" title="BOOTP"&gt;BOOTP&lt;/a&gt; (BootStrap Protocol) server; also used by &lt;a href="/wiki/Dynamic_Host_Configuration_Protocol" title="Dynamic Host Configuration Protocol"&gt;DHCP&lt;/a&gt; (Dynamic Host Configuration Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>68</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/BOOTP" title="BOOTP"&gt;BOOTP&lt;/a&gt; client; also used by &lt;a href="/wiki/Dynamic_Host_Configuration_Protocol" title="Dynamic Host Configuration Protocol"&gt;DHCP&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>69</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Trivial_File_Transfer_Protocol" title="Trivial File Transfer Protocol"&gt;TFTP&lt;/a&gt; (Trivial File Transfer Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>70</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Gopher_protocol" title="Gopher protocol"&gt;Gopher&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>79</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Finger_protocol" title="Finger protocol"&gt;Finger&lt;/a&gt; protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>80</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/HTTP" title="HTTP"&gt;HTTP&lt;/a&gt; (HyperText Transfer Protocol) - used for transferring web pages</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>80</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Skype" title="Skype"&gt;Skype&lt;/a&gt; - CONFLICT with HTTP listening ports</string>
+		<key>status</key>
+		<string>Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>81</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Torpark" title="Torpark"&gt;Torpark&lt;/a&gt; - &lt;a href="/wiki/Onion_routing" title="Onion routing"&gt;Onion routing&lt;/a&gt; ORport</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>82</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Torpark" title="Torpark"&gt;Torpark&lt;/a&gt; - Control Port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>88</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Kerberos_--percent--28protocol--percent--29" title="Kerberos (protocol)"&gt;Kerberos&lt;/a&gt; - authenticating agent</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>101</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>HOSTNAME</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>102</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>ISO-TSAP protocol</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>107</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Remote Telnet Service</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>109</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>POP, Post Office Protocol, version 2</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>110</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Post_Office_Protocol" title="Post Office Protocol"&gt;POP3&lt;/a&gt; (Post Office Protocol version 3) - used for sending/retrieving &lt;a href="/wiki/E-mail" title="E-mail"&gt;E-mails&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>111</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>SUNRPC protocol</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>113</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Ident" title="Ident"&gt;ident&lt;/a&gt; - old server identification system, still used by &lt;a href="/wiki/Internet_Relay_Chat" title="Internet Relay Chat"&gt;IRC&lt;/a&gt; servers to identify its users</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>115</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>SFTP, Simple File Transfer Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>117</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>UUCP-PATH</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>118</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>SQL Services</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>119</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/NNTP" title="NNTP"&gt;NNTP&lt;/a&gt; (Network News Transfer Protocol) - used for retrieving newsgroups messages</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>123</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Network_Time_Protocol" title="Network Time Protocol"&gt;NTP&lt;/a&gt; (Network Time Protocol) - used for time synchronization</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>137</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/NetBIOS" title="NetBIOS"&gt;NetBIOS&lt;/a&gt; NetBIOS Name Service</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>138</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/NetBIOS" title="NetBIOS"&gt;NetBIOS&lt;/a&gt; NetBIOS Datagram Service</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>139</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/NetBIOS" title="NetBIOS"&gt;NetBIOS&lt;/a&gt; NetBIOS Session Service</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>143</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Message_Access_Protocol" title="Internet Message Access Protocol"&gt;IMAP4&lt;/a&gt; (Internet Message Access Protocol 4) - used for retrieving &lt;a href="/wiki/E-mail" title="E-mail"&gt;E-mails&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>152</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>BFTP, Background File Transfer Program</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>153</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>SGMP, Simple Gateway Monitoring Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>156</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>SQL Service</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>158</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>DMSP, Distributed Mail Service Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>161</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Simple_Network_Management_Protocol" title="Simple Network Management Protocol"&gt;SNMP&lt;/a&gt; (Simple Network Management Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>162</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>SNMPTRAP</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>170</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Print-srv</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>179</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Border_Gateway_Protocol" title="Border Gateway Protocol"&gt;BGP&lt;/a&gt; (Border Gateway Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>194</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Relay_Chat" title="Internet Relay Chat"&gt;IRC&lt;/a&gt; (Internet Relay Chat)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>201</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>AppleTalk Routing Maintenance</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>209</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>The Quick Mail Transfer Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>213</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/IPX" title="IPX"&gt;IPX&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>218</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>MPP, Message Posting Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>220</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>IMAP, Interactive Mail Access Protocol, version 3</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>259</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>ESRO, Efficient Short Remote Operations</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>264</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=BGMP&amp;action=edit" class="new" title="BGMP"&gt;BGMP&lt;/a&gt;, Border Gateway Multicast Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>311</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Apple Server-Admin-Tool, Workgroup-Manager-Tool</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>318</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>TSP, Time Stamp Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>323</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>IMMP, Internet Message Mapping Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>366</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>SMTP, Simple Mail Transfer Protocol. ODMR, On-Demand Mail Relay</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>369</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Rpc2portmap</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>384</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>A Remote Network Server System</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>387</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>AURP, AppleTalk Update-based Routing Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>389</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Lightweight_Directory_Access_Protocol" title="Lightweight Directory Access Protocol"&gt;LDAP&lt;/a&gt; (Lightweight Directory Access Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>401</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Uninterruptible_power_supply" title="Uninterruptible power supply"&gt;UPS&lt;/a&gt; Uninterruptible Power Supply</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>411</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Direct_Connect_network" title="Direct Connect network"&gt;Direct Connect&lt;/a&gt; Hub port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>427</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Service_Location_Protocol" title="Service Location Protocol"&gt;SLP&lt;/a&gt; (Service Location Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>443</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/HTTPS" title="HTTPS"&gt;HTTPS&lt;/a&gt; - &lt;a href="/wiki/HTTP" title="HTTP"&gt;HTTP&lt;/a&gt; Protocol over TLS/&lt;a href="/wiki/Transport_Layer_Security" title="Transport Layer Security"&gt;SSL&lt;/a&gt; (encrypted transmission)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>444</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/SNPP" title="SNPP"&gt;SNPP&lt;/a&gt;, Simple Network Paging Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>445</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Microsoft-DS (&lt;a href="/wiki/Active_Directory" title="Active Directory"&gt;Active Directory&lt;/a&gt;, Windows shares, &lt;a href="/w/index.php?title=Sasser_Computer_Worm&amp;action=edit" class="new" title="Sasser Computer Worm"&gt;Sasser worm&lt;/a&gt;, Agobot, Zobotworm)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>445</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>Microsoft-DS &lt;a href="/wiki/Server_Message_Block" title="Server Message Block"&gt;SMB&lt;/a&gt; file sharing</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>464</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Kerberos Change/Set password</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>465</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Simple_Mail_Transfer_Protocol" title="Simple Mail Transfer Protocol"&gt;SMTP&lt;/a&gt; over &lt;a href="/wiki/Transport_Layer_Security" title="Transport Layer Security"&gt;SSL&lt;/a&gt; - CONFLICT with registered Cisco protocol</string>
+		<key>status</key>
+		<string>Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>500</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Isakmp, IKE-Internet Key Exchange</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>512</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>exec, Remote Process Execution</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>512</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>biff, Comsat</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>513</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Login</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>513</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>Who</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>514</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Rsh" title="Rsh"&gt;rsh&lt;/a&gt; protocol - used to execute non-interactive commandline commands on a remote system and see the screen return</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>514</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Syslog" title="Syslog"&gt;syslog&lt;/a&gt; protocol - used for system logging</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>515</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Line_Printer_Daemon_protocol" title="Line Printer Daemon protocol"&gt;Line Printer Daemon protocol&lt;/a&gt; - used in LPD printer servers</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>517</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>Talk</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>518</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>NTalk</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>520</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>efs</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>513</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>Router</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>524</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/NetWare_Core_Protocol" title="NetWare Core Protocol"&gt;NCP&lt;/a&gt; (NetWare Core Protocol) is used for a variety things such as access to primary NetWare server resources, Time Synchronization, etc.</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>525</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>Timed, Timeserver</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>530</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/RPC" title="RPC"&gt;RPC&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>531</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>AOL Instant Messenger, IRC</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>532</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>netnews</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>533</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>netwall, For Emergency Broadcasts</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>540</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/UUCP" title="UUCP"&gt;UUCP&lt;/a&gt; (Unix-to-Unix Copy Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>542</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Commerce" title="Commerce"&gt;commerce&lt;/a&gt; (Commerce Applications) (RFC maintained by: Randy Epstein [repstein at host.net])</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>543</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>klogin, Kerberos login</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>544</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>kshell, Kerberos Remote shell</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>546</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>DHCPv6 client</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>547</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>DHCPv6 server</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>548</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>AFP (Apple Filing Protocol)</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>550</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>new-rwho, new-who</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>554</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/RTSP" title="RTSP"&gt;RTSP&lt;/a&gt; (Real Time Streaming Protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>556</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Remotefs, rfs, rfs_server</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>560</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>rmonitor, Remote Monitor</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>561</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>monitor</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>563</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/NNTP" title="NNTP"&gt;NNTP&lt;/a&gt; protocol over TLS/SSL (NNTPS)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>587</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>email message submission (&lt;a href="/wiki/SMTP" title="SMTP"&gt;SMTP&lt;/a&gt;) (&lt;a href="/wiki/RFC" title="RFC"&gt;RFC&lt;/a&gt; 2476)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>591</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/FileMaker" title="FileMaker"&gt;FileMaker&lt;/a&gt; 6.0 Web Sharing &lt;i&gt;(HTTP Alternate, see port 80)&lt;/i&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>593</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>HTTP RPC Ep Map</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>604</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>TUNNEL</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>631</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Printing_Protocol" title="Internet Printing Protocol"&gt;IPP&lt;/a&gt;, Internet Printing Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>636</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Lightweight_Directory_Access_Protocol" title="Lightweight Directory Access Protocol"&gt;LDAP&lt;/a&gt; over &lt;a href="/wiki/Transport_Layer_Security" title="Transport Layer Security"&gt;SSL&lt;/a&gt; (encrypted transmission)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>639</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>MSDP, Multicast Source Discovery Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>646</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>LDP, Label Distribution Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>647</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>DHCP Failover Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>648</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>RRP, Registry Registrar Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>652</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>DTCP, Dynamic Tunnel Configuration Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>654</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>AODV, Ad hoc On-Demand Distance Vector</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>666</string>
+		<key>protocols</key>
+		<string>TCP, UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Id_Software" title="Id Software"&gt;id Software&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/Doom" title="Doom"&gt;Doom&lt;/a&gt;&lt;/i&gt; &lt;a href="/wiki/Multiplayer" title="Multiplayer"&gt;multiplayer&lt;/a&gt; game played over TCP (666 is the &lt;a href="/wiki/Number_of_the_Beast" title="Number of the Beast"&gt;Number of the Beast&lt;/a&gt;)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>674</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>ACAP, Application Configuration Access Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>691</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>MS Exchange Routing</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>692</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Hyperwave-ISP</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>695</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>IEEE-MMS-SSL</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>698</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>OLSR, Optimized Link State Routing</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>699</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Access Network</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>700</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>EPP, Extensible Provisioning Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>701</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>LMP, Link Management Protocol.</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>702</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>IRIS over BEEP</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>706</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>SILC, Secure Internet Live Conferencing</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>711</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>TDP, Tag Distribution Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>712</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>TBRPF, Topology Broadcast based on Reverse-Path Forwarding</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>720</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>SMQP, Simple Message Queue Protocol</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>749</string>
+		<key>protocols</key>
+		<string>TCP, UDP</string>
+		<key>references</key>
+		<string>kerberos-adm, Kerberos administration</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>750</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>Kerberos version IV</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>782</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Computer_console" title="Computer console"&gt;Console&lt;/a&gt; Conserver (Console Server)</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>829</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>CMP (Certificate Management Protocol)</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>860</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/ISCSI" title="ISCSI"&gt;iSCSI&lt;/a&gt;</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>873</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Rsync" title="Rsync"&gt;rsync&lt;/a&gt; File synchronisation protocol</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>901</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Samba_software" title="Samba software"&gt;Samba&lt;/a&gt; Web Administration Tool (SWAT)</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>902</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/VMware" title="VMware"&gt;VMware&lt;/a&gt; Server&lt;sup id="_ref-1" class="reference"&gt;&lt;a href="#_note-1" title=""&gt;[2]&lt;/a&gt;&lt;/sup&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>981</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/SofaWare_Technologies" title="SofaWare Technologies"&gt;SofaWare Technologies&lt;/a&gt; Remote HTTPS management for firewall devices running embedded &lt;a href="/w/index.php?title=Checkpoint_Firewall-1&amp;action=edit" class="new" title="Checkpoint Firewall-1"&gt;Checkpoint Firewall-1&lt;/a&gt; software</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>989</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/FTP" title="FTP"&gt;FTP&lt;/a&gt; Protocol (data) over TLS/SSL</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>990</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>FTP Protocol (control) over TLS/SSL</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>991</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>NAS (Netnews Admin System)</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>992</string>
+		<key>protocols</key>
+		<string>TCP,UDP</string>
+		<key>references</key>
+		<string>Telnet protocol over TLS/SSL</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>993</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Message_Access_Protocol" title="Internet Message Access Protocol"&gt;IMAP4&lt;/a&gt; over &lt;a href="/wiki/Transport_Layer_Security" title="Transport Layer Security"&gt;SSL&lt;/a&gt; (encrypted transmission)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>995</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Post_Office_Protocol" title="Post Office Protocol"&gt;POP3&lt;/a&gt; over &lt;a href="/wiki/Transport_Layer_Security" title="Transport Layer Security"&gt;SSL&lt;/a&gt; (encrypted transmission)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1080</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/SOCKS" title="SOCKS"&gt;SOCKS&lt;/a&gt; proxy</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1099</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Java_remote_method_invocation" title="Java remote method invocation"&gt;RMI&lt;/a&gt; Registry</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1099</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Java_remote_method_invocation" title="Java remote method invocation"&gt;RMI&lt;/a&gt; Registry</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1109</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>Kerberos POP</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1167</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>phone, conference calling</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1176</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Perceptive Automation Indigo home control server</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1194</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/OpenVPN" title="OpenVPN"&gt;OpenVPN&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1198</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>The &lt;a href="/w/index.php?title=Cajo_project&amp;action=edit" class="new" title="Cajo project"&gt;cajo project&lt;/a&gt; Free dynamic transparent distributed computing in Java</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1214</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Kazaa" title="Kazaa"&gt;Kazaa&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1241</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Nessus_--percent--28software--percent--29" title="Nessus (software)"&gt;Nessus&lt;/a&gt; Security Scanner</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1223</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>TGP: "TrulyGlobal Protocol" aka "The Gur Protocol"</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1313</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Xbiim (Canvii server) Port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1337</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>menandmice.com DNS (not to be confused with standard &lt;a href="/wiki/Domain_Name_System" title="Domain Name System"&gt;DNS&lt;/a&gt; port). Often used on compromised/infected computers - "1337" a "&lt;a href="/wiki/Leet_speak" title="Leet speak"&gt;Leet speak&lt;/a&gt;" version of "Elite". See unregistered use below.</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1337</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/WASTE" title="WASTE"&gt;WASTE&lt;/a&gt; Encrypted File Sharing Program</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1352</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>IBM &lt;a href="/wiki/Lotus_Notes" title="Lotus Notes"&gt;Lotus Notes&lt;/a&gt;/Domino RPC</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1387</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Computer Aided Design Software Inc LM (cadsi-lm )</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1387</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>Computer Aided Design Software Inc LM (cadsi-lm )</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1414</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>IBM &lt;a href="/wiki/MQSeries" title="MQSeries"&gt;MQSeries&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1433</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Microsoft_SQL_Server" title="Microsoft SQL Server"&gt;Microsoft SQL&lt;/a&gt; database system</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1434</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>Microsoft SQL Monitor</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1494</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Citrix_MetaFrame" title="Citrix MetaFrame"&gt;Citrix MetaFrame&lt;/a&gt; ICA Client</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1512</string>
+		<key>protocols</key>
+		<string>TCP, UDP</string>
+		<key>references</key>
+		<string>WINS</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1521</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Oracle_database" title="Oracle database"&gt;Oracle database&lt;/a&gt; default listener - CONFLICT with registered use: nCube License Manager</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1524</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>ingresslock, ingress</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1533</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>IBM &lt;a href="/wiki/Sametime" title="Sametime"&gt;Sametime&lt;/a&gt; IM</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1547</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Laplink" title="Laplink"&gt;Laplink&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1547</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Laplink" title="Laplink"&gt;Laplink&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1627</string>
+		<key>protocols</key>
+		<string>iSketch</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1677</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Novell GroupWise clients in client/server access mode</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1701</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>l2tp, Layer 2 Tunnelling protocol</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1723</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Microsoft &lt;a href="/wiki/PPTP" title="PPTP"&gt;PPTP&lt;/a&gt; VPN</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1723</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>Microsoft &lt;a href="/wiki/PPTP" title="PPTP"&gt;PPTP&lt;/a&gt; VPN</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1761</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Novell" title="Novell"&gt;Novell&lt;/a&gt; Zenworks Remote Control utility - CONFLICT with registered use: cft-0</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1812</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>radius, RADIUS authentication protocol</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1813</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>radacct, RADIUS accounting protocol</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1863</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/MSN_Messenger" title="MSN Messenger"&gt;MSN Messenger&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1900</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>Microsoft &lt;a href="/wiki/Simple_Service_Discovery_Protocol" title="Simple Service Discovery Protocol"&gt;SSDP&lt;/a&gt; Enables discovery of &lt;a href="/wiki/Universal_Plug_and_Play" title="Universal Plug and Play"&gt;UPnP&lt;/a&gt; devices</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1935</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Real_Time_Messaging_Protocol" title="Real Time Messaging Protocol"&gt;Macromedia Flash Communications Server MX&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1972</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/InterSystems_Cach--percent--C3--percent--A9" title="InterSystems Cach"&gt;InterSystems Cach&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1972</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/InterSystems_Cach--percent--C3--percent--A9" title="InterSystems Cach"&gt;InterSystems Cach&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>1984</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="http://www.bb4.org/" class="external text" title="http://www.bb4.org/"&gt;Big Brother&lt;/a&gt; - network monitoring tool</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2000</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Skinny_Client_Control_Protocol" title="Skinny Client Control Protocol"&gt;Cisco SCCP (Skinny)&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Skinny_Client_Control_Protocol" title="Skinny Client Control Protocol"&gt;Cisco SCCP (Skinny)&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2002</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>[Cisco Secure Access Control Server (ACS) for Windows]</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2030</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Oracle_Corporation" title="Oracle Corporation"&gt;Oracle&lt;/a&gt; Services for &lt;a href="/wiki/Microsoft_Transaction_Server" title="Microsoft Transaction Server"&gt;Microsoft Transaction Server&lt;/a&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2031</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=Mobrien-chat&amp;action=edit" class="new" title="Mobrien-chat"&gt;mobrien-chat&lt;/a&gt; - Mike O'Brien &lt;mike@mobrien.com&gt; November 2004</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2031</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=Mobrien-chat&amp;action=edit" class="new" title="Mobrien-chat"&gt;mobrien-chat&lt;/a&gt; - Mike O'Brien &lt;mike@mobrien.com&gt; November 2004</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2049</string>
+		<key>protocols</key>
+		<string>UDP</string>
+		<key>references</key>
+		<string>nfs, NFS Server</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2053</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>knetd, Kerberos de-multiplexor</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2082</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/CPanel" title="CPanel"&gt;CPanel&lt;/a&gt;'s default port - CONFLICT with registered use: Infowave Mobility Server</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2083</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/CPanel" title="CPanel"&gt;CPanel&lt;/a&gt;'s default port for SSL connections</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2086</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/WebHost_Manager" title="WebHost Manager"&gt;WebHost Manager&lt;/a&gt;'s default port - CONFLICT with registered use: &lt;a href="/wiki/GNUnet" title="GNUnet"&gt;GNUnet&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2087</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/WebHost_Manager" title="WebHost Manager"&gt;WebHost Manager&lt;/a&gt;'s default port for SSL connections</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2095</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/CPanel" title="CPanel"&gt;CPanel&lt;/a&gt;'s default port for webmail connections</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2096</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/CPanel" title="CPanel"&gt;CPanel&lt;/a&gt;'s default port for webmail connections via SSL connections</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2181</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/EForward" title="EForward"&gt;EForward&lt;/a&gt;-document transport system</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2181</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/EForward" title="EForward"&gt;EForward&lt;/a&gt;-document transport system</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2222</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/DirectAdmin" title="DirectAdmin"&gt;DirectAdmin&lt;/a&gt;'s default port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2427</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>Cisco &lt;a href="/wiki/MGCP" title="MGCP"&gt;MGCP&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2447</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>ovwdb - &lt;a href="/wiki/OpenView" title="OpenView"&gt;OpenView&lt;/a&gt; &lt;a href="/wiki/Network_Node_Manager" title="Network Node Manager"&gt;Network Node Manager&lt;/a&gt; (NNM) daemon</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2447</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>ovwdb - OpenView Network Node Manager (NNM) daemon</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2710</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>XBT Bittorrent Tracker</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2710</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>XBT Bittorrent Tracker experimental UDP tracker extension</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+	<string>2809</string>
+	<string>tcp</string>
+	<string>corbaloc:iiop URL, per the &lt;a href="/wiki/CORBA" title="CORBA"&gt;CORBA&lt;/a&gt; 3.0.3 specification.
+	<p>Also used by IBM &lt;a href="/wiki/WebSphere_Application_Server" title="WebSphere Application Server"&gt;WebSphere Application Server&lt;/a&gt; Node Agent</p>
+	</string>
+	<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2809</string>
+		<key>protocols</key>
+		<string>udb</string>
+		<key>references</key>
+		<string>corbaloc:iiop URL, per the &lt;a href="/wiki/CORBA" title="CORBA"&gt;CORBA&lt;/a&gt; 3.0.3 specification.</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>2967</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>Symantec AntiVirus Corporate Edition</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix License server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3001</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix Phone Monitor</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3002</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix CSTA</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3003</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix GreenBox API</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3004</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix InfoLink</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3006</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix SMS Client Connector</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3007</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Miralix OM Server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3050</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>gds_db</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3074</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Xbox_Live" title="Xbox Live"&gt;Xbox Live&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3128</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/HTTP" title="HTTP"&gt;HTTP&lt;/a&gt; used by &lt;a href="/wiki/Web_cache" title="Web cache"&gt;web caches&lt;/a&gt; and the default port for the &lt;a href="/wiki/Squid_cache" title="Squid cache"&gt;Squid cache&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3305</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=ODETTE-FTP&amp;action=edit" class="new" title="ODETTE-FTP"&gt;ODETTE-FTP&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3306</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/MySQL" title="MySQL"&gt;MySQL&lt;/a&gt; Database system</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3333</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Network Caller ID server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3389</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Microsoft Terminal Server (&lt;a href="/wiki/Remote_Desktop_Protocol" title="Remote Desktop Protocol"&gt;RDP&lt;/a&gt;) officially registered as Windows Based Terminal (WBT)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3396</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Novell" title="Novell"&gt;Novell&lt;/a&gt; NDPS Printer Agent</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3689</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/DAAP" title="DAAP"&gt;DAAP&lt;/a&gt; Digital Audio Access Protocol used by &lt;a href="/wiki/Apple_Computer" title="Apple Computer"&gt;Apple�fs&lt;/a&gt; &lt;a href="/wiki/ITunes" title="ITunes"&gt;iTunes&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3690</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Subversion_--percent--28software--percent--29" title="Subversion (software)"&gt;Subversion&lt;/a&gt; version control system</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3724</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/World_of_Warcraft" title="World of Warcraft"&gt;World of Warcraft&lt;/a&gt; Online gaming MMORPG</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3784</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Ventrilo" title="Ventrilo"&gt;Ventrilo&lt;/a&gt; VoIP program used by &lt;a href="/wiki/Ventrilo" title="Ventrilo"&gt;Ventrilo&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>3785</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Ventrilo" title="Ventrilo"&gt;Ventrilo&lt;/a&gt; VoIP program used by &lt;a href="/wiki/Ventrilo" title="Ventrilo"&gt;Ventrilo&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4007</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>PrintBuzzer printer monitoring socket server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4089</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>OpenCORE Remote Control Service</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4089</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>OpenCORE Remote Control Service</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4100</string>
+		<key>protocols</key>
+		<string>WatchGuard Authentication Applet - default port</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4226</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Aleph_One_--percent--28computer_game--percent--29" title="Aleph One (computer game)"&gt;Aleph One (computer game)&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4226</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Aleph_One_--percent--28computer_game--percent--29" title="Aleph One (computer game)"&gt;Aleph One (computer game)&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4569</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/IAX" title="IAX"&gt;IAX&lt;/a&gt; - Inter-Asterisk eXchange</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4662</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/EMule" title="EMule"&gt;eMule&lt;/a&gt; - port often used</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4672</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/EMule" title="EMule"&gt;eMule&lt;/a&gt; - port often used</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4894</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/LysKOM" title="LysKOM"&gt;LysKOM&lt;/a&gt; Protocol A</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>4899</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>RAdmin remote administration tool (program sometimes used as a &lt;a href="/wiki/Trojan_horse_--percent--28computing--percent--29" title="Trojan horse (computing)"&gt;Trojan horse&lt;/a&gt;)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Universal_Plug_and_Play" title="Universal Plug and Play"&gt;Universal Plug and Play&lt;/a&gt; (UPnP) - Windows network device interoperability; CONFLICT with registered use: commplex-main</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5001</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Slingbox" title="Slingbox"&gt;Slingbox&lt;/a&gt; and Slingplayer</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5003</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Filemaker" title="Filemaker"&gt;Filemaker&lt;/a&gt; Filemaker Pro</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5060</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Session_Initiation_Protocol" title="Session Initiation Protocol"&gt;Session Initiation Protocol&lt;/a&gt; (SIP)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5060</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Session_Initiation_Protocol" title="Session Initiation Protocol"&gt;Session Initiation Protocol&lt;/a&gt; (SIP)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5061</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Session_Initiation_Protocol" title="Session Initiation Protocol"&gt;Session Initiation Protocol&lt;/a&gt; (SIP) over &lt;a href="/wiki/Transport_Layer_Security" title="Transport Layer Security"&gt;Transport Layer Security&lt;/a&gt; (TLS)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5121</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Neverwinter_Nights" title="Neverwinter Nights"&gt;Neverwinter Nights&lt;/a&gt; and its mods, such as &lt;i&gt;&lt;a href="/wiki/Dungeon_Eternal_X" title="Dungeon Eternal X"&gt;Dungeon Eternal X&lt;/a&gt;&lt;/i&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5190</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/AOL" title="AOL"&gt;AOL&lt;/a&gt; and &lt;a href="/wiki/AOL_Instant_Messenger" title="AOL Instant Messenger"&gt;AOL Instant Messenger&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5222</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Jabber" title="Jabber"&gt;XMPP/Jabber&lt;/a&gt; - client connection</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5223</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Jabber" title="Jabber"&gt;XMPP/Jabber&lt;/a&gt; - default port for SSL Client Connection</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5269</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Jabber" title="Jabber"&gt;XMPP/Jabber&lt;/a&gt; - server connection</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5432</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/PostgreSQL" title="PostgreSQL"&gt;PostgreSQL&lt;/a&gt; database system</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5500</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Virtual_Network_Computing" title="Virtual Network Computing"&gt;VNC&lt;/a&gt; remote desktop protocol - for incoming listening viewer</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5517</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=Setiqueue&amp;action=edit" class="new" title="Setiqueue"&gt;Setiqueue&lt;/a&gt; Proxy server client for SETI@Home project</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5631</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Symantec" title="Symantec"&gt;Symantec&lt;/a&gt; pcAnywhere</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5800</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Virtual_Network_Computing" title="Virtual Network Computing"&gt;VNC&lt;/a&gt; remote desktop protocol - for use over &lt;a href="/wiki/HTTP" title="HTTP"&gt;HTTP&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5814</string>
+		<key>protocols</key>
+		<string>tcp,udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Hewlett-Packard" title="Hewlett-Packard"&gt;Hewlett-Packard&lt;/a&gt; Support Automation (HP OpenView Self-Healing Services)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>5900</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Apple_Remote_Desktop" title="Apple Remote Desktop"&gt;ARD&lt;/a&gt;/&lt;a href="/wiki/Virtual_Network_Computing" title="Virtual Network Computing"&gt;VNC&lt;/a&gt; remote desktop protocol - regular port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/X_Window_System" title="X Window System"&gt;X11&lt;/a&gt; - used between an X client and server over the network</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6112</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Blizzard_Entertainment" title="Blizzard Entertainment"&gt;Blizzard&lt;/a&gt;'s &lt;a href="/wiki/Battle.net" title="Battle.net"&gt;Battle.net&lt;/a&gt; gaming service - CONFLICT with registered use: "dtspcd" is a network daemon that accepts requests from clients to execute commands and launch applications remotely</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6346</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Gnutella" title="Gnutella"&gt;Gnutella&lt;/a&gt; Filesharing (&lt;a href="/wiki/FrostWire" title="FrostWire"&gt;FrostWire&lt;/a&gt;, &lt;a href="/wiki/Limewire" title="Limewire"&gt;Limewire&lt;/a&gt;, &lt;a href="/wiki/Bearshare" title="Bearshare"&gt;Bearshare&lt;/a&gt;, etc.)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6347</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Gnutella" title="Gnutella"&gt;Gnutella&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6522</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Gobby" title="Gobby"&gt;Gobby&lt;/a&gt; (and other &lt;a href="http://gobby.0x539.de/" class="external text" title="http://gobby.0x539.de/"&gt;libobby&lt;/a&gt;-based software)</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6543</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Jetnet" title="Jetnet"&gt;Jetnet&lt;/a&gt; - default port that the &lt;a href="/w/index.php?title=Paradigm_Research_--percent--26_Development&amp;action=edit" class="new" title="Paradigm Research &amp; Development"&gt;Paradigm Research &amp; Development&lt;/a&gt; &lt;a href="/wiki/Jetnet" title="Jetnet"&gt;Jetnet&lt;/a&gt; protocol communicates on</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6346</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Gnutella" title="Gnutella"&gt;Gnutella&lt;/a&gt; Filesharing (&lt;a href="/wiki/FrostWire" title="FrostWire"&gt;FrostWire&lt;/a&gt;, &lt;a href="/wiki/Limewire" title="Limewire"&gt;Limewire&lt;/a&gt;, &lt;a href="/wiki/Bearshare" title="Bearshare"&gt;Bearshare&lt;/a&gt;, etc.)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6619</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>ODETTE-FTP over TLS/SSL</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6667</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Relay_Chat" title="Internet Relay Chat"&gt;IRC&lt;/a&gt; (Internet Relay Chat) - port often used</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6668</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Relay_Chat" title="Internet Relay Chat"&gt;IRC&lt;/a&gt; (Internet Relay Chat) - port often used</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6669</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Internet_Relay_Chat" title="Internet Relay Chat"&gt;IRC&lt;/a&gt; (Internet Relay Chat) - port often used</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6881-6999/tcp, udp</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/BitTorrent" title="BitTorrent"&gt;BitTorrent&lt;/a&gt; - full range of ports used most often</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6891-6900/tcp, udp</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/MSN_Messenger" title="MSN Messenger"&gt;MSN Messenger&lt;/a&gt; (File transfer)</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6901</string>
+		<key>protocols</key>
+		<string>tcp, udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/MSN_Messenger" title="MSN Messenger"&gt;MSN Messenger&lt;/a&gt; (Voice)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>6969</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/BitTorrent" title="BitTorrent"&gt;BitTorrent&lt;/a&gt; tracker port - CONFLICT with registered use: &lt;a href="/w/index.php?title=Acmsoda&amp;action=edit" class="new" title="Acmsoda"&gt;acmsoda&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>7000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Default Port for &lt;a href="/wiki/Azureus" title="Azureus"&gt;Azureus&lt;/a&gt;'s built in &lt;a href="/wiki/HTTPS" title="HTTPS"&gt;HTTPS&lt;/a&gt; &lt;a href="/wiki/Bittorrent_Tracker" title="Bittorrent Tracker"&gt;Bittorrent Tracker&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>7312</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Sibelius_notation_program" title="Sibelius notation program"&gt;Sibelius&lt;/a&gt; License Server port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=IRDMI&amp;action=edit" class="new" title="IRDMI"&gt;iRDMI&lt;/a&gt; - often mistakenly used instead of port 8080 (The Internet Assigned Numbers Authority (iana.org) officially lists this port for iRDMI protocol)</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8000</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Common port used for internet radio streams such as those using &lt;a href="/wiki/SHOUTcast" title="SHOUTcast"&gt;SHOUTcast&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8010</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Jabber" title="Jabber"&gt;XMPP/Jabber&lt;/a&gt; File transfers</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8080</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/HTTP" title="HTTP"&gt;HTTP&lt;/a&gt; Alternate (&lt;a href="/w/index.php?title=Http-alt&amp;action=edit" class="new" title="Http-alt"&gt;http-alt&lt;/a&gt;) - used when running a second web server on the same machine (the other is in port 80), for &lt;a href="/wiki/Web_proxy" title="Web proxy"&gt;web proxy&lt;/a&gt; and &lt;a href="/wiki/Caching" title="Caching"&gt;caching&lt;/a&gt; server, or for running a web server as a non-&lt;a href="/wiki/Root_--percent--28computing--percent--29" title="Root (computing)"&gt;root&lt;/a&gt; user. Default port for &lt;a href="/wiki/Jakarta_Tomcat" title="Jakarta Tomcat"&gt;Jakarta Tomcat&lt;/a&gt;.</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8086</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=HELM&amp;action=edit" class="new" title="HELM"&gt;HELM&lt;/a&gt; Web Host Automation Windows Control Panel</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8087</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=Hosting_Accelerator&amp;action=edit" class="new" title="Hosting Accelerator"&gt;Hosting Accelerator&lt;/a&gt; Control Panel</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8118</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Privoxy" title="Privoxy"&gt;Privoxy&lt;/a&gt; web proxy - advertisements-filtering web proxy</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8087</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=SW_Soft_Plesk&amp;action=edit" class="new" title="SW Soft Plesk"&gt;SW Soft Plesk&lt;/a&gt; Control Panel</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8222</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/VMware" title="VMware"&gt;VMware&lt;/a&gt; Server Management User Interface (insecure web interface)&lt;sup id="_ref-2" class="reference"&gt;&lt;a href="#_note-2" title=""&gt;[3]&lt;/a&gt;&lt;/sup&gt;. See also, port 8333</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8291</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>Winbox - Default port on a MikroTik RouterOS for a Windows application used to adminster MikroTik RouterOS</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8333</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/VMware" title="VMware"&gt;VMware&lt;/a&gt; Server Management User Interface (secure web interface)&lt;sup id="_ref-3" class="reference"&gt;&lt;a href="#_note-3" title=""&gt;[4]&lt;/a&gt;&lt;/sup&gt;. See also, port 8222</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8400</string>
+		<key>protocols</key>
+		<string>&lt;a href="/w/index.php?title=Commvault&amp;action=edit" class="new" title="Commvault"&gt;Commvault&lt;/a&gt; Unified Data Management &lt;sup id="_ref-4" class="reference"&gt;&lt;a href="#_note-4" title=""&gt;[5]&lt;/a&gt;&lt;/sup&gt;.</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8443</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=SW_Soft_Plesk&amp;action=edit" class="new" title="SW Soft Plesk"&gt;SW Soft Plesk&lt;/a&gt; Control Panel</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8767</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/TeamSpeak" title="TeamSpeak"&gt;TeamSpeak&lt;/a&gt; - Default UDP Port</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8888</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=Sun_Answerbook&amp;action=edit" class="new" title="Sun Answerbook"&gt;Sun Answerbook&lt;/a&gt; &lt;a href="/wiki/Web_server" title="Web server"&gt;dwhttpd&lt;/a&gt; server (deprecated by &lt;a href="http://docs.sun.com/app/docs" class="external text" title="http://docs.sun.com/app/docs"&gt;docs.sun.com&lt;/a&gt;)</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8888</string>
+		<key>protocols</key>
+		<string>&lt;a href="/w/index.php?title=NewsEDGE&amp;action=edit" class="new" title="NewsEDGE"&gt;NewsEDGE&lt;/a&gt; server (TCP 1, UDP 1)</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>8888</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/GNUmp3d" title="GNUmp3d"&gt;GNUmp3d&lt;/a&gt; HTTP music streaming and web interface port</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>9001</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Tor_--percent--28anonymity_network--percent--29" title="Tor (anonymity network)"&gt;Tor&lt;/a&gt; network default port. CONFLICT with: cisco-xremote router configuration</string>
+		<key>references</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>9535</string>
+		<key>protocols</key>
+		<string>TCP</string>
+		<key>references</key>
+		<string>man, Remote Man Server</string>
+		<key>status</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>9535</string>
+		<key>protocols</key>
+		<string>mngsuite - Management Suite Remote Control</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>9800</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/WebCT" title="WebCT"&gt;WebCT&lt;/a&gt; e-learning portal. CONFLICT with registered use: &lt;a href="/wiki/WebDAV" title="WebDAV"&gt;WebDav&lt;/a&gt; Source Port</string>
+		<key>references</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>9999</string>
+		<key>protocols</key>
+		<string>&lt;a href="/w/index.php?title=Hydranode&amp;action=edit" class="new" title="Hydranode"&gt;Hydranode&lt;/a&gt; - edonkey2000 control telnet port</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>10000</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Webmin" title="Webmin"&gt;Webmin&lt;/a&gt; - web based linux admin tool</string>
+		<key>references</key>
+		<string>Unofficial, Conflict</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>10008</string>
+		<key>protocols</key>
+		<string>Octopus Multiplexer - CROMP protocol primary port, hoople.org</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>11576</string>
+		<key>protocols</key>
+		<string>&lt;a href="/w/index.php?title=IPStor&amp;action=edit" class="new" title="IPStor"&gt;IPStor&lt;/a&gt; Server management communication</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>11371</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/OpenPGP" title="OpenPGP"&gt;OpenPGP&lt;/a&gt; HTTP Keyserver</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>12345</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/NetBus" title="NetBus"&gt;NetBus&lt;/a&gt; - remote administration tool (often &lt;a href="/wiki/Trojan_horse_--percent--28computing--percent--29" title="Trojan horse (computing)"&gt;Trojan horse&lt;/a&gt;). Also used by &lt;a href="/w/index.php?title=NetBuster&amp;action=edit" class="new" title="NetBuster"&gt;NetBuster&lt;/a&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>14567</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Battlefield_1942" title="Battlefield 1942"&gt;Battlefield 1942&lt;/a&gt; and mods</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>15345</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/XPilot" title="XPilot"&gt;XPilot&lt;/a&gt;</string>
+		<key>status</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>16567</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Battlefield_2" title="Battlefield 2"&gt;Battlefield 2&lt;/a&gt; and mods</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>20000</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Usermin" title="Usermin"&gt;Usermin&lt;/a&gt; - web based user tool</string>
+		<key>references</key>
+		<string>Official</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>20720</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/w/index.php?title=Symantec_i3&amp;action=edit" class="new" title="Symantec i3"&gt;Symantec i3&lt;/a&gt; Web GUI server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>24800</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Synergy_--percent--28software--percent--29" title="Synergy (software)"&gt;Synergy&lt;/a&gt;: keyboard/mouse sharing software</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>24842</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/StepMania" title="StepMania"&gt;StepMania&lt;/a&gt;: Online: &lt;i&gt;&lt;a href="/wiki/Dance_Dance_Revolution" title="Dance Dance Revolution"&gt;Dance Dance Revolution&lt;/a&gt;&lt;/i&gt; Simulator</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>26000</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Id_Software" title="Id Software"&gt;id Software&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/Quake" title="Quake"&gt;Quake&lt;/a&gt;&lt;/i&gt; server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27010</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Half-Life" title="Half-Life"&gt;Half-Life&lt;/a&gt; and its mods, such as &lt;i&gt;&lt;a href="/wiki/Counter-Strike" title="Counter-Strike"&gt;Counter-Strike&lt;/a&gt;&lt;/i&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27015</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Half-Life" title="Half-Life"&gt;Half-Life&lt;/a&gt; and its mods, such as &lt;i&gt;&lt;a href="/wiki/Counter-Strike" title="Counter-Strike"&gt;Counter-Strike&lt;/a&gt;&lt;/i&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27374</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Sub7" title="Sub7"&gt;Sub7&lt;/a&gt;'s default port. Most &lt;a href="/wiki/Script_kiddie" title="Script kiddie"&gt;script kiddies&lt;/a&gt; do not change the default port.</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27000</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>(through 27006) &lt;a href="/wiki/Id_Software" title="Id Software"&gt;id Software&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/QuakeWorld" title="QuakeWorld"&gt;QuakeWorld&lt;/a&gt;&lt;/i&gt; master server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27500</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>(through 27900) &lt;a href="/wiki/Id_Software" title="Id Software"&gt;id Software&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/QuakeWorld" title="QuakeWorld"&gt;QuakeWorld&lt;/a&gt;&lt;/i&gt;</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27888</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Kaillera" title="Kaillera"&gt;Kaillera&lt;/a&gt; server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27900</string>
+		<key>protocols</key>
+		<string>(through 27901) &lt;a href="/wiki/Nintendo" title="Nintendo"&gt;Nintendo&lt;/a&gt; &lt;a href="/wiki/Nintendo_Wi-Fi_Connection" title="Nintendo Wi-Fi Connection"&gt;Wi-Fi Connection&lt;/a&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27901</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>(through 27910) &lt;a href="/wiki/Id_Software" title="Id Software"&gt;id Software&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/Quake_2" title="Quake 2"&gt;Quake 2&lt;/a&gt;&lt;/i&gt; master server</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>27960</string>
+		<key>protocols</key>
+		<string>udp</string>
+		<key>references</key>
+		<string>(through 27969) &lt;a href="/wiki/Activision" title="Activision"&gt;Activision&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/Enemy_Territory" title="Enemy Territory"&gt;Enemy Territory&lt;/a&gt;&lt;/i&gt; and &lt;a href="/wiki/Id_Software" title="Id Software"&gt;id Software&lt;/a&gt;'s &lt;i&gt;&lt;a href="/wiki/Quake_III_Arena" title="Quake III Arena"&gt;Quake III Arena&lt;/a&gt;&lt;/i&gt; and &lt;i&gt;Quake III&lt;/i&gt; derived games</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>28910</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Nintendo" title="Nintendo"&gt;Nintendo&lt;/a&gt; &lt;a href="/wiki/Nintendo_Wi-Fi_Connection" title="Nintendo Wi-Fi Connection"&gt;Wi-Fi Connection&lt;/a&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>28960</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Call_of_Duty_2" title="Call of Duty 2"&gt;Call of Duty 2&lt;/a&gt; Common Call of Duty 2 port - (PC Version)</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>29900</string>
+		<key>protocols</key>
+		<string>(through 29901) &lt;a href="/wiki/Nintendo" title="Nintendo"&gt;Nintendo&lt;/a&gt; &lt;a href="/wiki/Nintendo_Wi-Fi_Connection" title="Nintendo Wi-Fi Connection"&gt;Wi-Fi Connection&lt;/a&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>29920</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/Nintendo" title="Nintendo"&gt;Nintendo&lt;/a&gt; &lt;a href="/wiki/Nintendo_Wi-Fi_Connection" title="Nintendo Wi-Fi Connection"&gt;Wi-Fi Connection&lt;/a&gt;</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>31337</string>
+		<key>protocols</key>
+		<string>tcp</string>
+		<key>references</key>
+		<string>&lt;a href="/wiki/Back_Orifice" title="Back Orifice"&gt;Back Orifice&lt;/a&gt; - remote administration tool (often &lt;a href="/wiki/Trojan_horse_--percent--28computing--percent--29" title="Trojan horse (computing)"&gt;Trojan horse&lt;/a&gt;) ("31337" is the "&lt;a href="/wiki/Leet_speak" title="Leet speak"&gt;Leet speak&lt;/a&gt;" version of "Elite")</string>
+		<key>status</key>
+		<string>Unofficial</string>
+	</dict>
+	<dict>
+		<key>port</key>
+		<string>31456-31458/tcp</string>
+		<key>protocols</key>
+		<string>&lt;a href="/wiki/TetriNET" title="TetriNET"&gt;TetriNET&lt;/a&gt; ports (in order: irc, game, and spectating)</string>
+		<key>references</key>
+		<string>Unofficial</string>
+	</dict>
+</array>
+</plist>

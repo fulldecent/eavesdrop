@@ -53,6 +53,8 @@
 		3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		3F49FEB80A1C1614004C6514 /* CaptureServer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F49FEB60A1C1613004C6514 /* CaptureServer.h */; };
 		3F49FEB90A1C1614004C6514 /* CaptureServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F49FEB70A1C1613004C6514 /* CaptureServer.m */; };
+		3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */; };
+		3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FB2E0690A20B87F00ED017B /* DOHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FB2E0670A20B87E00ED017B /* DOHelpers.h */; };
@@ -299,6 +301,8 @@
 		3F49FEB60A1C1613004C6514 /* CaptureServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureServer.h; sourceTree = "<group>"; };
 		3F49FEB70A1C1613004C6514 /* CaptureServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureServer.m; sourceTree = "<group>"; };
 		3F49FEBE0A1C1684004C6514 /* CaptureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureHandlers.h; sourceTree = "<group>"; };
+		3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = TCPServerPortAggregateDefaults.nib; path = TCP/TCPServerPortAggregateDefaults.nib; sourceTree = "<group>"; };
+		3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TCP_UDP_Ports.plist; path = TCP/TCP_UDP_Ports.plist; sourceTree = "<group>"; };
 		3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOHelpers.h; sourceTree = "<group>"; };
 		3FB2E0680A20B87F00ED017B /* DOHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOHelpers.m; sourceTree = "<group>"; };
 		3FB2E1890A25668A00ED017B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -589,26 +593,9 @@
 		3F26973E0A465787001EBA5A /* TCP */ = {
 			isa = PBXGroup;
 			children = (
-				3FEC8D240A65EA64005108E6 /* TCPFlags.plist */,
-				3FB359370A7270080086E5F3 /* TCPAggregate.nib */,
-				3FB356920A6BEC0E0086E5F3 /* TCPAggregateDefaults.nib */,
-				3FEC8BDD0A64A5AA005108E6 /* TCPPacketDefaults.nib */,
-				3F3E258E0A3A95AB001C4087 /* TCPPacket.h */,
-				3F3E258F0A3A95AB001C4087 /* TCPPacket.m */,
-				3F2696640A45D9D4001EBA5A /* TCPAggregate.h */,
-				3F2696650A45D9D4001EBA5A /* TCPAggregate.m */,
-				3F2697460A4657D1001EBA5A /* Aggregators.plist */,
-				3F2697470A4657D1001EBA5A /* Dissectors.plist */,
-				3F15EC040AE1288B0018EC63 /* TCPLowPortAggregate.h */,
-				3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */,
-				3F15EF180AE324420018EC63 /* TCPServerPortAggregate.h */,
-				3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */,
-				3FB356990A6BED130086E5F3 /* TCPAggregateDefaults.h */,
-				3FB3569A0A6BED130086E5F3 /* TCPAggregateDefaults.m */,
-				3F15EF300AE329080018EC63 /* TCPServerPortAggregateDefaults.h */,
-				3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */,
-				3FEC8BFD0A64ADC9005108E6 /* TCPPacketDefaults.h */,
-				3FEC8BFE0A64ADC9005108E6 /* TCPPacketDefaults.m */,
+				3F6974380AE9FE19007910F7 /* Aggregators */,
+				3F6974370AE9FDFA007910F7 /* Decoders */,
+				3F6974360AE9FDBB007910F7 /* plists */,
 			);
 			name = TCP;
 			sourceTree = "<group>";
@@ -652,6 +639,49 @@
 				3FECCA630A37D500007C90E6 /* IP_Protocols.plist */,
 			);
 			name = plists;
+			sourceTree = "<group>";
+		};
+		3F6974360AE9FDBB007910F7 /* plists */ = {
+			isa = PBXGroup;
+			children = (
+				3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */,
+				3FEC8D240A65EA64005108E6 /* TCPFlags.plist */,
+				3F2697460A4657D1001EBA5A /* Aggregators.plist */,
+				3F2697470A4657D1001EBA5A /* Dissectors.plist */,
+			);
+			name = plists;
+			sourceTree = "<group>";
+		};
+		3F6974370AE9FDFA007910F7 /* Decoders */ = {
+			isa = PBXGroup;
+			children = (
+				3FEC8BDD0A64A5AA005108E6 /* TCPPacketDefaults.nib */,
+				3F3E258E0A3A95AB001C4087 /* TCPPacket.h */,
+				3F3E258F0A3A95AB001C4087 /* TCPPacket.m */,
+				3FEC8BFD0A64ADC9005108E6 /* TCPPacketDefaults.h */,
+				3FEC8BFE0A64ADC9005108E6 /* TCPPacketDefaults.m */,
+			);
+			name = Decoders;
+			sourceTree = "<group>";
+		};
+		3F6974380AE9FE19007910F7 /* Aggregators */ = {
+			isa = PBXGroup;
+			children = (
+				3FB359370A7270080086E5F3 /* TCPAggregate.nib */,
+				3FB356920A6BEC0E0086E5F3 /* TCPAggregateDefaults.nib */,
+				3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */,
+				3F2696640A45D9D4001EBA5A /* TCPAggregate.h */,
+				3F2696650A45D9D4001EBA5A /* TCPAggregate.m */,
+				3F15EC040AE1288B0018EC63 /* TCPLowPortAggregate.h */,
+				3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */,
+				3F15EF180AE324420018EC63 /* TCPServerPortAggregate.h */,
+				3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */,
+				3FB356990A6BED130086E5F3 /* TCPAggregateDefaults.h */,
+				3FB3569A0A6BED130086E5F3 /* TCPAggregateDefaults.m */,
+				3F15EF300AE329080018EC63 /* TCPServerPortAggregateDefaults.h */,
+				3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */,
+			);
+			name = Aggregators;
 			sourceTree = "<group>";
 		};
 		3FB2E0730A20B8FD00ED017B /* Protocols, Categories, etc. */ = {
@@ -981,9 +1011,11 @@
 				3F26A6050A52D4B4001EBA5A /* Aggregators.plist in Resources */,
 				3F26A6060A52D4B4001EBA5A /* Dissectors.plist in Resources */,
 				3FEC8D250A65EA64005108E6 /* TCPFlags.plist in Resources */,
+				3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */,
 				3FB356930A6BEC0E0086E5F3 /* TCPAggregateDefaults.nib in Resources */,
 				3FB359380A7270080086E5F3 /* TCPAggregate.nib in Resources */,
 				3F15EC080AE128CF0018EC63 /* TCPLowPortAggregate.m in Resources */,
+				3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
