@@ -57,14 +57,12 @@
 	NSEnumerator *en = [[self flagsArray] objectEnumerator];
 	NSMutableDictionary *tempDict;
 	while ( tempDict=[en nextObject] ) {
-		NSColor *tempColor = [NSUnarchiver unarchiveObjectWithData:
-			[defaultsColors objectForKey:
-				[tempDict objectForKey:@"shortName"]
-			]
-		];
-		if (tempColor) {
+		id colorData = [defaultsColors objectForKey:[tempDict objectForKey:@"shortName"]];
+		NSColor *tempColor = nil;
+		if (colorData)
+			tempColor = [NSUnarchiver unarchiveObjectWithData:colorData];
+		if (tempColor)
 			[tempDict setObject:tempColor forKey:@"color"];
-		}
 	}
 	INFO( [flagsArray description] );
 }
