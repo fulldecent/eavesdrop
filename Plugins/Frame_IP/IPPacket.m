@@ -89,14 +89,14 @@ static NSArray *protocolsArray;
 	return payloadData;
 }
 
-- (NSNumber *)ipHeaderLength
+- (int)ipHeaderLength
 {
-	return [NSNumber numberWithInt:sizeof( struct ether_header ) ];
+	return sizeof( struct ether_header );
 }
 
-- (NSNumber *)ipPayloadLength
+- (int)ipPayloadLength
 {
-	return [NSNumber numberWithInt:[payloadData length] ];
+	return [payloadData length];
 }
 
 #pragma mark -

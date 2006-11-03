@@ -55,6 +55,38 @@
 				<key>width</key>
 				<integer>40</integer>
 			</dict>
+			<dict>
+				<key>name</key>
+				<string>TCP Header Data</string>
+				<key>columnKey</key>
+				<string>tcpHeaderData</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TCP Payload Data</string>
+				<key>columnKey</key>
+				<string>tcpPayloadData</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TCP Header Length</string>
+				<key>columnKey</key>
+				<string>tcpHeaderLength</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TCP Payload Length</string>
+				<key>columnKey</key>
+				<string>tcpPayloadLength</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
 		</array>
 	</dict>
 </array>

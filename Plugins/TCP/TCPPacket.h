@@ -16,12 +16,17 @@
 
 }
 
-
 - (NSNumber *)tcpAcknowledgement;
 - (NSString *)tcpFlags;
 - (NSNumber *)tcpDestinationPort;
 - (NSNumber *)tcpSequence;
 - (NSNumber *)tcpSourcePort;
 - (NSNumber *)tcpWindow;
+
+- (int)tcpHeaderLength;
+- (int)tcpPayloadLength; 
+- (NSData *)tcpHeaderData;
+- (NSData *)tcpPayloadData;
+
 
 @end

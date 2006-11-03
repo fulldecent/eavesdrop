@@ -41,11 +41,16 @@ static int packetCount;
 #pragma mark -
 #pragma mark Packet methods
 
-- (NSData *)packetData 
+- (NSData *)packetHeaderData
+{
+	return headerData;
+}
+
+- (NSData *)packetPayloadData
 {
 	return payloadData;
 }
-
+/*
 - (NSData *)payloadData
 {
 	return payloadData;
@@ -60,7 +65,7 @@ static int packetCount;
 {
 	return [payloadData bytes];
 }
-
+*/
 - (NSNumber *)number
 {
 	return [NSNumber numberWithInt:packetNumber];

@@ -20,24 +20,10 @@
 
 }
 
-/*
-+ (BOOL)canDecodePayloadData:(NSData *)payload withHeaderData:(NSData *)header fromPacketData:(NSData *)packet
-{
-	const struct ip *ip;
-	ip = (struct ip*)(
-		[packet bytes] + sizeof(struct ether_header)
-	);
-	if ( 6==ip->ip_p )
-		return YES;
-	else
-		return NO;
-}
-*/
-
 - (id)initFromParent:(id)parentPacket
 {
 	self = [super initFromParent:parentPacket];
-	if (self) {		///what am I doing here?
+	if (self) {
 		NSData *tempData = [parentPacket payloadData];
 		int header_size = sizeof( struct tcphdr );
 		int data_size = [tempData length] - header_size;
@@ -92,24 +78,23 @@
 	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
     return [NSNumber numberWithInt:tcp->th_win];
 }
-#pragma mark -
-#pragma mark Protocol methods
 
-- (NSNumber *)payloadLength 
-{ //STUB
-	return nil;
+- (int)tcpHeaderLength
+{
+	return [headerData length];
 }
 
-- (NSString *)payloadString 
-{ //STUB
-    return nil;
+- (int)tcpPayloadLength 
+{
+	return [payloadData length];;
 }
 
+- (NSData *)tcpHeaderData
+{
+	return headerData;
+}
 
-#pragma mark -
-#pragma mark Protocol instance methods
-
-- (NSData *)payloadData
+- (NSData *)tcpPayloadData
 {
 	return payloadData;
 /*
@@ -141,6 +126,9 @@
 	return tmpValue;
 */
 }
+
+#pragma mark -
+#pragma mark Protocol instance methods
 
 //sourceString supplied by IPPacket
 //destinationString supplied by IPPacket
