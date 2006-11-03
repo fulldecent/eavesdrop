@@ -45,6 +45,38 @@
 				<key>width</key>
 				<integer>40</integer>
 			</dict>
+			<dict>
+				<key>name</key>
+				<string>Ethernet Header Data</string>
+				<key>columnKey</key>
+				<string>ethernetHeaderData</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Ethernet Payload Data</string>
+				<key>columnKey</key>
+				<string>ethernetPayloadData</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Ethernet Header Length</string>
+				<key>columnKey</key>
+				<string>ethernetHeaderLength</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Ethernet Payload Length</string>
+				<key>columnKey</key>
+				<string>ethernetPayloadLength</string>
+				<key>width</key>
+				<integer>40</integer>
+			</dict>
 		</array>
 	</dict>
 	<dict>

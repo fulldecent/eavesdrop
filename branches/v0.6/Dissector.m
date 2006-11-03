@@ -74,11 +74,12 @@ static int dissectorCount;
 - (id)initWithHeaderData:(NSData *)header packetData:(NSData *)packet
 {
 	self = [super init];
+	// this is almost exactly what Packet does... where does it make more sense?
 	if (self) {
 		dissectorNumber = ++dissectorCount;
 		headerData = [header retain];
 		payloadData = [packet retain];	//may want to hide this with an accessor
-		packetData = [packet retain];
+		//packetData = [packet retain];
 		
 		parent = nil;
 		child = nil;
@@ -93,7 +94,7 @@ static int dissectorCount;
 		dissectorNumber = ++dissectorCount;
 		headerData = nil;
 		payloadData = nil;
-		packetData = nil;
+		//packetData = nil;
 		child = nil;
 		parent = [parentPacket retain];
 		//[parentPacket setChild:self];
@@ -116,7 +117,7 @@ static int dissectorCount;
 {
 	return [headerData bytes];
 }
-
+/*
 - (NSData *)packetData 
 {
 	if (packetData)
@@ -131,21 +132,21 @@ static int dissectorCount;
 {
 	return [[self packetData] bytes];
 }
-
+*/
 - (NSData *)payloadData
 {
-	if (packetData) {
+	if (payloadData) {
 		return payloadData;
 	} else if (parent) {
 		return [parent payloadData];
-	} else {
-		return packetData;	//pretend payload is the entire packet
+	} else {										//pretend payload is the entire packet
+		return [self valueForKey:@"packetData"];	//this may not be a useful assumption
 	}
 }
 
 - (const void *)payloadBytes
 {
-	return [packetData bytes];
+	return [payloadData bytes];
 }
 
 - (void)setChild:(NSObject<Dissector> *)childPacket
@@ -157,77 +158,6 @@ static int dissectorCount;
 - (NSString *)preferedDissectorProtocol
 {
 	return nil;
-}
-
-#pragma mark -
-#pragma mark Protocol Instance methods
-
-- (NSNumber *)number
-{
-	NSNumber *tempValue = [self valueForUndefinedKey:@"number"];
-	if (tempValue)
-		return tempValue;
-	else
-		return [NSNumber numberWithInt:dissectorNumber];
-}
-
-- (NSString *)sourceString
-{
-	NSString *tempValue = [self valueForUndefinedKey:@"sourceString"];
-	if (tempValue)
-		return tempValue;
-	else
-		return @"sourceString";
-}
-
-- (NSString *)destinationString
-{
-	NSString *tempValue = [self valueForUndefinedKey:@"destinationString"];
-	if (tempValue)
-		return tempValue;
-	else
-		return @"destinationString";
-}
-
-- (NSString *)typeString
-{
-	NSString *tempValue = [self valueForUndefinedKey:@"destinationString"];
-	if (tempValue)
-		return tempValue;
-	else
-		return @"typeString";
-}
-
-- (NSString *)infoString
-{
-	NSString *tempValue = [self valueForUndefinedKey:@"infoString"];
-	if (tempValue)
-		return tempValue;
-	else
-		return @"infoString";
-}
-
-- (NSString *)flagsString
-{
-	NSString *tempValue = [self valueForUndefinedKey:@"flagsString"];
-	if (tempValue)
-		return tempValue;
-	else
-		return @"flagsString";
-}
-
-- (NSString *)descriptionString
-{
-	NSString *tempValue = [self valueForUndefinedKey:@"descriptionString"];
-	if (tempValue)
-		return tempValue;
-	else
-		return @"descriptionString";
-}
-
-- (NSString *)protocolString
-{
-	return @"";
 }
 
 #pragma mark -

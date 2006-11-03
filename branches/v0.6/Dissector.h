@@ -23,11 +23,11 @@
 
 - (NSData *)headerData;																/* REQUIRED */
 - (NSData *)payloadData;															/* REQUIRED */
-- (NSData *)packetData;																/* FREEBIE	*/
+//- (NSData *)packetData;																/* FREEBIE	*/
 
 - (const void *)headerBytes;														/* FREEBIE	*/
 - (const void *)payloadBytes;														/* FREEBIE	*/
-- (const void *)packetBytes;														/* FREEBIE	*/
+//- (const void *)packetBytes;														/* FREEBIE	*/
 
 - (NSArray *)detailColumnsArray;
 
@@ -39,7 +39,7 @@
 
 	NSData *headerData;
 	NSData *payloadData;
-	NSData *packetData;
+	//NSData *packetData;
 	
 	NSObject<Dissector> *parent;
 	NSObject<Dissector> *child;

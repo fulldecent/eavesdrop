@@ -22,4 +22,9 @@
 - (NSString *)ipProtocolString;
 - (NSString *)ipSource;
 
+- (NSData *)ipHeaderData;
+- (NSData *)ipPayloadData;
+
+- (NSNumber *)ipHeaderLength;
+- (NSNumber *)ipPayloadLength;
 @end

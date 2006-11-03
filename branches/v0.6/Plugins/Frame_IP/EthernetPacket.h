@@ -17,12 +17,16 @@
 
 }
 
-//+ (void)initializeClass;
-
 - (NSString *)ethernetDestination;
 - (NSString *)ethernetSource;
 
 - (NSNumber *)ethernetProtocol;
 - (NSString *)ethernetProtocolString;
+
+- (NSData *)ethernetHeaderData;
+- (NSData *)ethernetPayloadData;
+
+- (NSNumber *)ethernetHeaderLength;
+- (NSNumber *)ethernetPayloadLength;
 
 @end
