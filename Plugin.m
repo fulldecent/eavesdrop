@@ -218,7 +218,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return @"sourceString";
+		return nil;
 }
 
 - (NSString *)destinationString
@@ -227,7 +227,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return @"destinationString";
+		return nil;
 }
 
 - (NSString *)typeString
@@ -236,7 +236,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return @"typeString";
+		return nil;
 }
 
 - (NSString *)infoString
@@ -245,7 +245,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return @"infoString";
+		return nil;
 }
 
 - (NSString *)flagsString
@@ -254,7 +254,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return @"flagsString";
+		return nil;
 }
 
 - (NSString *)descriptionString
@@ -263,7 +263,7 @@ static NSMutableDictionary *registeredDefaults;
 	if (tempValue)
 		return tempValue;
 	else
-		return @"descriptionString";
+		return nil;
 }
 
 - (NSString *)protocolString

@@ -8,7 +8,6 @@
 
 #import "Packet.h"
 
-
 @implementation Packet
 
 static int packetCount;
@@ -27,24 +26,40 @@ static int packetCount;
 	return YES;
 }
 
-/*
-+ (BOOL)canDecodePayloadData:(NSData *)payload withHeaderData:(NSData *)header fromPacketData:(NSData *)packet;
-{
-	return YES;
-}
-*/
-
+//this is only called for Packet, not for child dissectors
 - (id)initWithHeaderData:(NSData *)header packetData:(NSData *)packet
 {
 	self = [super initWithHeaderData:header packetData:packet];
 	if (self) {
 		packetNumber = ++packetCount;
+		headerData = [header retain];
+		payloadData = [packet retain];
 	}
 	return self;
 }
 
 #pragma mark -
 #pragma mark Packet methods
+
+- (NSData *)packetData 
+{
+	return payloadData;
+}
+
+- (NSData *)payloadData
+{
+	return payloadData;
+}
+
+- (const void *)packetBytes
+{
+	return [payloadData bytes];
+}
+
+- (const void *)payloadBytes
+{
+	return [payloadData bytes];
+}
 
 - (NSNumber *)number
 {
@@ -54,21 +69,21 @@ static int packetCount;
 - (NSNumber *)captureLength
 {
 	struct pcap_pkthdr *header;
-	header = (struct pcap_pkthdr*)[self headerBytes];
+	header = (struct pcap_pkthdr*)[headerData bytes];
     return [NSNumber numberWithInt:(int)(header->caplen) ];
 }
 
 - (NSNumber *)length 
 {
 	struct pcap_pkthdr *header;
-	header = (struct pcap_pkthdr*)[self headerBytes];
+	header = (struct pcap_pkthdr*)[headerData bytes];
     return [NSNumber numberWithInt:(int)(header->len) ];
 }
 
 - (NSDate *)timestamp 
 {
 	struct pcap_pkthdr *header;
-	header = (struct pcap_pkthdr*)[self headerBytes];
+	header = (struct pcap_pkthdr*)[headerData bytes];
 	double tempDouble = header->ts.tv_sec + header->ts.tv_usec*1.0e-6;
     return [NSDate dateWithTimeIntervalSince1970:tempDouble];
 }

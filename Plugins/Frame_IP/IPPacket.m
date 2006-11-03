@@ -18,31 +18,41 @@ static NSArray *protocolsArray;
 
 + (BOOL)canDecodePacket:(NSObject<Dissector> *)testPacket
 {
-	const struct ether_header *ether_header = (struct ether_header*)( [testPacket packetBytes] );
+	const struct ether_header *ether_header = (struct ether_header*)( [testPacket headerBytes] );
 	if ( testPacket && ETHERTYPE_IP==ether_header->ether_type ) {
 		return YES;
 	}
 	return NO;
 }
 
-/*
-+ (BOOL)canDecodePayloadData:(NSData *)payload withHeaderData:(NSData *)header fromPacketData:(NSData *)packet
-{
-	//ENTRY( @"+canDecodePayloadData:withHeaderData:fromPacketData:" );
-	const struct ether_header *ether_header = (struct ether_header*)( [packet bytes] );
-	if ( packet && ETHERTYPE_IP==ether_header->ether_type ) {
-		return YES;
-	}
-	return NO;
-}
-*/
-
 + (void)initialize
 {
-	ENTRY( @"initialize" );	
+	ENTRY( @"initialize" );
 	protocolsArray = [[NSArray arrayWithContentsOfFile:
 		[[NSBundle bundleForClass:[self class]] pathForResource:@"IP_Protocols" ofType:@"plist"]
 	] retain];
+}
+
+#pragma mark -
+#pragma mark Setup method
+
+- (id)initFromParent:(id)parentPacket
+{
+	self = [super initFromParent:parentPacket];
+	if (self) {		///what am I doing here?
+		NSData *tempData = [parentPacket payloadData];
+		int header_size = sizeof( struct ip );
+		int data_size = [tempData length] - header_size;
+
+		char bufferHeader[ header_size ];
+		[tempData getBytes:&bufferHeader range:NSMakeRange( 0, header_size )];
+		headerData = [[NSData dataWithBytes:bufferHeader length:header_size ] retain];
+
+		char bufferPayload[ data_size ];
+		[tempData getBytes:&bufferPayload range:NSMakeRange( header_size, data_size )];
+		payloadData = [[NSData dataWithBytes:bufferPayload length:data_size ] retain];
+	}
+	return self;
 }
 
 #pragma mark -
@@ -55,10 +65,7 @@ static NSArray *protocolsArray;
 
 - (NSNumber *)ipProtocol 
 {
-	const struct ip *ip;
-	ip = (struct ip*)(
-		[self packetBytes] + sizeof(struct ether_header)
-	);
+	const struct ip *ip = (struct ip*)( [headerData bytes] );
 	return [NSNumber numberWithInt:ip->ip_p];
 }
 
@@ -72,13 +79,35 @@ static NSArray *protocolsArray;
 	return [self sourceString];
 }
 
+- (NSData *)ipHeaderData
+{
+	return headerData;
+}
+
+- (NSData *)ipPayloadData
+{
+	return payloadData;
+}
+
+- (NSNumber *)ipHeaderLength
+{
+	return [NSNumber numberWithInt:sizeof( struct ether_header ) ];
+}
+
+- (NSNumber *)ipPayloadLength
+{
+	return [NSNumber numberWithInt:[payloadData length] ];
+}
+
 #pragma mark -
 #pragma mark Protocol instance methods
 
 - (NSData *)payloadData
 {
+	return payloadData;
+/*
     NSData * tmpValue;
-/*    
+	    
 	struct pcap_pkthdr *header = (struct pcap_pkthdr*)[self headerBytes];
 	u_char *packet = (u_char*)[self packetBytes];
 	
@@ -99,34 +128,25 @@ static NSArray *protocolsArray;
 	} else {
 		tmpValue = [NSData data];	//no payload, blank data (why not nil?)
 	}
-*/
 	return tmpValue;
+*/
 }
 
 - (NSString *)sourceString
 {
-	const struct ip *ip;
-	ip = (struct ip*)(
-		[self packetBytes] + sizeof(struct ether_header)
-	);
+	const struct ip *ip = (struct ip*)( [headerData bytes] );
 	return [NSString stringWithCString:inet_ntoa(ip->ip_src)];
 }
 
 - (NSString *)destinationString
 {
-	const struct ip *ip;
-	ip = (struct ip*)(
-		[self packetBytes] + sizeof(struct ether_header)
-	);
+	const struct ip *ip = (struct ip*)( [headerData bytes] );
 	return [NSString stringWithCString:inet_ntoa(ip->ip_dst)];
 }
 
 - (NSString *)typeString
 {
-	const struct ip *ip;
-	ip = (struct ip*)(
-		[self packetBytes] + sizeof(struct ether_header)
-	);
+	const struct ip *ip = (struct ip*)( [headerData bytes] );
 	NSString *tempString = [[protocolsArray objectAtIndex:ip->ip_p] valueForKey:@"Keyword"];
 	if (tempString)
 		return tempString;

@@ -15,16 +15,35 @@
 
 + (BOOL)canDecodePacket:(NSObject<Dissector> *)testPacket
 {
+	//way too simplistic
 	return YES;
 }
 
-/*
-+ (BOOL)canDecodePayloadData:(NSData *)payload withHeaderData:(NSData *)header fromPacketData:(NSData *)packet
+#pragma mark -
+#pragma mark Setup methods
+
+- (id)initFromParent:(id)parentPacket
 {
-	//way over simplistic
-	return YES;
+	self = [super initFromParent:parentPacket];
+	if (self) {
+		NSData *tempData = [parentPacket payloadData];
+		int header_size = sizeof( struct ether_header );
+		int data_size = [tempData length] - header_size;
+		if ( data_size < 0 ) {
+			WARNING( @"ethernet payload less than zero (will use full packet length instead)" );
+			data_size = [tempData length];
+		}
+
+		char bufferHeader[ header_size ];
+		[tempData getBytes:&bufferHeader range:NSMakeRange( 0, header_size )];
+		headerData = [[NSData dataWithBytes:bufferHeader length:header_size ] retain];
+
+		char bufferPayload[ data_size ];
+		[tempData getBytes:&bufferPayload range:NSMakeRange( header_size, data_size )];
+		payloadData = [[NSData dataWithBytes:bufferPayload length:data_size ] retain];
+	}
+	return self;
 }
-*/
 
 #pragma mark -
 #pragma mark Accessor methods
@@ -36,7 +55,7 @@
 
 - (NSNumber *)ethernetProtocol
 {
-	const struct ether_header *ether_header = (struct ether_header*)( [self packetBytes] );
+	const struct ether_header *ether_header = (struct ether_header*)( [headerData bytes] );
 	return [NSNumber numberWithShort:(unsigned short)(ether_header->ether_type)];
 }
 
@@ -51,18 +70,18 @@
 }
 
 #pragma mark -
-#pragma mark Protocol Instance methods
+#pragma mark Plugin Protocol Instance methods
 
 - (NSString *)sourceString
 {	//ethernetSource
-	const struct ether_header *ether_header = (struct ether_header*)( [self packetBytes] );
+	const struct ether_header *ether_header = (struct ether_header*)( [headerData bytes] );
 	const struct ether_addr *ether_addr = (struct ether_addr*)(ether_header->ether_shost);
 	return [NSString stringWithCString:ether_ntoa(ether_addr)];
 }
 
 - (NSString *)destinationString
 {	//ethernetDestination
-	const struct ether_header *ether_header = (struct ether_header*)( [self packetBytes] );
+	const struct ether_header *ether_header = (struct ether_header*)( [headerData bytes] );
 	const struct ether_addr *ether_addr = (struct ether_addr*)(ether_header->ether_dhost);
 	return [NSString stringWithCString:ether_ntoa(ether_addr)];
 }
@@ -76,7 +95,7 @@
 {	//ethernetProtocolString
     NSString * tmpValue;
 
-	const struct ether_header *ether_header = (struct ether_header*)( [self packetBytes] );	
+	const struct ether_header *ether_header = (struct ether_header*)( [headerData bytes] );	
 	switch ( (unsigned short)(ether_header->ether_type) ) {
 		case ETHERTYPE_PUP:		tmpValue = @"PUP";		break;
 		case ETHERTYPE_IP:		tmpValue = @"IP";		break;
@@ -102,6 +121,51 @@
 - (NSString *)protocolString
 {
 	return @"Ethernet";
+}
+
+#pragma mark -
+#pragma mark Dissector Protocol Instance methods
+
+- (NSData *)ethernetHeaderData
+{
+/*
+	NSData *tempPacketData = [self packetData];
+	int header_size = sizeof( struct ether_header );
+
+	char buffer[ header_size ];
+
+	[tempPacketData getBytes:&buffer range:NSMakeRange( 0, header_size )];
+	
+	return [NSData dataWithBytes:buffer length:header_size ];
+*/
+	return headerData;
+}
+
+- (NSData *)ethernetPayloadData
+{
+/*
+	NSData *tempPacketData = [self packetData];
+	int header_size = sizeof( struct ether_header );
+	int data_size = [tempPacketData length] - header_size;
+
+	char buffer[ data_size ];
+
+	[tempPacketData getBytes:&buffer range:NSMakeRange( header_size, data_size )];
+	
+	return [NSData dataWithBytes:buffer length:data_size ];
+*/
+	return payloadData;
+}
+
+- (NSNumber *)ethernetHeaderLength
+{
+	return [NSNumber numberWithInt:sizeof( struct ether_header ) ];
+}
+
+- (NSNumber *)ethernetPayloadLength
+{
+	//return [NSNumber numberWithInt:( [[self packetData] length] - sizeof(struct ether_header) ) ];
+	return [NSNumber numberWithInt:[payloadData length] ];
 }
 
 @end

@@ -34,12 +34,33 @@
 }
 */
 
+- (id)initFromParent:(id)parentPacket
+{
+	self = [super initFromParent:parentPacket];
+	if (self) {		///what am I doing here?
+		NSData *tempData = [parentPacket payloadData];
+		int header_size = sizeof( struct tcphdr );
+		int data_size = [tempData length] - header_size;
+
+		// this does not take TCP options into account, so it's too small!
+		char bufferHeader[ header_size ];
+		[tempData getBytes:&bufferHeader range:NSMakeRange( 0, header_size )];
+		headerData = [[NSData dataWithBytes:bufferHeader length:header_size ] retain];
+
+		// this does not take TCP options into account, so it's too large!
+		char bufferPayload[ data_size ];
+		[tempData getBytes:&bufferPayload range:NSMakeRange( header_size, data_size )];
+		payloadData = [[NSData dataWithBytes:bufferPayload length:data_size ] retain];
+	}
+	return self;
+}
+
+#pragma mark -
+#pragma mark Accessor methods
+
 - (NSNumber *)tcpAcknowledgement
 {
-	const struct tcphdr *tcp;
-	tcp = (struct tcphdr*)(
-		[self packetBytes] + sizeof(struct ether_header) + sizeof(struct ip)
-	);
+	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
     return [NSNumber numberWithUnsignedLongLong:tcp->th_ack];
 }
 
@@ -50,37 +71,25 @@
 
 - (NSNumber *)tcpDestinationPort 
 {
-	const struct tcphdr *tcp;
-	tcp = (struct tcphdr*)(
-		[self packetBytes] + sizeof(struct ether_header) + sizeof(struct ip)
-	);
+	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
     return [NSNumber numberWithInt:ntohs(tcp->th_dport)];
 }
 
 - (NSNumber *)tcpSequence 
 {
-	const struct tcphdr *tcp;
-	tcp = (struct tcphdr*)(
-		[self packetBytes] + sizeof(struct ether_header) + sizeof(struct ip)
-	);
+	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
     return [NSNumber numberWithUnsignedLongLong:tcp->th_seq];
 }
 
 - (NSNumber *)tcpSourcePort 
 {
-	const struct tcphdr *tcp;
-	tcp = (struct tcphdr*)(
-		[self packetBytes] + sizeof(struct ether_header) + sizeof(struct ip)
-	);
+	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
     return [NSNumber numberWithInt:ntohs(tcp->th_sport)];
 }
 
 - (NSNumber *)tcpWindow 
 {
-	const struct tcphdr *tcp;
-	tcp = (struct tcphdr*)(
-		[self packetBytes] + sizeof(struct ether_header) + sizeof(struct ip)
-	);
+	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
     return [NSNumber numberWithInt:tcp->th_win];
 }
 #pragma mark -
@@ -102,6 +111,8 @@
 
 - (NSData *)payloadData
 {
+	return payloadData;
+/*
     NSData * tmpValue;
     
 	struct pcap_pkthdr *header = (struct pcap_pkthdr*)[self headerBytes];
@@ -128,6 +139,7 @@
 		tmpValue = [NSData data];	//no payload, blank data (why not nil?)
 	}
 	return tmpValue;
+*/
 }
 
 //sourceString supplied by IPPacket
@@ -145,10 +157,7 @@
 
 - (NSString *)flagsString
 {
-	const struct tcphdr *tcp;
-	tcp = (struct tcphdr*)(
-		[self packetBytes] + sizeof(struct ether_header) + sizeof(struct ip)
-	);
+	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
 
 	char flags[] = "--------";
 	/* -- Record the flags in use -- */

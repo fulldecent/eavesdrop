@@ -33,9 +33,9 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Acknoledgment</string>
+				<string>Acknowledgement</string>
 				<key>columnKey</key>
-				<string>tcpAcknoledgment</string>
+				<string>tcpAcknowledgement</string>
 				<key>width</key>
 				<integer>80</integer>
 			</dict>

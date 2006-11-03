@@ -77,6 +77,12 @@ static NSView *staticPayloadImageView;
 	return [lastPacket flagsString];
 }
 
+- (NSString *)payloadString
+{
+	INFO( [lastPacket valueForKey:@"ethernetPayloadData"] );
+	return @"nothing for now";
+}
+
 
 #pragma mark -
 #pragma mark View methods
@@ -91,6 +97,9 @@ static NSView *staticPayloadImageView;
 			staticPayloadTextView = [tcpPayloadTextView retain];
 		}
 	}
+	//remove this:
+	[self payloadString];
+	//end "remove this"
 	return staticPayloadTextView;
 }
 
