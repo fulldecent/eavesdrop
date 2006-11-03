@@ -25,8 +25,15 @@
 	self = [super initFromParent:parentPacket];
 	if (self) {
 		NSData *tempData = [parentPacket payloadData];
-		int header_size = sizeof( struct tcphdr );
+		const struct tcphdr *tcp = (struct tcphdr*)( [tempData bytes] );
+
+		int header_size = (4*tcp->th_off); //this is the real size of the header (including options)
 		int data_size = [tempData length] - header_size;
+
+		if ( data_size < 0 ) {
+			WARNING( @"data_size less than zero, using zero" );
+			data_size = 0;
+		}
 
 		// this does not take TCP options into account, so it's too small!
 		char bufferHeader[ header_size ];
@@ -97,34 +104,6 @@
 - (NSData *)tcpPayloadData
 {
 	return payloadData;
-/*
-    NSData * tmpValue;
-    
-	struct pcap_pkthdr *header = (struct pcap_pkthdr*)[self headerBytes];
-	u_char *packet = (u_char*)[self packetBytes];
-	
-	const struct tcphdr *tcp;
-	const char *payload;
-	unsigned int size_ethernet = sizeof(struct ether_header);
-	unsigned int size_ip = sizeof(struct ip);
-	unsigned int payload_size;
-	
-	tcp = (struct tcphdr*)(packet + size_ethernet + size_ip);
-
-	//...this shouldn't be necessary!
-	if ( ! (header && packet) )
-		return nil;
-
-	if ( header->caplen > (size_ethernet+size_ip+(4*tcp->th_off)) && header->caplen > 60 ) {
-		payload_size = header->caplen - size_ethernet - size_ip - (4*tcp->th_off);
-		//why is the next line a warning ("differ in sign") when it is u_char?
-		payload = (char *)(packet + size_ethernet + size_ip + (4*tcp->th_off));
-		tmpValue = [NSData dataWithBytes:payload length:payload_size];
-	} else {
-		tmpValue = [NSData data];	//no payload, blank data (why not nil?)
-	}
-	return tmpValue;
-*/
 }
 
 #pragma mark -
