@@ -25,6 +25,6 @@
 - (NSData *)ipHeaderData;
 - (NSData *)ipPayloadData;
 
-- (NSNumber *)ipHeaderLength;
-- (NSNumber *)ipPayloadLength;
+- (int)ipHeaderLength;
+- (int)ipPayloadLength;
 @end

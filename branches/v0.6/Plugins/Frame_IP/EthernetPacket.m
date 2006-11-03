@@ -128,44 +128,22 @@
 
 - (NSData *)ethernetHeaderData
 {
-/*
-	NSData *tempPacketData = [self packetData];
-	int header_size = sizeof( struct ether_header );
-
-	char buffer[ header_size ];
-
-	[tempPacketData getBytes:&buffer range:NSMakeRange( 0, header_size )];
-	
-	return [NSData dataWithBytes:buffer length:header_size ];
-*/
 	return headerData;
 }
 
 - (NSData *)ethernetPayloadData
 {
-/*
-	NSData *tempPacketData = [self packetData];
-	int header_size = sizeof( struct ether_header );
-	int data_size = [tempPacketData length] - header_size;
-
-	char buffer[ data_size ];
-
-	[tempPacketData getBytes:&buffer range:NSMakeRange( header_size, data_size )];
-	
-	return [NSData dataWithBytes:buffer length:data_size ];
-*/
 	return payloadData;
 }
 
-- (NSNumber *)ethernetHeaderLength
+- (int)ethernetHeaderLength
 {
-	return [NSNumber numberWithInt:sizeof( struct ether_header ) ];
+	return sizeof( struct ether_header );
 }
 
-- (NSNumber *)ethernetPayloadLength
+- (int)ethernetPayloadLength
 {
-	//return [NSNumber numberWithInt:( [[self packetData] length] - sizeof(struct ether_header) ) ];
-	return [NSNumber numberWithInt:[payloadData length] ];
+	return [payloadData length];
 }
 
 @end

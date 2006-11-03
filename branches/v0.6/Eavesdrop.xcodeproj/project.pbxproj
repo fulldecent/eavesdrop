@@ -570,7 +570,7 @@
 			name = Aggregators;
 			sourceTree = "<group>";
 		};
-		3F2696170A45D7C4001EBA5A /* Decoders */ = {
+		3F2696170A45D7C4001EBA5A /* Dissectors */ = {
 			isa = PBXGroup;
 			children = (
 				3FECCA610A37D500007C90E6 /* EthernetPacket.h */,
@@ -578,7 +578,7 @@
 				3FECCA640A37D500007C90E6 /* IPPacket.h */,
 				3FECCA650A37D500007C90E6 /* IPPacket.m */,
 			);
-			name = Decoders;
+			name = Dissectors;
 			sourceTree = "<group>";
 		};
 		3F2697390A464947001EBA5A /* Plugins */ = {
@@ -594,7 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				3F6974380AE9FE19007910F7 /* Aggregators */,
-				3F6974370AE9FDFA007910F7 /* Decoders */,
+				3F6974370AE9FDFA007910F7 /* Dissectors */,
 				3F6974360AE9FDBB007910F7 /* plists */,
 			);
 			name = TCP;
@@ -652,7 +652,7 @@
 			name = plists;
 			sourceTree = "<group>";
 		};
-		3F6974370AE9FDFA007910F7 /* Decoders */ = {
+		3F6974370AE9FDFA007910F7 /* Dissectors */ = {
 			isa = PBXGroup;
 			children = (
 				3FEC8BDD0A64A5AA005108E6 /* TCPPacketDefaults.nib */,
@@ -661,7 +661,7 @@
 				3FEC8BFD0A64ADC9005108E6 /* TCPPacketDefaults.h */,
 				3FEC8BFE0A64ADC9005108E6 /* TCPPacketDefaults.m */,
 			);
-			name = Decoders;
+			name = Dissectors;
 			sourceTree = "<group>";
 		};
 		3F6974380AE9FE19007910F7 /* Aggregators */ = {
@@ -765,7 +765,7 @@
 			isa = PBXGroup;
 			children = (
 				3F2696160A45D7B0001EBA5A /* Aggregators */,
-				3F2696170A45D7C4001EBA5A /* Decoders */,
+				3F2696170A45D7C4001EBA5A /* Dissectors */,
 				3F3E25910A3A95DA001C4087 /* plists */,
 			);
 			name = "Frame & IP";

@@ -26,7 +26,7 @@
 - (NSData *)ethernetHeaderData;
 - (NSData *)ethernetPayloadData;
 
-- (NSNumber *)ethernetHeaderLength;
-- (NSNumber *)ethernetPayloadLength;
+- (int)ethernetHeaderLength;
+- (int)ethernetPayloadLength;
 
 @end

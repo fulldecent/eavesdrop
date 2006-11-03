@@ -117,30 +117,15 @@ static int dissectorCount;
 {
 	return [headerData bytes];
 }
-/*
-- (NSData *)packetData 
-{
-	if (packetData)
-		return packetData;
-	else if (parent)
-		return [parent packetData];
-	else
-		return nil;
-}
 
-- (const void *)packetBytes
-{
-	return [[self packetData] bytes];
-}
-*/
 - (NSData *)payloadData
 {
 	if (payloadData) {
 		return payloadData;
 	} else if (parent) {
 		return [parent payloadData];
-	} else {										//pretend payload is the entire packet
-		return [self valueForKey:@"packetData"];	//this may not be a useful assumption
+	} else {
+		return nil;
 	}
 }
 
