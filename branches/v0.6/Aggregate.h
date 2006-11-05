@@ -42,7 +42,7 @@
 //only packets can be added
 - (BOOL)addPacket:(NSObject<Dissector> *)newPacket;								/* FREEBIE	*/
 - (NSArray *)packetArray;														/* FREEBIE	*/
-
+- (NSArray *)allPackets;														/* FREEBIE	*/
 @end
 
 

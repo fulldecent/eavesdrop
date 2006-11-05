@@ -197,7 +197,6 @@ static NSMutableDictionary *collectors;
 			count++;
 		}
 	}
-	
 	DEBUG1( @"wrote %@ packets", [NSNumber numberWithInt:count] );
 }
 
