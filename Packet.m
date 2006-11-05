@@ -50,22 +50,7 @@ static int packetCount;
 {
 	return payloadData;
 }
-/*
-- (NSData *)payloadData
-{
-	return payloadData;
-}
 
-- (const void *)packetBytes
-{
-	return [payloadData bytes];
-}
-
-- (const void *)payloadBytes
-{
-	return [payloadData bytes];
-}
-*/
 - (NSNumber *)number
 {
 	return [NSNumber numberWithInt:packetNumber];

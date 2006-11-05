@@ -70,6 +70,9 @@
 	[packetOutlineView setTarget:packetDetailWindow];
 	[leftoverOutlineView setDoubleAction:@selector(makeKeyAndOrderFront:)];
 	[leftoverOutlineView setTarget:packetDetailWindow];
+	
+	[packetOutlineView registerForDraggedTypes:[NSArray arrayWithObjects:@"Packets", @"PacketSource", nil]];
+
 }
 
 - (NSString *)windowNibName 
@@ -697,6 +700,75 @@
 	//[cell setBackgroundColor:[[Dissector pluginDefaultsForClass:[item class]] valueForKey:@"backgroundColor"] ];
 }
 
+#pragma mark Experimental (drag and drop) section
+
+- (BOOL)outlineView:(NSOutlineView *)outView writeItems:(NSArray*)items toPasteboard:(NSPasteboard*)pboard
+ {
+	ENTRY( @"outlineView:writeItems:toPasteboard:" );
+
+	NSMutableArray *allItems = [NSMutableArray array];
+	NSEnumerator *en = [items objectEnumerator];
+	id tempItem;
+	while ( tempItem=[en nextObject] ) {
+		if ( [tempItem isKindOfClass:[Aggregate class]] ) {
+			[allItems addObjectsFromArray:[tempItem valueForKey:@"allPackets"] ];
+		} else if ( [tempItem isKindOfClass:[Dissector class]] ) {
+			[allItems addObject:tempItem];
+		} else {
+			ERROR( @"dragged items is neither an Aggregate or a Dissector" );
+		}
+	}
+	
+	NSMutableArray *simplifiedItems = [NSMutableArray array];
+	en = [allItems objectEnumerator];
+	while ( tempItem=[en nextObject] ) {
+		[simplifiedItems addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+				[tempItem valueForKey:@"packetHeaderData"], @"packetHeaderData",
+				[tempItem valueForKey:@"packetPayloadData"], @"packetPayloadData",
+				nil
+			]
+		];
+	}
+
+	[pboard declareTypes:[NSArray arrayWithObjects:@"Packets", @"PacketSource", nil] owner:self];
+	[pboard setData:[NSArchiver archivedDataWithRootObject:simplifiedItems] forType:@"Packets"];
+	[pboard setData:[NSArchiver archivedDataWithRootObject:identifier] forType:@"PacketSource"];
+
+	return YES;
+ }
+ 
+  - (unsigned int)outlineView:(NSOutlineView*)outView validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)index
+ {
+	return NSDragOperationCopy;
+ }
+
+ - (BOOL)outlineView:(NSOutlineView*)outView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(int)index
+ {
+	ENTRY( @"outlineView:acceptDrop:item:" );
+	NSPasteboard *pboard = [info draggingPasteboard];
+		
+	//make sure it wasn't dropped on ourselves, there should be a better way
+	if ( [[NSUnarchiver unarchiveObjectWithData:[pboard dataForType:@"PacketSource"]] isEqualToString:identifier] ) {
+		WARNING( @"local drop not allowed" );
+		return NO;
+	}
+	
+	NSData *data = [pboard dataForType:@"Packets"];
+	NSArray *items = [NSUnarchiver unarchiveObjectWithData:data];
+	
+	NSEnumerator *en = [items objectEnumerator];
+	id tempItem;
+	while ( tempItem=[en nextObject] ) {
+		[[self packetQueue]
+			addPacket:[tempItem valueForKey:@"packetPayloadData"]
+			withHeader:[tempItem valueForKey:@"packetHeaderData"]
+		];
+	}
+
+	return YES;
+ }
+
+#pragma mark End Experiment
 
 @end
 

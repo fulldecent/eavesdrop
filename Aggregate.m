@@ -224,4 +224,20 @@ static int aggregateNumber;
 	return nil;
 }
 
+- (NSArray *)allPackets
+{
+	NSMutableArray *allPackets = [NSMutableArray array];
+	
+	NSEnumerator *en = [packetArray objectEnumerator];
+	id tempItem;
+	while ( tempItem=[en nextObject] ) {
+		if ( [tempItem isKindOfClass:[Aggregate class]] ) {
+			[allPackets addObjectsFromArray:[tempItem valueForKey:@"allPackets"] ];
+		} else {
+			[allPackets addObject:tempItem];
+		}
+	}
+	return [allPackets copy];
+}
+
 @end
