@@ -26,6 +26,7 @@
 	id collectorProxy;
 	id appDelegate;
 	
+	CaptureThread *fileSaveThread;
 	CaptureThread *fileCaptureThread;
 	PacketQueue *packetQueue;
 	NSString *identifier;
@@ -61,6 +62,7 @@
 
 - (IBAction)connectToCaptureServer:(id)sender;
 
+- (IBAction)startSave:(id)sender;
 - (IBAction)startCapture:(id)sender;
 - (IBAction)stopCapture:(id)sender;
 - (IBAction)refreshData:(id)sender;

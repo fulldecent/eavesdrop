@@ -69,10 +69,7 @@
 
 - (BOOL)isActive;
 
-/* from the CaptureThread protocol...
-- (oneway void)startCapture;
-- (oneway void)stopCapture;
-*/
+- (void)dumpPackets:(NSArray *)packetList toHandle:(pcap_dumper_t *)dumpHandle;
 
 //- (void)_stopCapture;
 void packetHandler( u_char* user, const struct pcap_pkthdr* header, const u_char* packet );

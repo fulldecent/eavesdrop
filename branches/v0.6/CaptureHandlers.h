@@ -74,6 +74,7 @@
 
 @protocol CaptureThreadProtocol
 
+- (oneway void)savePackets:(NSArray *)packetsArray;
 - (oneway void)startCapture;
 - (oneway void)stopCapture;
 - (oneway void)killCapture;
