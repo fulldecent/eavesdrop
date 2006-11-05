@@ -31,8 +31,14 @@
 		int data_size = [tempData length] - header_size;
 
 		if ( data_size < 0 ) {
-			WARNING( @"data_size less than zero, using zero" );
+			WARNING( @"data_size less than zero, adjusting sizes" );
 			data_size = 0;
+			if ( [tempData length] < sizeof(struct tcphdr) ) {
+				ERROR( @"packet too short for entire header to be present!" );
+				header_size = 0;	// this may cause more trouble than it's worth
+			} else {
+				header_size = [tempData length];	// may cause issues if options are at the end
+			}
 		}
 
 		// this does not take TCP options into account, so it's too small!

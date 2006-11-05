@@ -97,6 +97,18 @@
 	return YES;
 }
 
+- (void)saveToURL:(NSURL *)absoluteURL
+	ofType:(NSString *)typeName
+	forSaveOperation:(NSSaveOperationType)saveOperation
+	delegate:(id)delegate
+	didSaveSelector:(SEL)didSaveSelector
+	contextInfo:(void *)contextInfo
+{
+	ENTRY( @"saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:" );
+	[self setSaveFile:[absoluteURL path] ];
+	[self startSave:self];
+}
+
 - (void)setDefaults
 {
 	NSDictionary *defaultsDict = [[NSUserDefaultsController sharedUserDefaultsController] values];
@@ -149,6 +161,19 @@
 	[self didChangeValueForKey:@"serverProxy"];
 	
 	[self setDefaults];
+}
+
+- (IBAction)startSave:(id)sender
+{
+	ENTRY( @"startSave:" );
+	if ( [self isActive] ) {
+		ERROR( @"cannot start save, a capture is active" );
+		return;
+	}
+	
+	if (fileSaveThread) {
+		[NSThread detachNewThreadSelector:@selector(savePackets:) toTarget:fileSaveThread withObject:packetList];
+	}
 }
 
 - (IBAction)startCapture:(id)sender
@@ -427,22 +452,27 @@
 
 - (NSString *)saveFile
 {
-	if (fileCaptureThread)
+	if (fileSaveThread)
 		return [fileCaptureThread saveFile];
-		
-	if (serverProxy)
-		return [serverProxy saveFileForClient:queueIdentifier];
 		
 	return nil;
 }
 
 - (void)setSaveFile:(NSString *)saveFile
 {
-	if (fileCaptureThread)
-		return [fileCaptureThread setSaveFile:saveFile];
-		
-	if (serverProxy)
-		return [serverProxy setSaveFile:saveFile forClient:queueIdentifier];
+	[self willChangeValueForKey:@"saveFile"];
+	[self willChangeValueForKey:@"fileSaveThread"];
+	
+	if (!saveFile) {
+		[fileSaveThread release];
+		fileSaveThread = nil;
+	} else if (!fileSaveThread) {
+		fileSaveThread = [[CaptureThread alloc] init];
+	}
+	[fileSaveThread setSaveFile:saveFile];
+	
+	[self didChangeValueForKey:@"saveFile"];
+	[self didChangeValueForKey:@"fileSaveThread"];
 }
 
 - (NSString *)readFile

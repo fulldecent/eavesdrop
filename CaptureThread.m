@@ -16,7 +16,7 @@
 static NSMutableDictionary *collectors;
 
 + (void)initialize
-{	ENTRY( @"[CaptureThread initialize]" );
+{	ENTRY( @"initialize" );
 	[CaptureThread sharedCollectorsDictionary];
 }
 
@@ -59,7 +59,7 @@ static NSMutableDictionary *collectors;
 #pragma mark Setup methods
 
 - (id)init
-{	ENTRY( @"[CaptureThread init]" );
+{	ENTRY( @"init" );
 	self = [super init];
 	if (self) {
 		capturesPayload = YES;
@@ -83,7 +83,7 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setClient:(NSString *)newClient
-{	ENTRY1( @"[CaptureThread setClient:%@]", newClient );
+{	ENTRY1( @"setClient:%@", newClient );
 	[client release];
 	client = [newClient retain];
 }
@@ -94,7 +94,7 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setSaveFile:(NSString *)saveFile
-{	ENTRY1( @"[CaptureThread setSaveFile:%@]", saveFile );
+{	ENTRY1( @"setSaveFile:%@", saveFile );
 	[saveFilename release];
 	saveFilename = [saveFile retain];
 }
@@ -159,6 +159,47 @@ static NSMutableDictionary *collectors;
 
 #pragma mark -
 #pragma mark Thread methods
+
+- (void)savePackets:(NSArray *)packetsArray
+{
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	[NSThread setThreadPriority:1.0];
+	
+	ENTRY( @"saveCapture" );
+	DEBUG1( @"saving to file: %@", saveFilename );
+
+	pcap_t *saveHandle = pcap_open_dead( DLT_EN10MB, 65535 );
+	pcap_dumper_t *dumpHandle = pcap_dump_open( saveHandle, [saveFilename cString] );
+	
+	[self dumpPackets:packetsArray toHandle:dumpHandle];
+	
+	EXIT( @"saveCapture" );
+	pcap_close( saveHandle );
+
+	[pool release];
+	[NSThread exit];
+}
+
+- (void)dumpPackets:(NSArray *)packetList toHandle:(pcap_dumper_t *)dumpHandle
+{
+	NSEnumerator *en = [packetList objectEnumerator];
+	id tempPacket;
+	int count = 0;
+	while ( tempPacket = [en nextObject] ) {
+		NSArray *subList = [tempPacket valueForKey:@"packetArray"];
+		if ( [subList count] )
+			[self dumpPackets:subList toHandle:dumpHandle];
+			
+		struct pcap_pkthdr *tempHeader = (struct pcap_pkthdr *)[[tempPacket valueForKey:@"packetHeaderData"] bytes];
+		u_char *tempPayload = (u_char *)[[tempPacket valueForKey:@"packetPayloadData"] bytes];
+		if ( tempHeader && tempPayload ) {
+			pcap_dump( (u_char *)dumpHandle, tempHeader, tempPayload );
+			count++;
+		}
+	}
+	
+	DEBUG1( @"wrote %@ packets", [NSNumber numberWithInt:count] );
+}
 
 - (void)startCapture
 {	
@@ -258,7 +299,7 @@ static NSMutableDictionary *collectors;
 	if (!isActive)
 		return;
 		
-	ENTRY(@"[Capture stopCapture]");
+	ENTRY(@"stopCapture");
 	pcap_breakloop( captureHandle );
 	[queueProxy stopCollecting];
 }
@@ -268,7 +309,7 @@ static NSMutableDictionary *collectors;
 	if (!isActive)
 		return;
 		
-	ENTRY(@"[Capture killCapture]");
+	ENTRY(@"killCapture");
 	pcap_breakloop( captureHandle );
 }
 
@@ -289,6 +330,5 @@ void packetHandler( u_char* user, const struct pcap_pkthdr* header, const u_char
 		//need to stop the capture somehow... not sure exactly how
 	}
 }
-
 
 @end
