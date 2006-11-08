@@ -71,8 +71,9 @@
 	[leftoverOutlineView setDoubleAction:@selector(makeKeyAndOrderFront:)];
 	[leftoverOutlineView setTarget:packetDetailWindow];
 	
-	[packetOutlineView registerForDraggedTypes:[NSArray arrayWithObjects:@"Packets", @"PacketSource", nil]];
-
+	[packetOutlineView registerForDraggedTypes:[NSArray arrayWithObjects:EDPacketsPboardType, EDPacketSourcePboardType, nil]];
+    [packetOutlineView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
+    [packetOutlineView setDraggingSourceOperationMask:NSDragOperationAll_Obsolete forLocal:NO];
 }
 
 - (NSString *)windowNibName 
@@ -174,8 +175,21 @@
 		return;
 	}
 	
-	if (fileSaveThread) {
-		[NSThread detachNewThreadSelector:@selector(savePackets:) toTarget:fileSaveThread withObject:packetList];
+	NSMutableArray *allItems = [NSMutableArray array];
+	NSEnumerator *en = [packetList objectEnumerator];
+	id tempItem;
+	while ( tempItem=[en nextObject] ) {
+		if ( [tempItem isKindOfClass:[Aggregate class]] ) {
+			[allItems addObjectsFromArray:[tempItem valueForKey:@"allPackets"] ];
+		} else if ( [tempItem isKindOfClass:[Dissector class]] ) {
+			[allItems addObject:tempItem];
+		} else {
+			ERROR( @"item in list is neither an Aggregate or a Dissector" );
+		}
+	}
+	
+	if (fileSaver) {
+		[fileSaver savePackets:allItems];
 	}
 }
 
@@ -455,8 +469,8 @@
 
 - (NSString *)saveFile
 {
-	if (fileSaveThread)
-		return [fileCaptureThread saveFile];
+	if (fileSaver)
+		return [fileSaver saveFile];
 		
 	return nil;
 }
@@ -464,18 +478,18 @@
 - (void)setSaveFile:(NSString *)saveFile
 {
 	[self willChangeValueForKey:@"saveFile"];
-	[self willChangeValueForKey:@"fileSaveThread"];
+	[self willChangeValueForKey:@"fileSaver"];
 	
 	if (!saveFile) {
-		[fileSaveThread release];
-		fileSaveThread = nil;
-	} else if (!fileSaveThread) {
-		fileSaveThread = [[CaptureThread alloc] init];
+		[fileSaver release];
+		fileSaver = nil;
+	} else if (!fileSaver) {
+		fileSaver = [[CaptureThread alloc] init];
 	}
-	[fileSaveThread setSaveFile:saveFile];
+	[fileSaver setSaveFile:saveFile];
 	
 	[self didChangeValueForKey:@"saveFile"];
-	[self didChangeValueForKey:@"fileSaveThread"];
+	[self didChangeValueForKey:@"fileSaver"];
 }
 
 - (NSString *)readFile
@@ -700,10 +714,8 @@
 	//[cell setBackgroundColor:[[Dissector pluginDefaultsForClass:[item class]] valueForKey:@"backgroundColor"] ];
 }
 
-#pragma mark Experimental (drag and drop) section
-
-- (BOOL)outlineView:(NSOutlineView *)outView writeItems:(NSArray*)items toPasteboard:(NSPasteboard*)pboard
- {
+- (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray*)items toPasteboard:(NSPasteboard*)pboard
+{
 	ENTRY( @"outlineView:writeItems:toPasteboard:" );
 
 	NSMutableArray *allItems = [NSMutableArray array];
@@ -730,30 +742,48 @@
 		];
 	}
 
-	[pboard declareTypes:[NSArray arrayWithObjects:@"Packets", @"PacketSource", nil] owner:self];
-	[pboard setData:[NSArchiver archivedDataWithRootObject:simplifiedItems] forType:@"Packets"];
-	[pboard setData:[NSArchiver archivedDataWithRootObject:identifier] forType:@"PacketSource"];
+	//prepare 
+	[pboard declareTypes:[NSArray arrayWithObjects:
+			EDPacketsPboardType,
+			EDPacketSourcePboardType,
+			NSStringPboardType,
+			NSFilesPromisePboardType,
+			nil
+		] owner:self
+	];
 
+	[pboard setData:[NSArchiver archivedDataWithRootObject:simplifiedItems] forType:EDPacketsPboardType];
+	[pboard setData:[NSArchiver archivedDataWithRootObject:identifier] forType:EDPacketSourcePboardType];
+	//support text-mode drag and drop (not working!)
+	if ( ![pboard setString:[allItems description] forType:NSStringPboardType] ) {
+		ERROR( @"failed to write string to pasteboard" );
+	}
+    //support file creation
+	[pboard setPropertyList:[NSArray arrayWithObjects:@"cap", nil] forType:NSFilesPromisePboardType];
+	
 	return YES;
- }
+}
  
-  - (unsigned int)outlineView:(NSOutlineView*)outView validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)index
- {
+ - (unsigned int)outlineView:(NSOutlineView*)outlineView validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)index
+{
+	//make sure it wasn't dropped on ourselves, there might be a better way
+	NSPasteboard *pboard = [info draggingPasteboard];		
+	if ( [[NSUnarchiver unarchiveObjectWithData:[pboard dataForType:EDPacketSourcePboardType]] isEqualToString:identifier] ) {
+		return NO;
+	}
+
+	//only allow drop on whole view
+	[outlineView setDropItem:nil dropChildIndex:NSOutlineViewDropOnItemIndex];
+
 	return NSDragOperationCopy;
  }
 
- - (BOOL)outlineView:(NSOutlineView*)outView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(int)index
- {
+- (BOOL)outlineView:(NSOutlineView*)outlineView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(int)index
+{
 	ENTRY( @"outlineView:acceptDrop:item:" );
 	NSPasteboard *pboard = [info draggingPasteboard];
-		
-	//make sure it wasn't dropped on ourselves, there should be a better way
-	if ( [[NSUnarchiver unarchiveObjectWithData:[pboard dataForType:@"PacketSource"]] isEqualToString:identifier] ) {
-		WARNING( @"local drop not allowed" );
-		return NO;
-	}
 	
-	NSData *data = [pboard dataForType:@"Packets"];
+	NSData *data = [pboard dataForType:EDPacketsPboardType];
 	NSArray *items = [NSUnarchiver unarchiveObjectWithData:data];
 	
 	NSEnumerator *en = [items objectEnumerator];
@@ -766,9 +796,70 @@
 	}
 
 	return YES;
- }
+}
 
-#pragma mark End Experiment
+// Create a fileHandle for writing to a new file located in the directory specified by 'dirpath'.
+//If the file basename.extension already exists at that location, then append "-N"
+//(where N is a whole number starting with 1) until a unique basename-N.extension file is found.
+//On return oFilename contains the name of the newly created file referenced by the returned NSFileHandle.
+NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename, NSString *extension, NSString **oFilename)
+{
+    NSString *filename = nil;
+    BOOL done = NO;
+    int fdForWriting = -1, uniqueNum = 0;
+    while (!done) {
+        filename = [NSString stringWithFormat:@"%@%@.%@", basename, (uniqueNum ? [NSString stringWithFormat:@"-%d", uniqueNum] : @""), extension];
+        fdForWriting = open([[NSString stringWithFormat:@"%@/%@", dirpath, filename] UTF8String], O_WRONLY | O_CREAT | O_EXCL, 0666);
+        if (fdForWriting < 0 && errno == EEXIST) {
+            // Try another name.
+            uniqueNum++;
+        } else {
+            done = YES;
+        }
+    }
+
+    NSFileHandle *fileHandle = nil;
+    if (fdForWriting>0) {
+        fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:fdForWriting closeOnDealloc:YES];
+    }
+    
+    if (oFilename) {
+        *oFilename = (fileHandle ? filename : nil);
+    }
+    
+    return fileHandle;
+}
+
+// We promised the files, so now lets make good on that promise!
+- (NSArray *)outlineView:(NSTableView *)tv namesOfPromisedFilesDroppedAtDestination:(NSURL *)dropDestination forDraggedItems:(NSArray *)items
+{	
+	NSString *filename  = nil;
+    NSMutableArray *filenames = [NSMutableArray array];
+	NSFileHandle *fileHandle = NewFileHandleForWritingFile([dropDestination path], @"Packet Clipping", @"cap", &filename);
+	if (fileHandle) {
+		[self setSaveFile:filename];
+		if (fileSaver) {
+			//since we can save off things... go ahead and build the array of items
+			NSMutableArray *allItems = [NSMutableArray array];
+			NSEnumerator *en = [items objectEnumerator];
+			id tempItem;
+			while ( tempItem=[en nextObject] ) {
+				if ( [tempItem isKindOfClass:[Aggregate class]] ) {
+					[allItems addObjectsFromArray:[tempItem valueForKey:@"allPackets"] ];
+				} else if ( [tempItem isKindOfClass:[Dissector class]] ) {
+					[allItems addObject:tempItem];
+				} else {
+					ERROR( @"dropped item(s) are neither an Aggregate or a Dissector" );
+				}
+			}
+			
+			[fileSaver savePackets:allItems];
+			[filenames addObject:filename];
+		}
+	}
+	DEBUG1( @"drop created file: %@", filename );
+    return ([filenames count] ? filenames : nil);
+}
 
 @end
 
