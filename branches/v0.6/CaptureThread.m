@@ -162,42 +162,31 @@ static NSMutableDictionary *collectors;
 
 - (void)savePackets:(NSArray *)packetsArray
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[NSThread setThreadPriority:1.0];
-	
 	ENTRY( @"saveCapture" );
 	DEBUG1( @"saving to file: %@", saveFilename );
 
-	pcap_t *saveHandle = pcap_open_dead( DLT_EN10MB, 65535 );
+	pcap_t *saveHandle = (pcap_t *)pcap_open_dead( DLT_EN10MB, 65535 );
 	pcap_dumper_t *dumpHandle = pcap_dump_open( saveHandle, [saveFilename cString] );
 	
-	[self dumpPackets:packetsArray toHandle:dumpHandle];
-	
-	EXIT( @"saveCapture" );
-	pcap_close( saveHandle );
-
-	[pool release];
-	[NSThread exit];
-}
-
-- (void)dumpPackets:(NSArray *)packetList toHandle:(pcap_dumper_t *)dumpHandle
-{
-	NSEnumerator *en = [packetList objectEnumerator];
 	id tempPacket;
 	int count = 0;
+	NSEnumerator *en = [packetsArray objectEnumerator];
+
 	while ( tempPacket = [en nextObject] ) {
-		NSArray *subList = [tempPacket valueForKey:@"packetArray"];
-		if ( [subList count] )
-			[self dumpPackets:subList toHandle:dumpHandle];
-			
 		struct pcap_pkthdr *tempHeader = (struct pcap_pkthdr *)[[tempPacket valueForKey:@"packetHeaderData"] bytes];
-		u_char *tempPayload = (u_char *)[[tempPacket valueForKey:@"packetPayloadData"] bytes];
+
+		NSData *tempPacketData = [tempPacket valueForKey:@"packetPayloadData"];
+		u_char *tempPayload = (u_char *)[tempPacketData bytes];
+		
 		if ( tempHeader && tempPayload ) {
 			pcap_dump( (u_char *)dumpHandle, tempHeader, tempPayload );
 			count++;
 		}
 	}
 	DEBUG1( @"wrote %@ packets", [NSNumber numberWithInt:count] );
+	
+	pcap_close( saveHandle );
+	EXIT( @"saveCapture" );
 }
 
 - (void)startCapture

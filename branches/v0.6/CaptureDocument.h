@@ -20,13 +20,16 @@
 
 #import "CaptureThread.h"
 
+#define EDPacketsPboardType			@"EavesdropPackets"
+#define EDPacketSourcePboardType	@"EavesdropPacketSource"
+
 @interface CaptureDocument : NSDocument
 {
 	id serverProxy;
 	id collectorProxy;
 	id appDelegate;
 	
-	CaptureThread *fileSaveThread;
+	CaptureThread *fileSaver;
 	CaptureThread *fileCaptureThread;
 	PacketQueue *packetQueue;
 	NSString *identifier;
@@ -104,4 +107,6 @@
 
 - (void)settingsSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode  contextInfo:(void  *)contextInfo;
 - (void)chooseFilePanelDidEnd:(NSOpenPanel *)sheet returnCode:(int)returnCode  contextInfo:(void  *)contextInfo;
+
+NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename, NSString *extension, NSString **oFilename);
 @end
