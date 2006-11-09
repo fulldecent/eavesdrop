@@ -203,12 +203,18 @@ static NSMutableDictionary *collectors;
 	
 	DEBUG( @"vending objects" );
 	[DOHelpers vendObject:self withName:[self description] local:YES];
-	queueProxy = [DOHelpers getProxyWithName:client protocol:@protocol(PacketQueue) host:nil];
+	
+	int tries = 0;
+	while ( !queueProxy && tries<3 ) {
+		queueProxy = [DOHelpers getProxyWithName:client protocol:@protocol(PacketQueue) host:nil];
 
-	if (!queueProxy) {
-		WARNING1( @"failed to get queueProxy for client: %@", client );
-		[pool release];
-		return;
+		if (!queueProxy) {
+			WARNING1( @"failed to get queueProxy for client: %@", client );
+			[pool release];
+			return;
+		}
+		tries++;
+		sleep(1);
 	}
 	DEBUG1( @"set collector with queueProxy: %@", [queueProxy description] );
 	[CaptureThread setCollector:queueProxy withName:client ];
