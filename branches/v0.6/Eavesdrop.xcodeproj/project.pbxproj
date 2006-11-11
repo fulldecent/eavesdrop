@@ -55,6 +55,7 @@
 		3F49FEB90A1C1614004C6514 /* CaptureServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F49FEB70A1C1613004C6514 /* CaptureServer.m */; };
 		3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */; };
 		3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */; };
+		3F69882B0B037506007910F7 /* Blank Ear icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3F69882A0B037506007910F7 /* Blank Ear icon.icns */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FB2E0690A20B87F00ED017B /* DOHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FB2E0670A20B87E00ED017B /* DOHelpers.h */; };
@@ -303,6 +304,7 @@
 		3F49FEBE0A1C1684004C6514 /* CaptureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureHandlers.h; sourceTree = "<group>"; };
 		3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = TCPServerPortAggregateDefaults.nib; path = TCP/TCPServerPortAggregateDefaults.nib; sourceTree = "<group>"; };
 		3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TCP_UDP_Ports.plist; path = TCP/TCP_UDP_Ports.plist; sourceTree = "<group>"; };
+		3F69882A0B037506007910F7 /* Blank Ear icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Blank Ear icon.icns"; sourceTree = "<group>"; };
 		3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOHelpers.h; sourceTree = "<group>"; };
 		3FB2E0680A20B87F00ED017B /* DOHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOHelpers.m; sourceTree = "<group>"; };
 		3FB2E1890A25668A00ED017B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 		3FE124CC0A1ADE0400A0A510 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3F69882A0B037506007910F7 /* Blank Ear icon.icns */,
 				3FE124CD0A1ADE0400A0A510 /* Ear icon.icns */,
 			);
 			path = Images;
@@ -1044,6 +1047,7 @@
 				8D15AC2E0486D014006FF6A4 /* CaptureDocument.nib in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				3FE124CE0A1ADE0400A0A510 /* Ear icon.icns in Resources */,
+				3F69882B0B037506007910F7 /* Blank Ear icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
