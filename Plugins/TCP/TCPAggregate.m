@@ -51,12 +51,12 @@ static NSView *staticPayloadImageView;
 
 - (NSString *)sourceString
 {
-	return [NSString stringWithFormat:@"Client: %@", [firstPacket valueForKey:@"ipSource"] ];
+	return [firstPacket valueForKey:@"ipSource"];
 }
 
 - (NSString *)destinationString
 {
-	return [NSString stringWithFormat:@"Server: %@", [firstPacket valueForKey:@"ipDestination"] ];
+	return [firstPacket valueForKey:@"ipDestination"];
 }
 
 - (NSString *)typeString
@@ -70,6 +70,11 @@ static NSView *staticPayloadImageView;
 			timeIntervalSinceDate:[firstPacket valueForKey:@"timestamp"]
 		]
 	];
+}
+
+- (NSString *)infoString
+{
+	return [firstPacket infoString];
 }
 
 - (NSString *)flagsString

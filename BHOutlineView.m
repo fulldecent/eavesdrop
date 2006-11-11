@@ -42,7 +42,7 @@ static int colorPercent;
 {
 	colorPercent = 0;
 }
-
+/*
 - (void)drawRow:(int)row clipRect:(NSRect)clipRect;
 {
 	//ENTRY( @"drawRow:clipRect:" );
@@ -59,16 +59,74 @@ static int colorPercent;
 	
     [super drawRow:row clipRect:clipRect];
 }
+*/
 
+/*
+// not working
 - (id)_backgroundColorForCell:(id)cell
 {
-	return [NSColor grayColor];
+	return [NSColor blueColor];
 }
 
+//does work
 -(id)_highlightColorForCell:(id)cell
 {
 	//ENTRY( @"_highlightColorForCell:" );
 	return [NSColor redColor];
+}
+*/
+
+#pragma mark -
+#pragma mark Overrides (NSTableView)
+
+- (NSImage *)dragImageForRowsWithIndexes:(NSIndexSet *)dragRows tableColumns:(NSArray *)tableColumns event:(NSEvent*)dragEvent offset:(NSPointPointer)dragImageOffset
+{
+	ENTRY( @"dragImageForRowsWithIndexes:tableColumns:event:offset:dragImageOffset" );
+
+	const int defaultWidth = 32;
+	const int defaultHeight = 32;
+
+	//get our background image and set it's size
+	NSImage *earImage = [NSImage imageNamed:@"Ear icon.icns"];
+	[earImage setSize:NSMakeSize( defaultWidth, defaultHeight )];
+	
+	//figure out how many packets we have
+	NSString *numberString = [NSString stringWithFormat:@"%d", [dragRows count] ];
+	NSSize stringSize = [numberString sizeWithAttributes:nil];
+	
+	//make sure the drage image is big enough to hold the entire string
+	int imageWidth, imageHeight;
+	imageWidth = ( stringSize.width*2 > defaultWidth ? stringSize.width*2 : defaultWidth );
+	imageHeight = ( stringSize.height > defaultHeight ? stringSize.height : defaultHeight );
+
+	//create a blank image for working on
+	NSImage *dragImage = [[NSImage alloc] initWithSize:NSMakeSize( imageWidth, imageHeight )];
+	[dragImage lockFocus];
+	
+	//draw the oval behind the number
+	[[NSColor blueColor] set];
+	NSBezierPath *path;
+	path = [NSBezierPath bezierPathWithOvalInRect:NSMakeRect(0,0,2*stringSize.width,stringSize.height)];
+	[path fill];
+	
+	//draw the number of packets in white
+	[numberString drawAtPoint: NSMakePoint(0.5*stringSize.width,0)
+		withAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+			[NSColor whiteColor],		NSForegroundColorAttributeName,
+			nil
+		]
+	];
+	
+	//composite the number oval ontop of the ear icon
+	[earImage compositeToPoint: NSMakePoint(0, 0) operation:NSCompositeDestinationOver];
+	
+	[dragImage unlockFocus];
+	
+	//calculate the image offset
+	dragImageOffset->x = ( imageWidth / 2 ) - ( 1.5 * stringSize.width );
+	dragImageOffset->y = imageHeight / 2;
+
+	return dragImage;
 }
 
 

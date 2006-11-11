@@ -89,6 +89,9 @@
 - (void)setTableRefresh:(int)newRefresh;
 - (NSString *)aggregate;
 - (void)setAggregate:(NSString *)newAggregate;
+//- (NSString *)subAggregate;
+//- (void)setSubAggregate:(NSString *)newAggregate;
+
 
 - (NSMutableArray *)interfaces;
 - (NSString *)saveFile;

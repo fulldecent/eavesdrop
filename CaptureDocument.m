@@ -308,6 +308,9 @@
 
 - (IBAction)applyAggregates:(id)sender
 {
+	[self willChangeValueForKey:@"aggregate"];
+	[self willChangeValueForKey:@"aggregateArrayController"];
+	
 	[packetList removeAllObjects];
 	[leftoverPacketList removeAllObjects];
 	
@@ -320,6 +323,9 @@
 		aggregateUsed = YES;
 	}
 	[[self packetQueue] setAggregateClassArray:tempArray ];
+	
+	[self didChangeValueForKey:@"aggregate"];
+	[self didChangeValueForKey:@"aggregateArrayController"];
 }
 
 - (void)updateDetailsFromMainOutlineView
@@ -429,6 +435,35 @@
 {
 	ENTRY1( @"setAggregate: %@", newAggregate );
 
+	[self willChangeValueForKey:@"aggregate"];
+	[self willChangeValueForKey:@"aggregateArrayController"];
+
+	[packetList removeAllObjects];
+	[leftoverPacketList removeAllObjects];
+
+	[packetOutlineView reloadData];
+	[leftoverOutlineView reloadData];
+	
+	[[self packetQueue] resetNewPacketIndex];
+
+	aggregateUsed = ! [newAggregate isEqualToString:[Aggregate className]];
+	[[self packetQueue] setAggregateClassName:newAggregate];
+	
+	[self didChangeValueForKey:@"aggregate"];
+	[self didChangeValueForKey:@"aggregateArrayController"];
+	
+	[self refreshData:self];
+}
+/*
+- (NSString *)subAggregate
+{
+	return [[self packetQueue] aggregateClassName];
+}
+
+- (void)setSubAggregate:(NSString *)newAggregate
+{
+	ENTRY1( @"setAggregate: %@", newAggregate );
+
 	[packetList removeAllObjects];
 	[leftoverPacketList removeAllObjects];
 
@@ -442,6 +477,7 @@
 	
 	[self refreshData:self];
 }
+*/
 
 #pragma mark -
 #pragma mark Capture Properties
@@ -852,7 +888,8 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 					ERROR( @"dropped item(s) are neither an Aggregate or a Dissector" );
 				}
 			}
-			
+			//this is not actually working... the file ends up being zero bytes...
+			//... don't know why.
 			[fileSaver savePackets:allItems];
 			[filenames addObject:filename];
 		}
@@ -860,6 +897,10 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 	DEBUG1( @"drop created file: %@", filename );
     return ([filenames count] ? filenames : nil);
 }
+
+#pragma mark -
+#pragma mark NSTableView methods
+
 
 @end
 
