@@ -17,6 +17,7 @@
 	if (self) {
 		dissectorDefaultsArray = [[NSMutableArray alloc] init];
 		aggregateDefaultsArray = [[NSMutableArray alloc] init];
+		decoderDefaultsArray = [[NSMutableArray alloc] init];
 		pluginDefaultsArray = [[NSMutableArray alloc] init];
 	}
 	return self;
@@ -60,34 +61,44 @@
 	ENTRY1( @"activatePlugin:%@", path );
 	NSBundle* pluginBundle = [NSBundle bundleWithPath:path];
 
-	if ([pluginBundle load]) {
-		DEBUG( @"found & loaded plugin bundle" );
-		int count;	
-		NSEnumerator *en;
-		NSMutableDictionary *tempDict;
-		
-		en = [[NSArray arrayWithContentsOfFile:
-			[pluginBundle pathForResource:@"Dissectors" ofType:@"plist"]
-		] objectEnumerator];
-		
-		count = 0;
-		while ( tempDict = [en nextObject] ) {
-			[dissectorDefaultsArray addObject:[Plugin registerDissectorAndGetDefaultsWithSettings:tempDict] ];
-			count++;
-		}
-		DEBUG1( @"loaded %d dissectors", count );
-		
-		en = [[NSArray arrayWithContentsOfFile:
-			[pluginBundle pathForResource:@"Aggregators" ofType:@"plist"]
-		] objectEnumerator];
-		count = 0;
-		while ( tempDict = [en nextObject] ) {
-			[aggregateDefaultsArray addObject:[Plugin registerAggregateAndGetDefaultsWithSettings:tempDict] ];
-		}
-		DEBUG1( @"loaded %d aggregators", count );
-	} else {
+	if (![pluginBundle load]) {
 		ERROR( @"failed to load bundle code" );
+		return;
 	}
+	
+	DEBUG( @"found & loaded plugin bundle" );
+	int count;	
+	NSEnumerator *en;
+	NSMutableDictionary *tempDict;
+	
+	en = [[NSArray arrayWithContentsOfFile:
+		[pluginBundle pathForResource:@"Dissectors" ofType:@"plist"]
+	] objectEnumerator];
+	
+	count = 0;
+	while ( tempDict = [en nextObject] ) {
+		[dissectorDefaultsArray addObject:[Plugin registerDissectorAndGetDefaultsWithSettings:tempDict] ];
+		count++;
+	}
+	DEBUG1( @"loaded %d dissectors", count );
+	
+	en = [[NSArray arrayWithContentsOfFile:
+		[pluginBundle pathForResource:@"Aggregators" ofType:@"plist"]
+	] objectEnumerator];
+	count = 0;
+	while ( tempDict = [en nextObject] ) {
+		[aggregateDefaultsArray addObject:[Plugin registerAggregateAndGetDefaultsWithSettings:tempDict] ];
+	}
+	DEBUG1( @"loaded %d aggregators", count );
+	
+	en = [[NSArray arrayWithContentsOfFile:
+		[pluginBundle pathForResource:@"Decoders" ofType:@"plist"]
+	] objectEnumerator];
+	count = 0;
+	while ( tempDict = [en nextObject] ) {
+		[decoderDefaultsArray addObject:[Plugin registerDecoderAndGetDefaultsWithSettings:tempDict] ];
+	}
+	DEBUG1( @"loaded %d decoders", count );
 }
 
 

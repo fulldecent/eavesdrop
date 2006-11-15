@@ -11,7 +11,7 @@
 #import "PluginDefaults.h"
 #import "BHDebug.h"
 
-@protocol Plugin <NSObject>
+@protocol Plugin
 
 #pragma mark META-DATA
 + (NSDictionary *)keyNames;															/* REQUIRED */
@@ -21,7 +21,7 @@
 - (NSDictionary *)allKeyNames;														/* FREEBIE	*/
 
 #pragma mark DECODE CHECK
-+ (BOOL)canDecodePacket:(NSObject<Plugin> *)testPacket;								/* FREEBIE	*/
+//+ (BOOL)canDecodePacket:(NSObject<Plugin> *)testPacket;								/* FREEBIE	*/
 
 #pragma mark PROPERTIES
 - (NSNumber *)number;																/* FREEBIE  */
@@ -57,11 +57,13 @@
 
 #pragma mark REGISTRATION METHODS
 + (id)registerDissectorAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
-//+ (void)_registerDissector:(Class)dissector forProtocol:(NSString *)protoName decodes:(NSArray *)decodesArray;
 + (void)_registerDissector:(Class)dissector withSettings:(NSDictionary *)defaultSettings;
+
 + (id)registerAggregateAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
-//+ (void)_registerAggregate:(Class)aggregateClass withName:(NSString *)aggregateName;
 + (void)_registerAggregate:(Class)aggregateClass withSettings:(NSDictionary *)defaultSettings;
+
++ (id)registerDecoderAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings;
++ (void)_registerDecoder:(Class)decoderClass withSettings:(NSDictionary *)defaultSettings;
 
 + (Class)dissectorClassForProtocol:(NSString *)protoName;
 + (PluginDefaults *)pluginDefaultsForClass:(Class)pluginClass;
@@ -71,5 +73,8 @@
 - (NSDictionary *)registeredDissectors;
 + (NSDictionary *)registeredAggregators;
 - (NSDictionary *)registeredAggregators;
++ (NSDictionary *)registeredDecoders;
+- (NSDictionary *)registeredDecoders;
+
 
 @end

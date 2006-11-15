@@ -14,6 +14,15 @@
 #pragma mark -
 #pragma mark Setup/destruction methods
 
+- (id)init
+{
+	self = [super init];
+	if (self) {
+		viewInfoArray = [[NSMutableArray alloc] init];
+	}
+	return self;
+}
+
 - (void)awakeFromNib
 {
 	ENTRY( @"awakeFromNib" );
@@ -32,8 +41,21 @@
 
 - (void)updatePluginBox
 {
-	NSArray *viewsInfoArray = [selectedObject valueForKey:@"payloadViewArray"];
-	INFO1( @"updatePluginBox:\n%@", [viewsInfoArray description] );
+	ENTRY( @"updatePluginBox" );
+
+	[viewInfoArray removeAllObjects];
+
+	NSEnumerator *tempEn = [[selectedObject valueForKey:@"registeredDecoders"] objectEnumerator];
+	id tempViewInfo;
+	while ( tempViewInfo=[tempEn nextObject] ) {
+		Class<Decoder> tempClass = [tempViewInfo valueForKey:@"decoderClassName"];
+		if ( [tempClass canDecodePayload:[selectedObject valueForKey:@"payloadData"] ] ) {
+			DEBUG1( @"canDecodePayload: returns true for %@", [tempViewInfo valueForKey:@"decoderClassName"] );
+			[viewInfoArray addObject:tempViewInfo];
+		}
+	}
+	
+	INFO1( @"updatePluginBox:\n%@", [viewInfoArray description] );
 	
 	if ([[[[NSUserDefaultsController sharedUserDefaultsController] values] valueForKey:@"payloadViewAsTabs"] boolValue]) {
 		[payloadViewsPopup setHidden:TRUE];
@@ -55,7 +77,7 @@
 		[pluginsTabView removeTabViewItem:item];
 	}
 
-	en = [viewsInfoArray objectEnumerator];
+	en = [viewInfoArray objectEnumerator];
 	NSDictionary *tempDict;
 	NSTabViewItem *tempItem;
 	while ( tempDict=[en nextObject] ) {
@@ -63,7 +85,6 @@
 		
 		tempItem = [[[NSTabViewItem alloc] initWithIdentifier:nil] autorelease];
 		[tempItem setLabel:[tempDict objectForKey:@"name"] ];
-		[tempItem setView:[selectedObject valueForKey:[tempDict valueForKey:@"viewKey"]] ];
 		[pluginsTabView addTabViewItem:tempItem];
 	}
 	
@@ -97,8 +118,24 @@
 		];
 		[packetTableView addTableColumn:tempColumn];
 	}
-	
-	//INFO1( @"detailColumnsArray: %@", [detailColumnsArray description] );
+}
+
+#pragma mark -
+#pragma mark Accessor methods
+
+- (void)setPluginDisplayIndex:(int)newDisplayIndex
+{
+	if ( newDisplayIndex==pluginDisplayIndex )
+		return;
+
+	NSTabViewItem *tabViewItem = [pluginsTabView tabViewItemAtIndex:pluginDisplayIndex];
+
+	NSDictionary *decoderInfo = [viewInfoArray objectAtIndex:newDisplayIndex-1];
+
+	Class tempClass = [decoderInfo valueForKey:@"decoderClassName"];
+	[selectedDecoder release];
+	selectedDecoder = [[tempClass alloc] initWithPayload:[selectedObject valueForKey:@"payload"] ];
+	[tabViewItem setView:[selectedDecoder valueForKey:[decoderInfo valueForKey:@"viewKey"]] ];
 }
 
 #pragma mark -

@@ -44,7 +44,6 @@ static NSView *staticPayloadImageView;
 	self = [super initWithPacket:newPacket usingSubAggregates:subAggregates];
 	if (self) {
 		firstPacket = [newPacket retain];
-		//isTCP = [firstPacket respondsToSelector:@selector(tcpSourcePort)];
 	}
 	return self;
 }
@@ -61,7 +60,7 @@ static NSView *staticPayloadImageView;
 
 - (NSString *)typeString
 {
-	return @"TCP Conversation";
+	return @"Conversation";
 }
 
 - (NSString *)timeString

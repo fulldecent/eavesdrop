@@ -17,6 +17,7 @@
 
 	NSMutableArray* dissectorDefaultsArray;
 	NSMutableArray* aggregateDefaultsArray;
+	NSMutableArray* decoderDefaultsArray;
 	NSMutableArray* pluginDefaultsArray;
 	
 	IBOutlet NSBox *dissectorPrefsBox;

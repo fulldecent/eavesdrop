@@ -17,6 +17,7 @@ static NSMutableDictionary *registeredDissectors;
 static NSMutableDictionary *registeredProtocolClasses;
 static NSMutableDictionary *registeredAggregators;
 static NSMutableDictionary *registeredDefaults;
+static NSMutableDictionary *registeredDecoders;
 
 + (void)initialize
 {
@@ -28,6 +29,7 @@ static NSMutableDictionary *registeredDefaults;
 		registeredProtocolClasses = [[NSMutableDictionary alloc] init];
 		registeredAggregators = [[NSMutableDictionary alloc] init];
 		registeredDefaults = [[NSMutableDictionary alloc] init];
+		registeredDecoders = [[NSMutableDictionary alloc] init];
 
 		[Plugin registerDissectorAndGetDefaultsWithSettings:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 			@"Plugin",					@"dissectorClassName",
@@ -140,6 +142,37 @@ static NSMutableDictionary *registeredDefaults;
 	INFO( [[registeredAggregators objectForKey:[aggregateClass className]] description] );
 }
 
++ (id)registerDecoderAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings
+{
+	PluginDefaults *pluginDefaults = [PluginDefaults pluginDefaultsWithSettings:defaultSettings];
+	[registeredDefaults setObject:pluginDefaults forKey:[pluginDefaults valueForKey:@"decoderClassName"] ];
+	
+	[NSClassFromString( [pluginDefaults valueForKey:@"decoderClassName"] )
+		_registerDecoder:NSClassFromString( [pluginDefaults valueForKey:@"decoderClassName"] )
+		withSettings:defaultSettings
+	];
+	
+	return pluginDefaults;
+}
+
++ (void)_registerDecoder:(Class)decoderClass withSettings:(NSDictionary *)defaultSettings
+{
+	ENTRY2( @"_registerDecoder:%@ withName:%@", [decoderClass className], [defaultSettings valueForKey:@"name"] );
+	[registeredDecoders
+		setObject:[NSDictionary dictionaryWithObjectsAndKeys:
+			[self className],								@"dissectorClassName",	//probably not...
+			[defaultSettings valueForKey:@"name"],			@"name",
+			decoderClass,									@"decoderClassName",
+			[defaultSettings valueForKey:@"viewKey"],		@"viewKey",
+			[defaultSettings valueForKey:@"decoderNib"],	@"decoderNib",
+			//do I need anything else?
+			nil
+		]
+		forKey:[decoderClass className]
+	];
+	INFO( [[registeredDecoders objectForKey:[decoderClass className]] description] );
+}
+
 + (Class)dissectorClassForProtocol:(NSString *)protoName
 {
 	return [[registeredDissectors objectForKey:protoName] objectForKey:@"class"];
@@ -165,6 +198,11 @@ static NSMutableDictionary *registeredDefaults;
 	return registeredAggregators;
 }
 
++ (NSDictionary *)registeredDecoders
+{
+	return registeredDecoders;
+}
+
 - (NSDictionary *)registeredDissectors
 {
 	return registeredDissectors;
@@ -175,9 +213,9 @@ static NSMutableDictionary *registeredDefaults;
 	return registeredAggregators;
 }
 
-+ (BOOL)canDecodePacket:(NSObject<Plugin> *)testPacket
+- (NSDictionary *)registeredDecoders
 {
-	return YES;
+	return registeredDecoders;
 }
 
 #pragma mark -

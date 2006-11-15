@@ -28,7 +28,7 @@ static int dissectorCount;
 + (id)packetWithHeaderData:(NSData *)newHeader packetData:(NSData *)newPacket
 {
 	//not sure if this is actually how I want to start it out...
-	Class<Dissector> tempClass = [[[super registeredDissectors] valueForKey:@"packet"] objectForKey:@"dissectorClassName"];	
+	Class tempClass = [[[super registeredDissectors] valueForKey:@"packet"] objectForKey:@"dissectorClassName"];	
 	Dissector *nextPacket = [[[tempClass alloc] initWithHeaderData:newHeader packetData:newPacket] autorelease];
 	Dissector *tempPacket;
 	
