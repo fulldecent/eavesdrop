@@ -37,6 +37,7 @@
 		
 		dissectorClassName = [[settingsDict objectForKey:@"dissectorClassName"] retain];
 		aggregateClassName = [[settingsDict objectForKey:@"aggregateClassName"] retain];
+		decoderClassName = [[settingsDict objectForKey:@"decoderClassName"] retain];
 		protocol = [[settingsDict objectForKey:@"protocol"] retain];
 		name = [[settingsDict objectForKey:@"name"] retain];
 		decodes = [[settingsDict objectForKey:@"decodes"] retain];
@@ -87,6 +88,8 @@
 		return aggregateClassName;
 	else if (dissectorClassName)
 		return dissectorClassName;
+	else if (decoderClassName)
+		return decoderClassName;
 	else
 		return nil;
 }

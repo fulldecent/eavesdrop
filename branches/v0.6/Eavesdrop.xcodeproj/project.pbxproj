@@ -56,6 +56,15 @@
 		3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */; };
 		3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */; };
 		3F69882B0B037506007910F7 /* Blank Ear icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3F69882A0B037506007910F7 /* Blank Ear icon.icns */; };
+		3F6989B30B069286007910F7 /* Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6989B10B069286007910F7 /* Decoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F6989B40B069286007910F7 /* Decoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6989B20B069286007910F7 /* Decoder.m */; };
+		3F6989C50B069A83007910F7 /* TextDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F6989C30B069A83007910F7 /* TextDecoder.h */; settings = {ATTRIBUTES = (); }; };
+		3F6989C60B069A83007910F7 /* TextDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */; };
+		3F698A500B07895C007910F7 /* Decoders.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F698A4F0B07895C007910F7 /* Decoders.plist */; };
+		3F698F020B0ACC15007910F7 /* TextDecoder.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F698EFD0B0ACC15007910F7 /* TextDecoder.nib */; };
+		3F698FBB0B0AE85A007910F7 /* ImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F698FB90B0AE85A007910F7 /* ImageDecoder.h */; };
+		3F698FBC0B0AE85A007910F7 /* ImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */; };
+		3F698FCA0B0AE95C007910F7 /* ImageDecoder.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FB2E0690A20B87F00ED017B /* DOHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FB2E0670A20B87E00ED017B /* DOHelpers.h */; };
@@ -305,6 +314,15 @@
 		3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = TCPServerPortAggregateDefaults.nib; path = TCP/TCPServerPortAggregateDefaults.nib; sourceTree = "<group>"; };
 		3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TCP_UDP_Ports.plist; path = TCP/TCP_UDP_Ports.plist; sourceTree = "<group>"; };
 		3F69882A0B037506007910F7 /* Blank Ear icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Blank Ear icon.icns"; sourceTree = "<group>"; };
+		3F6989B10B069286007910F7 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
+		3F6989B20B069286007910F7 /* Decoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Decoder.m; sourceTree = "<group>"; };
+		3F6989C30B069A83007910F7 /* TextDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextDecoder.h; sourceTree = "<group>"; };
+		3F6989C40B069A83007910F7 /* TextDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextDecoder.m; sourceTree = "<group>"; };
+		3F698A4F0B07895C007910F7 /* Decoders.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = Decoders.plist; sourceTree = "<group>"; };
+		3F698EFD0B0ACC15007910F7 /* TextDecoder.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = TextDecoder.nib; sourceTree = "<group>"; };
+		3F698FB90B0AE85A007910F7 /* ImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDecoder.h; sourceTree = "<group>"; };
+		3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDecoder.m; sourceTree = "<group>"; };
+		3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = ImageDecoder.nib; sourceTree = "<group>"; };
 		3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOHelpers.h; sourceTree = "<group>"; };
 		3FB2E0680A20B87F00ED017B /* DOHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOHelpers.m; sourceTree = "<group>"; };
 		3FB2E1890A25668A00ED017B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -544,19 +562,9 @@
 		3F043E870A2A486400380C99 /* Plugin Framework */ = {
 			isa = PBXGroup;
 			children = (
-				3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */,
-				3F49B78F0AD88FD800633242 /* Dissectors.plist */,
-				3FB356FA0A6DE1360086E5F3 /* Plugin.h */,
-				3FB356FB0A6DE1360086E5F3 /* Plugin.m */,
-				3F3E232B0A37F398001C4087 /* PacketHandler-Info.plist */,
-				3FEC87DE0A61C163005108E6 /* PluginDefaults.h */,
-				3FEC87DF0A61C163005108E6 /* PluginDefaults.m */,
-				3F043E820A2A484F00380C99 /* Packet.h */,
-				3F043E830A2A485000380C99 /* Packet.m */,
-				3FC600420A3FCFE000301A72 /* Aggregate.h */,
-				3FC600430A3FCFE000301A72 /* Aggregate.m */,
-				3F2699310A47B137001EBA5A /* Dissector.h */,
-				3F2699320A47B137001EBA5A /* Dissector.m */,
+				3F698BA00B083D13007910F7 /* Abstract Classes */,
+				3F698BB60B083D6E007910F7 /* Concrete Classes */,
+				3F698B9F0B083CDD007910F7 /* Resources */,
 			);
 			name = "Plugin Framework";
 			sourceTree = "<group>";
@@ -684,6 +692,49 @@
 				3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */,
 			);
 			name = Aggregators;
+			sourceTree = "<group>";
+		};
+		3F698B9F0B083CDD007910F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F698EFD0B0ACC15007910F7 /* TextDecoder.nib */,
+				3F49B78F0AD88FD800633242 /* Dissectors.plist */,
+				3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */,
+				3F698A4F0B07895C007910F7 /* Decoders.plist */,
+				3F3E232B0A37F398001C4087 /* PacketHandler-Info.plist */,
+				3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3F698BA00B083D13007910F7 /* Abstract Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3F6989B10B069286007910F7 /* Decoder.h */,
+				3F6989B20B069286007910F7 /* Decoder.m */,
+				3FB356FA0A6DE1360086E5F3 /* Plugin.h */,
+				3FB356FB0A6DE1360086E5F3 /* Plugin.m */,
+				3FEC87DE0A61C163005108E6 /* PluginDefaults.h */,
+				3FEC87DF0A61C163005108E6 /* PluginDefaults.m */,
+				3FC600420A3FCFE000301A72 /* Aggregate.h */,
+				3FC600430A3FCFE000301A72 /* Aggregate.m */,
+				3F2699310A47B137001EBA5A /* Dissector.h */,
+				3F2699320A47B137001EBA5A /* Dissector.m */,
+			);
+			name = "Abstract Classes";
+			sourceTree = "<group>";
+		};
+		3F698BB60B083D6E007910F7 /* Concrete Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3F698FB90B0AE85A007910F7 /* ImageDecoder.h */,
+				3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */,
+				3F6989C30B069A83007910F7 /* TextDecoder.h */,
+				3F6989C40B069A83007910F7 /* TextDecoder.m */,
+				3F043E820A2A484F00380C99 /* Packet.h */,
+				3F043E830A2A485000380C99 /* Packet.m */,
+			);
+			name = "Concrete Classes";
 			sourceTree = "<group>";
 		};
 		3FB2E0730A20B8FD00ED017B /* Protocols, Categories, etc. */ = {
@@ -826,6 +877,9 @@
 				3F3E232F0A37F3CB001C4087 /* Packet.h in Headers */,
 				3FC600440A3FCFE000301A72 /* Aggregate.h in Headers */,
 				3F2699330A47B137001EBA5A /* Dissector.h in Headers */,
+				3F6989B30B069286007910F7 /* Decoder.h in Headers */,
+				3F6989C50B069A83007910F7 /* TextDecoder.h in Headers */,
+				3F698FBB0B0AE85A007910F7 /* ImageDecoder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +1082,9 @@
 			files = (
 				3F49B7900AD88FD800633242 /* Dissectors.plist in Resources */,
 				3F49B7CD0AD8A8EB00633242 /* Aggregators.plist in Resources */,
+				3F698A500B07895C007910F7 /* Decoders.plist in Resources */,
+				3F698F020B0ACC15007910F7 /* TextDecoder.nib in Resources */,
+				3F698FCA0B0AE95C007910F7 /* ImageDecoder.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,6 +1153,9 @@
 				3F3E23300A37F3E3001C4087 /* Packet.m in Sources */,
 				3FC600450A3FCFE000301A72 /* Aggregate.m in Sources */,
 				3F2699340A47B137001EBA5A /* Dissector.m in Sources */,
+				3F6989B40B069286007910F7 /* Decoder.m in Sources */,
+				3F6989C60B069A83007910F7 /* TextDecoder.m in Sources */,
+				3F698FBC0B0AE85A007910F7 /* ImageDecoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

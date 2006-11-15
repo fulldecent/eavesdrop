@@ -1,0 +1,14 @@
+{
+    IBClasses = (
+        {CLASS = Decoder; LANGUAGE = ObjC; SUPERCLASS = Plugin; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            CLASS = ImageDecoder; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {imageDecoderView = NSView; }; 
+            SUPERCLASS = Decoder; 
+        }, 
+        {CLASS = Plugin; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

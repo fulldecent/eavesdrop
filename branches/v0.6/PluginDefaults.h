@@ -16,6 +16,7 @@
 	
 	NSString *dissectorClassName;
 	NSString *aggregateClassName;
+	NSString *decoderClassName;
 	NSString *protocol;
 	NSString *name;
 	

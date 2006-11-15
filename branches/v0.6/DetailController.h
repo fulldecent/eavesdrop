@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <EDPlugin/Plugin.h>
+//#import <EDPlugin/Plugin.h>
+#import <EDPlugin/Decoder.h>
 
 @interface DetailController : NSObject {
 	IBOutlet NSWindow *detailWindow;
@@ -18,10 +19,13 @@
 	IBOutlet NSTableView *packetTableView;
 	IBOutlet NSPopUpButton *payloadViewsPopup;
 	IBOutlet NSTabView *pluginsTabView;
+	
+	NSMutableArray *viewInfoArray;
 
 	Plugin *selectedObject;
+	Decoder *selectedDecoder;
 	
-	id pluginDisplayIndex;
+	int pluginDisplayIndex;
 }
 
 - (void)updatePluginBox;
