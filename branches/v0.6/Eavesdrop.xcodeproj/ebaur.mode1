@@ -326,32 +326,30 @@
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>3F6990950B0C30D6007910F7</string>
+										<string>3F6990CB0B0C3906007910F7</string>
 										<key>history</key>
 										<array>
-											<string>3F698FA80B0AE775007910F7</string>
-											<string>3F698FDB0B0AEA68007910F7</string>
-											<string>3F698FF50B0C0F57007910F7</string>
-											<string>3F698FF60B0C0F57007910F7</string>
 											<string>3F69906C0B0C276E007910F7</string>
 											<string>3F6990760B0C28F2007910F7</string>
-											<string>3F6990860B0C29C9007910F7</string>
-											<string>3F6990870B0C29C9007910F7</string>
 											<string>3F69908E0B0C2A1F007910F7</string>
-											<string>3F6990740B0C28F2007910F7</string>
+											<string>3F6990BC0B0C38D6007910F7</string>
+											<string>3F6990BD0B0C38D6007910F7</string>
+											<string>3F6990BE0B0C38D6007910F7</string>
+											<string>3F6990BF0B0C38D6007910F7</string>
+											<string>3F6990C00B0C38D6007910F7</string>
+											<string>3F6990C10B0C38D6007910F7</string>
+											<string>3F6990C20B0C38D6007910F7</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>3F698D3E0B0972CE007910F7</string>
-											<string>3F698D4F0B098249007910F7</string>
-											<string>3F698F270B0ACCA0007910F7</string>
-											<string>3F698F430B0AD260007910F7</string>
-											<string>3F698F860B0AE496007910F7</string>
-											<string>3F698FAA0B0AE775007910F7</string>
 											<string>3F6990780B0C28F2007910F7</string>
-											<string>3F6990880B0C29C9007910F7</string>
 											<string>3F6990890B0C29C9007910F7</string>
 											<string>3F69908F0B0C2A1F007910F7</string>
+											<string>3F6990C30B0C38D6007910F7</string>
+											<string>3F6990C40B0C38D6007910F7</string>
+											<string>3F6990C50B0C38D6007910F7</string>
+											<string>3F6990C60B0C38D6007910F7</string>
+											<string>3F6990C70B0C38D6007910F7</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -775,8 +773,6 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
@@ -803,6 +799,8 @@
 							<string>380pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

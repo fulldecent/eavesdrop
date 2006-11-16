@@ -31,6 +31,7 @@
 
 @interface Decoder : Plugin <Decoder> {
 	BOOL nibLoaded;
+	NSData *payloadData;
 }
 
 - (NSString *)decoderNibName;
