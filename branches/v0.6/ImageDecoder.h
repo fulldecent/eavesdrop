@@ -14,4 +14,6 @@
 	IBOutlet NSView *imageDecoderView;
 }
 
+- (NSView *)imageDecoderView;
+
 @end

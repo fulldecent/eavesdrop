@@ -21,7 +21,7 @@
 
 - (id)initWithPayload:(NSData *)startingPayload
 {
-	self = [super init];
+	self = [super initWithPayload:startingPayload];
 	if (self) {
 		//do something interesting here...
 	}
@@ -31,6 +31,11 @@
 - (void)awakeFromNib
 {
 	ENTRY1( @"awakeFromNib - text view: %@", [textDecoderView description] );
+}
+
+- (NSString *)decoderNibName
+{
+	return @"TextDecoder";
 }
 
 - (NSView *)textDecoderView

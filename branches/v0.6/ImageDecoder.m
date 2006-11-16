@@ -22,7 +22,7 @@
 
 - (id)initWithPayload:(NSData *)startingPayload
 {
-	self = [super init];
+	self = [super initWithPayload:startingPayload];
 	if (self) {
 		//do something interesting here...
 	}
@@ -31,10 +31,15 @@
 
 - (void)awakeFromNib
 {
-	ENTRY1( @"awakeFromNib - text view: %@", [imageDecoderView description] );
+	ENTRY1( @"awakeFromNib - image view: %@", [imageDecoderView description] );
 }
 
-- (NSView *)textDecoderView
+- (NSString *)decoderNibName
+{
+	return @"ImageDecoder";
+}
+
+- (NSView *)imageDecoderView
 {
 	ENTRY( @"imageDecoderView" );
 	return imageDecoderView;
