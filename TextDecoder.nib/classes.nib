@@ -1,14 +1,14 @@
 {
     IBClasses = (
+        {CLASS = Decoder; LANGUAGE = ObjC; SUPERCLASS = Plugin; }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = Plugin; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
         {
-            CLASS = ASCIIDecoder; 
+            CLASS = TextDecoder; 
             LANGUAGE = ObjC; 
             OUTLETS = {textDecoderView = NSView; }; 
             SUPERCLASS = Decoder; 
-        }, 
-        {CLASS = Decoder; LANGUAGE = ObjC; SUPERCLASS = Plugin; }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {CLASS = Plugin; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+        }
     ); 
     IBVersion = 1; 
 }

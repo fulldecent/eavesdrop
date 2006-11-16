@@ -354,6 +354,24 @@
 			3F6990930B0C2A3D007910F7 /* PBXTextBookmark */ = 3F6990930B0C2A3D007910F7 /* PBXTextBookmark */;
 			3F6990940B0C2A3D007910F7 /* PBXTextBookmark */ = 3F6990940B0C2A3D007910F7 /* PBXTextBookmark */;
 			3F6990950B0C30D6007910F7 /* PBXTextBookmark */ = 3F6990950B0C30D6007910F7 /* PBXTextBookmark */;
+			3F6990B50B0C3855007910F7 /* PBXTextBookmark */ = 3F6990B50B0C3855007910F7 /* PBXTextBookmark */;
+			3F6990B60B0C3855007910F7 /* PBXTextBookmark */ = 3F6990B60B0C3855007910F7 /* PBXTextBookmark */;
+			3F6990BC0B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990BC0B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990BD0B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990BD0B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990BE0B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990BE0B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990BF0B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990BF0B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C00B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C00B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C10B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C10B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C20B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C20B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C30B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C30B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C40B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C40B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C50B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C50B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C60B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C60B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C70B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C70B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C80B0C38D6007910F7 /* PBXTextBookmark */ = 3F6990C80B0C38D6007910F7 /* PBXTextBookmark */;
+			3F6990C90B0C3901007910F7 /* PBXTextBookmark */ = 3F6990C90B0C3901007910F7 /* PBXTextBookmark */;
+			3F6990CA0B0C3901007910F7 /* PBXTextBookmark */ = 3F6990CA0B0C3901007910F7 /* PBXTextBookmark */;
+			3F6990CB0B0C3906007910F7 /* PBXTextBookmark */ = 3F6990CB0B0C3906007910F7 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 3FE1246C0A1ABFCE00A0A510 /* Source Control */;
 		userBookmarkGroup = 3F0714810A419BCF00683169 /* PBXBookmarkGroup */;
@@ -428,8 +446,8 @@
 	3F043E790A2A44AD00380C99 /* PacketQueue.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {739, 4494}}";
-			sepNavSelRange = "{4094, 0}";
-			sepNavVisRect = "{{0, 1942}, {739, 453}}";
+			sepNavSelRange = "{283, 10}";
+			sepNavVisRect = "{{0, 0}, {739, 488}}";
 			sepNavWindowFrame = "{{15, 51}, {983, 690}}";
 		};
 	};
@@ -755,30 +773,30 @@
 	};
 	3F6989B10B069286007910F7 /* Decoder.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {977, 574}}";
-			sepNavSelRange = "{998, 0}";
-			sepNavVisRect = "{{0, 230}, {977, 316}}";
+			sepNavIntBoundsRect = "{{0, 0}, {739, 588}}";
+			sepNavSelRange = "{967, 0}";
+			sepNavVisRect = "{{0, 84}, {739, 488}}";
 		};
 	};
 	3F6989B20B069286007910F7 /* Decoder.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {739, 1302}}";
-			sepNavSelRange = "{912, 0}";
-			sepNavVisRect = "{{0, 791}, {739, 488}}";
+			sepNavIntBoundsRect = "{{0, 0}, {739, 1316}}";
+			sepNavSelRange = "{1589, 0}";
+			sepNavVisRect = "{{0, 589}, {739, 488}}";
 		};
 	};
 	3F6989C30B069A83007910F7 /* TextDecoder.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {739, 488}}";
-			sepNavSelRange = "{18, 0}";
+			sepNavSelRange = "{53, 0}";
 			sepNavVisRect = "{{0, 0}, {739, 488}}";
 		};
 	};
 	3F6989C40B069A83007910F7 /* TextDecoder.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {739, 672}}";
-			sepNavSelRange = "{612, 0}";
-			sepNavVisRect = "{{0, 184}, {739, 488}}";
+			sepNavIntBoundsRect = "{{0, 0}, {739, 2968}}";
+			sepNavSelRange = "{371, 0}";
+			sepNavVisRect = "{{0, 0}, {739, 488}}";
 		};
 	};
 	3F698A4F0B07895C007910F7 /* Decoders.plist */ = {
@@ -818,7 +836,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 63";
 		rLen = 0;
-		rLoc = 1515;
+		rLoc = 1559;
 		rType = 0;
 		vrLen = 840;
 		vrLoc = 981;
@@ -828,7 +846,7 @@
 		fRef = 3F6989B10B069286007910F7 /* Decoder.h */;
 		name = "Decoder.h: nibLoaded";
 		rLen = 0;
-		rLoc = 946;
+		rLoc = 968;
 		rType = 0;
 		vrLen = 952;
 		vrLoc = 34;
@@ -848,7 +866,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 83";
 		rLen = 0;
-		rLoc = 1901;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 751;
 		vrLoc = 129;
@@ -868,7 +886,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = textDecoderView;
 		rLen = 15;
-		rLoc = 642;
+		rLoc = 825;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 138;
@@ -898,7 +916,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = textDecoderView;
 		rLen = 15;
-		rLoc = 642;
+		rLoc = 825;
 		rType = 0;
 		vrLen = 503;
 		vrLoc = 138;
@@ -961,7 +979,7 @@
 		fRef = 3F6989C30B069A83007910F7 /* TextDecoder.h */;
 		name = ASCIIDecoder;
 		rLen = 11;
-		rLoc = 194;
+		rLoc = 286;
 		rType = 0;
 		vrLen = 263;
 		vrLoc = 0;
@@ -991,7 +1009,7 @@
 		fRef = 3F6989C30B069A83007910F7 /* TextDecoder.h */;
 		name = ASCIIDecoder;
 		rLen = 11;
-		rLoc = 194;
+		rLoc = 286;
 		rType = 0;
 		vrLen = 263;
 		vrLoc = 0;
@@ -1001,7 +1019,7 @@
 		fRef = 3F6989C30B069A83007910F7 /* TextDecoder.h */;
 		name = ASCIIDecoder;
 		rLen = 11;
-		rLoc = 194;
+		rLoc = 286;
 		rType = 0;
 		vrLen = 263;
 		vrLoc = 0;
@@ -1011,7 +1029,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = textDecoderView;
 		rLen = 15;
-		rLoc = 642;
+		rLoc = 825;
 		rType = 0;
 		vrLen = 504;
 		vrLoc = 137;
@@ -1021,7 +1039,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 12";
 		rLen = 0;
-		rLoc = 190;
+		rLoc = 373;
 		rType = 0;
 		vrLen = 501;
 		vrLoc = 137;
@@ -1031,7 +1049,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 12";
 		rLen = 0;
-		rLoc = 190;
+		rLoc = 373;
 		rType = 0;
 		vrLen = 501;
 		vrLoc = 137;
@@ -1061,7 +1079,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 83";
 		rLen = 0;
-		rLoc = 1901;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 732;
 		vrLoc = 3;
@@ -1131,7 +1149,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 83";
 		rLen = 0;
-		rLoc = 1901;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 732;
 		vrLoc = 3;
@@ -1561,7 +1579,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 13";
 		rLen = 525;
-		rLoc = 191;
+		rLoc = 374;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 136;
@@ -2221,7 +2239,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 83";
 		rLen = 0;
-		rLoc = 1901;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 707;
 		vrLoc = 0;
@@ -2251,7 +2269,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 13";
 		rLen = 525;
-		rLoc = 191;
+		rLoc = 374;
 		rType = 0;
 		vrLen = 502;
 		vrLoc = 136;
@@ -2281,7 +2299,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 24";
 		rLen = 0;
-		rLoc = 398;
+		rLoc = 581;
 		rType = 0;
 		vrLen = 529;
 		vrLoc = 136;
@@ -2301,7 +2319,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 24";
 		rLen = 0;
-		rLoc = 398;
+		rLoc = 581;
 		rType = 0;
 		vrLen = 528;
 		vrLoc = 137;
@@ -2331,7 +2349,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 83";
 		rLen = 0;
-		rLoc = 1901;
+		rLoc = 1947;
 		rType = 0;
 		vrLen = 707;
 		vrLoc = 0;
@@ -2351,7 +2369,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 44";
 		rLen = 0;
-		rLoc = 912;
+		rLoc = 954;
 		rType = 0;
 		vrLen = 853;
 		vrLoc = 691;
@@ -2398,7 +2416,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 44";
 		rLen = 0;
-		rLoc = 912;
+		rLoc = 954;
 		rType = 0;
 		vrLen = 666;
 		vrLoc = 1251;
@@ -2418,7 +2436,7 @@
 		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
 		name = "Decoder.m: 44";
 		rLen = 0;
-		rLoc = 912;
+		rLoc = 954;
 		rType = 0;
 		vrLen = 666;
 		vrLoc = 1251;
@@ -2488,7 +2506,7 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 38";
 		rLen = 0;
-		rLoc = 612;
+		rLoc = 795;
 		rType = 0;
 		vrLen = 531;
 		vrLoc = 192;
@@ -2518,10 +2536,190 @@
 		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
 		name = "TextDecoder.m: 38";
 		rLen = 0;
-		rLoc = 612;
+		rLoc = 795;
 		rType = 0;
 		vrLen = 531;
 		vrLoc = 192;
+	};
+	3F6990B50B0C3855007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F698FB90B0AE85A007910F7 /* ImageDecoder.h */;
+		name = "ImageDecoder.h: 11";
+		rLen = 0;
+		rLoc = 182;
+		rType = 0;
+		vrLen = 295;
+		vrLoc = 0;
+	};
+	3F6990B60B0C3855007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */;
+		name = settingsNibName;
+		rLen = 15;
+		rLoc = 2127;
+		rType = 0;
+		vrLen = 997;
+		vrLoc = 675;
+	};
+	3F6990BC0B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989B10B069286007910F7 /* Decoder.h */;
+		name = "Decoder.h: payloadData";
+		rLen = 0;
+		rLoc = 967;
+		rType = 0;
+		vrLen = 898;
+		vrLoc = 129;
+	};
+	3F6990BD0B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989B20B069286007910F7 /* Decoder.m */;
+		name = "Decoder.m: 71";
+		rLen = 0;
+		rLoc = 1589;
+		rType = 0;
+		vrLen = 803;
+		vrLoc = 876;
+	};
+	3F6990BE0B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FECC8C80A367BDE007C90E6 /* PluginsController.m */;
+		name = "PluginsController.m: 100";
+		rLen = 0;
+		rLoc = 2922;
+		rType = 0;
+		vrLen = 982;
+		vrLoc = 44;
+	};
+	3F6990BF0B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */;
+		name = "PluginDefaults.m: 77";
+		rLen = 0;
+		rLoc = 2424;
+		rType = 0;
+		vrLen = 812;
+		vrLoc = 0;
+	};
+	3F6990C00B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F043E790A2A44AD00380C99 /* PacketQueue.m */;
+		name = initialize;
+		rLen = 10;
+		rLoc = 283;
+		rType = 0;
+		vrLen = 720;
+		vrLoc = 0;
+	};
+	3F6990C10B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989C30B069A83007910F7 /* TextDecoder.h */;
+		name = "TextDecoder.h: 5";
+		rLen = 0;
+		rLoc = 53;
+		rType = 0;
+		vrLen = 376;
+		vrLoc = 0;
+	};
+	3F6990C20B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
+		name = "TextDecoder.m: 17";
+		rLen = 0;
+		rLoc = 371;
+		rType = 0;
+		vrLen = 521;
+		vrLoc = 0;
+	};
+	3F6990C30B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
+		name = initalize;
+		rLen = 10;
+		rLoc = 200;
+		rType = 0;
+		vrLen = 515;
+		vrLoc = 0;
+	};
+	3F6990C40B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FECC8C80A367BDE007C90E6 /* PluginsController.m */;
+		name = "PluginsController.m: 100";
+		rLen = 0;
+		rLoc = 2922;
+		rType = 0;
+		vrLen = 982;
+		vrLoc = 44;
+	};
+	3F6990C50B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */;
+		name = "PluginDefaults.m: 77";
+		rLen = 0;
+		rLoc = 2424;
+		rType = 0;
+		vrLen = 812;
+		vrLoc = 0;
+	};
+	3F6990C60B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F043E790A2A44AD00380C99 /* PacketQueue.m */;
+		name = initialize;
+		rLen = 10;
+		rLoc = 283;
+		rType = 0;
+		vrLen = 720;
+		vrLoc = 0;
+	};
+	3F6990C70B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989C30B069A83007910F7 /* TextDecoder.h */;
+		name = "TextDecoder.h: 5";
+		rLen = 0;
+		rLoc = 53;
+		rType = 0;
+		vrLen = 376;
+		vrLoc = 0;
+	};
+	3F6990C80B0C38D6007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
+		name = "TextDecoder.m: 18";
+		rLen = 0;
+		rLoc = 371;
+		rType = 0;
+		vrLen = 651;
+		vrLoc = 0;
+	};
+	3F6990C90B0C3901007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F698FB90B0AE85A007910F7 /* ImageDecoder.h */;
+		name = "ImageDecoder.h: 11";
+		rLen = 0;
+		rLoc = 182;
+		rType = 0;
+		vrLen = 295;
+		vrLoc = 0;
+	};
+	3F6990CA0B0C3901007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */;
+		name = settingsNibName;
+		rLen = 15;
+		rLoc = 2127;
+		rType = 0;
+		vrLen = 997;
+		vrLoc = 675;
+	};
+	3F6990CB0B0C3906007910F7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 3F6989C40B069A83007910F7 /* TextDecoder.m */;
+		name = "TextDecoder.m: 18";
+		rLen = 0;
+		rLoc = 371;
+		rType = 0;
+		vrLen = 651;
+		vrLoc = 0;
 	};
 	3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {
 		uiCtxt = {
@@ -2903,7 +3101,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {740, 2646}}";
 			sepNavSelRange = "{2424, 0}";
-			sepNavVisRect = "{{0, 751}, {739, 488}}";
+			sepNavVisRect = "{{0, 0}, {739, 488}}";
 		};
 	};
 	3FEC8BFD0A64ADC9005108E6 /* TCPPacketDefaults.h */ = {
@@ -2940,7 +3138,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {739, 1932}}";
 			sepNavSelRange = "{2922, 0}";
-			sepNavVisRect = "{{0, 338}, {739, 488}}";
+			sepNavVisRect = "{{0, 60}, {739, 488}}";
 		};
 	};
 	3FECCA5F0A37D500007C90E6 /* Dissectors.plist */ = {
