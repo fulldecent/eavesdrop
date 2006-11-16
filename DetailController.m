@@ -127,15 +127,29 @@
 {
 	if ( newDisplayIndex==pluginDisplayIndex )
 		return;
+	pluginDisplayIndex = newDisplayIndex;
+
+	DEBUG1( @"setPluginDisplayIndex: %d", newDisplayIndex );
 
 	NSTabViewItem *tabViewItem = [pluginsTabView tabViewItemAtIndex:pluginDisplayIndex];
 
-	NSDictionary *decoderInfo = [viewInfoArray objectAtIndex:newDisplayIndex-1];
+	NSDictionary *decoderInfo = [viewInfoArray objectAtIndex:newDisplayIndex];
 
 	Class tempClass = [decoderInfo valueForKey:@"decoderClassName"];
-	[selectedDecoder release];
-	selectedDecoder = [[tempClass alloc] initWithPayload:[selectedObject valueForKey:@"payload"] ];
-	[tabViewItem setView:[selectedDecoder valueForKey:[decoderInfo valueForKey:@"viewKey"]] ];
+
+	NSData *tempData = [selectedObject valueForKey:@"payloadData"];
+	if (tempData) {
+		[selectedDecoder release];
+		selectedDecoder = [[tempClass alloc] initWithPayload:tempData ];
+	} else {
+		ERROR( @"selected object did not return any payload data" );
+	}
+	
+	NSView *tempView = [selectedDecoder valueForKey:[decoderInfo valueForKey:@"viewKey"] ];
+	if (tempView)
+		[tabViewItem setView:tempView ];
+	else
+		ERROR( @"couldn't set tab view... not changing it" );
 }
 
 #pragma mark -

@@ -38,8 +38,12 @@
 - (id)initWithPayload:(NSData *)startingPayload
 {
 	ENTRY( @"initWithPayload: (default implementation)" );
-	nibLoaded = NO;
-	return [super init];
+	self = [super init];
+	if (self) {
+		nibLoaded = NO;
+		[self _loadNib];
+	}
+	return self;
 }
 
 - (id)initWithPayload:(NSData *)startingPayload fromDissector:(id<Dissector>)startingDissector;
