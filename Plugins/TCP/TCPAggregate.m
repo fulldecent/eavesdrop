@@ -11,9 +11,6 @@
 
 @implementation TCPAggregate
 
-static NSView *staticPayloadTextView;
-static NSView *staticPayloadImageView;
-
 + (void)initialize
 {
 	ENTRY( @"initialize" );
@@ -81,44 +78,15 @@ static NSView *staticPayloadImageView;
 	return [lastPacket flagsString];
 }
 
-- (NSString *)payloadString
+- (NSData *)payloadData
 {
-	INFO( [lastPacket valueForKey:@"ethernetPayloadData"] );
-	return @"nothing for now";
-}
-
-
-#pragma mark -
-#pragma mark View methods
-
-- (NSView *)payloadTextView
-{
-	ENTRY( @"payloadTextView" );
-	if (!staticPayloadTextView) {
-		if ( ![NSBundle loadNibNamed:@"TCPAggregate" owner:self] ) {
-			ERROR( @"failed to load TCPAggregate nib" );
-		} else {
-			staticPayloadTextView = [tcpPayloadTextView retain];
-		}
+	NSMutableData *tempData = [NSMutableData data];
+	NSEnumerator *en = [packetArray objectEnumerator];
+	id tempPacket;
+	while ( tempPacket=[en nextObject] ) {
+		[tempData appendData:[tempPacket valueForKey:@"payloadData"] ];
 	}
-	//remove this:
-	[self payloadString];
-	//end "remove this"
-	return staticPayloadTextView;
+	return [tempData copy];
 }
-
-- (NSView *)payloadImageView
-{
-	ENTRY( @"payloadImageView" );
-	if (!staticPayloadImageView) {
-		if ( ![NSBundle loadNibNamed:@"TCPAggregate" owner:self] ) {
-			ERROR( @"failed to load TCPAggregate nib" );
-		} else {
-			staticPayloadImageView = [tcpPayloadImageView retain];
-		}
-	}
-	return staticPayloadImageView;
-}
-
 
 @end

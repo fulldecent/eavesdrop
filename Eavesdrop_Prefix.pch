@@ -8,5 +8,6 @@
     #import <Cocoa/Cocoa.h>
 	
 	#import "DOHelpers.h"
-	#import "BHDebug.h"
+
+	#import <BHLogger/BHLogging.h>
 #endif

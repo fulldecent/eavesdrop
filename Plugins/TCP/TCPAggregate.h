@@ -18,7 +18,4 @@
 	IBOutlet NSView *tcpPayloadImageView;
 }
 
-- (NSView *)payloadTextView;
-- (NSView *)payloadImageView;
-
 @end

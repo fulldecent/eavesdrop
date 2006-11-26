@@ -14,7 +14,7 @@
 #import <pcap.h>
 #import <pcap-namedb.h>
 
-#import <BHDebug/BHDebug.h>
+#import <BHLogger/BHLogging.h>
 #import "DOHelpers.h"
 #import "CaptureHandlers.h"
 

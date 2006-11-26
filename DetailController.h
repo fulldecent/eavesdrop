@@ -20,6 +20,8 @@
 	IBOutlet NSPopUpButton *payloadViewsPopup;
 	IBOutlet NSTabView *pluginsTabView;
 	
+	IBOutlet NSView *blankView;
+	
 	NSMutableArray *viewInfoArray;
 
 	Plugin *selectedObject;

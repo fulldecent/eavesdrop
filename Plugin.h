@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <BHLogger/BHLogging.h>
 
 #import "PluginDefaults.h"
-#import "BHDebug.h"
+
 
 @protocol Plugin
 

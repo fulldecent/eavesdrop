@@ -20,14 +20,6 @@
 		3F269C520A4BB1A6001EBA5A /* EthernetPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FECCA620A37D500007C90E6 /* EthernetPacket.m */; };
 		3F269C5A0A4BB1AF001EBA5A /* EDPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3E232A0A37F398001C4087 /* EDPlugin.framework */; };
 		3F269D800A4CEF22001EBA5A /* IPPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FECCA650A37D500007C90E6 /* IPPacket.m */; };
-		3F269E430A4DC910001EBA5A /* BHDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FC6FFF90A3FBAE300301A72 /* BHDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F269E440A4DC911001EBA5A /* BHDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC6FFFA0A3FBAE300301A72 /* BHDebug.m */; };
-		3F269E450A4DC926001EBA5A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		3F269E4C0A4DCA1C001EBA5A /* BHDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */; };
-		3F269E4D0A4DCA2F001EBA5A /* BHDebug.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */; };
-		3F269F9A0A4DFBD7001EBA5A /* BHDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC6FFFA0A3FBAE300301A72 /* BHDebug.m */; };
-		3F26A1740A4E3B97001EBA5A /* BHDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */; };
-		3F26A1BF0A4E3DF2001EBA5A /* BHDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */; };
 		3F26A58C0A523BE8001EBA5A /* Frame & IP.edplugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F269C4D0A4BB155001EBA5A /* Frame & IP.edplugin */; };
 		3F26A5BB0A52CED0001EBA5A /* Aggregators.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FC600C90A404C6B00301A72 /* Aggregators.plist */; };
 		3F26A5BC0A52CEE2001EBA5A /* IPDestinationAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F26960F0A45D76E001EBA5A /* IPDestinationAggregate.m */; };
@@ -37,7 +29,6 @@
 		3F26A6080A52D4B4001EBA5A /* TCPAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2696650A45D9D4001EBA5A /* TCPAggregate.m */; };
 		3F26A60A0A52D4B4001EBA5A /* TCPPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3E258F0A3A95AB001C4087 /* TCPPacket.m */; };
 		3F26A60B0A52D4C6001EBA5A /* EDPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3E232A0A37F398001C4087 /* EDPlugin.framework */; };
-		3F26A6110A52D4CC001EBA5A /* BHDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */; };
 		3F26A6430A52D5AE001EBA5A /* TCP.edplugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F26A6020A52D473001EBA5A /* TCP.edplugin */; };
 		3F3966F20A79935D000EE7CC /* DetailController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F3966F00A79935D000EE7CC /* DetailController.h */; };
 		3F3966F30A79935D000EE7CC /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3966F10A79935D000EE7CC /* DetailController.m */; };
@@ -65,6 +56,13 @@
 		3F698FBB0B0AE85A007910F7 /* ImageDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F698FB90B0AE85A007910F7 /* ImageDecoder.h */; };
 		3F698FBC0B0AE85A007910F7 /* ImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */; };
 		3F698FCA0B0AE95C007910F7 /* ImageDecoder.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */; };
+		3F6991E30B0EC338007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F6992210B0EC5D5007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F6992640B0ECB7A007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F6992650B0ECB82007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F6992660B0ECB8D007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F69927D0B0ECCFE007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FB2E0690A20B87F00ED017B /* DOHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FB2E0670A20B87E00ED017B /* DOHelpers.h */; };
@@ -79,7 +77,6 @@
 		3FBFAA370A5FF5A500DFF561 /* BHOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFAA350A5FF5A400DFF561 /* BHOutlineView.m */; };
 		3FC600440A3FCFE000301A72 /* Aggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FC600420A3FCFE000301A72 /* Aggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FC600450A3FCFE000301A72 /* Aggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC600430A3FCFE000301A72 /* Aggregate.m */; };
-		3FC6FFFB0A3FBAE300301A72 /* BHDebug.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FC6FFF90A3FBAE300301A72 /* BHDebug.h */; };
 		3FE124AF0A1ACB3000A0A510 /* EavesdropAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE124AD0A1ACB3000A0A510 /* EavesdropAppDelegate.h */; };
 		3FE124B00A1ACB3000A0A510 /* EavesdropAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE124AE0A1ACB3000A0A510 /* EavesdropAppDelegate.m */; };
 		3FE124CE0A1ADE0400A0A510 /* Ear icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3FE124CD0A1ADE0400A0A510 /* Ear icon.icns */; };
@@ -139,20 +136,6 @@
 			remoteGlobalIDString = 3F269C4C0A4BB155001EBA5A;
 			remoteInfo = "Frame & IP";
 		};
-		3F269E4A0A4DC9FA001EBA5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F269E3D0A4DC8B1001EBA5A;
-			remoteInfo = BHDebug;
-		};
-		3F269E8E0A4DD07E001EBA5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F269E3D0A4DC8B1001EBA5A;
-			remoteInfo = BHDebug;
-		};
 		3F26A6030A52D492001EBA5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A37F4A9FDCFA73011CA2CEA /* Project object */;
@@ -166,6 +149,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3F26A6010A52D473001EBA5A;
 			remoteInfo = TCP;
+		};
+		3F6991A70B0EC16E007910F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D1107320486CEB800E47090;
+			remoteInfo = "BHLog Viewer";
+		};
+		3F6991C70B0EC21D007910F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3F6991C30B0EC21B007910F7;
+			remoteInfo = BHLogging;
 		};
 		3FB357780A708D3D0086E5F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -197,8 +194,18 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3F269E4D0A4DCA2F001EBA5A /* BHDebug.framework in CopyFiles */,
+				3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */,
 				3F3E23940A37F965001C4087 /* EDPlugin.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F6992780B0ECCC7007910F7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3F6992640B0ECB7A007910F7 /* BHLogger.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +256,6 @@
 				3FB2E06B0A20B87F00ED017B /* DOHelpers.h in CopyFiles */,
 				3FB2E18A0A25668A00ED017B /* Constants.h in CopyFiles */,
 				3FECC8C90A367BDE007C90E6 /* PluginsController.h in CopyFiles */,
-				3FC6FFFB0A3FBAE300301A72 /* BHDebug.h in CopyFiles */,
 				3FBFAA360A5FF5A500DFF561 /* BHOutlineView.h in CopyFiles */,
 				3FEC87E00A61C163005108E6 /* PluginDefaults.h in CopyFiles */,
 				3F3966F20A79935D000EE7CC /* DetailController.h in CopyFiles */,
@@ -296,7 +302,6 @@
 		3F2699310A47B137001EBA5A /* Dissector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dissector.h; sourceTree = "<group>"; };
 		3F2699320A47B137001EBA5A /* Dissector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dissector.m; sourceTree = "<group>"; };
 		3F269C4D0A4BB155001EBA5A /* Frame & IP.edplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Frame & IP.edplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BHDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F269E3F0A4DC8B2001EBA5A /* BHDebug-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "BHDebug-Info.plist"; path = "../BHDebug-Info.plist"; sourceTree = "<group>"; };
 		3F26A6020A52D473001EBA5A /* TCP.edplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCP.edplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3966F00A79935D000EE7CC /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
@@ -323,6 +328,7 @@
 		3F698FB90B0AE85A007910F7 /* ImageDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDecoder.h; sourceTree = "<group>"; };
 		3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDecoder.m; sourceTree = "<group>"; };
 		3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = ImageDecoder.nib; sourceTree = "<group>"; };
+		3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BHLogging.xcodeproj; path = BHLogging/BHLogging.xcodeproj; sourceTree = "<group>"; };
 		3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOHelpers.h; sourceTree = "<group>"; };
 		3FB2E0680A20B87F00ED017B /* DOHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOHelpers.m; sourceTree = "<group>"; };
 		3FB2E1890A25668A00ED017B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -339,8 +345,6 @@
 		3FC6004A0A3FD0C200301A72 /* IPSourceAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSourceAggregate.h; path = Frame_IP/IPSourceAggregate.h; sourceTree = "<group>"; };
 		3FC6004B0A3FD0C200301A72 /* IPSourceAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSourceAggregate.m; path = Frame_IP/IPSourceAggregate.m; sourceTree = "<group>"; };
 		3FC600C90A404C6B00301A72 /* Aggregators.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Aggregators.plist; path = Frame_IP/Aggregators.plist; sourceTree = "<group>"; };
-		3FC6FFF90A3FBAE300301A72 /* BHDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHDebug.h; sourceTree = "<group>"; };
-		3FC6FFFA0A3FBAE300301A72 /* BHDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHDebug.m; sourceTree = "<group>"; };
 		3FE124AD0A1ACB3000A0A510 /* EavesdropAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EavesdropAppDelegate.h; sourceTree = "<group>"; };
 		3FE124AE0A1ACB3000A0A510 /* EavesdropAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EavesdropAppDelegate.m; sourceTree = "<group>"; };
 		3FE124BE0A1ADD4D00A0A510 /* CaptureServer_main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CaptureServer_main.m; sourceTree = "<group>"; };
@@ -387,16 +391,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F26A1BF0A4E3DF2001EBA5A /* BHDebug.framework in Frameworks */,
+				3F6992650B0ECB82007910F7 /* BHLogger.framework in Frameworks */,
 				3F269C5A0A4BB1AF001EBA5A /* EDPlugin.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3F269E3C0A4DC8B1001EBA5A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F269E450A4DC926001EBA5A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +400,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F26A6110A52D4CC001EBA5A /* BHDebug.framework in Frameworks */,
+				3F6992660B0ECB8D007910F7 /* BHLogger.framework in Frameworks */,
 				3F26A60B0A52D4C6001EBA5A /* EDPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,7 +409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F26A1740A4E3B97001EBA5A /* BHDebug.framework in Frameworks */,
+				3F69927D0B0ECCFE007910F7 /* BHLogger.framework in Frameworks */,
 				3F3E23330A37F3FE001C4087 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +418,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6992210B0EC5D5007910F7 /* BHLogger.framework in Frameworks */,
 				3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */,
 				3FE1257D0A1AE39000A0A510 /* libpcap.A.dylib in Frameworks */,
 			);
@@ -442,7 +439,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F269E4C0A4DCA1C001EBA5A /* BHDebug.framework in Frameworks */,
+				3F6991E30B0EC338007910F7 /* BHLogger.framework in Frameworks */,
 				3F269B250A4AD474001EBA5A /* EDPlugin.framework in Frameworks */,
 				775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */,
 				3FE1253B0A1AE37E00A0A510 /* Security.framework in Frameworks */,
@@ -491,6 +488,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* Eavesdrop */ = {
 			isa = PBXGroup;
 			children = (
+				3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */,
 				3FC600070A3FBAFD00301A72 /* Generic Classes */,
 				3FE124E90A1ADFE700A0A510 /* Documentation */,
 				3FECCA860A37DE84007C90E6 /* Server Tool */,
@@ -614,7 +612,6 @@
 			isa = PBXGroup;
 			children = (
 				3F3E232A0A37F398001C4087 /* EDPlugin.framework */,
-				3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -737,6 +734,15 @@
 			name = "Concrete Classes";
 			sourceTree = "<group>";
 		};
+		3F6991A40B0EC16E007910F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F6991A80B0EC16E007910F7 /* BHLog Viewer.app */,
+				3F6991C80B0EC21D007910F7 /* BHLogger.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3FB2E0730A20B8FD00ED017B /* Protocols, Categories, etc. */ = {
 			isa = PBXGroup;
 			children = (
@@ -763,8 +769,6 @@
 			children = (
 				3FB2E0670A20B87E00ED017B /* DOHelpers.h */,
 				3FB2E0680A20B87F00ED017B /* DOHelpers.m */,
-				3FC6FFF90A3FBAE300301A72 /* BHDebug.h */,
-				3FC6FFFA0A3FBAE300301A72 /* BHDebug.m */,
 				3FBFAA340A5FF5A400DFF561 /* BHOutlineView.h */,
 				3FBFAA350A5FF5A400DFF561 /* BHOutlineView.m */,
 			);
@@ -859,14 +863,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3F269E390A4DC8B1001EBA5A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F269E430A4DC910001EBA5A /* BHDebug.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3F3E23250A37F398001C4087 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -904,24 +900,6 @@
 			productReference = 3F269C4D0A4BB155001EBA5A /* Frame & IP.edplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
-		3F269E3D0A4DC8B1001EBA5A /* BHDebug */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3F269E400A4DC8B6001EBA5A /* Build configuration list for PBXNativeTarget "BHDebug" */;
-			buildPhases = (
-				3F269E390A4DC8B1001EBA5A /* Headers */,
-				3F269E3A0A4DC8B1001EBA5A /* Resources */,
-				3F269E3B0A4DC8B1001EBA5A /* Sources */,
-				3F269E3C0A4DC8B1001EBA5A /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BHDebug;
-			productName = BHDebug;
-			productReference = 3F269E3E0A4DC8B1001EBA5A /* BHDebug.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		3F26A6010A52D473001EBA5A /* TCP */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F26A6360A52D4F1001EBA5A /* Build configuration list for PBXNativeTarget "TCP" */;
@@ -948,11 +926,11 @@
 				3F3E23260A37F398001C4087 /* Resources */,
 				3F3E23270A37F398001C4087 /* Sources */,
 				3F3E23280A37F398001C4087 /* Frameworks */,
+				3F6992780B0ECCC7007910F7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3F269E8F0A4DD07E001EBA5A /* PBXTargetDependency */,
 			);
 			name = EDPlugins;
 			productName = PacketHandler;
@@ -1010,7 +988,6 @@
 			);
 			dependencies = (
 				3FE125100A1AE14900A0A510 /* PBXTargetDependency */,
-				3F269E4B0A4DC9FA001EBA5A /* PBXTargetDependency */,
 				3F2698050A4660D3001EBA5A /* PBXTargetDependency */,
 				3F269C710A4BB1C7001EBA5A /* PBXTargetDependency */,
 				3F26A7810A54278A001EBA5A /* PBXTargetDependency */,
@@ -1031,9 +1008,14 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Eavesdrop */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3F6991A40B0EC16E007910F7 /* Products */;
+					ProjectRef = 3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */;
+				},
+			);
 			targets = (
 				8D15AC270486D014006FF6A4 /* Eavesdrop */,
-				3F269E3D0A4DC8B1001EBA5A /* BHDebug */,
 				514E9DF8081EBF9C009B8CD9 /* Eavesdrop Spotlight Importer */,
 				3FE124C10A1ADD9300A0A510 /* CaptureServer */,
 				3F3E23290A37F398001C4087 /* EDPlugins */,
@@ -1043,6 +1025,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		3F6991A80B0EC16E007910F7 /* BHLog Viewer.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "BHLog Viewer.app";
+			remoteRef = 3F6991A70B0EC16E007910F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3F6991C80B0EC21D007910F7 /* BHLogger.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BHLogger.framework;
+			remoteRef = 3F6991C70B0EC21D007910F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		3F269C490A4BB155001EBA5A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -1050,13 +1049,6 @@
 			files = (
 				3F26A5BB0A52CED0001EBA5A /* Aggregators.plist in Resources */,
 				3F269C500A4BB18F001EBA5A /* Dissectors.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3F269E3A0A4DC8B1001EBA5A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,14 +1114,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F269E3B0A4DC8B1001EBA5A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F269E440A4DC911001EBA5A /* BHDebug.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3F26A5FF0A52D473001EBA5A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1163,7 +1147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F269F9A0A4DFBD7001EBA5A /* BHDebug.m in Sources */,
 				3FE124D20A1ADE2D00A0A510 /* CaptureServer_main.m in Sources */,
 				3F49FEB90A1C1614004C6514 /* CaptureServer.m in Sources */,
 				3FB2E06A0A20B87F00ED017B /* DOHelpers.m in Sources */,
@@ -1214,16 +1197,6 @@
 			isa = PBXTargetDependency;
 			target = 3F269C4C0A4BB155001EBA5A /* Frame & IP */;
 			targetProxy = 3F269C700A4BB1C7001EBA5A /* PBXContainerItemProxy */;
-		};
-		3F269E4B0A4DC9FA001EBA5A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F269E3D0A4DC8B1001EBA5A /* BHDebug */;
-			targetProxy = 3F269E4A0A4DC9FA001EBA5A /* PBXContainerItemProxy */;
-		};
-		3F269E8F0A4DD07E001EBA5A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F269E3D0A4DC8B1001EBA5A /* BHDebug */;
-			targetProxy = 3F269E8E0A4DD07E001EBA5A /* PBXContainerItemProxy */;
 		};
 		3F26A6040A52D492001EBA5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1439,66 +1412,6 @@
 			};
 			name = Release;
 		};
-		3F269E410A4DC8B6001EBA5A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "BHDebug-Info.plist";
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = BHDebug;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		3F269E420A4DC8B6001EBA5A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "BHDebug-Info.plist";
-				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = BHDebug;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
 		3F26A6370A52D4F1001EBA5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1700,15 +1613,6 @@
 			buildConfigurations = (
 				3F269C6D0A4BB1BF001EBA5A /* Debug */,
 				3F269C6E0A4BB1BF001EBA5A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3F269E400A4DC8B6001EBA5A /* Build configuration list for PBXNativeTarget "BHDebug" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3F269E410A4DC8B6001EBA5A /* Debug */,
-				3F269E420A4DC8B6001EBA5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
