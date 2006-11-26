@@ -10,7 +10,6 @@
 
 #import "Plugin.h"
 #import "PluginDefaults.h"
-#import "BHDebug.h"
 
 @protocol Dissector <Plugin>
 

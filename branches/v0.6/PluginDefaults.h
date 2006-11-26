@@ -7,8 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-#import "BHDebug.h"
+#import <BHLogger/BHLogging.h>
 
 @interface PluginDefaults : NSObject {
 	NSColor *textColor;

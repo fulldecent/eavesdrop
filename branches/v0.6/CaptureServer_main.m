@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "BHDebug.h"
+#import <BHLogger/BHLogging.h>
 #import "CaptureServer.h"
 
 int main(int argc, char *argv[])

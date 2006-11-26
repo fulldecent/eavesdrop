@@ -44,7 +44,7 @@
 	ENTRY( @"updatePluginBox" );
 
 	[viewInfoArray removeAllObjects];
-
+	
 	NSEnumerator *tempEn = [[selectedObject valueForKey:@"registeredDecoders"] objectEnumerator];
 	id tempViewInfo;
 	while ( tempViewInfo=[tempEn nextObject] ) {
@@ -55,7 +55,7 @@
 		}
 	}
 	
-	INFO1( @"updatePluginBox:\n%@", [viewInfoArray description] );
+	INFO1( @"decoders that will display:\n%@", [viewInfoArray description] );
 	
 	if ([[[[NSUserDefaultsController sharedUserDefaultsController] values] valueForKey:@"payloadViewAsTabs"] boolValue]) {
 		[payloadViewsPopup setHidden:TRUE];
@@ -77,15 +77,21 @@
 		[pluginsTabView removeTabViewItem:item];
 	}
 
-	en = [viewInfoArray objectEnumerator];
-	NSDictionary *tempDict;
-	NSTabViewItem *tempItem;
-	while ( tempDict=[en nextObject] ) {
-		[menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
+	if ( [viewInfoArray count]==0 ) {
+		[payloadViewsPopup setEnabled:NO];
+	} else {
+		[payloadViewsPopup setEnabled:YES];
 		
-		tempItem = [[[NSTabViewItem alloc] initWithIdentifier:nil] autorelease];
-		[tempItem setLabel:[tempDict objectForKey:@"name"] ];
-		[pluginsTabView addTabViewItem:tempItem];
+		en = [viewInfoArray objectEnumerator];
+		NSDictionary *tempDict;
+		NSTabViewItem *tempItem;
+		while ( tempDict=[en nextObject] ) {
+			[menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
+			
+			tempItem = [[[NSTabViewItem alloc] initWithIdentifier:nil] autorelease];
+			[tempItem setLabel:[tempDict objectForKey:@"name"] ];
+			[pluginsTabView addTabViewItem:tempItem];
+		}
 	}
 	
 	if ( [[menu itemArray] count]==0 ) {
@@ -133,8 +139,13 @@
 
 	NSTabViewItem *tabViewItem = [pluginsTabView tabViewItemAtIndex:pluginDisplayIndex];
 
-	NSDictionary *decoderInfo = [viewInfoArray objectAtIndex:newDisplayIndex];
+	if ( newDisplayIndex >= [viewInfoArray count] ) {
+		DEBUG( @"do decoder found" );
+		[tabViewItem setView:blankView];
+		return;	
+	}
 
+	NSDictionary *decoderInfo = [viewInfoArray objectAtIndex:newDisplayIndex];
 	Class tempClass = [decoderInfo valueForKey:@"decoderClassName"];
 
 	NSData *tempData = [selectedObject valueForKey:@"payloadData"];
@@ -146,10 +157,12 @@
 	}
 	
 	NSView *tempView = [selectedDecoder valueForKey:[decoderInfo valueForKey:@"viewKey"] ];
-	if (tempView)
-		[tabViewItem setView:tempView ];
-	else
-		ERROR( @"couldn't set tab view... not changing it" );
+	if (tempView) {
+		[tabViewItem setView:tempView];
+	} else {
+		ERROR( @"couldn't set tab view" );
+		[tabViewItem setView:blankView];
+	}
 }
 
 #pragma mark -

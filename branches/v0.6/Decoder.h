@@ -24,9 +24,6 @@
 - (id)initWithPayload:(NSData *)startingPayload fromDissector:(id<Dissector>)startingDissector;
 - (id)initWithPayload:(NSData *)startingPayload fromAggregate:(id<Aggregate>)startingAggregate;
 
-// return an array of NSViews
-- (NSArray *)payloadViews;
-
 @end
 
 @interface Decoder : Plugin <Decoder> {

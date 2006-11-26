@@ -11,7 +11,7 @@
 #import <EDPlugin/sniff.h>
 #import <EDPlugin/Dissector.h>
 
-#import <BHDebug/BHDebug.h>
+#import <BHLogger/BHLogging.h>
 
 @interface IPPacket : Dissector {
 

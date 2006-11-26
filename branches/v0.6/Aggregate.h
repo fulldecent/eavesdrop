@@ -29,7 +29,7 @@
 #import "Plugin.h"
 #import "Dissector.h"
 #import "PluginDefaults.h"
-#import "BHDebug.h"
+#import <BHLogger/BHLogging.h>
 
 @protocol Aggregate <Plugin>
 

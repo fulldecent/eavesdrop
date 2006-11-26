@@ -12,7 +12,6 @@
 
 //how's about a better name?
 #import "Constants.h"
-#import "BHDebug.h"
 
 #import <EDPlugin/Packet.h>
 #import <EDPlugin/Dissector.h>
