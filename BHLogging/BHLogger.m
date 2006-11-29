@@ -43,22 +43,29 @@ static int textLoggingLevel = 1;
 + (void)log:(NSString *)text forObject:(id)sender as:(int)logLevel
 {
 	if (logProxy) {
-		[logProxy logDetails:[NSDictionary dictionaryWithObjectsAndKeys:
-				[NSDate date],												@"entrytime",
-				text,														@"information",
-				[NSNumber numberWithInt:logLevel],							@"level",
-				[[NSThread currentThread] valueForKey:@"seqNum"],			@"thread",
-				[sender className],											@"classname",
-				guid,														@"guid",
-				[NSNumber numberWithInt:
-					[[NSProcessInfo processInfo] processIdentifier] ],		@"processid",
-				[[NSProcessInfo processInfo] processName],					@"name",
-				[[NSProcessInfo processInfo] hostName],						@"hostname",
-				[[NSProcessInfo processInfo] operatingSystemVersionString],	@"osversion",
-				nil
-			]
-		];
-	} else if ( logLevel <= textLoggingLevel ) {
+		@try {
+			[logProxy logDetails:[NSDictionary dictionaryWithObjectsAndKeys:
+					[NSDate date],												@"entrytime",
+					text,														@"information",
+					[NSNumber numberWithInt:logLevel],							@"level",
+					[[NSThread currentThread] valueForKey:@"seqNum"],			@"thread",
+					[sender className],											@"classname",
+					guid,														@"guid",
+					[NSNumber numberWithInt:
+						[[NSProcessInfo processInfo] processIdentifier] ],		@"processid",
+					[[NSProcessInfo processInfo] processName],					@"name",
+					[[NSProcessInfo processInfo] hostName],						@"hostname",
+					[[NSProcessInfo processInfo] operatingSystemVersionString],	@"osversion",
+					nil
+				]
+			];
+		}
+		@catch (NSException *e) {
+			logProxy = nil;
+		}
+	}
+	
+	if ( !logProxy && logLevel <= textLoggingLevel ) {
 		NSLog( @"[%@] %@ -%@- %@",
 			[[NSThread currentThread] valueForKey:@"seqNum"],
 			stringForLevel(logLevel),

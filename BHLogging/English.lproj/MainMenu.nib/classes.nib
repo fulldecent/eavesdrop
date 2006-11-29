@@ -10,8 +10,12 @@
             CLASS = "BHLog_Viewer_AppDelegate"; 
             LANGUAGE = ObjC; 
             OUTLETS = {
+                applicationsArrayController = NSArrayController; 
+                applicationsTableView = NSTableView; 
                 classesArrayController = NSArrayController; 
+                classesTableView = NSTableView; 
                 logEntriesArrayController = NSArrayController; 
+                logEntriesTableView = NSTableView; 
                 window = NSWindow; 
             }; 
             SUPERCLASS = NSObject; 

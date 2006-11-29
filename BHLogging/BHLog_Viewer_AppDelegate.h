@@ -25,6 +25,11 @@
 	NSPredicate *filterPredicate;
 	IBOutlet NSArrayController *classesArrayController;
 	IBOutlet NSArrayController *logEntriesArrayController;
+	IBOutlet NSArrayController *applicationsArrayController;
+	
+	IBOutlet NSTableView *classesTableView;
+	IBOutlet NSTableView *logEntriesTableView;
+	IBOutlet NSTableView *applicationsTableView;
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;

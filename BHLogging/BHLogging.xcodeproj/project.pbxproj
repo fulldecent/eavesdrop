@@ -12,6 +12,7 @@
 		3F69943F0B0F640C007910F7 /* BHLog_Viewer_AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 77C8280B06725ACE000B614F /* BHLog_Viewer_AppDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F6996190B111881007910F7 /* LogEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6996180B111881007910F7 /* LogEntry.m */; };
 		3F6996700B122BAC007910F7 /* BHLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F69966F0B122BAC007910F7 /* BHLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3FFBBFCB0B1D5D4600F955A4 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C30B0EC21B007910F7 /* BHLogger.framework */; };
 		770B37ED0679A11B001EADE2 /* BHLog_Viewer_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* BHLog_Viewer_DataModel.xcdatamodel */; };
 		77C8280E06725ACE000B614F /* BHLog_Viewer_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* BHLog_Viewer_AppDelegate.m */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -29,6 +30,19 @@
 			remoteInfo = BHLogging;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3FFBBFC70B1D5D3B00F955A4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3FFBBFCB0B1D5D4600F955A4 /* BHLogger.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -204,6 +218,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				3FFBBFC70B1D5D3B00F955A4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -368,6 +383,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -390,11 +406,16 @@
 		3F6991CB0B0EC21E007910F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				COPY_PHASE_STRIP = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
