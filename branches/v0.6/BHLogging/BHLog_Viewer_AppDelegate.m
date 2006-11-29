@@ -14,7 +14,22 @@ static NSConnection *connection;
 
 + (void)initialize
 {
-	NSLog( @"BHLog Viewer initialize" );	
+	NSLog( @"BHLog Viewer initialize" );
+	
+}
+
+- (void)awakeFromNib
+{
+	NSSortDescriptor *sortDescriptor;
+	
+	sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"entrytime" ascending:YES] autorelease];
+	[logEntriesArrayController setSortDescriptors:[NSArray arrayWithObject:sortDescriptor] ];
+	
+	sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"dateentered" ascending:YES] autorelease];
+	[applicationsArrayController setSortDescriptors:[NSArray arrayWithObject:sortDescriptor] ];
+	
+	sortDescriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
+	[classesArrayController setSortDescriptors:[NSArray arrayWithObject:sortDescriptor] ];
 }
 
 - (id)init
@@ -34,9 +49,8 @@ static NSConnection *connection;
 		
 		logLevels = [[NSMutableArray alloc] init];
 		appObjects = [[NSMutableDictionary alloc] init];
-		classObjects = [[NSMutableDictionary alloc] init];
-		
-		[self setFilterPredicate:nil];
+			
+		[self setFilterPredicate:nil];		
 	}
 	return self;
 }
@@ -54,6 +68,7 @@ static NSConnection *connection;
 	[newLogEntry setValue:[detailsDict valueForKey:@"level"]		forKey:@"logLevel"];
 
 	NSString *guid = [detailsDict valueForKey:@"guid"];
+	
 	NSManagedObject *appObject = [appObjects objectForKey:guid];
 	if (!appObject) {
 		appObject = [NSEntityDescription
@@ -62,29 +77,43 @@ static NSConnection *connection;
 		];
 		[appObjects setValue:appObject forKey:guid];
 		
-		[appObject setValue:guid			forKey:@"guid"];
-		[appObject setValue:[NSDate date]	forKey:@"dateentered"];
+		[appObject setValue:guid									forKey:@"guid"];
+		[appObject setValue:[NSDate date]							forKey:@"dateentered"];
 		[appObject setValue:[detailsDict valueForKey:@"processid"]	forKey:@"processid"];
 		[appObject setValue:[detailsDict valueForKey:@"name"]		forKey:@"name"];
 		[appObject setValue:[detailsDict valueForKey:@"hostname"]	forKey:@"hostname"];
 		[appObject setValue:[detailsDict valueForKey:@"osversion"]	forKey:@"osversion"];
 	}
 	[newLogEntry setValue:appObject forKey:@"application"];
+	
+	//look up LogClass
+	NSManagedObject *classObject;
+	NSError *error;
+	
+	NSFetchRequest *fetchRequest = [[self managedObjectModel]
+		fetchRequestFromTemplateWithName:@"classesByName"
+		substitutionVariables:[NSDictionary dictionaryWithObject:[detailsDict valueForKey:@"classname"] forKey:@"NAME"]
+	];
 
-	NSString *classname = [detailsDict valueForKey:@"classname"];
-	NSManagedObject *classObject = [classObjects objectForKey:classname];
-	if (!classObject) {
+	NSArray *tempArray = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+	if (!tempArray) {
+		NSLog( @"error executing fetch request: %@", [fetchRequest description] );
+		[[NSApplication sharedApplication] presentError:error];
+	}
+
+    if ([tempArray count]) {
+		if ( [tempArray count] > 1 )
+			NSLog( @"more than one match, using first one" );
+		classObject = [tempArray objectAtIndex:0];
+    } else {
 		classObject = [NSEntityDescription
 			insertNewObjectForEntityForName:@"LogClass"
 			inManagedObjectContext:[self managedObjectContext]
 		];
-		[classObjects setValue:classObject forKey:classname];
-		
-		[classObject setValue:classname forKey:@"name"];
+		[classObject setValue:[detailsDict valueForKey:@"classname"] forKey:@"name"];
 		[classObject setValue:[NSNumber numberWithBool:YES] forKey:@"shouldDisplay"];
 	}
 	[newLogEntry setValue:classObject forKey:@"logClass"];
-	
 }
 
 - (IBAction)refreshLog:(id)sender
