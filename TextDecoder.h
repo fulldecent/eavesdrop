@@ -20,6 +20,7 @@ typedef enum TextRepresentation {
 	IBOutlet NSView *textDecoderView;
 	
 	TextRepresentation representation;
+	NSAttributedString *payloadString;
 }
 
 - (NSView *)textDecoderView;

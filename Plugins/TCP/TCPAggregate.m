@@ -73,7 +73,7 @@
 	return [firstPacket infoString];
 }
 
-- (NSString *)flagsString
+- (id)flagsString
 {
 	return [lastPacket flagsString];
 }

@@ -40,9 +40,10 @@
 	ENTRY( @"initWithPayload: (default implementation)" );
 	self = [super init];
 	if (self) {
+		payloadData = [startingPayload retain];
+		DEBUG1( @"set payloadData: %@", [payloadData description] );
 		nibLoaded = NO;
 		[self _loadNib];
-		payloadData = [startingPayload retain];
 	}
 	return self;
 }
@@ -59,16 +60,6 @@
 	return [self initWithPayload:startingPayload];
 }
 
-#pragma mark - 
-#pragma mark Accessor method
-/*
-- (NSArray *)payloadViews
-{
-	ENTRY( @"payloadViews (default implementation)" );
-	[self _loadNib];
-	return [NSArray array];
-}
-*/
 #pragma mark -
 #pragma mark Private methods
 

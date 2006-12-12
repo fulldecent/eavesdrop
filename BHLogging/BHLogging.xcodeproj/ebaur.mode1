@@ -222,6 +222,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -263,18 +265,12 @@
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>3FFBBFC10B1D5CA300F955A4</string>
-								<string>3FFBBFC20B1D5CA300F955A4</string>
-								<string>3FFBBFC80B1D5D3B00F955A4</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>28</integer>
-									<integer>27</integer>
-									<integer>21</integer>
 									<integer>20</integer>
 								</array>
 							</array>
@@ -309,8 +305,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -328,7 +322,7 @@
 										<key>_historyCapacity</key>
 										<integer>10</integer>
 										<key>bookmark</key>
-										<string>3FFBBFD50B1D60B400F955A4</string>
+										<string>3FFBC1D50B21B47B00F955A4</string>
 										<key>history</key>
 										<array>
 											<string>3F69985B0B169804007910F7</string>
@@ -338,7 +332,7 @@
 											<string>3FFBBF770B1D523000F955A4</string>
 											<string>3FFBBF780B1D523000F955A4</string>
 											<string>3FFBBFC30B1D5CA300F955A4</string>
-											<string>3FFBBFC40B1D5CA300F955A4</string>
+											<string>3FFBBFD50B1D60B400F955A4</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -346,11 +340,6 @@
 											<string>3F5A1A210B1A33E200D2C9FA</string>
 											<string>3F5A1A220B1A33E200D2C9FA</string>
 											<string>3F5A1A230B1A33E200D2C9FA</string>
-											<string>3FFBBE520B1ABF2000F955A4</string>
-											<string>3FFBBE550B1ABF2000F955A4</string>
-											<string>3FFBBE570B1ABF2000F955A4</string>
-											<string>3FFBBE580B1ABF2000F955A4</string>
-											<string>3FFBBE590B1ABF2000F955A4</string>
 											<string>3FFBBF7A0B1D523000F955A4</string>
 											<string>3FFBBFC50B1D5CA300F955A4</string>
 										</array>
@@ -410,9 +399,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3FFBBE5B0B1ABF2000F955A4</string>
+				<string>3FFBC1D60B21B47B00F955A4</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>3FFBBE5C0B1ABF2000F955A4</string>
+				<string>3FFBC1D70B21B47B00F955A4</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -546,12 +535,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3FFBBE650B1ABF2000F955A4</string>
-		<string>3FFBBE660B1ABF2000F955A4</string>
-		<string>3F6995770B10ADC1007910F7</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>3FFBBE630B1ABF2000F955A4</string>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>3F69919E0B0EC14A007910F7</string>
 		<string>/Users/ebaur/Projects/Current Projects/Eavesdrop/BHLogging/BHLogging.xcodeproj</string>
 	</array>
@@ -577,7 +560,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>BHLog_Viewer_AppDelegate.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -594,8 +577,6 @@
 							<string>374pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -635,7 +616,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>3F69919E0B0EC14A007910F7</string>
-				<string>3FFBBE190B1ABC4B00F955A4</string>
+				<string>3FFBC1D80B21B47B00F955A4</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
