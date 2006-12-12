@@ -250,7 +250,7 @@ static NSMutableDictionary *registeredDecoders;
 		return [NSNumber numberWithInt:pluginNumber];
 }
 
-- (NSString *)sourceString
+- (id)sourceString
 {
 	NSString *tempValue = [self valueForUndefinedKey:@"sourceString"];
 	if (tempValue)
@@ -259,7 +259,7 @@ static NSMutableDictionary *registeredDecoders;
 		return @"";
 }
 
-- (NSString *)destinationString
+- (id)destinationString
 {
 	NSString *tempValue = [self valueForUndefinedKey:@"destinationString"];
 	if (tempValue)
@@ -268,7 +268,7 @@ static NSMutableDictionary *registeredDecoders;
 		return @"";
 }
 
-- (NSString *)typeString
+- (id)typeString
 {
 	NSString *tempValue = [self valueForUndefinedKey:@"destinationString"];
 	if (tempValue)
@@ -277,7 +277,7 @@ static NSMutableDictionary *registeredDecoders;
 		return @"";
 }
 
-- (NSString *)infoString
+- (id)infoString
 {
 	NSString *tempValue = [self valueForUndefinedKey:@"infoString"];
 	if (tempValue)
@@ -286,7 +286,7 @@ static NSMutableDictionary *registeredDecoders;
 		return @"";
 }
 
-- (NSString *)flagsString
+- (id)flagsString
 {
 	NSString *tempValue = [self valueForUndefinedKey:@"flagsString"];
 	if (tempValue)
@@ -295,7 +295,7 @@ static NSMutableDictionary *registeredDecoders;
 		return @"";
 }
 
-- (NSString *)descriptionString
+- (id)descriptionString
 {
 	NSString *tempValue = [self valueForUndefinedKey:@"descriptionString"];
 	if (tempValue)
@@ -306,14 +306,14 @@ static NSMutableDictionary *registeredDecoders;
 
 - (NSString *)protocolString
 {
-	return nil; //was @""
+	return nil;
 }
 
 #pragma mark -
 #pragma mark Meta data
 
 + (NSDictionary *)keyNames
-{	//ENTRY( @"keyNames" );
+{
 	return [
 		[registeredDissectors objectForKey:
 			[registeredProtocolClasses objectForKey:
@@ -323,12 +323,12 @@ static NSMutableDictionary *registeredDecoders;
 }
 
 + (NSArray *)keys
-{	//ENTRY( @"keys" );
+{
 	return [[self keyNames] allKeys];
 }
 
 - (NSArray *)allKeys
-{	//ENTRY( @"allKeys" );
+{
 	return [[self allKeyNames] allKeys];
 }
 
@@ -356,7 +356,7 @@ static NSMutableDictionary *registeredDecoders;
 }
 
 - (NSDictionary *)detailsDictionary
-{	//ENTRY( @"detailsDictionary" );
+{
 	NSMutableDictionary *tempDict = [NSMutableDictionary dictionary];
 	NSEnumerator *en = [[self allKeys] objectEnumerator];
 	NSString *tempKey;

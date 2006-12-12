@@ -78,8 +78,7 @@ static int dissectorCount;
 	if (self) {
 		dissectorNumber = ++dissectorCount;
 		headerData = [header retain];
-		payloadData = [packet retain];	//may want to hide this with an accessor
-		//packetData = [packet retain];
+		payloadData = [packet retain];
 		
 		parent = nil;
 		child = nil;
@@ -94,35 +93,12 @@ static int dissectorCount;
 		dissectorNumber = ++dissectorCount;
 		headerData = nil;
 		payloadData = nil;
-		//packetData = nil;
 		child = nil;
 		parent = [parentPacket retain];
-		//[parentPacket setChild:self];
 	}
 	return self;
 }
-/*
-- (void)encodeWithCoder:(NSCoder *)encoder
-{
-	ENTRY( @"encodeWithCoder:" );
-	[encoder encodeDataObject:[self valueForKey:@"packetHeaderData"] ];
-	[encoder encodeDataObject:[self valueForKey:@"packetPayloadData"] ];
-	//this is bad (philosophically), since the super class knows something about the sub-classes
-	//although, the class method that creates these also knows this... so I may not care
-}
 
-- (id)initWithCoder:(NSCoder *)decoder
-{
-	ENTRY( @"initWithCoder:" );
-	NSData *tempHeaderData = [decoder decodeDataObject];
-	NSData *tempPacketData = [decoder decodeDataObject];
-	
-	id temp = [Dissector packetWithHeaderData:tempHeaderData packetData:tempPacketData];
-	
-	[self autorelease];	//is this bad?
-	return [temp retain];	//ditto
-}
-*/
 #pragma mark -
 #pragma mark Accessor methods
 

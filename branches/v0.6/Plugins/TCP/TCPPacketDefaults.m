@@ -45,13 +45,54 @@
 	return tempDict;
 }
 
+- (NSDictionary *)flagGroupsDictionary
+{
+	NSMutableDictionary *tempDict = [NSMutableDictionary dictionary];
+	
+	NSEnumerator *en = [flagGroupsArray objectEnumerator];
+	NSDictionary *flagDict;
+	while ( flagDict=[en nextObject] ) {
+		[tempDict setObject:[flagDict objectForKey:@"groupColor"] forKey:[flagDict objectForKey:@"groupString"] ];
+	}
+	return [tempDict copy];
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)changeFlags:(id)sender
+{
+	ENTRY( @"changeFlags:" );
+	
+	int i;
+	int count = [sender segmentCount];
+	NSMutableString *tempString = [NSMutableString string];
+	for (i=0; i<count; i++) {
+		if ( [sender isSelectedForSegment:i] ) {
+			[tempString appendString:[sender labelForSegment:i] ];
+		} else {
+			[tempString appendString:@"-"];
+		}
+	}
+	DEBUG1( @"flags: %@", tempString );
+	
+	[[flagGroupsArrayController valueForKey:@"selection"] setValue:tempString forKey:@"groupString" ];
+}
+
+
 #pragma mark -
 #pragma mark Overridden methods
 
 - (void)getDefaultsFromDictionary:(NSDictionary *)defaultsDict
 {
+	//is it okay to "init" from this method?
+
 	ENTRY( @"getDefaultsFromDictionary" );
 	[super getDefaultsFromDictionary:defaultsDict];
+	
+	[self willChangeValueForKey:@"flagsOverlayGroup"];
+	flagsOverlayGroup = [[defaultsDict valueForKey:@"flagsOverlayGroup"] boolValue];
+	[self didChangeValueForKey:@"flagsOverlayGroup"];
 
 	NSDictionary *defaultsColors = [defaultsDict valueForKey:@"flagColors"];
 	NSEnumerator *en = [[self flagsArray] objectEnumerator];
@@ -65,6 +106,29 @@
 			[tempDict setObject:tempColor forKey:@"color"];
 	}
 	INFO( [flagsArray description] );
+	
+	[self willChangeValueForKey:@"flagGroupsArray"];
+	[flagGroupsArray release];
+	flagGroupsArray = [[NSMutableArray alloc] init];
+	NSDictionary *flagGroupColors = [defaultsDict valueForKey:@"flagGroupColors"];
+	en = [flagGroupColors keyEnumerator];
+	NSString *tempString;
+	while ( tempString=[en nextObject] ) {
+		NSColor *tempColor = [NSUnarchiver unarchiveObjectWithData:
+			[flagGroupColors valueForKey:tempString]
+		];
+		if ( tempColor ) {
+			[flagGroupsArray addObject:
+				[NSMutableDictionary dictionaryWithObjectsAndKeys:
+					tempString,		@"groupString",
+					tempColor,		@"groupColor",
+					nil
+				]
+			];
+		}
+	}
+	[self didChangeValueForKey:@"flagGroupsArray"];
+	INFO( [flagGroupsArray description] );
 }
 
 - (NSDictionary *)defaultsDict
@@ -81,7 +145,21 @@
 			];
 		}
 	}
-	[defaultsDict setObject:tempDict forKey:@"flagColors"];
+	[defaultsDict setObject:[tempDict copy] forKey:@"flagColors"];
+	
+	NSEnumerator *en = [flagGroupsArray objectEnumerator];
+	tempDict = [NSMutableDictionary dictionary];
+	NSDictionary *flagDict;
+	while ( flagDict=[en nextObject] ) {
+		[tempDict
+			setObject:[NSArchiver archivedDataWithRootObject:[flagDict objectForKey:@"groupColor"]]
+			forKey:[flagDict objectForKey:@"groupString"]
+		];
+	}
+	[defaultsDict setObject:[tempDict copy] forKey:@"flagGroupColors"];
+	
+	[defaultsDict setObject:[NSNumber numberWithBool:flagsOverlayGroup] forKey:@"flagsOverlayGroup"];
+	
 	return [defaultsDict copy];
 }
 

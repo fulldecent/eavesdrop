@@ -11,7 +11,6 @@
 
 #import "PluginDefaults.h"
 
-
 @protocol Plugin
 
 #pragma mark META-DATA
@@ -21,17 +20,14 @@
 - (NSArray *)allKeys;																/* FREEBIE	*/
 - (NSDictionary *)allKeyNames;														/* FREEBIE	*/
 
-#pragma mark DECODE CHECK
-//+ (BOOL)canDecodePacket:(NSObject<Plugin> *)testPacket;								/* FREEBIE	*/
-
 #pragma mark PROPERTIES
 - (NSNumber *)number;																/* FREEBIE  */
-- (NSString *)sourceString;															/* RECOMMENDED */
-- (NSString *)destinationString;													/* RECOMMENDED */
-- (NSString *)typeString;															/* RECOMMENDED */
-- (NSString *)infoString;															/* RECOMMENDED */
-- (NSString *)flagsString;															/* RECOMMENDED */
-- (NSString *)descriptionString;													/* RECOMMENDED */
+- (id)sourceString;																	/* RECOMMENDED */
+- (id)destinationString;															/* RECOMMENDED */
+- (id)typeString;																	/* RECOMMENDED */
+- (id)infoString;																	/* RECOMMENDED */
+- (id)flagsString;																	/* RECOMMENDED */
+- (id)descriptionString;															/* RECOMMENDED */
 
 - (NSString *)protocolString;														/* REQUIRED */
 
@@ -42,12 +38,6 @@
 
 #pragma mark VIEW METHODS
 - (NSArray *)payloadViewArray;
-
-#pragma mark TESTING
-/*
-+ (NSView *)payloadView;
-- (NSView *)payloadView;
-*/
 
 @end
 

@@ -1,6 +1,7 @@
 {
     IBClasses = (
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSSegmentedControl; LANGUAGE = ObjC; SUPERCLASS = NSControl; }, 
         {
             ACTIONS = {save = id; }; 
             CLASS = PluginDefaults; 
@@ -8,7 +9,13 @@
             OUTLETS = {defaultsView = NSView; }; 
             SUPERCLASS = NSObject; 
         }, 
-        {CLASS = TCPPacketDefaults; LANGUAGE = ObjC; SUPERCLASS = PluginDefaults; }
+        {
+            ACTIONS = {changeFlags = id; }; 
+            CLASS = TCPPacketDefaults; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {currentFlagSelection = id; flagGroupsArrayController = NSArrayController; }; 
+            SUPERCLASS = PluginDefaults; 
+        }
     ); 
     IBVersion = 1; 
 }

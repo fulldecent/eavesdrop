@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F043BB90A295FFF00380C99 /* CaptureThread.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F043BB70A295FFF00380C99 /* CaptureThread.h */; };
 		3F043BBA0A29600000380C99 /* CaptureThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F043BB80A295FFF00380C99 /* CaptureThread.m */; };
 		3F15EC080AE128CF0018EC63 /* TCPLowPortAggregate.m in Resources */ = {isa = PBXBuildFile; fileRef = 3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */; };
 		3F15EE6A0AE12D610018EC63 /* TCPLowPortAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */; };
@@ -42,7 +41,6 @@
 		3F49B7900AD88FD800633242 /* Dissectors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B78F0AD88FD800633242 /* Dissectors.plist */; };
 		3F49B7CD0AD8A8EB00633242 /* Aggregators.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */; };
 		3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		3F49FEB80A1C1614004C6514 /* CaptureServer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F49FEB60A1C1613004C6514 /* CaptureServer.h */; };
 		3F49FEB90A1C1614004C6514 /* CaptureServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F49FEB70A1C1613004C6514 /* CaptureServer.m */; };
 		3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */; };
 		3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */; };
@@ -57,7 +55,6 @@
 		3F698FBC0B0AE85A007910F7 /* ImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */; };
 		3F698FCA0B0AE95C007910F7 /* ImageDecoder.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */; };
 		3F6991E30B0EC338007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
-		3F6992210B0EC5D5007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F6992640B0ECB7A007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F6992650B0ECB82007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F6992660B0ECB8D007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
@@ -65,7 +62,6 @@
 		3F69927D0B0ECCFE007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3FB2E0690A20B87F00ED017B /* DOHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FB2E0670A20B87E00ED017B /* DOHelpers.h */; };
 		3FB2E06A0A20B87F00ED017B /* DOHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2E0680A20B87F00ED017B /* DOHelpers.m */; };
 		3FB2E06B0A20B87F00ED017B /* DOHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FB2E0670A20B87E00ED017B /* DOHelpers.h */; };
 		3FB2E06C0A20B87F00ED017B /* DOHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2E0680A20B87F00ED017B /* DOHelpers.m */; };
@@ -89,7 +85,6 @@
 		3FE1257F0A1AE39C00A0A510 /* SecurityFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE1257E0A1AE39C00A0A510 /* SecurityFoundation.framework */; };
 		3FE125CB0A1AE5B900A0A510 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE125CA0A1AE5B900A0A510 /* Authorization.m */; };
 		3FE125E00A1AE5E700A0A510 /* Authorization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE125DF0A1AE5E700A0A510 /* Authorization.h */; };
-		3FE125E10A1AE5E700A0A510 /* Authorization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE125DF0A1AE5E700A0A510 /* Authorization.h */; };
 		3FE8313D0A69FA2B00A64D16 /* sniff.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F043FE90A2BECDB00380C99 /* sniff.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FEC87E00A61C163005108E6 /* PluginDefaults.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FEC87DE0A61C163005108E6 /* PluginDefaults.h */; };
 		3FEC88C60A620C65005108E6 /* PluginDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */; };
@@ -216,10 +211,6 @@
 			dstSubfolderSpec = 0;
 			files = (
 				3FE124ED0A1ADFED00A0A510 /* CaptureServer.1 in CopyFiles */,
-				3FE125E10A1AE5E700A0A510 /* Authorization.h in CopyFiles */,
-				3F49FEB80A1C1614004C6514 /* CaptureServer.h in CopyFiles */,
-				3FB2E0690A20B87F00ED017B /* DOHelpers.h in CopyFiles */,
-				3F043BB90A295FFF00380C99 /* CaptureThread.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -418,7 +409,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F6992210B0EC5D5007910F7 /* BHLogger.framework in Frameworks */,
 				3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */,
 				3FE1257D0A1AE39000A0A510 /* libpcap.A.dylib in Frameworks */,
 			);

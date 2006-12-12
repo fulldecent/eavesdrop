@@ -50,6 +50,13 @@
 - (NSAttributedString *)payloadAsAttributedString
 {
 	ENTRY( @"payloadAsAttributedString" );
+	if (!payloadData) {
+		DEBUG( @"payloadData is nil" );
+		return [[[NSAttributedString alloc] init] autorelease];
+	}
+	if (payloadString) {
+		return payloadString;
+	}
 	NSMutableAttributedString *tempString = [[[NSMutableAttributedString alloc] init] autorelease];
 
 	NSColor *textColor = [NSColor blackColor];
@@ -202,8 +209,9 @@
 	];
 	free( buffer );
 	free( output );
-
-	return [tempString copy];
+	
+	payloadString = [[tempString copy] retain];
+	return payloadString;
 }
 
 @end

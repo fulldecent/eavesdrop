@@ -159,32 +159,32 @@ static int aggregateNumber;
 #pragma mark -
 #pragma mark Protocol Instance methods
 
-- (NSString *)sourceString
+- (id)sourceString
 {
 	return nil;
 }
 
-- (NSString *)destinationString
+- (id)destinationString
 {
 	return nil;
 }
 
-- (NSString *)typeString
+- (id)typeString
 {
 	return nil;
 }
 
-- (NSString *)infoString
+- (id)infoString
 {
 	return nil;
 }
 
-- (NSString *)flagsString
+- (id)flagsString
 {
 	return nil;
 }
 
-- (NSString *)descriptionString
+- (id)descriptionString
 {
 	return nil;
 }

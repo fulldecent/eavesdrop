@@ -41,12 +41,10 @@
 			}
 		}
 
-		// this does not take TCP options into account, so it's too small!
 		char bufferHeader[ header_size ];
 		[tempData getBytes:&bufferHeader range:NSMakeRange( 0, header_size )];
 		headerData = [[NSData dataWithBytes:bufferHeader length:header_size ] retain];
 
-		// this does not take TCP options into account, so it's too large!
 		char bufferPayload[ data_size ];
 		[tempData getBytes:&bufferPayload range:NSMakeRange( header_size, data_size )];
 		payloadData = [[NSData dataWithBytes:bufferPayload length:data_size ] retain];
@@ -118,43 +116,121 @@
 //sourceString supplied by IPPacket
 //destinationString supplied by IPPacket
 
-- (NSString *)typeString
+- (id)typeString
 {
 	return @"-TCP-";
 }
 
-- (NSString *)infoString
+- (id)infoString
 {
 	return [NSString stringWithFormat:@"%@ -> %@", [self tcpSourcePort], [self tcpDestinationPort] ] ;
 }
 
-- (NSString *)flagsString
+- (id)flagsString
 {
+	if (flagString)
+		return flagString;
 	const struct tcphdr *tcp = (struct tcphdr*)( [headerData bytes] );
 
-	char flags[] = "--------";
-	/* -- Record the flags in use -- */
-	if (tcp->th_flags & TH_FIN)
-		flags[0] = 'F';
-	if (tcp->th_flags & TH_SYN)
-		flags[1] = 'S';
-	if (tcp->th_flags & TH_RST)
-		flags[2] = 'R';
-	if (tcp->th_flags & TH_PUSH)
-		flags[3] = 'P';
-	if (tcp->th_flags & TH_ACK)
-		flags[4] = 'A';
-	if (tcp->th_flags & TH_URG)
-		flags[5] = 'U';
-	if (tcp->th_flags & TH_ECE)
-		flags[6] = 'E';
-	if (tcp->th_flags & TH_CWR)
-		flags[7] = 'C';
+	NSMutableAttributedString *tempString = [[[NSMutableAttributedString alloc]
+		initWithString:@"--------"//@"        "
+		attributes:[NSDictionary dictionaryWithObject:[NSColor grayColor] forKey:NSForegroundColorAttributeName ]
+	] autorelease];
 
-	return [NSString stringWithCString:flags];
+	PluginDefaults *defaults = [Plugin pluginDefaultsForClassName:[self className] ];
+
+	if (tcp->th_flags & TH_FIN)
+		[tempString replaceCharactersInRange:NSMakeRange(0,1) withString:@"F"];
+	if (tcp->th_flags & TH_SYN)
+		[tempString replaceCharactersInRange:NSMakeRange(1,1) withString:@"S"];
+	if (tcp->th_flags & TH_RST)
+		[tempString replaceCharactersInRange:NSMakeRange(2,1) withString:@"R"];
+	if (tcp->th_flags & TH_PUSH)
+		[tempString replaceCharactersInRange:NSMakeRange(3,1) withString:@"P"];
+	if (tcp->th_flags & TH_ACK)
+		[tempString replaceCharactersInRange:NSMakeRange(4,1) withString:@"A"];
+	if (tcp->th_flags & TH_URG)
+		[tempString replaceCharactersInRange:NSMakeRange(5,1) withString:@"U"];
+	if (tcp->th_flags & TH_ECE)
+		[tempString replaceCharactersInRange:NSMakeRange(6,1) withString:@"E"];
+	if (tcp->th_flags & TH_CWR)
+		[tempString replaceCharactersInRange:NSMakeRange(7,1) withString:@"C"];
+
+	NSColor *groupColor = [[defaults valueForKey:@"flagGroupsDictionary"] valueForKey:[tempString mutableString] ];
+	if (groupColor) {
+		[tempString
+			addAttribute:NSForegroundColorAttributeName
+			value:groupColor
+			range:NSMakeRange(0,8)
+		];
+	}
+	//couldn't find a specific one (or config set), so fill in the flags seperately
+	if ( !groupColor || [[defaults valueForKey:@"flagsOverlayGroup"] boolValue] ) {	
+		NSDictionary *flagsDict = [defaults valueForKey:@"flagsDictionary"];
+
+		if (tcp->th_flags & TH_FIN) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"FIN"] valueForKey:@"color"]
+				range:NSMakeRange(0,1)
+			];
+		}
+		if (tcp->th_flags & TH_SYN) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"SYN"] valueForKey:@"color"]
+				range:NSMakeRange(1,1)
+			];
+		}
+		if (tcp->th_flags & TH_RST) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"RST"] valueForKey:@"color"]
+				range:NSMakeRange(2,1)
+			];
+		}
+		if (tcp->th_flags & TH_PUSH) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"PUSH"] valueForKey:@"color"]
+				range:NSMakeRange(3,1)
+			];
+		}
+		if (tcp->th_flags & TH_ACK) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"ACK"] valueForKey:@"color"]
+				range:NSMakeRange(4,1)
+			];
+		}
+		if (tcp->th_flags & TH_URG) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"URG"] valueForKey:@"color"]
+				range:NSMakeRange(5,1)
+			];
+		}
+		if (tcp->th_flags & TH_ECE) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"ECE"] valueForKey:@"color"]
+				range:NSMakeRange(6,1)
+			];
+		}
+		if (tcp->th_flags & TH_CWR) {
+			[tempString
+				addAttribute:NSForegroundColorAttributeName
+				value:[[flagsDict valueForKey:@"CWR"] valueForKey:@"color"]
+				range:NSMakeRange(7,1)
+			];
+		}	
+	}
+
+	flagString = [[tempString copy] retain];
+	return flagString;
 }
 
-- (NSString *)descriptionString
+- (id)descriptionString
 {
 	return @"I need to fill this in...";
 }

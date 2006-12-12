@@ -13,7 +13,7 @@
 #import <EDPlugin/sniff.h>
 
 @interface TCPPacket : Dissector {
-
+	NSAttributedString *flagString;
 }
 
 - (NSNumber *)tcpAcknowledgement;
