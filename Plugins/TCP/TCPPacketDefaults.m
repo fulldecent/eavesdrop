@@ -60,16 +60,37 @@
 #pragma mark -
 #pragma mark Actions
 
+- (void)setFlags:(NSString *)flags
+{
+	int i;
+	int count;
+	if (flags) {
+		count = [flags length];		
+		int segments = [flagsSegmentedControl segmentCount];
+		for (i=0; i<count && i<segments; i++) {
+			if ( [flags characterAtIndex:i]=='-' ) {
+				[flagsSegmentedControl setSelected:NO forSegment:i];
+			} else {
+				[flagsSegmentedControl setSelected:YES forSegment:i];
+			}
+		}
+	} else {
+		count = [flagsSegmentedControl segmentCount];
+		for (i=0; i<count; i++) {
+			[flagsSegmentedControl setSelected:NO forSegment:i];
+		}
+	}
+}
+
 - (IBAction)changeFlags:(id)sender
 {
 	ENTRY( @"changeFlags:" );
-	
 	int i;
-	int count = [sender segmentCount];
+	int count = [flagsSegmentedControl segmentCount];
 	NSMutableString *tempString = [NSMutableString string];
 	for (i=0; i<count; i++) {
-		if ( [sender isSelectedForSegment:i] ) {
-			[tempString appendString:[sender labelForSegment:i] ];
+		if ( [flagsSegmentedControl isSelectedForSegment:i] ) {
+			[tempString appendString:[flagsSegmentedControl labelForSegment:i] ];
 		} else {
 			[tempString appendString:@"-"];
 		}
@@ -85,15 +106,15 @@
 
 - (void)getDefaultsFromDictionary:(NSDictionary *)defaultsDict
 {
-	//is it okay to "init" from this method?
-
 	ENTRY( @"getDefaultsFromDictionary" );
 	[super getDefaultsFromDictionary:defaultsDict];
 	
+	//load overlay setting
 	[self willChangeValueForKey:@"flagsOverlayGroup"];
 	flagsOverlayGroup = [[defaultsDict valueForKey:@"flagsOverlayGroup"] boolValue];
 	[self didChangeValueForKey:@"flagsOverlayGroup"];
 
+	//load individual flag colors
 	NSDictionary *defaultsColors = [defaultsDict valueForKey:@"flagColors"];
 	NSEnumerator *en = [[self flagsArray] objectEnumerator];
 	NSMutableDictionary *tempDict;
@@ -107,6 +128,7 @@
 	}
 	INFO( [flagsArray description] );
 	
+	//load group colors
 	[self willChangeValueForKey:@"flagGroupsArray"];
 	[flagGroupsArray release];
 	flagGroupsArray = [[NSMutableArray alloc] init];
@@ -133,6 +155,7 @@
 
 - (NSDictionary *)defaultsDict
 {
+	//write individual flag colors
 	NSMutableDictionary *defaultsDict = [[super defaultsDict] mutableCopy];
 	NSMutableDictionary *tempDict = [NSMutableDictionary dictionary];
 	if ( flagsArray ) {
@@ -147,6 +170,7 @@
 	}
 	[defaultsDict setObject:[tempDict copy] forKey:@"flagColors"];
 	
+	//write group colors
 	NSEnumerator *en = [flagGroupsArray objectEnumerator];
 	tempDict = [NSMutableDictionary dictionary];
 	NSDictionary *flagDict;
@@ -158,9 +182,26 @@
 	}
 	[defaultsDict setObject:[tempDict copy] forKey:@"flagGroupColors"];
 	
+	//write overlay setting
 	[defaultsDict setObject:[NSNumber numberWithBool:flagsOverlayGroup] forKey:@"flagsOverlayGroup"];
 	
 	return [defaultsDict copy];
+}
+
+#pragma mark -
+#pragma mark NSTableView Delegate methods
+
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
+{
+	int rowIndex = [flagGroupsTableView selectedRow];
+	if ( rowIndex >= 0 ) {
+		NSString *tempString = [[[flagGroupsArrayController arrangedObjects] objectAtIndex:rowIndex] valueForKey:@"groupString"];
+		DEBUG1( @"set flags for: %@", tempString );
+		[self setFlags:tempString];
+	} else {
+		DEBUG( @"erase flags" );
+		[self setFlags:nil];
+	}
 }
 
 @end

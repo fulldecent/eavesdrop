@@ -18,12 +18,17 @@
 	
 	BOOL flagsOverlayGroup;
 	
+	IBOutlet NSSegmentedControl *flagsSegmentedControl;
 	IBOutlet NSArrayController *flagGroupsArrayController;
+	
+	IBOutlet NSTableView *flagGroupsTableView;
 }
 
 - (NSMutableArray *)flagsArray;
 - (NSMutableDictionary *)flagsDictionary;
 - (NSDictionary *)flagGroupsDictionary;
+
+- (void)setFlags:(NSString *)flags;
 
 - (IBAction)changeFlags:(id)sender;
 

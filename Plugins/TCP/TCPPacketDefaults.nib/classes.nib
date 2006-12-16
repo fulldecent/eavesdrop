@@ -13,7 +13,12 @@
             ACTIONS = {changeFlags = id; }; 
             CLASS = TCPPacketDefaults; 
             LANGUAGE = ObjC; 
-            OUTLETS = {currentFlagSelection = id; flagGroupsArrayController = NSArrayController; }; 
+            OUTLETS = {
+                currentFlagSelection = id; 
+                flagGroupsArrayController = NSArrayController; 
+                flagGroupsTableView = NSTableView; 
+                flagsSegmentedControl = NSSegmentedControl; 
+            }; 
             SUPERCLASS = PluginDefaults; 
         }
     ); 
