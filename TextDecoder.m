@@ -47,6 +47,18 @@
 	return textDecoderView;
 }
 
+- (BOOL)canEdit
+{
+	return NO;
+}
+
+- (void)setRepresentation:(TextRepresentation)newRep
+{
+	representation = newRep;
+	[payloadString release];
+	payloadString = nil;
+}
+
 - (NSAttributedString *)payloadAsAttributedString
 {
 	ENTRY( @"payloadAsAttributedString" );
