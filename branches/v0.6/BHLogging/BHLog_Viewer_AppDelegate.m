@@ -114,6 +114,8 @@ static NSConnection *connection;
 		[classObject setValue:[NSNumber numberWithBool:YES] forKey:@"shouldDisplay"];
 	}
 	[newLogEntry setValue:classObject forKey:@"logClass"];
+	
+	[self refreshLog:self];
 }
 
 - (IBAction)refreshLog:(id)sender

@@ -41,7 +41,6 @@
 	self = [super init];
 	if (self) {
 		payloadData = [startingPayload retain];
-		DEBUG1( @"set payloadData: %@", [payloadData description] );
 		nibLoaded = NO;
 		[self _loadNib];
 	}
