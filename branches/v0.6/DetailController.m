@@ -39,10 +39,33 @@
 #pragma mark -
 #pragma mark Update UI elements
 
-- (void)updatePluginBox
+- (IBAction)updateViews:(id)sender
 {
-	ENTRY( @"updatePluginBox" );
+	if ( ![detailWindow isVisible] ) {
+		return;
+	}
+	
+	switch ( [[[detailTabView selectedTabViewItem] identifier] intValue] ) {
+		case 0:
+			DEBUG( @"Info tab showing" );
+			break;
+		case 1:
+			DEBUG( @"Payload tab showing" );
+			[self updatePluginBox];
+			break;
+		case 2:
+			DEBUG( @"Packets tab showing" );
+			[self updateTableView];
+			break;
+		default:
+			WARNING( @"No valid case found for update switch/case" );
+	}
+}
 
+- (void)updatePluginBox
+{	
+	ENTRY( @"updatePluginBox" );
+	
 	[viewInfoArray removeAllObjects];
 	
 	NSEnumerator *tempEn = [[selectedObject valueForKey:@"registeredDecoders"] objectEnumerator];
@@ -50,7 +73,7 @@
 	while ( tempViewInfo=[tempEn nextObject] ) {
 		Class<Decoder> tempClass = [tempViewInfo valueForKey:@"decoderClassName"];
 		if ( [tempClass canDecodePayload:[selectedObject valueForKey:@"payloadData"] ] ) {
-			DEBUG1( @"canDecodePayload: returns true for %@", [tempViewInfo valueForKey:@"decoderClassName"] );
+			///DEBUG1( @"canDecodePayload: returns true for %@", [tempViewInfo valueForKey:@"decoderClassName"] );
 			[viewInfoArray addObject:tempViewInfo];
 		}
 	}
@@ -106,6 +129,7 @@
 - (void)updateTableView
 {
 	ENTRY( @"updateTableView" );
+	
 	NSArray *detailColumnsArray = [selectedObject valueForKey:@"detailColumnsArray"];
 
 	NSEnumerator *en = [[packetTableView tableColumns] objectEnumerator];
@@ -140,7 +164,7 @@
 	NSTabViewItem *tabViewItem = [pluginsTabView tabViewItemAtIndex:pluginDisplayIndex];
 
 	if ( newDisplayIndex >= [viewInfoArray count] ) {
-		DEBUG( @"do decoder found" );
+		DEBUG( @"no decoder found" );
 		[tabViewItem setView:blankView];
 		return;	
 	}
@@ -151,7 +175,8 @@
 	NSData *tempData = [selectedObject valueForKey:@"payloadData"];
 	if (tempData) {
 		[selectedDecoder release];
-		selectedDecoder = [[tempClass alloc] initWithPayload:tempData ];
+		selectedDecoder = [[tempClass alloc] initWithObject:selectedObject];
+		lastPluginName = [selectedDecoder className];
 	} else {
 		ERROR( @"selected object did not return any payload data" );
 	}
@@ -173,9 +198,36 @@
 	ENTRY( @"observeValueForKeyPath:ofObject:change:context:" );
 	[selectedObject release];
 	selectedObject = [[object valueForKeyPath:keyPath] retain];
-	
-	[self updatePluginBox];
-	[self updateTableView];
+
+	[self updateViews:self];
 }
+
+//only need one of these, not sure which one is best
+// we'll use this one for now...
+- (void)windowDidBecomeKey:(NSNotification *)aNotification
+{
+	[self updateViews:self];
+}
+
+/*
+- (void)windowDidBecomeMain:(NSNotification *)aNotification
+{
+	[self updateViews:self];
+}
+*/
+
+- (void)windowDidExpose:(NSNotification *)aNotification
+{
+	ENTRY( @"windowDidExpose:" );
+}
+
+#pragma mark -
+#pragma mark NSTabView delegate methods
+
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+	[self updateViews:self];
+}
+
 
 @end

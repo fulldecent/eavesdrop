@@ -60,6 +60,9 @@
 		3F6992660B0ECB8D007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F69927D0B0ECCFE007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F8070360B3CF61E0000F013 /* TCPTextDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8070350B3CF61E0000F013 /* TCPTextDecoder.m */; };
+		3F8071890B43A16B0000F013 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8071830B43A16B0000F013 /* RBSplitView.framework */; };
+		3F8071900B43A2C20000F013 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F8071830B43A16B0000F013 /* RBSplitView.framework */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FB2E06A0A20B87F00ED017B /* DOHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2E0680A20B87F00ED017B /* DOHelpers.m */; };
@@ -189,6 +192,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3F8071900B43A2C20000F013 /* RBSplitView.framework in CopyFiles */,
 				3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */,
 				3F3E23940A37F965001C4087 /* EDPlugin.framework in CopyFiles */,
 			);
@@ -320,6 +324,9 @@
 		3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDecoder.m; sourceTree = "<group>"; };
 		3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = ImageDecoder.nib; sourceTree = "<group>"; };
 		3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BHLogging.xcodeproj; path = BHLogging/BHLogging.xcodeproj; sourceTree = "<group>"; };
+		3F8070340B3CF61E0000F013 /* TCPTextDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPTextDecoder.h; path = TCP/TCPTextDecoder.h; sourceTree = "<group>"; };
+		3F8070350B3CF61E0000F013 /* TCPTextDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPTextDecoder.m; path = TCP/TCPTextDecoder.m; sourceTree = "<group>"; };
+		3F8071830B43A16B0000F013 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBSplitView.framework; path = "3rd Party/RBSplitView.framework"; sourceTree = "<group>"; };
 		3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOHelpers.h; sourceTree = "<group>"; };
 		3FB2E0680A20B87F00ED017B /* DOHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOHelpers.m; sourceTree = "<group>"; };
 		3FB2E1890A25668A00ED017B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -435,6 +442,7 @@
 				3FE1253B0A1AE37E00A0A510 /* Security.framework in Frameworks */,
 				3FE1257C0A1AE39000A0A510 /* libpcap.A.dylib in Frameworks */,
 				3FE1257F0A1AE39C00A0A510 /* SecurityFoundation.framework in Frameworks */,
+				3F8071890B43A16B0000F013 /* RBSplitView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +494,7 @@
 				3F043E870A2A486400380C99 /* Plugin Framework */,
 				3FECCA5E0A37D500007C90E6 /* Plugins */,
 				514E9E0C081EC698009B8CD9 /* Importer */,
-				2A37F4C3FDCFA73011CA2CEA /* 3rd Party Frameworks */,
+				2A37F4C3FDCFA73011CA2CEA /* Frameworks */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
 				3F26A6400A52D55B001EBA5A /* Target plists */,
 			);
@@ -515,13 +523,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		2A37F4C3FDCFA73011CA2CEA /* 3rd Party Frameworks */ = {
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3F80718A0B43A1710000F013 /* 3rd Party */,
 				1058C7A6FEA54F5311CA2CBB /* Standard Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
-			name = "3rd Party Frameworks";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3F043A1B0A2810B200380C99 /* Document Controllers */ = {
@@ -552,7 +561,7 @@
 			children = (
 				3F698BA00B083D13007910F7 /* Abstract Classes */,
 				3F698BB60B083D6E007910F7 /* Concrete Classes */,
-				3F698B9F0B083CDD007910F7 /* Resources */,
+				3F698B9F0B083CDD007910F7 /* plists */,
 			);
 			name = "Plugin Framework";
 			sourceTree = "<group>";
@@ -593,6 +602,7 @@
 			children = (
 				3F6974380AE9FE19007910F7 /* Aggregators */,
 				3F6974370AE9FDFA007910F7 /* Dissectors */,
+				3F80703C0B3CF6650000F013 /* Decoders */,
 				3F6974360AE9FDBB007910F7 /* plists */,
 			);
 			name = TCP;
@@ -681,17 +691,15 @@
 			name = Aggregators;
 			sourceTree = "<group>";
 		};
-		3F698B9F0B083CDD007910F7 /* Resources */ = {
+		3F698B9F0B083CDD007910F7 /* plists */ = {
 			isa = PBXGroup;
 			children = (
-				3F698EFD0B0ACC15007910F7 /* TextDecoder.nib */,
 				3F49B78F0AD88FD800633242 /* Dissectors.plist */,
 				3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */,
 				3F698A4F0B07895C007910F7 /* Decoders.plist */,
 				3F3E232B0A37F398001C4087 /* PacketHandler-Info.plist */,
-				3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */,
 			);
-			name = Resources;
+			name = plists;
 			sourceTree = "<group>";
 		};
 		3F698BA00B083D13007910F7 /* Abstract Classes */ = {
@@ -716,8 +724,10 @@
 			children = (
 				3F698FB90B0AE85A007910F7 /* ImageDecoder.h */,
 				3F698FBA0B0AE85A007910F7 /* ImageDecoder.m */,
+				3F698FC90B0AE95C007910F7 /* ImageDecoder.nib */,
 				3F6989C30B069A83007910F7 /* TextDecoder.h */,
 				3F6989C40B069A83007910F7 /* TextDecoder.m */,
+				3F698EFD0B0ACC15007910F7 /* TextDecoder.nib */,
 				3F043E820A2A484F00380C99 /* Packet.h */,
 				3F043E830A2A485000380C99 /* Packet.m */,
 			);
@@ -731,6 +741,23 @@
 				3F6991C80B0EC21D007910F7 /* BHLogger.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		3F80703C0B3CF6650000F013 /* Decoders */ = {
+			isa = PBXGroup;
+			children = (
+				3F8070340B3CF61E0000F013 /* TCPTextDecoder.h */,
+				3F8070350B3CF61E0000F013 /* TCPTextDecoder.m */,
+			);
+			name = Decoders;
+			sourceTree = "<group>";
+		};
+		3F80718A0B43A1710000F013 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				3F8071830B43A16B0000F013 /* RBSplitView.framework */,
+			);
+			name = "3rd Party";
 			sourceTree = "<group>";
 		};
 		3FB2E0730A20B8FD00ED017B /* Protocols, Categories, etc. */ = {
@@ -1115,6 +1142,7 @@
 				3F15EE6A0AE12D610018EC63 /* TCPLowPortAggregate.m in Sources */,
 				3F15EF1A0AE324420018EC63 /* TCPServerPortAggregate.m in Sources */,
 				3F15EF320AE329080018EC63 /* TCPServerPortAggregateDefaults.m in Sources */,
+				3F8070360B3CF61E0000F013 /* TCPTextDecoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1294,6 +1322,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/3rd Party\"";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1316,6 +1349,11 @@
 					ppc,
 					i386,
 				);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/3rd Party\"";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;

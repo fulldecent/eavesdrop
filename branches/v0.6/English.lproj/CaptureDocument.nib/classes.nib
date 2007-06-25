@@ -12,8 +12,8 @@
                 saveSettings = id; 
                 showSettings = id; 
                 startCapture = id; 
+                startSave = id; 
                 stopCapture = id; 
-                updateDetails = id; 
             }; 
             CLASS = CaptureDocument; 
             LANGUAGE = ObjC; 
@@ -27,6 +27,7 @@
                 packetDetailWindow = NSWindow; 
                 packetInfoDrawer = NSDrawer; 
                 packetOutlineView = NSOutlineView; 
+                packetSplitView = RBSplitView; 
                 serverProxy = id; 
                 settingsWindow = NSWindow; 
             }; 
@@ -37,6 +38,7 @@
             LANGUAGE = ObjC; 
             OUTLETS = {
                 blankView = NSView; 
+                detailTabView = NSTabView; 
                 detailWindow = NSWindow; 
                 packetTableView = NSTableView; 
                 payloadViewsPopup = NSPopUpButton; 
