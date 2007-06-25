@@ -8,12 +8,14 @@
 
 #import "TextDecoder.h"
 
-
 @implementation TextDecoder
+
+static TextRepresentation lastRepresentation;
 
 + (void)initialize
 {
 	ENTRY( @"initialize" );
+	lastRepresentation = TextRepresentationASCII;
 	[self setKeys:[NSArray arrayWithObject:@"representation"]
 		triggerChangeNotificationsForDependentKey:@"payloadAsAttributedString"];
 }
@@ -33,17 +35,13 @@
 
 - (void)awakeFromNib
 {
-	ENTRY1( @"awakeFromNib - text view: %@", [textDecoderView description] );
-	[self willChangeValueForKey:@"representation"];
-	[self willChangeValueForKey:@"payloadAsAttributedString"];
-	representation = TextRepresentationASCII;
-	[self didChangeValueForKey:@"representation"];
-	[self didChangeValueForKey:@"payloadAsAttributedString"];
+	//ENTRY1( @"awakeFromNib - text view: %@", [textDecoderView description] );
+	[self setRepresentation:lastRepresentation];
 }
 
 - (NSView *)textDecoderView
 {
-	ENTRY( @"textDecoderView" );
+	//ENTRY( @"textDecoderView" );
 	return textDecoderView;
 }
 
@@ -54,14 +52,19 @@
 
 - (void)setRepresentation:(TextRepresentation)newRep
 {
+	[self willChangeValueForKey:@"representation"];
+	[self willChangeValueForKey:@"payloadAsAttributedString"];
 	representation = newRep;
+	lastRepresentation = representation;
 	[payloadString release];
 	payloadString = nil;
+	[self didChangeValueForKey:@"payloadAsAttributedString"];
+	[self didChangeValueForKey:@"representation"];
 }
 
 - (NSAttributedString *)payloadAsAttributedString
 {
-	ENTRY( @"payloadAsAttributedString" );
+	//ENTRY( @"payloadAsAttributedString" );
 	if (!payloadData) {
 		DEBUG( @"payloadData is nil" );
 		return [[[NSAttributedString alloc] init] autorelease];
@@ -96,7 +99,7 @@
 	
 /* CONVERSATION_ASCII calculations */
 	if (representation==TextRepresentationASCII) {
-		DEBUG( @"processing TextRepresentationASCII" );
+		//DEBUG( @"processing TextRepresentationASCII" );
 		outputLen = bufferLen;
 		output = malloc( outputLen );
 
@@ -112,7 +115,7 @@
 		}
 /* CONVERSATION_HEX calculations */
 	} else if (representation==TextRepresentationHex) {
-		DEBUG( @"processing TextRepresentationHex" );
+		//DEBUG( @"processing TextRepresentationHex" );
 		outputLen = 51 * ( bufferLen/16 + 1 );
 		output = malloc( outputLen );
 
@@ -134,7 +137,7 @@
 
 /* CONVERSATION_HEX_ASCII calculations */
 	} else if (representation==TextRepresentationHexASCII) {
-		DEBUG( @"processing TextRepresentationHexASCII" );
+		//DEBUG( @"processing TextRepresentationHexASCII" );
 		outputLen = 71 * ( bufferLen/16 + 1 );
 		output = malloc( outputLen );
 

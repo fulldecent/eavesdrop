@@ -23,7 +23,10 @@ typedef enum TextRepresentation {
 	NSAttributedString *payloadString;
 }
 
+
 - (NSView *)textDecoderView;
+- (void)setRepresentation:(TextRepresentation)newRep;
+
 - (NSAttributedString *)payloadAsAttributedString;
 
 @end

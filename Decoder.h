@@ -20,6 +20,8 @@
 + (BOOL)canDecodePayload:(NSData *)payload fromAggregate:(id<Aggregate>)aggregate;
 
 // whichever one above is implemented, the matching version here should be
+- (id)initWithObject:(Plugin *)object;
+
 - (id)initWithPayload:(NSData *)startingPayload;
 - (id)initWithPayload:(NSData *)startingPayload fromDissector:(id<Dissector>)startingDissector;
 - (id)initWithPayload:(NSData *)startingPayload fromAggregate:(id<Aggregate>)startingAggregate;

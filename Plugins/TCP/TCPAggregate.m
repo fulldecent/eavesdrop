@@ -75,7 +75,18 @@
 
 - (id)flagsString
 {
-	return [lastPacket flagsString];
+	NSMutableAttributedString *tempString
+		= [[[NSMutableAttributedString alloc] initWithAttributedString:[lastPacket flagsString] ] autorelease];
+
+	if ( [[firstPacket valueForKey:@"ipSource"] isEqualToString:[lastPacket valueForKey:@"ipSource"] ] ) {
+		[tempString insertAttributedString:[[[NSAttributedString alloc] initWithString:@"<"] autorelease] atIndex:0];
+		[tempString insertAttributedString:[[[NSAttributedString alloc] initWithString:@" "] autorelease] atIndex:9];
+	} else {
+		[tempString insertAttributedString:[[[NSAttributedString alloc] initWithString:@" "] autorelease] atIndex:0];
+		[tempString insertAttributedString:[[[NSAttributedString alloc] initWithString:@">"] autorelease] atIndex:9];
+	}
+
+	return tempString;
 }
 
 - (NSData *)payloadData

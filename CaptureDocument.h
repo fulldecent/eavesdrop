@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import <RBSplitView/RBSplitView.h>
+#import <RBSplitView/RBSplitSubview.h>
+
 #import "CaptureHandlers.h"
 
 //how's about a better name?
@@ -48,6 +51,8 @@
 	IBOutlet NSOutlineView *leftoverOutlineView;
 	IBOutlet NSDrawer *packetInfoDrawer;
 	IBOutlet NSWindow *packetDetailWindow;
+	
+	IBOutlet RBSplitView *packetSplitView;
 	
 	Packet *selectedPacket;
 	NSArray *packetDetailsArray;

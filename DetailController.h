@@ -16,6 +16,7 @@
 	IBOutlet NSArrayController *selectedPacketsArrayController;
 	IBOutlet NSObjectController *selectedObjectController;
 
+	IBOutlet NSTabView *detailTabView;
 	IBOutlet NSTableView *packetTableView;
 	IBOutlet NSPopUpButton *payloadViewsPopup;
 	IBOutlet NSTabView *pluginsTabView;
@@ -28,8 +29,10 @@
 	Decoder *selectedDecoder;
 	
 	int pluginDisplayIndex;
+	NSString *lastPluginName;
 }
 
+- (IBAction)updateViews:(id)sender;
 - (void)updatePluginBox;
 - (void)updateTableView;
 

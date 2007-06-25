@@ -260,6 +260,12 @@
 		[leftoverOutlineView reloadData];
 	}
 	
+	if ( [leftoverPacketList count] ) {
+		[[packetSplitView subviewWithIdentifier:@"leftovers"] expand];
+	} else {
+		[[packetSplitView subviewWithIdentifier:@"leftovers"] collapse];
+	}
+	
 	isRefreshing = NO;
 }
 

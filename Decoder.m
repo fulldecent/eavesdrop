@@ -35,9 +35,15 @@
 #pragma mark - 
 #pragma mark Setup methods
 
+- (id)initWithObject:(Plugin *)object
+{
+	//ENTRY1( @"initWithObject: %@", [object description] );
+	return [self initWithPayload:[object valueForKey:@"payloadData"] ];
+}
+
 - (id)initWithPayload:(NSData *)startingPayload
 {
-	ENTRY( @"initWithPayload: (default implementation)" );
+	//ENTRY( @"initWithPayload: (default implementation)" );
 	self = [super init];
 	if (self) {
 		payloadData = [startingPayload retain];
@@ -49,13 +55,13 @@
 
 - (id)initWithPayload:(NSData *)startingPayload fromDissector:(id<Dissector>)startingDissector;
 {
-	ENTRY( @"initWithPayload:fromDissector: (default implementation)" );
+	//ENTRY( @"initWithPayload:fromDissector: (default implementation)" );
 	return [self initWithPayload:startingPayload];
 }
 
 - (id)initWithPayload:(NSData *)startingPayload fromAggregate:(id<Aggregate>)startingAaggregate;
 {
-	ENTRY( @"initWithPayload:fromAggregate: (default implementation)" );
+	//ENTRY( @"initWithPayload:fromAggregate: (default implementation)" );
 	return [self initWithPayload:startingPayload];
 }
 
@@ -70,7 +76,7 @@
 - (void)_loadNib
 {
 	NSString *nibName = [self decoderNibName];
-	ENTRY1( @"_loadNib: %@", nibName );
+	//ENTRY1( @"_loadNib: %@", nibName );
 	if (!nibLoaded && nibName ) {
 		if ( ![NSBundle loadNibNamed:nibName owner:self] ) {
 			ERROR1( @"failed to load nib: %@", nibName );
