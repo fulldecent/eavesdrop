@@ -145,10 +145,10 @@ static NSMutableDictionary *registeredDecoders;
 + (id)registerDecoderAndGetDefaultsWithSettings:(NSDictionary *)defaultSettings
 {
 	PluginDefaults *pluginDefaults = [PluginDefaults pluginDefaultsWithSettings:defaultSettings];
-	[registeredDefaults setObject:pluginDefaults forKey:[pluginDefaults valueForKey:@"decoderClassName"] ];
+	[registeredDefaults setObject:pluginDefaults forKey:[pluginDefaults valueForKey:@"decoderClass"] ];
 	
-	[NSClassFromString( [pluginDefaults valueForKey:@"decoderClassName"] )
-		_registerDecoder:NSClassFromString( [pluginDefaults valueForKey:@"decoderClassName"] )
+	[NSClassFromString( [pluginDefaults valueForKey:@"decoderClass"] )
+		_registerDecoder:NSClassFromString( [pluginDefaults valueForKey:@"decoderClass"] )
 		withSettings:defaultSettings
 	];
 	
@@ -162,7 +162,7 @@ static NSMutableDictionary *registeredDecoders;
 		setObject:[NSDictionary dictionaryWithObjectsAndKeys:
 			[self className],								@"dissectorClassName",	//probably not...
 			[defaultSettings valueForKey:@"name"],			@"name",
-			decoderClass,									@"decoderClassName",
+			decoderClass,									@"decoderClass",
 			[defaultSettings valueForKey:@"viewKey"],		@"viewKey",
 			[defaultSettings valueForKey:@"decoderNib"],	@"decoderNib",
 			//do I need anything else?

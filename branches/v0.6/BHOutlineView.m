@@ -44,9 +44,7 @@ static int colorPercent;
 }
 /*
 - (void)drawRow:(int)row clipRect:(NSRect)clipRect;
-{
-	//ENTRY( @"drawRow:clipRect:" );
-	
+{	
 	colorPercent += 5;
 	colorPercent %= 100;
 	
@@ -71,7 +69,6 @@ static int colorPercent;
 //does work
 -(id)_highlightColorForCell:(id)cell
 {
-	//ENTRY( @"_highlightColorForCell:" );
 	return [NSColor redColor];
 }
 */

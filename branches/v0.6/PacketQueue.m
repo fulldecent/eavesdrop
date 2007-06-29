@@ -111,7 +111,6 @@ static NSMutableDictionary *collectors;
 		aggregateClass = nil;
 	
 	[self _resetAggregates];
-	//EXIT( @"setAggregateClass" );
 }
 
 - (NSArray *)aggregateClassArray
@@ -212,7 +211,6 @@ static NSMutableDictionary *collectors;
 			if (aggregate) {
 				[aggregate addPacket:newPacket];
 			} else {
-				//DEBUG1( @"new ID: %@", aggregateIdentifier );
 				aggregate = [[aggregateClass alloc] initWithPacket:newPacket usingSubAggregates:aggregateClassArray];
 				[arrayLock lock];
 				[aggregateDict setObject:aggregate forKey:aggregateIdentifier];
@@ -300,8 +298,6 @@ static NSMutableDictionary *collectors;
 
 - (oneway void)addPacket:(NSData *)packetData withHeader:(NSData *)headerData
 {
-	//NSData *newPacket = [packetData copy];
-	//NSData *newHeader = [headerData copy];
 	[queueLock lock];
 	[packetDataArray addObject:[packetData copy]];
 	[headerDataArray addObject:[headerData copy]];

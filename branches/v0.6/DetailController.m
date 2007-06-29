@@ -75,9 +75,8 @@
 	NSEnumerator *tempEn = [[selectedObject valueForKey:@"registeredDecoders"] objectEnumerator];
 	id tempViewInfo;
 	while ( tempViewInfo=[tempEn nextObject] ) {
-		Class<Decoder> tempClass = [tempViewInfo valueForKey:@"decoderClassName"];
+		Class<Decoder> tempClass = [tempViewInfo valueForKey:@"decoderClass"];
 		if ( [tempClass canDecodePayload:[selectedObject valueForKey:@"payloadData"] ] ) {
-			///DEBUG1( @"canDecodePayload: returns true for %@", [tempViewInfo valueForKey:@"decoderClassName"] );
 			[viewInfoArray addObject:tempViewInfo];
 		}
 	}
@@ -115,11 +114,10 @@
 		NSMenuItem *tempMenuItem;
 		while ( tempDict=[en nextObject] ) {
 			tempMenuItem = [menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
-			if ( [pluginTags indexOfObject:[tempDict objectForKey:@"decoderClassName"]] == NSNotFound ) {
-				//TODO: this is screwed up, "decoderClassName" returns the class, not the name!
-				[pluginTags addObject:[[tempDict objectForKey:@"decoderClassName"] className] ];
+			if ( [pluginTags indexOfObject:[tempDict objectForKey:@"decoderClass"]] == NSNotFound ) {
+				[pluginTags addObject:[[tempDict objectForKey:@"decoderClass"] className] ];
 			}
-			[tempMenuItem setTag:[pluginTags indexOfObject:[[tempDict objectForKey:@"decoderClassName"] className]] ];
+			[tempMenuItem setTag:[pluginTags indexOfObject:[[tempDict objectForKey:@"decoderClass"] className]] ];
 			
 			tempItem = [[[NSTabViewItem alloc] initWithIdentifier:nil] autorelease];
 			[tempItem setLabel:[tempDict objectForKey:@"name"] ];
@@ -140,11 +138,8 @@
 	id tempClassName;
 	BOOL selectionFound = NO;
 	while ( tempClassName = [en nextObject] ) {
-		int tempindex = [pluginTags indexOfObject:tempClassName];
-		
 		int index = [payloadViewsPopup indexOfItemWithTag:[pluginTags indexOfObject:tempClassName] ];
 		if ( index != -1 ) {
-		//if ( [payloadViewsPopup selectItemWithTag:[pluginTags indexOfObject:tempClassName] ] ) {
 			DEBUG2( @"found former popup selection %@ at index %d", tempClassName, index );
 			[self setPluginDisplayIndex:index];
 			selectionFound = YES;
@@ -202,13 +197,12 @@
 	}
 
 	NSDictionary *decoderInfo = [viewInfoArray objectAtIndex:newDisplayIndex];
-	Class tempClass = [decoderInfo valueForKey:@"decoderClassName"];
+	Class tempClass = [decoderInfo valueForKey:@"decoderClass"];
 
 	NSData *tempData = [selectedObject valueForKey:@"payloadData"];
 	if (tempData) {
 		[selectedDecoder release];
 		selectedDecoder = [[tempClass alloc] initWithObject:selectedObject];
-		//lastPluginName = [selectedDecoder className];
 	} else {
 		ERROR( @"selected object did not return any payload data" );
 	}
