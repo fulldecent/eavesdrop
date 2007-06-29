@@ -29,11 +29,17 @@
 	Decoder *selectedDecoder;
 	
 	int pluginDisplayIndex;
-	NSString *lastPluginName;
+	//NSString *lastPluginName;
+	
+	BOOL isBuildingPluginList;
+	NSMutableArray *selectedPluginsStack;
+	NSMutableArray *pluginTags;
 }
 
 - (IBAction)updateViews:(id)sender;
 - (void)updatePluginBox;
 - (void)updateTableView;
+
+- (void)setPluginDisplayIndex:(int)newDisplayIndex;
 
 @end

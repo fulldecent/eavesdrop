@@ -19,6 +19,9 @@
 	self = [super init];
 	if (self) {
 		viewInfoArray = [[NSMutableArray alloc] init];
+		isBuildingPluginList = NO;
+		selectedPluginsStack = [[NSMutableArray alloc] init];
+		pluginTags = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
@@ -66,6 +69,7 @@
 {	
 	ENTRY( @"updatePluginBox" );
 	
+	isBuildingPluginList = YES;
 	[viewInfoArray removeAllObjects];
 	
 	NSEnumerator *tempEn = [[selectedObject valueForKey:@"registeredDecoders"] objectEnumerator];
@@ -108,8 +112,14 @@
 		en = [viewInfoArray objectEnumerator];
 		NSDictionary *tempDict;
 		NSTabViewItem *tempItem;
+		NSMenuItem *tempMenuItem;
 		while ( tempDict=[en nextObject] ) {
-			[menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
+			tempMenuItem = [menu addItemWithTitle:[tempDict objectForKey:@"name"] action:nil keyEquivalent:@""];
+			if ( [pluginTags indexOfObject:[tempDict objectForKey:@"decoderClassName"]] == NSNotFound ) {
+				//TODO: this is screwed up, "decoderClassName" returns the class, not the name!
+				[pluginTags addObject:[[tempDict objectForKey:@"decoderClassName"] className] ];
+			}
+			[tempMenuItem setTag:[pluginTags indexOfObject:[[tempDict objectForKey:@"decoderClassName"] className]] ];
 			
 			tempItem = [[[NSTabViewItem alloc] initWithIdentifier:nil] autorelease];
 			[tempItem setLabel:[tempDict objectForKey:@"name"] ];
@@ -124,6 +134,28 @@
 		[payloadViewsPopup setHidden:NO];
 		[pluginsTabView setHidden:NO];
 	}
+	
+	//set display index based on selectedPluginsStack
+	en = [selectedPluginsStack reverseObjectEnumerator];
+	id tempClassName;
+	BOOL selectionFound = NO;
+	while ( tempClassName = [en nextObject] ) {
+		int tempindex = [pluginTags indexOfObject:tempClassName];
+		
+		int index = [payloadViewsPopup indexOfItemWithTag:[pluginTags indexOfObject:tempClassName] ];
+		if ( index != -1 ) {
+		//if ( [payloadViewsPopup selectItemWithTag:[pluginTags indexOfObject:tempClassName] ] ) {
+			DEBUG2( @"found former popup selection %@ at index %d", tempClassName, index );
+			[self setPluginDisplayIndex:index];
+			selectionFound = YES;
+			break;
+		}
+	}
+	if ( ! selectionFound ) {
+		[self setPluginDisplayIndex:0]; 
+	}
+	
+	isBuildingPluginList = NO;
 }
 
 - (void)updateTableView
@@ -157,9 +189,9 @@
 {
 	if ( newDisplayIndex==pluginDisplayIndex )
 		return;
-	pluginDisplayIndex = newDisplayIndex;
-
 	DEBUG1( @"setPluginDisplayIndex: %d", newDisplayIndex );
+
+	pluginDisplayIndex = newDisplayIndex;
 
 	NSTabViewItem *tabViewItem = [pluginsTabView tabViewItemAtIndex:pluginDisplayIndex];
 
@@ -176,7 +208,7 @@
 	if (tempData) {
 		[selectedDecoder release];
 		selectedDecoder = [[tempClass alloc] initWithObject:selectedObject];
-		lastPluginName = [selectedDecoder className];
+		//lastPluginName = [selectedDecoder className];
 	} else {
 		ERROR( @"selected object did not return any payload data" );
 	}
@@ -188,6 +220,15 @@
 		ERROR( @"couldn't set tab view" );
 		[tabViewItem setView:blankView];
 	}
+	
+	if ( ! isBuildingPluginList ) {
+		if ( selectedDecoder && selectedObject ) {
+			// is it okay to remove this every time?
+			[selectedPluginsStack removeObject:[selectedDecoder valueForKey:@"className"] ];
+			[selectedPluginsStack addObject:[selectedDecoder valueForKey:@"className"] ];
+		}
+		INFO1( @"selectedPluginsStack =>\n%@", [selectedPluginsStack description] );
+	}
 }
 
 #pragma mark -
@@ -196,6 +237,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	ENTRY( @"observeValueForKeyPath:ofObject:change:context:" );
+
 	[selectedObject release];
 	selectedObject = [[object valueForKeyPath:keyPath] retain];
 
