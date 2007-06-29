@@ -15,7 +15,7 @@
 
 + (BOOL)canDecodePacket:(NSObject<Dissector> *)testPacket
 {
-	//way too simplistic
+	//TODO: honestly lookk at packet to see if we can decode it
 	return YES;
 }
 
@@ -50,6 +50,7 @@
 
 - (NSString *)ethernetDestination
 {
+	//TODO: fix address display (0 -> 00)
 	return [self destinationString];
 }
 

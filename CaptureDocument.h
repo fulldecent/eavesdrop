@@ -13,7 +13,6 @@
 
 #import "CaptureHandlers.h"
 
-//how's about a better name?
 #import "Constants.h"
 
 #import <EDPlugin/Packet.h>
@@ -93,9 +92,6 @@
 - (void)setTableRefresh:(int)newRefresh;
 - (NSString *)aggregate;
 - (void)setAggregate:(NSString *)newAggregate;
-//- (NSString *)subAggregate;
-//- (void)setSubAggregate:(NSString *)newAggregate;
-
 
 - (NSMutableArray *)interfaces;
 - (NSString *)saveFile;

@@ -35,13 +35,11 @@ static TextRepresentation lastRepresentation;
 
 - (void)awakeFromNib
 {
-	//ENTRY1( @"awakeFromNib - text view: %@", [textDecoderView description] );
 	[self setRepresentation:lastRepresentation];
 }
 
 - (NSView *)textDecoderView
 {
-	//ENTRY( @"textDecoderView" );
 	return textDecoderView;
 }
 
@@ -64,7 +62,6 @@ static TextRepresentation lastRepresentation;
 
 - (NSAttributedString *)payloadAsAttributedString
 {
-	//ENTRY( @"payloadAsAttributedString" );
 	if (!payloadData) {
 		DEBUG( @"payloadData is nil" );
 		return [[[NSAttributedString alloc] init] autorelease];
@@ -99,7 +96,6 @@ static TextRepresentation lastRepresentation;
 	
 /* CONVERSATION_ASCII calculations */
 	if (representation==TextRepresentationASCII) {
-		//DEBUG( @"processing TextRepresentationASCII" );
 		outputLen = bufferLen;
 		output = malloc( outputLen );
 
@@ -115,7 +111,6 @@ static TextRepresentation lastRepresentation;
 		}
 /* CONVERSATION_HEX calculations */
 	} else if (representation==TextRepresentationHex) {
-		//DEBUG( @"processing TextRepresentationHex" );
 		outputLen = 51 * ( bufferLen/16 + 1 );
 		output = malloc( outputLen );
 
@@ -137,7 +132,6 @@ static TextRepresentation lastRepresentation;
 
 /* CONVERSATION_HEX_ASCII calculations */
 	} else if (representation==TextRepresentationHexASCII) {
-		//DEBUG( @"processing TextRepresentationHexASCII" );
 		outputLen = 71 * ( bufferLen/16 + 1 );
 		output = malloc( outputLen );
 
@@ -207,7 +201,6 @@ static TextRepresentation lastRepresentation;
 		return nil;
 	}
 	
-	//DEBUG2( @"\no:\t%d\nj:\t%d\n", outputLen, j );
 	NSData *tempData = [NSData dataWithBytes:output length:outputLen]; // or j
 	[tempString 
 		appendAttributedString:[[NSAttributedString alloc]

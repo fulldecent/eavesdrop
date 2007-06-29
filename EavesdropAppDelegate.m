@@ -51,7 +51,7 @@
 //- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 - (void)applicationWillFinishLaunching:(NSNotification*)notification
 {	
-	//ENTRY( @"applicationWillFinishLaunching:" );
+	ENTRY( @"applicationWillFinishLaunching:" );
 	[pluginsController findAllPlugins];
 }
 

@@ -22,11 +22,9 @@
 
 - (NSData *)headerData;																/* REQUIRED */
 - (NSData *)payloadData;															/* REQUIRED */
-//- (NSData *)packetData;																/* FREEBIE	*/
 
 - (const void *)headerBytes;														/* FREEBIE	*/
 - (const void *)payloadBytes;														/* FREEBIE	*/
-//- (const void *)packetBytes;														/* FREEBIE	*/
 
 - (NSArray *)detailColumnsArray;
 

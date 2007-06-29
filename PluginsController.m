@@ -118,7 +118,7 @@
 	selectedDissectorIndexes = [newIndexSet retain];
 	
 	id pluginDefaults = [pluginsArrayController selection];
-	//DEBUG1( @"selected defaults: %@", [pluginDefaults description] );
+	DEBUG1( @"selected defaults: %@", [pluginDefaults description] );
 	
 	NSView *theView = [pluginDefaults valueForKey:@"defaultsView"];
 	if (theView) {

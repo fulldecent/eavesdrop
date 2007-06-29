@@ -84,8 +84,8 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController 
 {
     [super windowControllerDidLoadNib:windowController];
-    // user interface preparation code
-	
+    
+	//TODO: fix remote captures (maybe not here)
 	[self connectToCaptureServer:self];
 }
 
@@ -218,7 +218,6 @@
 	if (serverProxy)
 		[serverProxy stopCaptureForClient:queueIdentifier];
 	
-	//[self setTableRefresh:0];
 	[self refreshData:self];
 	
 	[PacketQueue stopCollectorWithIdentifier:queueIdentifier];
@@ -231,7 +230,6 @@
 		return;
 	}
 	isRefreshing = YES;
-	//ENTRY( @"refreshData:" );	
 
 	NSArray *tempArray = nil;
 	NSArray *leftoverArray = nil;

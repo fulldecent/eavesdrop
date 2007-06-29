@@ -3,7 +3,7 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>decoderClassName</key>
+		<key>decoderClass</key>
 		<string>TextDecoder</string>
 		<key>decoderNib</key>
 		<string>TextDecoder</string>
@@ -13,7 +13,7 @@
 		<string>textDecoderView</string>
 	</dict>
 	<dict>
-		<key>decoderClassName</key>
+		<key>decoderClass</key>
 		<string>ImageDecoder</string>
 		<key>decoderNib</key>
 		<string>ImageDecoder</string>

@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-//#import <EDPlugin/Plugin.h>
 #import <EDPlugin/Decoder.h>
 
 @interface DetailController : NSObject {
@@ -29,7 +28,6 @@
 	Decoder *selectedDecoder;
 	
 	int pluginDisplayIndex;
-	//NSString *lastPluginName;
 	
 	BOOL isBuildingPluginList;
 	NSMutableArray *selectedPluginsStack;
