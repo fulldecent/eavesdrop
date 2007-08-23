@@ -33,6 +33,7 @@
 
 #pragma mark COLLECTIONS
 - (NSArray *)detailsArray;															/* FREEBIE	*/
+- (NSArray *)detailsTreeArray;														/* FREEBIE  */
 - (NSDictionary *)detailsDictionary;												/* FREEBIE	*/
 - (NSArray *)protocolsArray;														/* FREEBIE	*/
 

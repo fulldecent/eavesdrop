@@ -157,6 +157,23 @@ static int dissectorCount;
 	return [tempDict copy];
 }
 
+- (NSArray *)detailsTreeArray
+{
+	NSMutableArray *tempArray = [NSMutableArray arrayWithObject:
+		[NSDictionary dictionaryWithObjectsAndKeys:
+			[self detailsArray],		@"children",
+			[self protocolString],		@"name",
+			@"",						@"value",
+			nil
+		]
+	];
+	if ( parent ) {
+		[tempArray addObjectsFromArray:[parent detailsTreeArray] ];
+	}
+	INFO1( @"detailsTreeArray (in progress):\n%@", [tempArray description] );
+	return [tempArray copy];
+}
+
 - (NSArray *)protocolsArray
 {
 	NSMutableArray *tempArray = [NSMutableArray array];

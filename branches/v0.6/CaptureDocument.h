@@ -55,6 +55,7 @@
 	
 	Packet *selectedPacket;
 	NSArray *packetDetailsArray;
+	NSArray *packetDetailsTreeArray;
 
 	CDCaptureType captureType;
 	int refreshMilliseconds;
