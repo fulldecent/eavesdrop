@@ -355,15 +355,21 @@
 	
 	[self willChangeValueForKey:@"selectedPacket"];
 	[self willChangeValueForKey:@"packetDetailsArray"];
+	[self willChangeValueForKey:@"packetDetailsTreeArray"];
 	[packetDetailsArray release];
 	packetDetailsArray = nil;
+	[packetDetailsTreeArray release];
+	packetDetailsTreeArray = nil;
 	if ( [indexSet count]==1 ) {
 		selectedPacket = [sourceOutlineView itemAtRow:[indexSet firstIndex]];
 		packetDetailsArray = [selectedPacket detailsArray];
-		
+		packetDetailsTreeArray = [selectedPacket detailsTreeArray];
+		//packetDetailsTreeArray = [selectedPacket detailsArray];
 	}
+	[self didChangeValueForKey:@"packetDetailsTreeArray"];
 	[self didChangeValueForKey:@"packetDetailsArray"];
 	[self didChangeValueForKey:@"selectedPacket"];
+	INFO1( @"packetDetailsTreeArray:\n%@", [packetDetailsTreeArray description] );
 }
 
 #pragma mark -

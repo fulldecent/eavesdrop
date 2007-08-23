@@ -74,12 +74,21 @@ static NSMutableDictionary *registeredDecoders;
 	if (!detailColumns)
 		detailColumns = [NSArray array];
 		
+	NSMutableArray *tempKeysArray = [NSMutableArray array];
 	NSMutableDictionary *tempKeyNames = [NSMutableDictionary dictionary];
 	NSEnumerator *en = [detailColumns objectEnumerator];
 	id tempDict;
 	while ( tempDict=[en nextObject] ) {
 		[tempKeyNames setObject:[tempDict objectForKey:@"name"] forKey:[tempDict objectForKey:@"columnKey"] ];
+		[tempKeysArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+				dissector,								@"className",
+				[tempDict objectForKey:@"columnKey"],	@"columnKey",
+				[tempDict objectForKey:@"name"],		@"name",
+				nil
+			]
+		];
 	}
+	NSArray	*keysArray = [tempKeysArray copy];
 	NSDictionary *keyNames = [tempKeyNames copy];
 
 	NSMutableArray *blankArray = [[[NSMutableArray alloc] init] autorelease];
@@ -92,6 +101,7 @@ static NSMutableDictionary *registeredDecoders;
 			detailColumns,								@"detailColumns",
 			blankArray,									@"subDissectors",
 			keyNames,									@"keyNames",
+			keysArray,									@"keysArray",
 			nil
 		]
 		forKey:protoName
@@ -322,6 +332,16 @@ static NSMutableDictionary *registeredDecoders;
 	];
 }
 
++ (NSArray *)keysArray
+{
+	return [
+		[registeredDissectors objectForKey:
+			[registeredProtocolClasses objectForKey:
+				[self class]] ]
+		valueForKey:@"keysArray"
+	];
+}
+
 + (NSArray *)keys
 {
 	return [[self keyNames] allKeys];
@@ -334,6 +354,7 @@ static NSMutableDictionary *registeredDecoders;
 
 - (NSDictionary *)allKeyNames
 {
+	//return [[self class] keyNames];	//use this after we get it working again
 	NSMutableDictionary *tempDict = [[[self class] keyNames] mutableCopy];
 	return [tempDict copy];
 }
@@ -353,6 +374,11 @@ static NSMutableDictionary *registeredDecoders;
 		];
 	}
 	return [tempArray copy];
+}
+
+- (NSArray *)detailsTreeArray
+{
+	return [self detailsArray];
 }
 
 - (NSDictionary *)detailsDictionary
