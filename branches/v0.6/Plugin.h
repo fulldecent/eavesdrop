@@ -32,6 +32,7 @@
 - (NSString *)protocolString;														/* REQUIRED */
 
 #pragma mark COLLECTIONS
+- (NSArray *)allDetailsArray;														/* FREEBIE	*/
 - (NSArray *)detailsArray;															/* FREEBIE	*/
 - (NSArray *)detailsTreeArray;														/* FREEBIE  */
 - (NSDictionary *)detailsDictionary;												/* FREEBIE	*/

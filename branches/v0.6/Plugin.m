@@ -359,11 +359,28 @@ static NSMutableDictionary *registeredDecoders;
 	return [tempDict copy];
 }
 
-- (NSArray *)detailsArray
+- (NSArray *)allDetailsArray
 {
 	NSMutableArray *tempArray = [NSMutableArray array];
 	NSEnumerator *en = [[self allKeys] objectEnumerator];
 	NSDictionary *keyNames = [self allKeyNames];
+	NSString *tempKey;
+	while ( tempKey = [en nextObject] ) {
+		[tempArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
+				[keyNames objectForKey:tempKey],	@"name",
+				[self valueForKey:tempKey],			@"value",
+				nil
+			]
+		];
+	}
+	return [tempArray copy];
+}
+
+- (NSArray *)detailsArray
+{
+	NSMutableArray *tempArray = [NSMutableArray array];
+	NSEnumerator *en = [[[self class] keys] objectEnumerator];
+	NSDictionary *keyNames = [[self class] keyNames];
 	NSString *tempKey;
 	while ( tempKey = [en nextObject] ) {
 		[tempArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
