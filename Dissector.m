@@ -170,7 +170,7 @@ static int dissectorCount;
 	if ( parent ) {
 		[tempArray addObjectsFromArray:[parent detailsTreeArray] ];
 	}
-	INFO1( @"detailsTreeArray (in progress):\n%@", [tempArray description] );
+	//INFO1( @"detailsTreeArray (in progress):\n%@", [tempArray description] );
 	return [tempArray copy];
 }
 
