@@ -88,6 +88,7 @@
 		3FE1257F0A1AE39C00A0A510 /* SecurityFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE1257E0A1AE39C00A0A510 /* SecurityFoundation.framework */; };
 		3FE125CB0A1AE5B900A0A510 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE125CA0A1AE5B900A0A510 /* Authorization.m */; };
 		3FE125E00A1AE5E700A0A510 /* Authorization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE125DF0A1AE5E700A0A510 /* Authorization.h */; };
+		3FE3B5AA0CC4779100F9C0F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3FE8313D0A69FA2B00A64D16 /* sniff.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F043FE90A2BECDB00380C99 /* sniff.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FEC87E00A61C163005108E6 /* PluginDefaults.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FEC87DE0A61C163005108E6 /* PluginDefaults.h */; };
 		3FEC88C60A620C65005108E6 /* PluginDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */; };
@@ -416,6 +417,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE3B5AA0CC4779100F9C0F7 /* BHLogger.framework in Frameworks */,
 				3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */,
 				3FE1257D0A1AE39000A0A510 /* libpcap.A.dylib in Frameworks */,
 			);

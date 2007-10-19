@@ -151,16 +151,19 @@
 		tempIdentifier = remoteHostIdentifier;
 	}
 	
-	serverProxy = [[DOHelpers
-		getProxyWithName:tempIdentifier
-		protocol:@protocol(CaptureServer)
-		host:tempHost
-	] retain];
-	if (serverProxy) {
-		DEBUG1(@"got serverProxy: %@",[serverProxy description]);
-		[serverProxy addCaptureForClient:queueIdentifier ];
-	} else {
-		WARNING(@"failed to get serverProxy" );
+	int tries = 0;
+	for ( tries=0; tries <= 3 && !serverProxy; tries++ ) {
+		serverProxy = [[DOHelpers
+			getProxyWithName:tempIdentifier
+			protocol:@protocol(CaptureServer)
+			host:tempHost
+		] retain];
+		if (serverProxy) {
+			DEBUG1(@"got serverProxy: %@",[serverProxy description]);
+			[serverProxy addCaptureForClient:queueIdentifier ];
+		} else {
+			WARNING(@"failed to get serverProxy" );
+		}
 	}
 	[self didChangeValueForKey:@"serverProxy"];
 	
