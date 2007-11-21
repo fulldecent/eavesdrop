@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 44;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3F043BBA0A29600000380C99 /* CaptureThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F043BB80A295FFF00380C99 /* CaptureThread.m */; };
-		3F15EC080AE128CF0018EC63 /* TCPLowPortAggregate.m in Resources */ = {isa = PBXBuildFile; fileRef = 3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */; };
 		3F15EE6A0AE12D610018EC63 /* TCPLowPortAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */; };
 		3F15EF1A0AE324420018EC63 /* TCPServerPortAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */; };
 		3F15EF320AE329080018EC63 /* TCPServerPortAggregateDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */; };
@@ -57,7 +56,6 @@
 		3F6991E30B0EC338007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F6992640B0ECB7A007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F6992650B0ECB82007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
-		3F6992660B0ECB8D007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F69927D0B0ECCFE007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F8070360B3CF61E0000F013 /* TCPTextDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8070350B3CF61E0000F013 /* TCPTextDecoder.m */; };
@@ -76,6 +74,7 @@
 		3FBFAA370A5FF5A500DFF561 /* BHOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBFAA350A5FF5A400DFF561 /* BHOutlineView.m */; };
 		3FC600440A3FCFE000301A72 /* Aggregate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FC600420A3FCFE000301A72 /* Aggregate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FC600450A3FCFE000301A72 /* Aggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC600430A3FCFE000301A72 /* Aggregate.m */; };
+		3FDC922B0CEBF15700C9C6A8 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3FE124AF0A1ACB3000A0A510 /* EavesdropAppDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE124AD0A1ACB3000A0A510 /* EavesdropAppDelegate.h */; };
 		3FE124B00A1ACB3000A0A510 /* EavesdropAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE124AE0A1ACB3000A0A510 /* EavesdropAppDelegate.m */; };
 		3FE124CE0A1ADE0400A0A510 /* Ear icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3FE124CD0A1ADE0400A0A510 /* Ear icon.icns */; };
@@ -399,7 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F6992660B0ECB8D007910F7 /* BHLogger.framework in Frameworks */,
+				3FDC922B0CEBF15700C9C6A8 /* BHLogger.framework in Frameworks */,
 				3F26A60B0A52D4C6001EBA5A /* EDPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1024,6 +1023,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 26FC0ACE0875C91100E6366F /* Build configuration list for PBXProject "Eavesdrop" */;
+			compatibilityVersion = "Xcode 3.0";
 			hasScannedForEncodings = 1;
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* Eavesdrop */;
 			projectDirPath = "";
@@ -1033,6 +1033,7 @@
 					ProjectRef = 3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */;
 				},
 			);
+			projectRoot = "";
 			targets = (
 				8D15AC270486D014006FF6A4 /* Eavesdrop */,
 				514E9DF8081EBF9C009B8CD9 /* Eavesdrop Spotlight Importer */,
@@ -1082,7 +1083,6 @@
 				3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */,
 				3FB356930A6BEC0E0086E5F3 /* TCPAggregateDefaults.nib in Resources */,
 				3FB359380A7270080086E5F3 /* TCPAggregate.nib in Resources */,
-				3F15EC080AE128CF0018EC63 /* TCPLowPortAggregate.m in Resources */,
 				3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1347,10 +1347,6 @@
 		26FC0ACC0875C91100E6366F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -1374,7 +1370,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Debug;
 		};
@@ -1384,7 +1380,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Release;
 		};
@@ -1395,10 +1391,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "Frame & IP-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
@@ -1410,17 +1403,12 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "Frame & IP";
 				WRAPPER_EXTENSION = edplugin;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		3F269C6E0A4BB1BF001EBA5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
 				COPY_PHASE_STRIP = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -1446,13 +1434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "TCP-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
@@ -1461,26 +1443,15 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TCP;
 				WRAPPER_EXTENSION = edplugin;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		3F26A6380A52D4F1001EBA5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = "TCP-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				OTHER_LDFLAGS = (
@@ -1489,10 +1460,8 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = TCP;
 				WRAPPER_EXTENSION = edplugin;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -1503,13 +1472,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "PacketHandler-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1518,29 +1480,18 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = EDPlugin;
 				SKIP_INSTALL = YES;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		3F3E232E0A37F39A001C4087 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INFOPLIST_FILE = "PacketHandler-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_LDFLAGS = (
@@ -1549,10 +1500,8 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = EDPlugin;
 				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -1560,14 +1509,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				INSTALL_PATH = "$(HOME)/bin";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1575,20 +1516,14 @@
 					"-framework",
 					AppKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = CaptureServer;
-				ZERO_LINK = YES;
 			};
 			name = Debug;
 		};
 		3FE124C80A1ADDB400A0A510 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
