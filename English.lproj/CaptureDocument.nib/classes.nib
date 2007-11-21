@@ -1,56 +1,119 @@
-{
-    IBClasses = (
-        {CLASS = BHOutlineView; LANGUAGE = ObjC; SUPERCLASS = NSOutlineView; }, 
-        {
-            ACTIONS = {
-                applyAggregates = id; 
-                chooseFile = id; 
-                connectToCaptureServer = id; 
-                killServer = id; 
-                launchServer = id; 
-                refreshData = id; 
-                saveSettings = id; 
-                showSettings = id; 
-                startCapture = id; 
-                startSave = id; 
-                stopCapture = id; 
-            }; 
-            CLASS = CaptureDocument; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                aggregateArrayController = NSArrayController; 
-                aggregateTreeController = NSTreeController; 
-                appDelegate = id; 
-                collectorProxy = id; 
-                documentWindow = NSWindow; 
-                leftoverOutlineView = NSOutlineView; 
-                packetDetailWindow = NSWindow; 
-                packetInfoDrawer = NSDrawer; 
-                packetOutlineView = NSOutlineView; 
-                packetSplitView = RBSplitView; 
-                serverProxy = id; 
-                settingsWindow = NSWindow; 
-            }; 
-            SUPERCLASS = NSDocument; 
-        }, 
-        {
-            CLASS = DetailController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                blankView = NSView; 
-                detailTabView = NSTabView; 
-                detailWindow = NSWindow; 
-                packetTableView = NSTableView; 
-                payloadViewsPopup = NSPopUpButton; 
-                pluginsTabView = NSTabView; 
-                selectedObjectController = NSObjectController; 
-                selectedPacketsArrayController = NSArrayController; 
-            }; 
-            SUPERCLASS = NSObject; 
-        }, 
-        {CLASS = Dissector; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {CLASS = NSPersistentDocument; LANGUAGE = ObjC; SUPERCLASS = NSDocument; }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>updateViews</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>DetailController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>blankView</key>
+				<string>NSView</string>
+				<key>detailTabView</key>
+				<string>NSTabView</string>
+				<key>detailWindow</key>
+				<string>NSWindow</string>
+				<key>packetTableView</key>
+				<string>NSTableView</string>
+				<key>payloadViewsPopup</key>
+				<string>NSPopUpButton</string>
+				<key>pluginsTabView</key>
+				<string>NSTabView</string>
+				<key>selectedObjectController</key>
+				<string>NSObjectController</string>
+				<key>selectedPacketsArrayController</key>
+				<string>NSArrayController</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>applyAggregates</key>
+				<string>id</string>
+				<key>chooseFile</key>
+				<string>id</string>
+				<key>connectToCaptureServer</key>
+				<string>id</string>
+				<key>killServer</key>
+				<string>id</string>
+				<key>launchServer</key>
+				<string>id</string>
+				<key>refreshData</key>
+				<string>id</string>
+				<key>saveSettings</key>
+				<string>id</string>
+				<key>showSettings</key>
+				<string>id</string>
+				<key>startCapture</key>
+				<string>id</string>
+				<key>startSave</key>
+				<string>id</string>
+				<key>stopCapture</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>CaptureDocument</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>aggregateArrayController</key>
+				<string>NSArrayController</string>
+				<key>aggregateTreeController</key>
+				<string>NSTreeController</string>
+				<key>appDelegate</key>
+				<string>id</string>
+				<key>collectorProxy</key>
+				<string>id</string>
+				<key>documentWindow</key>
+				<string>NSWindow</string>
+				<key>leftoverOutlineView</key>
+				<string>NSOutlineView</string>
+				<key>packetDetailWindow</key>
+				<string>NSWindow</string>
+				<key>packetInfoDrawer</key>
+				<string>NSDrawer</string>
+				<key>packetOutlineView</key>
+				<string>NSOutlineView</string>
+				<key>packetSplitView</key>
+				<string>RBSplitView</string>
+				<key>serverProxy</key>
+				<string>id</string>
+				<key>settingsWindow</key>
+				<string>NSWindow</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSDocument</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>BHOutlineView</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSOutlineView</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>

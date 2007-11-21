@@ -48,7 +48,7 @@ static int textLoggingLevel = 1;
 					[NSDate date],												@"entrytime",
 					text,														@"information",
 					[NSNumber numberWithInt:logLevel],							@"level",
-					[[NSThread currentThread] valueForKey:@"seqNum"],			@"thread",
+					//[[NSThread currentThread] valueForKey:@"seqNum"],			@"thread",
 					[sender className],											@"classname",
 					guid,														@"guid",
 					[NSNumber numberWithInt:
@@ -66,8 +66,8 @@ static int textLoggingLevel = 1;
 	}
 	
 	if ( !logProxy && logLevel <= textLoggingLevel ) {
-		NSLog( @"[%@] %@ -%@- %@",
-			[[NSThread currentThread] valueForKey:@"seqNum"],
+		NSLog( @"[?] %@ -%@- %@",
+			//[[NSThread currentThread] valueForKey:@"seqNum"],
 			stringForLevel(logLevel),
 			[sender className],
 			text
