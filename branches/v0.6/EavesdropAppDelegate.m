@@ -71,12 +71,8 @@
 - (IBAction)launchCaptureServer:(id)sender
 {
 	ENTRY( @"launchCaptureServer:" );
-	//I have no idea why the next two lines are needed...
-	//... but w/out them the app never authorizes! ???
-	NSConnection *throwAway;
-	throwAway = [NSConnection defaultConnection];
 
-	char *arguments[] = {};
+	char *arguments = NULL;
 	if ( authorize([[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"CaptureServer"] UTF8String],arguments) ) {
 		WARNING(@"captureTask is NOT running");
 	} else {
