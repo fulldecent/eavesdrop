@@ -15,7 +15,7 @@
 
 + (BOOL)canDecodePacket:(NSObject<Dissector> *)testPacket
 {
-	//TODO: honestly lookk at packet to see if we can decode it
+	//TODO: honestly look at packet to see if we can decode it
 	return YES;
 }
 

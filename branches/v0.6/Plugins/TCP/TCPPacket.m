@@ -164,66 +164,71 @@
 			range:NSMakeRange(0,8)
 		];
 	}
-	//couldn't find a specific one (or config set), so fill in the flags seperately
-	if ( !groupColor || [[defaults valueForKey:@"flagsOverlayGroup"] boolValue] ) {	
-		NSDictionary *flagsDict = [defaults valueForKey:@"flagsDictionary"];
+	@try {
+		//couldn't find a specific one (or config set), so fill in the flags seperately
+		if ( !groupColor || [[defaults valueForKey:@"flagsOverlayGroup"] boolValue] ) {	
+			NSDictionary *flagsDict = [defaults valueForKey:@"flagsDictionary"];
 
-		if (tcp->th_flags & TH_FIN) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"FIN"] valueForKey:@"color"]
-				range:NSMakeRange(0,1)
-			];
+			if (tcp->th_flags & TH_FIN) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"FIN"] valueForKey:@"color"]
+					range:NSMakeRange(0,1)
+				];
+			}
+			if (tcp->th_flags & TH_SYN) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"SYN"] valueForKey:@"color"]
+					range:NSMakeRange(1,1)
+				];
+			}
+			if (tcp->th_flags & TH_RST) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"RST"] valueForKey:@"color"]
+					range:NSMakeRange(2,1)
+				];
+			}
+			if (tcp->th_flags & TH_PUSH) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"PUSH"] valueForKey:@"color"]
+					range:NSMakeRange(3,1)
+				];
+			}
+			if (tcp->th_flags & TH_ACK) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"ACK"] valueForKey:@"color"]
+					range:NSMakeRange(4,1)
+				];
+			}
+			if (tcp->th_flags & TH_URG) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"URG"] valueForKey:@"color"]
+					range:NSMakeRange(5,1)
+				];
+			}
+			if (tcp->th_flags & TH_ECE) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"ECE"] valueForKey:@"color"]
+					range:NSMakeRange(6,1)
+				];
+			}
+			if (tcp->th_flags & TH_CWR) {
+				[tempString
+					addAttribute:NSForegroundColorAttributeName
+					value:[[flagsDict valueForKey:@"CWR"] valueForKey:@"color"]
+					range:NSMakeRange(7,1)
+				];
+			}
 		}
-		if (tcp->th_flags & TH_SYN) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"SYN"] valueForKey:@"color"]
-				range:NSMakeRange(1,1)
-			];
-		}
-		if (tcp->th_flags & TH_RST) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"RST"] valueForKey:@"color"]
-				range:NSMakeRange(2,1)
-			];
-		}
-		if (tcp->th_flags & TH_PUSH) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"PUSH"] valueForKey:@"color"]
-				range:NSMakeRange(3,1)
-			];
-		}
-		if (tcp->th_flags & TH_ACK) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"ACK"] valueForKey:@"color"]
-				range:NSMakeRange(4,1)
-			];
-		}
-		if (tcp->th_flags & TH_URG) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"URG"] valueForKey:@"color"]
-				range:NSMakeRange(5,1)
-			];
-		}
-		if (tcp->th_flags & TH_ECE) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"ECE"] valueForKey:@"color"]
-				range:NSMakeRange(6,1)
-			];
-		}
-		if (tcp->th_flags & TH_CWR) {
-			[tempString
-				addAttribute:NSForegroundColorAttributeName
-				value:[[flagsDict valueForKey:@"CWR"] valueForKey:@"color"]
-				range:NSMakeRange(7,1)
-			];
-		}	
+	}
+	@catch (NSException *exception) {
+		WARNING1( @"Exception caught: %@ (flagsDict->{flag}->color may not be defined)", [exception description] );
 	}
 
 	flagString = [[tempString copy] retain];

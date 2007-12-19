@@ -166,7 +166,7 @@ static NSMutableDictionary *collectors;
 	DEBUG1( @"saving to file: %@", saveFilename );
 
 	pcap_t *saveHandle = (pcap_t *)pcap_open_dead( DLT_EN10MB, 65535 );
-	pcap_dumper_t *dumpHandle = pcap_dump_open( saveHandle, [saveFilename cString] );
+	pcap_dumper_t *dumpHandle = pcap_dump_open( saveHandle, [saveFilename cStringUsingEncoding:NSASCIIStringEncoding] );
 	
 	id tempPacket;
 	int count = 0;
@@ -225,16 +225,21 @@ static NSMutableDictionary *collectors;
 	
 	BOOL setupFailed = NO;
 	
-	char filter_app[ [filter cStringLength] ];
-	char dev[ [interface cStringLength] ];
+	char filter_app[ [filter lengthOfBytesUsingEncoding:NSASCIIStringEncoding] ];
+	char dev[ [interface lengthOfBytesUsingEncoding:NSASCIIStringEncoding] ];
 	unsigned int captureSize;
 
 	int size_ethernet   = sizeof( struct ether_header	);
 	int size_ip			= sizeof( struct ip );
 	int size_tcp		= sizeof( struct tcphdr );
 	
-	[filter getCString:filter_app];
-	[interface getCString:dev];
+	DEBUG2( @"filter = %@ (%d bytes)", filter, [filter lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
+	strncpy( filter_app, [filter cStringUsingEncoding:NSASCIIStringEncoding], [filter lengthOfBytesUsingEncoding:NSASCIIStringEncoding]+1 );
+	DEBUG1( @"cString filter = %s", filter_app );
+	
+	DEBUG2( @"interface = %@ (%d bytes)", interface, [interface lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
+	strncpy( dev, [interface cStringUsingEncoding:NSASCIIStringEncoding], [interface lengthOfBytesUsingEncoding:NSASCIIStringEncoding]+1 );
+	DEBUG1( @"cString interface = %s", dev );
 	
 	if (capturesPayload)
 		captureSize = 65535;
@@ -242,7 +247,7 @@ static NSMutableDictionary *collectors;
 		captureSize = ( size_ethernet + size_ip + size_tcp );
 	
 	if (readFilename)
-		captureHandle = pcap_open_offline( [readFilename cString], errbuf );
+		captureHandle = pcap_open_offline( [readFilename cStringUsingEncoding:NSASCIIStringEncoding], errbuf );
 	else
 		captureHandle = pcap_open_live( dev, captureSize, promiscuous, 1, errbuf );
 		
@@ -275,7 +280,9 @@ static NSMutableDictionary *collectors;
 	ENTRY1(@" - starting capture thread for client: %@", client);
 	
 	isActive = YES;
-	char capid[ [client cStringLength] ];	[client getCString:capid];
+	char capid[ [client lengthOfBytesUsingEncoding:NSASCIIStringEncoding] ];
+	strncpy( capid, [client cStringUsingEncoding:NSASCIIStringEncoding], [client lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
+	
 	// I may be cheating here (converting a char -> u_char)
 	pcap_loop( captureHandle, 0, capture_callback, (u_char *)capid );
 	pcap_close( captureHandle );

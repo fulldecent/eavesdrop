@@ -30,7 +30,7 @@
 {
 	ENTRY( @"awakeFromNib" );
 
-	[selectedObjectController addObserver:self forKeyPath:@"selection" options:nil context:nil];
+	[selectedObjectController addObserver:self forKeyPath:@"selection" options:0 context:nil];
 }
 
 - (void)dealloc

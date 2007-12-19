@@ -8,9 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <RBSplitView/RBSplitView.h>
-#import <RBSplitView/RBSplitSubview.h>
-
 #import "CaptureHandlers.h"
 
 #import "Constants.h"
@@ -51,11 +48,12 @@
 	IBOutlet NSDrawer *packetInfoDrawer;
 	IBOutlet NSWindow *packetDetailWindow;
 	
-	IBOutlet RBSplitView *packetSplitView;
 	
 	Packet *selectedPacket;
 	NSArray *packetDetailsArray;
 	NSArray *packetDetailsTreeArray;
+	
+	NSMutableArray *libraryArray;
 
 	CDCaptureType captureType;
 	int refreshMilliseconds;
