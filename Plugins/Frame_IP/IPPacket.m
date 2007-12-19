@@ -19,7 +19,7 @@ static NSArray *protocolsArray;
 + (BOOL)canDecodePacket:(NSObject<Dissector> *)testPacket
 {
 	const struct ether_header *ether_header = (struct ether_header*)( [testPacket headerBytes] );
-	if ( testPacket && ETHERTYPE_IP==ether_header->ether_type ) {
+	if ( testPacket && 8==ether_header->ether_type ) { //ETHERTYPE_IP should work here, I think... but it doesn't
 		return YES;
 	}
 	return NO;

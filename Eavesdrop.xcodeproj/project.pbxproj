@@ -11,6 +11,15 @@
 		3F15EE6A0AE12D610018EC63 /* TCPLowPortAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EBE10AE1258A0018EC63 /* TCPLowPortAggregate.m */; };
 		3F15EF1A0AE324420018EC63 /* TCPServerPortAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */; };
 		3F15EF320AE329080018EC63 /* TCPServerPortAggregateDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */; };
+		3F1C56360D0453380027E26A /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
+		3F2480420D1797F1008B720E /* Folder.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480350D1797F1008B720E /* Folder.tif */; };
+		3F2480430D1797F1008B720E /* highlight_blue.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480360D1797F1008B720E /* highlight_blue.tiff */; };
+		3F2480440D1797F1008B720E /* highlight_grey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480370D1797F1008B720E /* highlight_grey.tiff */; };
+		3F2480460D1797F1008B720E /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480390D1797F1008B720E /* License.txt */; };
+		3F2480470D1797F1008B720E /* LNSSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24803B0D1797F1008B720E /* LNSSourceListCell.m */; };
+		3F2480480D1797F1008B720E /* LNSSourceListColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24803D0D1797F1008B720E /* LNSSourceListColumn.m */; };
+		3F2480490D1797F1008B720E /* LNSSourceListSourceGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24803F0D1797F1008B720E /* LNSSourceListSourceGroupCell.m */; };
+		3F24804A0D1797F1008B720E /* LNSSourceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2480410D1797F1008B720E /* LNSSourceListView.m */; };
 		3F2699330A47B137001EBA5A /* Dissector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2699310A47B137001EBA5A /* Dissector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F2699340A47B137001EBA5A /* Dissector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2699320A47B137001EBA5A /* Dissector.m */; };
 		3F269B250A4AD474001EBA5A /* EDPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3E232A0A37F398001C4087 /* EDPlugin.framework */; };
@@ -37,6 +46,7 @@
 		3F3E23C30A37FB92001C4087 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3E23B10A37FB4B001C4087 /* CoreData.framework */; };
 		3F3E26D60A3BE413001C4087 /* CaptureThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F043BB80A295FFF00380C99 /* CaptureThread.m */; };
 		3F3E28110A3CE9D3001C4087 /* PacketQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F043E790A2A44AD00380C99 /* PacketQueue.m */; };
+		3F4448340D14664D00FD6861 /* LibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4448330D14664D00FD6861 /* LibraryController.m */; };
 		3F49B7900AD88FD800633242 /* Dissectors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B78F0AD88FD800633242 /* Dissectors.plist */; };
 		3F49B7CD0AD8A8EB00633242 /* Aggregators.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */; };
 		3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
@@ -59,8 +69,6 @@
 		3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F69927D0B0ECCFE007910F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3F8070360B3CF61E0000F013 /* TCPTextDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8070350B3CF61E0000F013 /* TCPTextDecoder.m */; };
-		3F8071890B43A16B0000F013 /* RBSplitView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8071830B43A16B0000F013 /* RBSplitView.framework */; };
-		3F8071900B43A2C20000F013 /* RBSplitView.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3F8071830B43A16B0000F013 /* RBSplitView.framework */; };
 		3F98BFAB0A729CAB00F3C1EA /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB356FB0A6DE1360086E5F3 /* Plugin.m */; };
 		3F98BFAC0A729CB300F3C1EA /* Plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3FB356FA0A6DE1360086E5F3 /* Plugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FB2E06A0A20B87F00ED017B /* DOHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2E0680A20B87F00ED017B /* DOHelpers.m */; };
@@ -87,7 +95,6 @@
 		3FE1257F0A1AE39C00A0A510 /* SecurityFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE1257E0A1AE39C00A0A510 /* SecurityFoundation.framework */; };
 		3FE125CB0A1AE5B900A0A510 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE125CA0A1AE5B900A0A510 /* Authorization.m */; };
 		3FE125E00A1AE5E700A0A510 /* Authorization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FE125DF0A1AE5E700A0A510 /* Authorization.h */; };
-		3FE3B5AA0CC4779100F9C0F7 /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
 		3FE8313D0A69FA2B00A64D16 /* sniff.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F043FE90A2BECDB00380C99 /* sniff.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3FEC87E00A61C163005108E6 /* PluginDefaults.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3FEC87DE0A61C163005108E6 /* PluginDefaults.h */; };
 		3FEC88C60A620C65005108E6 /* PluginDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC87DF0A61C163005108E6 /* PluginDefaults.m */; };
@@ -192,7 +199,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3F8071900B43A2C20000F013 /* RBSplitView.framework in CopyFiles */,
 				3F69927C0B0ECCF5007910F7 /* BHLogger.framework in CopyFiles */,
 				3F3E23940A37F965001C4087 /* EDPlugin.framework in CopyFiles */,
 			);
@@ -285,6 +291,18 @@
 		3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPServerPortAggregate.m; path = TCP/TCPServerPortAggregate.m; sourceTree = "<group>"; };
 		3F15EF300AE329080018EC63 /* TCPServerPortAggregateDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPServerPortAggregateDefaults.h; path = TCP/TCPServerPortAggregateDefaults.h; sourceTree = "<group>"; };
 		3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPServerPortAggregateDefaults.m; path = TCP/TCPServerPortAggregateDefaults.m; sourceTree = "<group>"; };
+		3F2480350D1797F1008B720E /* Folder.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Folder.tif; sourceTree = "<group>"; };
+		3F2480360D1797F1008B720E /* highlight_blue.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = highlight_blue.tiff; sourceTree = "<group>"; };
+		3F2480370D1797F1008B720E /* highlight_grey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = highlight_grey.tiff; sourceTree = "<group>"; };
+		3F2480390D1797F1008B720E /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		3F24803A0D1797F1008B720E /* LNSSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListCell.h; sourceTree = "<group>"; };
+		3F24803B0D1797F1008B720E /* LNSSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListCell.m; sourceTree = "<group>"; };
+		3F24803C0D1797F1008B720E /* LNSSourceListColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListColumn.h; sourceTree = "<group>"; };
+		3F24803D0D1797F1008B720E /* LNSSourceListColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListColumn.m; sourceTree = "<group>"; };
+		3F24803E0D1797F1008B720E /* LNSSourceListSourceGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListSourceGroupCell.h; sourceTree = "<group>"; };
+		3F24803F0D1797F1008B720E /* LNSSourceListSourceGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListSourceGroupCell.m; sourceTree = "<group>"; };
+		3F2480400D1797F1008B720E /* LNSSourceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListView.h; sourceTree = "<group>"; };
+		3F2480410D1797F1008B720E /* LNSSourceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListView.m; sourceTree = "<group>"; };
 		3F26960E0A45D76E001EBA5A /* IPDestinationAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPDestinationAggregate.h; path = Frame_IP/IPDestinationAggregate.h; sourceTree = "<group>"; };
 		3F26960F0A45D76E001EBA5A /* IPDestinationAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPDestinationAggregate.m; path = Frame_IP/IPDestinationAggregate.m; sourceTree = "<group>"; };
 		3F2696640A45D9D4001EBA5A /* TCPAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPAggregate.h; path = TCP/TCPAggregate.h; sourceTree = "<group>"; };
@@ -306,6 +324,8 @@
 		3F3E23B10A37FB4B001C4087 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		3F3E258E0A3A95AB001C4087 /* TCPPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPPacket.h; path = TCP/TCPPacket.h; sourceTree = "<group>"; };
 		3F3E258F0A3A95AB001C4087 /* TCPPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPPacket.m; path = TCP/TCPPacket.m; sourceTree = "<group>"; };
+		3F4448320D14664D00FD6861 /* LibraryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryController.h; sourceTree = "<group>"; };
+		3F4448330D14664D00FD6861 /* LibraryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryController.m; sourceTree = "<group>"; };
 		3F49B78F0AD88FD800633242 /* Dissectors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Dissectors.plist; sourceTree = "<group>"; };
 		3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Aggregators.plist; sourceTree = "<group>"; };
 		3F49FEB60A1C1613004C6514 /* CaptureServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureServer.h; sourceTree = "<group>"; };
@@ -326,7 +346,6 @@
 		3F69918A0B0EC111007910F7 /* BHLogging.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BHLogging.xcodeproj; path = BHLogging/BHLogging.xcodeproj; sourceTree = "<group>"; };
 		3F8070340B3CF61E0000F013 /* TCPTextDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPTextDecoder.h; path = TCP/TCPTextDecoder.h; sourceTree = "<group>"; };
 		3F8070350B3CF61E0000F013 /* TCPTextDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPTextDecoder.m; path = TCP/TCPTextDecoder.m; sourceTree = "<group>"; };
-		3F8071830B43A16B0000F013 /* RBSplitView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBSplitView.framework; path = "3rd Party/RBSplitView.framework"; sourceTree = "<group>"; };
 		3FB2E0670A20B87E00ED017B /* DOHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOHelpers.h; sourceTree = "<group>"; };
 		3FB2E0680A20B87F00ED017B /* DOHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOHelpers.m; sourceTree = "<group>"; };
 		3FB2E1890A25668A00ED017B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -416,7 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE3B5AA0CC4779100F9C0F7 /* BHLogger.framework in Frameworks */,
+				3F1C56360D0453380027E26A /* BHLogger.framework in Frameworks */,
 				3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */,
 				3FE1257D0A1AE39000A0A510 /* libpcap.A.dylib in Frameworks */,
 			);
@@ -443,7 +462,6 @@
 				3FE1253B0A1AE37E00A0A510 /* Security.framework in Frameworks */,
 				3FE1257C0A1AE39000A0A510 /* libpcap.A.dylib in Frameworks */,
 				3FE1257F0A1AE39C00A0A510 /* SecurityFoundation.framework in Frameworks */,
-				3F8071890B43A16B0000F013 /* RBSplitView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +561,8 @@
 				3F3966F10A79935D000EE7CC /* DetailController.m */,
 				2A37F4AEFDCFA73011CA2CEA /* CaptureDocument.h */,
 				2A37F4ACFDCFA73011CA2CEA /* CaptureDocument.m */,
+				3F4448320D14664D00FD6861 /* LibraryController.h */,
+				3F4448330D14664D00FD6861 /* LibraryController.m */,
 			);
 			name = "Document Controllers";
 			sourceTree = "<group>";
@@ -565,6 +585,42 @@
 				3F698B9F0B083CDD007910F7 /* plists */,
 			);
 			name = "Plugin Framework";
+			sourceTree = "<group>";
+		};
+		3F2480340D1797F1008B720E /* SourceListView */ = {
+			isa = PBXGroup;
+			children = (
+				3F24804C0D179817008B720E /* Code */,
+				3F24804B0D17980B008B720E /* Resources */,
+				3F2480390D1797F1008B720E /* License.txt */,
+			);
+			name = SourceListView;
+			path = "3rd Party/SourceListView";
+			sourceTree = "<group>";
+		};
+		3F24804B0D17980B008B720E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3F2480350D1797F1008B720E /* Folder.tif */,
+				3F2480360D1797F1008B720E /* highlight_blue.tiff */,
+				3F2480370D1797F1008B720E /* highlight_grey.tiff */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3F24804C0D179817008B720E /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				3F24803A0D1797F1008B720E /* LNSSourceListCell.h */,
+				3F24803B0D1797F1008B720E /* LNSSourceListCell.m */,
+				3F24803C0D1797F1008B720E /* LNSSourceListColumn.h */,
+				3F24803D0D1797F1008B720E /* LNSSourceListColumn.m */,
+				3F24803E0D1797F1008B720E /* LNSSourceListSourceGroupCell.h */,
+				3F24803F0D1797F1008B720E /* LNSSourceListSourceGroupCell.m */,
+				3F2480400D1797F1008B720E /* LNSSourceListView.h */,
+				3F2480410D1797F1008B720E /* LNSSourceListView.m */,
+			);
+			name = Code;
 			sourceTree = "<group>";
 		};
 		3F2696160A45D7B0001EBA5A /* Aggregators */ = {
@@ -756,7 +812,6 @@
 		3F80718A0B43A1710000F013 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
-				3F8071830B43A16B0000F013 /* RBSplitView.framework */,
 			);
 			name = "3rd Party";
 			sourceTree = "<group>";
@@ -785,6 +840,7 @@
 		3FC600070A3FBAFD00301A72 /* Generic Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3F2480340D1797F1008B720E /* SourceListView */,
 				3FB2E0670A20B87E00ED017B /* DOHelpers.h */,
 				3FB2E0680A20B87F00ED017B /* DOHelpers.m */,
 				3FBFAA340A5FF5A400DFF561 /* BHOutlineView.h */,
@@ -1116,6 +1172,10 @@
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				3FE124CE0A1ADE0400A0A510 /* Ear icon.icns in Resources */,
 				3F69882B0B037506007910F7 /* Blank Ear icon.icns in Resources */,
+				3F2480420D1797F1008B720E /* Folder.tif in Resources */,
+				3F2480430D1797F1008B720E /* highlight_blue.tiff in Resources */,
+				3F2480440D1797F1008B720E /* highlight_grey.tiff in Resources */,
+				3F2480460D1797F1008B720E /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,6 +1257,11 @@
 				3FECC8CA0A367BDF007C90E6 /* PluginsController.m in Sources */,
 				3FBFAA370A5FF5A500DFF561 /* BHOutlineView.m in Sources */,
 				3F3966F30A79935D000EE7CC /* DetailController.m in Sources */,
+				3F4448340D14664D00FD6861 /* LibraryController.m in Sources */,
+				3F2480470D1797F1008B720E /* LNSSourceListCell.m in Sources */,
+				3F2480480D1797F1008B720E /* LNSSourceListColumn.m in Sources */,
+				3F2480490D1797F1008B720E /* LNSSourceListSourceGroupCell.m in Sources */,
+				3F24804A0D1797F1008B720E /* LNSSourceListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1370,7 +1435,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Debug;
 		};
@@ -1380,7 +1445,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Release;
 		};
@@ -1509,6 +1574,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = ../Frameworks;
 				INSTALL_PATH = "$(HOME)/bin";
 				OTHER_LDFLAGS = (
 					"-framework",
