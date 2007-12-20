@@ -40,56 +40,6 @@
 		appDelegate = [[NSApp delegate] retain];
 		[self setAggregate:@"Aggregate"];
 		
-		
-		libraryArray = [[NSMutableArray array] retain];
-		
-		[libraryArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			[NSNumber numberWithBool:YES],	@"isSourceGroup",
-			@"Library",						@"name",
-			[NSArray array],				@"children",
-			nil ]
-		];
-		
-		NSDictionary *pluginDict = [Plugin registeredAggregators];
-		NSMutableArray *tempArray = [NSMutableArray array];
-		for ( NSString *key in pluginDict ) {
-			[tempArray addObject:[NSDictionary dictionaryWithObject:[[pluginDict objectForKey:key] valueForKey:@"name"] forKey:@"name"] ];
-		}
-		[libraryArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			[NSNumber numberWithBool:YES],	@"isSourceGroup",
-			@"Aggregators",					@"name",
-			tempArray,						@"children",
-			nil ]
-		];
-		
-		pluginDict  = [Plugin registeredDissectors];
-		tempArray = [NSMutableArray array];
-		for ( NSString *key in pluginDict ) {
-			NSString *tempString = [[pluginDict objectForKey:key] valueForKey:@"protocol"];
-			if ( [tempString isEqualToString:@""] )
-				[tempArray addObject:[NSDictionary dictionaryWithObject:@"All" forKey:@"name"] ];
-			else
-				[tempArray addObject:[NSDictionary dictionaryWithObject:tempString forKey:@"name"] ];
-		}
-		[libraryArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			[NSNumber numberWithBool:YES],	@"isSourceGroup",
-			@"Dissectors",					@"name",
-			tempArray,						@"children",
-			nil ]
-		];
-		
-		pluginDict  = [Plugin registeredDecoders];
-		tempArray = [NSMutableArray array];
-		for ( NSString *key in pluginDict ) {
-			[tempArray addObject:[NSDictionary dictionaryWithObject:[[pluginDict objectForKey:key] valueForKey:@"name"] forKey:@"name"] ];
-		}
-		[libraryArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			[NSNumber numberWithBool:YES],	@"isSourceGroup",
-			@"Decoders",					@"name",
-			tempArray,						@"children",
-			nil ]
-		];
-
     }
 	EXIT( @"done with init" );
 	
