@@ -12,14 +12,6 @@
 		3F15EF1A0AE324420018EC63 /* TCPServerPortAggregate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */; };
 		3F15EF320AE329080018EC63 /* TCPServerPortAggregateDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */; };
 		3F1C56360D0453380027E26A /* BHLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F6991C80B0EC21D007910F7 /* BHLogger.framework */; };
-		3F2480420D1797F1008B720E /* Folder.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480350D1797F1008B720E /* Folder.tif */; };
-		3F2480430D1797F1008B720E /* highlight_blue.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480360D1797F1008B720E /* highlight_blue.tiff */; };
-		3F2480440D1797F1008B720E /* highlight_grey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480370D1797F1008B720E /* highlight_grey.tiff */; };
-		3F2480460D1797F1008B720E /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F2480390D1797F1008B720E /* License.txt */; };
-		3F2480470D1797F1008B720E /* LNSSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24803B0D1797F1008B720E /* LNSSourceListCell.m */; };
-		3F2480480D1797F1008B720E /* LNSSourceListColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24803D0D1797F1008B720E /* LNSSourceListColumn.m */; };
-		3F2480490D1797F1008B720E /* LNSSourceListSourceGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F24803F0D1797F1008B720E /* LNSSourceListSourceGroupCell.m */; };
-		3F24804A0D1797F1008B720E /* LNSSourceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2480410D1797F1008B720E /* LNSSourceListView.m */; };
 		3F2699330A47B137001EBA5A /* Dissector.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F2699310A47B137001EBA5A /* Dissector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F2699340A47B137001EBA5A /* Dissector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2699320A47B137001EBA5A /* Dissector.m */; };
 		3F269B250A4AD474001EBA5A /* EDPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3E232A0A37F398001C4087 /* EDPlugin.framework */; };
@@ -51,6 +43,14 @@
 		3F49B7CD0AD8A8EB00633242 /* Aggregators.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F49B7CC0AD8A8EA00633242 /* Aggregators.plist */; };
 		3F49FE950A1C06A3004C6514 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		3F49FEB90A1C1614004C6514 /* CaptureServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F49FEB70A1C1613004C6514 /* CaptureServer.m */; };
+		3F694A0A0D283C4200E0C94D /* Folder.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3F6949FE0D283C4200E0C94D /* Folder.tif */; };
+		3F694A0B0D283C4200E0C94D /* highlight_blue.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3F6949FF0D283C4200E0C94D /* highlight_blue.tiff */; };
+		3F694A0C0D283C4200E0C94D /* highlight_grey.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 3F694A000D283C4200E0C94D /* highlight_grey.tiff */; };
+		3F694A0D0D283C4200E0C94D /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3F694A010D283C4200E0C94D /* License.txt */; };
+		3F694A0E0D283C4200E0C94D /* LNSSourceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F694A030D283C4200E0C94D /* LNSSourceListCell.m */; };
+		3F694A0F0D283C4200E0C94D /* LNSSourceListColumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F694A050D283C4200E0C94D /* LNSSourceListColumn.m */; };
+		3F694A100D283C4200E0C94D /* LNSSourceListSourceGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F694A070D283C4200E0C94D /* LNSSourceListSourceGroupCell.m */; };
+		3F694A110D283C4200E0C94D /* LNSSourceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F694A090D283C4200E0C94D /* LNSSourceListView.m */; };
 		3F6973A20AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib in Resources */ = {isa = PBXBuildFile; fileRef = 3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */; };
 		3F6974340AE9FDA8007910F7 /* TCP_UDP_Ports.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */; };
 		3F69882B0B037506007910F7 /* Blank Ear icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3F69882A0B037506007910F7 /* Blank Ear icon.icns */; };
@@ -291,18 +291,6 @@
 		3F15EF190AE324420018EC63 /* TCPServerPortAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPServerPortAggregate.m; path = TCP/TCPServerPortAggregate.m; sourceTree = "<group>"; };
 		3F15EF300AE329080018EC63 /* TCPServerPortAggregateDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPServerPortAggregateDefaults.h; path = TCP/TCPServerPortAggregateDefaults.h; sourceTree = "<group>"; };
 		3F15EF310AE329080018EC63 /* TCPServerPortAggregateDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCPServerPortAggregateDefaults.m; path = TCP/TCPServerPortAggregateDefaults.m; sourceTree = "<group>"; };
-		3F2480350D1797F1008B720E /* Folder.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Folder.tif; sourceTree = "<group>"; };
-		3F2480360D1797F1008B720E /* highlight_blue.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = highlight_blue.tiff; sourceTree = "<group>"; };
-		3F2480370D1797F1008B720E /* highlight_grey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = highlight_grey.tiff; sourceTree = "<group>"; };
-		3F2480390D1797F1008B720E /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
-		3F24803A0D1797F1008B720E /* LNSSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListCell.h; sourceTree = "<group>"; };
-		3F24803B0D1797F1008B720E /* LNSSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListCell.m; sourceTree = "<group>"; };
-		3F24803C0D1797F1008B720E /* LNSSourceListColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListColumn.h; sourceTree = "<group>"; };
-		3F24803D0D1797F1008B720E /* LNSSourceListColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListColumn.m; sourceTree = "<group>"; };
-		3F24803E0D1797F1008B720E /* LNSSourceListSourceGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListSourceGroupCell.h; sourceTree = "<group>"; };
-		3F24803F0D1797F1008B720E /* LNSSourceListSourceGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListSourceGroupCell.m; sourceTree = "<group>"; };
-		3F2480400D1797F1008B720E /* LNSSourceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListView.h; sourceTree = "<group>"; };
-		3F2480410D1797F1008B720E /* LNSSourceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListView.m; sourceTree = "<group>"; };
 		3F26960E0A45D76E001EBA5A /* IPDestinationAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPDestinationAggregate.h; path = Frame_IP/IPDestinationAggregate.h; sourceTree = "<group>"; };
 		3F26960F0A45D76E001EBA5A /* IPDestinationAggregate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPDestinationAggregate.m; path = Frame_IP/IPDestinationAggregate.m; sourceTree = "<group>"; };
 		3F2696640A45D9D4001EBA5A /* TCPAggregate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPAggregate.h; path = TCP/TCPAggregate.h; sourceTree = "<group>"; };
@@ -331,6 +319,18 @@
 		3F49FEB60A1C1613004C6514 /* CaptureServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureServer.h; sourceTree = "<group>"; };
 		3F49FEB70A1C1613004C6514 /* CaptureServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureServer.m; sourceTree = "<group>"; };
 		3F49FEBE0A1C1684004C6514 /* CaptureHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureHandlers.h; sourceTree = "<group>"; };
+		3F6949FE0D283C4200E0C94D /* Folder.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Folder.tif; sourceTree = "<group>"; };
+		3F6949FF0D283C4200E0C94D /* highlight_blue.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = highlight_blue.tiff; sourceTree = "<group>"; };
+		3F694A000D283C4200E0C94D /* highlight_grey.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = highlight_grey.tiff; sourceTree = "<group>"; };
+		3F694A010D283C4200E0C94D /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		3F694A020D283C4200E0C94D /* LNSSourceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListCell.h; sourceTree = "<group>"; };
+		3F694A030D283C4200E0C94D /* LNSSourceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListCell.m; sourceTree = "<group>"; };
+		3F694A040D283C4200E0C94D /* LNSSourceListColumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListColumn.h; sourceTree = "<group>"; };
+		3F694A050D283C4200E0C94D /* LNSSourceListColumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListColumn.m; sourceTree = "<group>"; };
+		3F694A060D283C4200E0C94D /* LNSSourceListSourceGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListSourceGroupCell.h; sourceTree = "<group>"; };
+		3F694A070D283C4200E0C94D /* LNSSourceListSourceGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListSourceGroupCell.m; sourceTree = "<group>"; };
+		3F694A080D283C4200E0C94D /* LNSSourceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNSSourceListView.h; sourceTree = "<group>"; };
+		3F694A090D283C4200E0C94D /* LNSSourceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNSSourceListView.m; sourceTree = "<group>"; };
 		3F69739D0AE86D78007910F7 /* TCPServerPortAggregateDefaults.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = TCPServerPortAggregateDefaults.nib; path = TCP/TCPServerPortAggregateDefaults.nib; sourceTree = "<group>"; };
 		3F6974330AE9FDA8007910F7 /* TCP_UDP_Ports.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TCP_UDP_Ports.plist; path = TCP/TCP_UDP_Ports.plist; sourceTree = "<group>"; };
 		3F69882A0B037506007910F7 /* Blank Ear icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "Blank Ear icon.icns"; sourceTree = "<group>"; };
@@ -587,42 +587,6 @@
 			name = "Plugin Framework";
 			sourceTree = "<group>";
 		};
-		3F2480340D1797F1008B720E /* SourceListView */ = {
-			isa = PBXGroup;
-			children = (
-				3F24804C0D179817008B720E /* Code */,
-				3F24804B0D17980B008B720E /* Resources */,
-				3F2480390D1797F1008B720E /* License.txt */,
-			);
-			name = SourceListView;
-			path = "3rd Party/SourceListView";
-			sourceTree = "<group>";
-		};
-		3F24804B0D17980B008B720E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				3F2480350D1797F1008B720E /* Folder.tif */,
-				3F2480360D1797F1008B720E /* highlight_blue.tiff */,
-				3F2480370D1797F1008B720E /* highlight_grey.tiff */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		3F24804C0D179817008B720E /* Code */ = {
-			isa = PBXGroup;
-			children = (
-				3F24803A0D1797F1008B720E /* LNSSourceListCell.h */,
-				3F24803B0D1797F1008B720E /* LNSSourceListCell.m */,
-				3F24803C0D1797F1008B720E /* LNSSourceListColumn.h */,
-				3F24803D0D1797F1008B720E /* LNSSourceListColumn.m */,
-				3F24803E0D1797F1008B720E /* LNSSourceListSourceGroupCell.h */,
-				3F24803F0D1797F1008B720E /* LNSSourceListSourceGroupCell.m */,
-				3F2480400D1797F1008B720E /* LNSSourceListView.h */,
-				3F2480410D1797F1008B720E /* LNSSourceListView.m */,
-			);
-			name = Code;
-			sourceTree = "<group>";
-		};
 		3F2696160A45D7B0001EBA5A /* Aggregators */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +667,25 @@
 				3FECCA630A37D500007C90E6 /* IP_Protocols.plist */,
 			);
 			name = plists;
+			sourceTree = "<group>";
+		};
+		3F6949FD0D283C4200E0C94D /* SourceListView */ = {
+			isa = PBXGroup;
+			children = (
+				3F6949FE0D283C4200E0C94D /* Folder.tif */,
+				3F6949FF0D283C4200E0C94D /* highlight_blue.tiff */,
+				3F694A000D283C4200E0C94D /* highlight_grey.tiff */,
+				3F694A010D283C4200E0C94D /* License.txt */,
+				3F694A020D283C4200E0C94D /* LNSSourceListCell.h */,
+				3F694A030D283C4200E0C94D /* LNSSourceListCell.m */,
+				3F694A040D283C4200E0C94D /* LNSSourceListColumn.h */,
+				3F694A050D283C4200E0C94D /* LNSSourceListColumn.m */,
+				3F694A060D283C4200E0C94D /* LNSSourceListSourceGroupCell.h */,
+				3F694A070D283C4200E0C94D /* LNSSourceListSourceGroupCell.m */,
+				3F694A080D283C4200E0C94D /* LNSSourceListView.h */,
+				3F694A090D283C4200E0C94D /* LNSSourceListView.m */,
+			);
+			path = SourceListView;
 			sourceTree = "<group>";
 		};
 		3F6974360AE9FDBB007910F7 /* plists */ = {
@@ -840,7 +823,7 @@
 		3FC600070A3FBAFD00301A72 /* Generic Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3F2480340D1797F1008B720E /* SourceListView */,
+				3F6949FD0D283C4200E0C94D /* SourceListView */,
 				3FB2E0670A20B87E00ED017B /* DOHelpers.h */,
 				3FB2E0680A20B87F00ED017B /* DOHelpers.m */,
 				3FBFAA340A5FF5A400DFF561 /* BHOutlineView.h */,
@@ -1172,10 +1155,10 @@
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				3FE124CE0A1ADE0400A0A510 /* Ear icon.icns in Resources */,
 				3F69882B0B037506007910F7 /* Blank Ear icon.icns in Resources */,
-				3F2480420D1797F1008B720E /* Folder.tif in Resources */,
-				3F2480430D1797F1008B720E /* highlight_blue.tiff in Resources */,
-				3F2480440D1797F1008B720E /* highlight_grey.tiff in Resources */,
-				3F2480460D1797F1008B720E /* License.txt in Resources */,
+				3F694A0A0D283C4200E0C94D /* Folder.tif in Resources */,
+				3F694A0B0D283C4200E0C94D /* highlight_blue.tiff in Resources */,
+				3F694A0C0D283C4200E0C94D /* highlight_grey.tiff in Resources */,
+				3F694A0D0D283C4200E0C94D /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1258,10 +1241,10 @@
 				3FBFAA370A5FF5A500DFF561 /* BHOutlineView.m in Sources */,
 				3F3966F30A79935D000EE7CC /* DetailController.m in Sources */,
 				3F4448340D14664D00FD6861 /* LibraryController.m in Sources */,
-				3F2480470D1797F1008B720E /* LNSSourceListCell.m in Sources */,
-				3F2480480D1797F1008B720E /* LNSSourceListColumn.m in Sources */,
-				3F2480490D1797F1008B720E /* LNSSourceListSourceGroupCell.m in Sources */,
-				3F24804A0D1797F1008B720E /* LNSSourceListView.m in Sources */,
+				3F694A0E0D283C4200E0C94D /* LNSSourceListCell.m in Sources */,
+				3F694A0F0D283C4200E0C94D /* LNSSourceListColumn.m in Sources */,
+				3F694A100D283C4200E0C94D /* LNSSourceListSourceGroupCell.m in Sources */,
+				3F694A110D283C4200E0C94D /* LNSSourceListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
