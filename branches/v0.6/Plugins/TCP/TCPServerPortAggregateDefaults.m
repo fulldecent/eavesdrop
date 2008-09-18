@@ -23,7 +23,7 @@
 
 - (NSMutableArray *)portsArray
 {
-	ENTRY( @"portsArray" );
+	ENTRY;
 	if ( !portsArray ) {
 		portsArray = [[NSMutableArray arrayWithContentsOfFile:
 			[[NSBundle bundleForClass:[self class]] pathForResource:@"TCP_UDP_Ports" ofType:@"plist"]

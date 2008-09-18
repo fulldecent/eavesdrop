@@ -25,7 +25,7 @@
 
 - (void)findAllPlugins
 {
-	ENTRY( @"findAllPlugins" );
+	ENTRY;
 	
 	[self willChangeValueForKey:@"dissectorDefaultsArray"];
 	[self willChangeValueForKey:@"aggregateDefaultsArray"];
@@ -45,8 +45,8 @@
 			[self activatePlugin:pluginPath];
 		}
 	}
-	INFO1( @"Packet classes:\n%@", [dissectorDefaultsArray description] );
-	INFO1( @"Aggregate classes:\n%@", [aggregateDefaultsArray description] );
+	INFO( @"Packet classes:\n%@", [dissectorDefaultsArray description] );
+	INFO( @"Aggregate classes:\n%@", [aggregateDefaultsArray description] );
 
 	[pluginDefaultsArray addObjectsFromArray:dissectorDefaultsArray];
 	[pluginDefaultsArray addObjectsFromArray:aggregateDefaultsArray];
@@ -58,7 +58,8 @@
 
 - (void)activatePlugin:(NSString*)path
 {
-	ENTRY1( @"activatePlugin:%@", path );
+	ENTRY;
+    INFO( @"activatePlugin:%@", path );
 	NSBundle* pluginBundle = [NSBundle bundleWithPath:path];
 
 	if (![pluginBundle load]) {
@@ -80,7 +81,7 @@
 		[dissectorDefaultsArray addObject:[Plugin registerDissectorAndGetDefaultsWithSettings:tempDict] ];
 		count++;
 	}
-	DEBUG1( @"loaded %d dissectors", count );
+	DEBUG( @"loaded %d dissectors", count );
 	
 	en = [[NSArray arrayWithContentsOfFile:
 		[pluginBundle pathForResource:@"Aggregators" ofType:@"plist"]
@@ -89,7 +90,7 @@
 	while ( tempDict = [en nextObject] ) {
 		[aggregateDefaultsArray addObject:[Plugin registerAggregateAndGetDefaultsWithSettings:tempDict] ];
 	}
-	DEBUG1( @"loaded %d aggregators", count );
+	DEBUG( @"loaded %d aggregators", count );
 	
 	en = [[NSArray arrayWithContentsOfFile:
 		[pluginBundle pathForResource:@"Decoders" ofType:@"plist"]
@@ -98,7 +99,7 @@
 	while ( tempDict = [en nextObject] ) {
 		[decoderDefaultsArray addObject:[Plugin registerDecoderAndGetDefaultsWithSettings:tempDict] ];
 	}
-	DEBUG1( @"loaded %d decoders", count );
+	DEBUG( @"loaded %d decoders", count );
 }
 
 
@@ -107,7 +108,7 @@
 	NSEnumerator *en = [pluginDefaultsArray objectEnumerator];
 	PluginDefaults *tempDefaults;
 	while ( tempDefaults=[en nextObject] ) {
-		DEBUG1( @"saving %@", [tempDefaults description] );
+		DEBUG( @"saving %@", [tempDefaults description] );
 		[tempDefaults save:self];
 	}
 }
@@ -118,7 +119,7 @@
 	selectedDissectorIndexes = [newIndexSet retain];
 	
 	id pluginDefaults = [pluginsArrayController selection];
-	DEBUG1( @"selected defaults: %@", [pluginDefaults description] );
+	DEBUG( @"selected defaults: %@", [pluginDefaults description] );
 	
 	NSView *theView = [pluginDefaults valueForKey:@"defaultsView"];
 	if (theView) {

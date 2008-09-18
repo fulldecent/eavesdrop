@@ -18,7 +18,7 @@ static NSMutableDictionary *collectors;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	collectors = [[NSMutableDictionary alloc] init];
 }
 
@@ -31,7 +31,8 @@ static NSMutableDictionary *collectors;
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
-	ENTRY1( @"startCollectorWithIdentifier:%@", identifier );
+	ENTRY;
+    INFO( @"startCollectorWithIdentifier:%@", identifier );
 	if ( [collectors objectForKey:identifier] ) {
 		ERROR( @"collector identifier already exists, returning" );
 		return;
@@ -40,20 +41,22 @@ static NSMutableDictionary *collectors;
 	[collectors setObject:newCollector forKey:identifier];
 
 	[[NSRunLoop currentRunLoop] run];
-	EXIT1( @"startCollectorWithIdentifier:%@", identifier );
+	RETURN( @"startCollectorWithIdentifier:%@", identifier );
 	[pool release];
 	[NSThread exit];
 }
 
 + (void)stopCollectorWithIdentifier:(NSString *)identifier
 {
-	ENTRY1( @"stopCollectorWithIdentifier:%@", identifier );
+	ENTRY;
+    INFO( @"stopCollectorWithIdentifier:%@", identifier );
 	[[collectors objectForKey:identifier] stopCollecting];
 }
 
 - (id)initWithIdentifier:(NSString *)ident
 {
-	ENTRY1( @"initWithIdentifier:%@", ident );
+	ENTRY;
+    INFO( @"initWithIdentifier:%@", ident );
 	self = [super init];
 	if (self) {
 		[DOHelpers vendObject:self withName:ident local:YES];
@@ -90,7 +93,7 @@ static NSMutableDictionary *collectors;
 - (NSString *)aggregateClassName
 {
 	NSString *tempValue = [aggregateClass performSelector:@selector(className)];
-	DEBUG1( @"aggregateClassName: %@", tempValue );
+	DEBUG( @"aggregateClassName: %@", tempValue );
 	if (aggregateClass)
 		return tempValue;
 	else
@@ -104,7 +107,8 @@ static NSMutableDictionary *collectors;
 
 - (void)setAggregateClass:(Class)newAggregate
 {
-	ENTRY1( @"setAggregateClass: %@", [newAggregate performSelector:@selector(className)]  );
+	ENTRY;
+    INFO( @"setAggregateClass: %@", [newAggregate performSelector:@selector(className)]  );
 	if ( newAggregate!=[Aggregate class] && [newAggregate conformsToProtocol:@protocol(Aggregate)] )
 		aggregateClass = newAggregate;
 	else
@@ -126,7 +130,7 @@ static NSMutableDictionary *collectors;
 
 - (void)setAggregateClassArray:(NSArray *)newClassArray
 {
-	ENTRY( @"setAggregateClassArray" );
+	ENTRY;
 	INFO( [newClassArray description] );
 	//need to add other processing
 	[aggregateClassArray release];
@@ -139,7 +143,7 @@ static NSMutableDictionary *collectors;
 				valueForKeyPath:@"@unionOfObjects.aggregateClassName"
 		] retain];
 		
-		DEBUG1( @"aggregateClass now set to: %@", [aggregateClass className] );
+		DEBUG( @"aggregateClass now set to: %@", [aggregateClass className] );
 	} else {
 		DEBUG( @"clearing out aggregate (blank or nil array passed)" );
 		aggregateClass = nil;
@@ -227,7 +231,7 @@ static NSMutableDictionary *collectors;
 
 - (void)resetNewPacketIndex
 {
-	ENTRY( @"resetNewPacketIndex" );
+	ENTRY;
 	[arrayLock lock];
 	packetArrayPosition = 0;
 	[arrayLock unlock];
@@ -242,7 +246,7 @@ static NSMutableDictionary *collectors;
 		[arrayLock unlock];
 		return nil;
 	} else {
-		DEBUG1( @"flushing %d packets", count );
+		DEBUG( @"flushing %d packets", count );
 	}
 	NSArray *tempArray = [packetArray objectsAtIndexes:
 		[NSIndexSet indexSetWithIndexesInRange:
@@ -307,7 +311,7 @@ static NSMutableDictionary *collectors;
 
 - (oneway void)stopCollecting
 {
-	ENTRY( @"stopCollecting]" );
+	ENTRY;
 	[collectionTimer invalidate];
 	[self collectPackets];
 }

@@ -21,7 +21,7 @@ static NSMutableDictionary *registeredDecoders;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	if ( (self = [Plugin class]) && !registeredDissectors ) {
 		pluginCount = 0;
 		
@@ -61,11 +61,12 @@ static NSMutableDictionary *registeredDecoders;
 {
 	NSString *protoName = [defaultSettings valueForKey:@"protocol"];
 
-	ENTRY2( @"_registerDissector:%@ forProtocol:%@ decodes:(...)", [dissector className], protoName );
-	INFO1( @"decodes array:\n%@", [[defaultSettings valueForKey:@"decodes"] description] );
+	ENTRY;
+    INFO( @"_registerDissector:%@ forProtocol:%@ decodes:(...)", [dissector className], protoName );
+	INFO( @"decodes array:\n%@", [[defaultSettings valueForKey:@"decodes"] description] );
 
 	if ( [registeredDissectors objectForKey:protoName] ) {
-		WARNING1( @"key already exists: %@", protoName );
+		WARNING( @"key already exists: %@", protoName );
 		return;
 	}
 
@@ -137,7 +138,8 @@ static NSMutableDictionary *registeredDecoders;
 
 + (void)_registerAggregate:(Class)aggregateClass withSettings:(NSDictionary *)defaultSettings
 {
-	ENTRY2( @"_registerAggregate:%@ withName:%@", [aggregateClass className], [defaultSettings valueForKey:@"name"] );
+	ENTRY;
+    INFO( @"_registerAggregate:%@ withName:%@", [aggregateClass className], [defaultSettings valueForKey:@"name"] );
 	[registeredAggregators
 		setObject:[NSDictionary dictionaryWithObjectsAndKeys:
 			[self className],									@"dissectorClassName",
@@ -167,7 +169,8 @@ static NSMutableDictionary *registeredDecoders;
 
 + (void)_registerDecoder:(Class)decoderClass withSettings:(NSDictionary *)defaultSettings
 {
-	ENTRY2( @"_registerDecoder:%@ withName:%@", [decoderClass className], [defaultSettings valueForKey:@"name"] );
+	ENTRY;
+    INFO( @"_registerDecoder:%@ withName:%@", [decoderClass className], [defaultSettings valueForKey:@"name"] );
 	[registeredDecoders
 		setObject:[NSDictionary dictionaryWithObjectsAndKeys:
 			[self className],								@"dissectorClassName",	//probably not...
@@ -409,7 +412,7 @@ static NSMutableDictionary *registeredDecoders;
 		if (value)
 			[tempDict setObject:[self valueForKey:tempKey] forKey:tempKey];
 		else
-			WARNING1( @"key has no value: %@", tempKey );
+			WARNING( @"key has no value: %@", tempKey );
 	}
 	return [tempDict copy];
 }

@@ -48,7 +48,7 @@ static int colorPercent;
 	colorPercent += 5;
 	colorPercent %= 100;
 	
-	DEBUG1( @"rect: %@", NSStringFromRect(clipRect) );
+	DEBUG( @"rect: %@", NSStringFromRect(clipRect) );
 	
 	NSColor *color = [NSColor colorWithDeviceRed:0 green:((double)colorPercent/100.0) blue:0 alpha:0.5];
 	[color set];
@@ -78,7 +78,7 @@ static int colorPercent;
 
 - (NSImage *)dragImageForRowsWithIndexes:(NSIndexSet *)dragRows tableColumns:(NSArray *)tableColumns event:(NSEvent*)dragEvent offset:(NSPointPointer)dragImageOffset
 {
-	ENTRY( @"dragImageForRowsWithIndexes:tableColumns:event:offset:dragImageOffset" );
+	ENTRY;
 
 	const int defaultWidth = 32;
 	const int defaultHeight = 32;

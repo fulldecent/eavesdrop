@@ -15,7 +15,7 @@ static int dissectorCount;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	dissectorCount = 0;
 }
 
@@ -39,25 +39,25 @@ static int dissectorCount;
 	NSString *tempDissectorString;
 
 	while (nextPacket) {
-		//DEBUG1( @"nextPacket is now: ", [nextPacket description] );
+		//DEBUG( @"nextPacket is now: ", [nextPacket description] );
 		tempPacket = nextPacket;
 		nextPacket = nil;
 		
 		//give the current dissector a chance to request a dissector (eg. IP->TCP)
 		tempDissectorString = [tempPacket preferedDissectorProtocol];
 		if (tempDissectorString) {
-			//DEBUG1( @"preferedDissector set, using %@", tempDissectorString );
+			//DEBUG( @"preferedDissector set, using %@", tempDissectorString );
 			tempClass = [[[super registeredDissectors] valueForKey:tempDissectorString] valueForKey:@"dissectorClassName"];
 			nextPacket = [[tempClass alloc] initFromParent:tempPacket];
 		} else {
 		//look for an appropriate dissector based on what is registered
 			NSDictionary *tempDict = [[super registeredDissectors] objectForKey:[tempPacket protocolString]];
-			//INFO1( @"subDissectors -> %@", [tempDict description] );
+			//INFO( @"subDissectors -> %@", [tempDict description] );
 			NSEnumerator *en = [[tempDict objectForKey:@"subDissectors"] objectEnumerator];
 
 			while ( tempDissectorString=[en nextObject] ) {
 				tempClass = [[[super registeredDissectors] objectForKey:tempDissectorString] objectForKey:@"dissectorClassName"];
-				//DEBUG1( @"checking class: %@", tempDissectorString );
+				//DEBUG( @"checking class: %@", tempDissectorString );
 				if ( [tempClass canDecodePacket:tempPacket] ) {
 					nextPacket = [[[tempClass alloc] initFromParent:tempPacket] autorelease];
 					break;
@@ -170,7 +170,7 @@ static int dissectorCount;
 	if ( parent ) {
 		[tempArray addObjectsFromArray:[parent detailsTreeArray] ];
 	}
-	//INFO1( @"detailsTreeArray (in progress):\n%@", [tempArray description] );
+	//INFO( @"detailsTreeArray (in progress):\n%@", [tempArray description] );
 	return [tempArray copy];
 }
 
@@ -191,15 +191,15 @@ static int dissectorCount;
 
 - (NSArray *)detailColumnsArray
 {
-	//ENTRY( @"detailColumnsArray" );
+	//ENTRY;
 	
 	NSMutableArray *tempArray = [NSMutableArray array];
 	if (parent)
 		[tempArray addObjectsFromArray:[parent detailColumnsArray] ];
 
-	//DEBUG1( @"looking up columns dict: %@", [self protocolString] );
+	//DEBUG( @"looking up columns dict: %@", [self protocolString] );
 	NSArray *columnDicts = [[[self registeredDissectors] valueForKey:[self protocolString]] valueForKey:@"detailColumns"];
-	//DEBUG1( @"got %d columns", [columnDicts count] );
+	//DEBUG( @"got %d columns", [columnDicts count] );
 	
 	NSEnumerator *en = [columnDicts objectEnumerator];
 	NSDictionary *tempDict;
@@ -220,7 +220,7 @@ static int dissectorCount;
 		[tempArray addObject:tempColumn];
 	}
 	
-	//DEBUG1( @"there are now %d table columns", [tempArray count] );
+	//DEBUG( @"there are now %d table columns", [tempArray count] );
 	return [tempArray copy];
 }
 

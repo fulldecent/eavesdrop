@@ -16,7 +16,7 @@
 static NSMutableDictionary *collectors;
 
 + (void)initialize
-{	ENTRY( @"initialize" );
+{	ENTRY;
 	[CaptureThread sharedCollectorsDictionary];
 }
 
@@ -59,7 +59,7 @@ static NSMutableDictionary *collectors;
 #pragma mark Setup methods
 
 - (id)init
-{	ENTRY( @"init" );
+{	ENTRY;
 	self = [super init];
 	if (self) {
 		capturesPayload = YES;
@@ -83,7 +83,8 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setClient:(NSString *)newClient
-{	ENTRY1( @"setClient:%@", newClient );
+{	ENTRY;
+    INFO( @"setClient:%@", newClient );
 	[client release];
 	client = [newClient retain];
 }
@@ -94,7 +95,8 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setSaveFile:(NSString *)saveFile
-{	ENTRY1( @"setSaveFile:%@", saveFile );
+{	ENTRY;
+    INFO( @"setSaveFile:%@", saveFile );
 	[saveFilename release];
 	saveFilename = [saveFile retain];
 }
@@ -105,7 +107,8 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setReadFile:(NSString *)readFile
-{	ENTRY1( @"setReadFile:%@", readFile  );
+{	ENTRY;
+    INFO( @"setReadFile:%@", readFile  );
 	[readFilename release];
 	readFilename = [readFile retain];
 }
@@ -116,7 +119,8 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setCaptureFilter:(NSString *)filterString
-{	ENTRY1( @"setCaptureFilter:%@", filterString );
+{	ENTRY;
+    INFO( @"setCaptureFilter:%@", filterString );
 	[filter release];
 	filter = [filterString retain];
 }
@@ -127,7 +131,8 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setInterface:(NSString *)newInterface
-{	ENTRY1( @"setInterface:%@", newInterface );
+{	ENTRY;
+    INFO( @"setInterface:%@", newInterface );
 	[interface release];
 	interface = [newInterface retain];
 }
@@ -138,7 +143,7 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setPromiscuous:(BOOL)promiscuousMode
-{	ENTRY( @"setPromiscuous:" );
+{	ENTRY;
 	promiscuous = promiscuousMode;
 }
 
@@ -148,7 +153,7 @@ static NSMutableDictionary *collectors;
 }
 
 - (void)setCapturesPayload:(BOOL)shouldCapture
-{	ENTRY( @"setCapturesPayload:" );
+{	ENTRY;
 	capturesPayload = shouldCapture;
 }
 
@@ -162,8 +167,8 @@ static NSMutableDictionary *collectors;
 
 - (void)savePackets:(NSArray *)packetsArray
 {
-	ENTRY( @"saveCapture" );
-	DEBUG1( @"saving to file: %@", saveFilename );
+	ENTRY;
+	DEBUG( @"saving to file: %@", saveFilename );
 
 	pcap_t *saveHandle = (pcap_t *)pcap_open_dead( DLT_EN10MB, 65535 );
 	pcap_dumper_t *dumpHandle = pcap_dump_open( saveHandle, [saveFilename cStringUsingEncoding:NSASCIIStringEncoding] );
@@ -183,10 +188,10 @@ static NSMutableDictionary *collectors;
 			count++;
 		}
 	}
-	DEBUG1( @"wrote %@ packets", [NSNumber numberWithInt:count] );
+	DEBUG( @"wrote %@ packets", [NSNumber numberWithInt:count] );
 	
 	pcap_close( saveHandle );
-	EXIT( @"saveCapture" );
+	EXIT;
 }
 
 - (void)startCapture
@@ -194,7 +199,7 @@ static NSMutableDictionary *collectors;
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	[NSThread setThreadPriority:1.0];
 
-	ENTRY( @"startCapture" );	
+	ENTRY;
 	if (!client) {
 		ERROR( @"can't start capture for null client!");
 		[pool release];
@@ -209,14 +214,14 @@ static NSMutableDictionary *collectors;
 		queueProxy = [DOHelpers getProxyWithName:client protocol:@protocol(PacketQueue) host:nil];
 
 		if (!queueProxy) {
-			WARNING1( @"failed to get queueProxy for client: %@", client );
+			WARNING( @"failed to get queueProxy for client: %@", client );
 			[pool release];
 			return;
 		}
 		tries++;
 		sleep(1);
 	}
-	DEBUG1( @"set collector with queueProxy: %@", [queueProxy description] );
+	DEBUG( @"set collector with queueProxy: %@", [queueProxy description] );
 	[CaptureThread setCollector:queueProxy withName:client ];
 
 	/// start capture setup ///
@@ -233,13 +238,13 @@ static NSMutableDictionary *collectors;
 	int size_ip			= sizeof( struct ip );
 	int size_tcp		= sizeof( struct tcphdr );
 	
-	DEBUG2( @"filter = %@ (%d bytes)", filter, [filter lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
+	DEBUG( @"filter = %@ (%d bytes)", filter, [filter lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
 	strncpy( filter_app, [filter cStringUsingEncoding:NSASCIIStringEncoding], [filter lengthOfBytesUsingEncoding:NSASCIIStringEncoding]+1 );
-	DEBUG1( @"cString filter = %s", filter_app );
+	DEBUG( @"cString filter = %s", filter_app );
 	
-	DEBUG2( @"interface = %@ (%d bytes)", interface, [interface lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
+	DEBUG( @"interface = %@ (%d bytes)", interface, [interface lengthOfBytesUsingEncoding:NSASCIIStringEncoding] );
 	strncpy( dev, [interface cStringUsingEncoding:NSASCIIStringEncoding], [interface lengthOfBytesUsingEncoding:NSASCIIStringEncoding]+1 );
-	DEBUG1( @"cString interface = %s", dev );
+	DEBUG( @"cString interface = %s", dev );
 	
 	if (capturesPayload)
 		captureSize = 65535;
@@ -255,14 +260,14 @@ static NSMutableDictionary *collectors;
 //		saveHandle = pcap_dump //???
 		
 	if (!captureHandle) {
-		ERROR1( @"capture failed: %s", errbuf );
-		ERROR2( @"using device:%@ with filter:%@",interface,filter);
+		ERROR( @"capture failed: %s", errbuf );
+		ERROR( @"using device:%@ with filter:%@",interface,filter);
 		setupFailed = YES;
 	}
 
 	pcap_lookupnet(dev, &netp, &maskp, errbuf);
 	if( pcap_compile(captureHandle, &fp, filter_app, 0, netp) == -1) {
-			ERROR1( @"pcap_compile failed for filter:%s\n", filter_app );
+			ERROR( @"pcap_compile failed for filter:%s\n", filter_app );
 			setupFailed = YES;
 	}
 	if (pcap_setfilter(captureHandle, &fp) == -1) {
@@ -277,7 +282,7 @@ static NSMutableDictionary *collectors;
 	
 	/// end capture setup ///
 
-	ENTRY1(@" - starting capture thread for client: %@", client);
+	INFO(@" - starting capture thread for client: %@", client);
 	
 	isActive = YES;
 	char capid[ [client lengthOfBytesUsingEncoding:NSASCIIStringEncoding] ];
@@ -288,7 +293,7 @@ static NSMutableDictionary *collectors;
 	pcap_close( captureHandle );
 	isActive = NO;
 
-	EXIT1(@" - ending capture thread for client: %@", client);
+	INFO(@" - ending capture thread for client: %@", client);
 	[pool release];
 
 	//???
@@ -300,7 +305,7 @@ static NSMutableDictionary *collectors;
 	if (!isActive)
 		return;
 		
-	ENTRY(@"stopCapture");
+	ENTRY;
 	pcap_breakloop( captureHandle );
 	[queueProxy stopCollecting];
 }
@@ -310,7 +315,7 @@ static NSMutableDictionary *collectors;
 	if (!isActive)
 		return;
 		
-	ENTRY(@"killCapture");
+	ENTRY;
 	pcap_breakloop( captureHandle );
 }
 

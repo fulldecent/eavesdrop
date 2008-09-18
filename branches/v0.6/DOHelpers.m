@@ -33,10 +33,10 @@ static NSMutableDictionary *connectionsDict;
 	[connection setRootObject:object];
 
 	if (![connection registerName:name]) {
-		WARNING1( @"registered name '%@' taken.", name );
+		WARNING( @"registered name '%@' taken.", name );
 		return NO;
 	} else {
-		DEBUG1( @"vended object with name: %@", name );
+		DEBUG( @"vended object with name: %@", name );
 	}
 	return YES;
 }

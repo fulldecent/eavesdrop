@@ -13,7 +13,7 @@
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 }
 
 + (NSString *)aggregateIdentifierForPacket:(NSObject<Dissector> *)newPacket

@@ -16,19 +16,19 @@
 
 + (BOOL)canDecodePayload:(NSData *)payload
 {
-	ENTRY( @"canDecodePayload: (default implementation)" );
+	ENTRY;
 	return NO;
 }
 
 + (BOOL)canDecodePayload:(NSData *)payload fromDissector:(id<Dissector>)dissector;
 {
-	ENTRY( @"canDecodePayload:fromDissector: (default implementation)" );
+	ENTRY;
 	return NO;
 }
 
 + (BOOL)canDecodePayload:(NSData *)payload fromAggregate:(id<Aggregate>)aggregate
 {
-	ENTRY( @"canDecodePayload:fromAggregate: (default implementation)" );
+	ENTRY;
 	return NO;
 }
 
@@ -74,7 +74,7 @@
 	NSString *nibName = [self decoderNibName];
 	if (!nibLoaded && nibName ) {
 		if ( ![NSBundle loadNibNamed:nibName owner:self] ) {
-			ERROR1( @"failed to load nib: %@", nibName );
+			ERROR( @"failed to load nib: %@", nibName );
 		} else {
 			nibLoaded = YES;
 		}

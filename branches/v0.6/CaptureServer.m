@@ -26,7 +26,7 @@
 
 - (id)initWithIdentifier:(NSString *)serverIdentifier client:(NSString *)firstClient
 {
-	DEBUG2( [NSString stringWithFormat:@"[CaptureServer initWithidentifier:%@ client:%@]", serverIdentifier, firstClient] );
+	DEBUG( [NSString stringWithFormat:@"[CaptureServer initWithidentifier:%@ client:%@]", serverIdentifier, firstClient] );
 	self = [super init];
 	if (self) {
 		[self setIdentifier:serverIdentifier];
@@ -52,16 +52,17 @@
 
 - (oneway void)setIdentifier:(NSString *)newIdentifier
 {
-	ENTRY1( @"[CaptureServer setIdentifier:%@]", newIdentifier );
+	ENTRY;
+    INFO( @"[CaptureServer setIdentifier:%@]", newIdentifier );
 	//for now, we'll ignore requests to change the identifier
 	if (identifier)
 		return;
 	identifier = [newIdentifier retain];
 
 	if ( [DOHelpers vendObject:self withName:identifier local:YES] ) {
-		DEBUG1( @"succeeded in vending object (%@)", identifier );
+		DEBUG( @"succeeded in vending object (%@)", identifier );
 	} else {
-		DEBUG1( @"failed to vend object (%@)", identifier );
+		DEBUG( @"failed to vend object (%@)", identifier );
 	}
 	EXIT( @"setIdentifier:" );
 }
@@ -115,7 +116,7 @@
 }
 
 - (NSArray *)interfaces
-{	ENTRY( @"[CaptureServer interfaces]" );
+{	ENTRY;
 	//it would be nice to really detect things here!!!
 	return [NSArray arrayWithObjects:@"en0", @"en1", @"en2", nil];
 }
@@ -135,14 +136,15 @@
 		[parentHost release];
 		parentHost = newParent;
 
-		ENTRY1( @"[CaptureServer setParentHost:%@]", newParent );
+		ENTRY;
+		INFO( @"[CaptureServer setParentHost:%@]", newParent );
 
 		clientAppDelegateProxy = [[DOHelpers
 			getProxyWithName:@"EavesdropAppDelegate"
 			protocol:@protocol(ClientAppDelegate)
 			host:nil
 		] retain];
-		DEBUG1( @" - got clientAppDelegateProxy: %@", [clientAppDelegateProxy description] );
+		DEBUG( @" - got clientAppDelegateProxy: %@", [clientAppDelegateProxy description] );
 	}
 }
 
@@ -249,7 +251,7 @@
 			return;
 	}
 	@catch (NSException *e) {
-		ERROR1( @"caught exception trying to ping application: %@", [e reason] );
+		ERROR( @"caught exception trying to ping application: %@", [e reason] );
 		[self killServer];
 	}
 	//[self killServer];	//probably won't ever get here
@@ -257,7 +259,8 @@
 
 - (oneway void)startCaptureForClient:(NSString *)clientIdentifier
 {
-	ENTRY1( @"startCaptureForClient:%@", clientIdentifier );
+	ENTRY;
+	INFO( @"startCaptureForClient:%@", clientIdentifier );
 
 	CaptureThread *captureThread = [captureThreads objectForKey:clientIdentifier];
 	
@@ -288,7 +291,7 @@
 
 - (oneway void)killServer
 {
-	ENTRY( @"killServer" );
+	ENTRY;
 	
 	[pollingTimer invalidate];
 	

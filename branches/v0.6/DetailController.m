@@ -28,7 +28,7 @@
 
 - (void)awakeFromNib
 {
-	ENTRY( @"awakeFromNib" );
+	ENTRY;
 
 	[selectedObjectController addObserver:self forKeyPath:@"selection" options:0 context:nil];
 }
@@ -67,7 +67,7 @@
 
 - (void)updatePluginBox
 {	
-	ENTRY( @"updatePluginBox" );
+	ENTRY;
 	
 	isBuildingPluginList = YES;
 	[viewInfoArray removeAllObjects];
@@ -81,7 +81,7 @@
 		}
 	}
 	
-	INFO1( @"decoders that will display:\n%@", [viewInfoArray description] );
+	INFO( @"decoders that will display:\n%@", [viewInfoArray description] );
 	
 	if ([[[[NSUserDefaultsController sharedUserDefaultsController] values] valueForKey:@"payloadViewAsTabs"] boolValue]) {
 		[payloadViewsPopup setHidden:TRUE];
@@ -140,7 +140,7 @@
 	while ( tempClassName = [en nextObject] ) {
 		int index = [payloadViewsPopup indexOfItemWithTag:[pluginTags indexOfObject:tempClassName] ];
 		if ( index != -1 ) {
-			DEBUG2( @"found former popup selection %@ at index %d", tempClassName, index );
+			DEBUG( @"found former popup selection %@ at index %d", tempClassName, index );
 			[self setPluginDisplayIndex:index];
 			selectionFound = YES;
 			break;
@@ -155,7 +155,7 @@
 
 - (void)updateTableView
 {
-	ENTRY( @"updateTableView" );
+	ENTRY;
 	
 	NSArray *detailColumnsArray = [selectedObject valueForKey:@"detailColumnsArray"];
 
@@ -184,7 +184,7 @@
 {
 	if ( newDisplayIndex==pluginDisplayIndex )
 		return;
-	DEBUG1( @"setPluginDisplayIndex: %d", newDisplayIndex );
+	DEBUG( @"setPluginDisplayIndex: %d", newDisplayIndex );
 
 	pluginDisplayIndex = newDisplayIndex;
 
@@ -221,7 +221,7 @@
 			[selectedPluginsStack removeObject:[selectedDecoder valueForKey:@"className"] ];
 			[selectedPluginsStack addObject:[selectedDecoder valueForKey:@"className"] ];
 		}
-		INFO1( @"selectedPluginsStack =>\n%@", [selectedPluginsStack description] );
+		INFO( @"selectedPluginsStack =>\n%@", [selectedPluginsStack description] );
 	}
 }
 
@@ -230,7 +230,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	ENTRY( @"observeValueForKeyPath:ofObject:change:context:" );
+	ENTRY;
 
 	[selectedObject release];
 	selectedObject = [[object valueForKeyPath:keyPath] retain];
@@ -254,7 +254,7 @@
 
 - (void)windowDidExpose:(NSNotification *)aNotification
 {
-	ENTRY( @"windowDidExpose:" );
+	ENTRY;
 }
 
 #pragma mark -

@@ -16,7 +16,7 @@
 
 - (id)initWithSettings:(NSDictionary *)settingsDict
 {
-	ENTRY( @"initWithSettings:" );
+	ENTRY;
 	self = [super initWithSettings:settingsDict];
 	if (self) {
 		if ( ![NSBundle loadNibNamed:@"TCPAggregateDefaults" owner:self] ) {

@@ -84,7 +84,7 @@
 
 - (IBAction)changeFlags:(id)sender
 {
-	ENTRY( @"changeFlags:" );
+	ENTRY;
 	int i;
 	int count = [flagsSegmentedControl segmentCount];
 	NSMutableString *tempString = [NSMutableString string];
@@ -95,7 +95,7 @@
 			[tempString appendString:@"-"];
 		}
 	}
-	DEBUG1( @"flags: %@", tempString );
+	DEBUG( @"flags: %@", tempString );
 	
 	[[flagGroupsArrayController valueForKey:@"selection"] setValue:tempString forKey:@"groupString" ];
 }
@@ -106,7 +106,7 @@
 
 - (void)getDefaultsFromDictionary:(NSDictionary *)defaultsDict
 {
-	ENTRY( @"getDefaultsFromDictionary" );
+	ENTRY;
 	[super getDefaultsFromDictionary:defaultsDict];
 	
 	//load overlay setting
@@ -196,7 +196,7 @@
 	int rowIndex = [flagGroupsTableView selectedRow];
 	if ( rowIndex >= 0 ) {
 		NSString *tempString = [[[flagGroupsArrayController arrangedObjects] objectAtIndex:rowIndex] valueForKey:@"groupString"];
-		DEBUG1( @"set flags for: %@", tempString );
+		DEBUG( @"set flags for: %@", tempString );
 		[self setFlags:tempString];
 	} else {
 		DEBUG( @"erase flags" );

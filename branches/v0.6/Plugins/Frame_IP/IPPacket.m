@@ -27,7 +27,7 @@ static NSArray *protocolsArray;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	protocolsArray = [[NSArray arrayWithContentsOfFile:
 		[[NSBundle bundleForClass:[self class]] pathForResource:@"IP_Protocols" ofType:@"plist"]
 	] retain];
