@@ -14,7 +14,7 @@ static TextRepresentation lastRepresentation;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	lastRepresentation = TextRepresentationASCII;
 	[self setKeys:[NSArray arrayWithObject:@"representation"]
 		triggerChangeNotificationsForDependentKey:@"payloadAsAttributedString"];

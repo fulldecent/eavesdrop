@@ -15,12 +15,12 @@
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 }
 
 - (id)init 
 {
-	ENTRY( @"init" );
+	ENTRY;
     self = [super init];
     if (self) {
 		identifier = [[self description] retain];
@@ -41,7 +41,7 @@
 		[self setAggregate:@"Aggregate"];
 		
     }
-	EXIT( @"done with init" );
+	EXIT;
 	
 	return self;
 }
@@ -92,7 +92,8 @@
 
 - (BOOL)readFromURL:(NSURL *)absoluteURL ofType:(NSString *)typeName error:(NSError **)outError
 {
-	ENTRY2( @"readFromURL:%@ ofType:%@ error:(out)", [absoluteURL description], typeName );
+	ENTRY;
+    INFO( @"readFromURL:%@ ofType:%@ error:(out)", [absoluteURL description], typeName );
 	[self setReadFile:[absoluteURL path] ];
 	BOOL readFile = [[[[NSUserDefaultsController sharedUserDefaultsController]
 		values] valueForKey:@"readFileOnOpen"] boolValue];
@@ -109,7 +110,7 @@
 	didSaveSelector:(SEL)didSaveSelector
 	contextInfo:(void *)contextInfo
 {
-	ENTRY( @"saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:" );
+	ENTRY;
 	[self setSaveFile:[absoluteURL path] ];
 	[self startSave:self];
 }
@@ -128,7 +129,7 @@
 	if (!packetQueue) {	
 		packetQueue = [PacketQueue collectorWithIdentifier:queueIdentifier];
 		if (packetQueue) {
-			DEBUG1( @"got packetQueue proxy: %@", [packetQueue description] );
+			DEBUG( @"got packetQueue proxy: %@", [packetQueue description] );
 		} else {
 			ERROR( @"failed to get packetQueue proxy!" );
 		}
@@ -142,12 +143,12 @@
 - (IBAction)connectToCaptureServer:(id)sender
 {
 	[self willChangeValueForKey:@"serverProxy"];
-	ENTRY( @"connectToCaptureServer" );
+	ENTRY;
 
 	NSString *tempHost = nil;
 	NSString *tempIdentifier = @"CaptureServer";
 	if (CDRemoteCaptureType==captureType) {
-		DEBUG2( @"looking for '%@' at: %@", remoteHostIdentifier, remoteHostAddress );
+		DEBUG( @"looking for '%@' at: %@", remoteHostIdentifier, remoteHostAddress );
 		tempHost = remoteHostAddress;
 		tempIdentifier = remoteHostIdentifier;
 	}
@@ -160,7 +161,7 @@
 			host:tempHost
 		] retain];
 		if (serverProxy) {
-			DEBUG1(@"got serverProxy: %@",[serverProxy description]);
+			DEBUG(@"got serverProxy: %@",[serverProxy description]);
 			[serverProxy addCaptureForClient:queueIdentifier ];
 		} else {
 			WARNING(@"failed to get serverProxy" );
@@ -173,7 +174,7 @@
 
 - (IBAction)startSave:(id)sender
 {
-	ENTRY( @"startSave:" );
+	ENTRY;
 	if ( [self isActive] ) {
 		ERROR( @"cannot start save, a capture is active" );
 		return;
@@ -246,7 +247,7 @@
 		}
 	}
 	@catch (NSException *e) {
-		ERROR1( @"exception in refreshing data: %@", [e reason] );
+		ERROR( @"exception in refreshing data: %@", [e reason] );
 		[serverProxy release];
 		serverProxy = nil;
 		[tableTimer invalidate];
@@ -357,7 +358,7 @@
 - (void)updateDetailsFromOutlineView:(NSOutlineView *)sourceOutlineView
 {
 	NSIndexSet *indexSet = [sourceOutlineView selectedRowIndexes];
-	DEBUG2( @"updateDetailsFromOutlineView: %@ (with indexSet: %@)", [sourceOutlineView description], [indexSet description] );
+	DEBUG( @"updateDetailsFromOutlineView: %@ (with indexSet: %@)", [sourceOutlineView description], [indexSet description] );
 	
 	[self willChangeValueForKey:@"selectedPacket"];
 	[self willChangeValueForKey:@"packetDetailsArray"];
@@ -374,7 +375,7 @@
 	[self didChangeValueForKey:@"packetDetailsTreeArray"];
 	[self didChangeValueForKey:@"packetDetailsArray"];
 	[self didChangeValueForKey:@"selectedPacket"];
-	//INFO1( @"packetDetailsTreeArray:\n%@", [packetDetailsTreeArray description] );
+	//INFO( @"packetDetailsTreeArray:\n%@", [packetDetailsTreeArray description] );
 }
 
 #pragma mark -
@@ -382,7 +383,7 @@
 
 - (void)setCaptureType:(CDCaptureType)newType
 {
-	ENTRY( @"setCaptureType:" );
+	ENTRY;
 
 	[self willChangeValueForKey:@"captureType"];	
 	[self willChangeValueForKey:@"serverProxy"];
@@ -448,7 +449,8 @@
 
 - (void)setAggregate:(NSString *)newAggregate
 {
-	ENTRY1( @"setAggregate: %@", newAggregate );
+	ENTRY;
+    INFO( @"setAggregate: %@", newAggregate );
 
 	[self willChangeValueForKey:@"aggregate"];
 	[self willChangeValueForKey:@"aggregateArrayController"];
@@ -477,7 +479,8 @@
 
 - (void)setSubAggregate:(NSString *)newAggregate
 {
-	ENTRY1( @"setAggregate: %@", newAggregate );
+	ENTRY;
+	INFO( @"setAggregate: %@", newAggregate );
 
 	[packetList removeAllObjects];
 	[leftoverPacketList removeAllObjects];
@@ -611,7 +614,8 @@
 
 - (void)setInterface:(NSString *)newInterface
 {
-	ENTRY1( @"setInterface:%@", newInterface );
+	ENTRY;
+    INFO( @"setInterface:%@", newInterface );
 	if (fileCaptureThread)
 		[fileCaptureThread setInterface:newInterface];
 		
@@ -691,7 +695,7 @@
 
 - (void)windowWillClose:(NSNotification *)aNotification
 {
-	ENTRY( @"windowWillClose:" );
+	ENTRY;
 	[tableTimer invalidate];
 	[self stopCapture:self];
 }
@@ -767,7 +771,7 @@
 
 - (BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray*)items toPasteboard:(NSPasteboard*)pboard
 {
-	ENTRY( @"outlineView:writeItems:toPasteboard:" );
+	ENTRY;
 
 	NSMutableArray *allItems = [NSMutableArray array];
 	NSEnumerator *en = [items objectEnumerator];
@@ -831,7 +835,7 @@
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(int)index
 {
-	ENTRY( @"outlineView:acceptDrop:item:" );
+	ENTRY;
 	NSPasteboard *pboard = [info draggingPasteboard];
 	
 	NSData *data = [pboard dataForType:EDPacketsPboardType];
@@ -909,7 +913,7 @@ NSFileHandle *NewFileHandleForWritingFile(NSString *dirpath, NSString *basename,
 			[filenames addObject:filename];
 		}
 	}
-	DEBUG1( @"drop created file: %@", filename );
+	DEBUG( @"drop created file: %@", filename );
     return ([filenames count] ? filenames : nil);
 }
 

@@ -29,7 +29,7 @@
 
 - (id)init
 {
-	ENTRY( @"init" );
+	ENTRY;
 	self = [super init];
 	if (self) {
 		if ( [DOHelpers vendObject:self withName:@"EavesdropAppDelegate" local:YES	] ) {
@@ -44,14 +44,14 @@
 			[self launchCaptureServer:self];
 		}
 	}
-	EXIT( [self description] );
+	RETURN( [self description] );
 	return self;
 }
 
 //- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 - (void)applicationWillFinishLaunching:(NSNotification*)notification
 {	
-	ENTRY( @"applicationWillFinishLaunching:" );
+	ENTRY;
 	[pluginsController findAllPlugins];
 }
 
@@ -63,14 +63,14 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {	
-	ENTRY( @"applicationWillTerminate:" );
+	ENTRY;
 
 	[[DOHelpers getProxyWithName:@"CaptureServer" protocol:@protocol(CaptureServer) host:nil] killServer];
 }
 
 - (IBAction)launchCaptureServer:(id)sender
 {
-	ENTRY( @"launchCaptureServer:" );
+	ENTRY;
 
 	char *arguments = NULL;
 	if ( authorize([[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"CaptureServer"] UTF8String],arguments) ) {

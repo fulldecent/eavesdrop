@@ -13,7 +13,7 @@
 
 + (id)pluginDefaultsWithSettings:(NSDictionary *)settingsDict
 {
-	ENTRY( @"pluginDefaultsWithSettings:" );
+	ENTRY;
 	if ([settingsDict objectForKey:@"defaultsClassName"]) {
 		Class defaultsClass = NSClassFromString( [settingsDict objectForKey:@"defaultsClassName"] );
 		if (defaultsClass)
@@ -30,7 +30,7 @@
 
 - (id)initWithSettings:(NSDictionary *)settingsDict
 {
-	ENTRY( @"initWithSettings:" );
+	ENTRY;
 	self = [super init];
 	if (self) {
 		defaultsView = [[NSView alloc] initWithFrame:NSMakeRect(0,0,250,300)];
@@ -65,9 +65,9 @@
 			
 		//load the settings NIB, if there is one
 		if ( [self settingsNibName] ) {
-			DEBUG1( @"loading NIB: %@", [self settingsNibName] );
+			DEBUG( @"loading NIB: %@", [self settingsNibName] );
 			if ( ![NSBundle loadNibNamed:[self settingsNibName] owner:self] ) {
-				ERROR1( @"failed to load %@ nib", [self settingsNibName] );
+				ERROR( @"failed to load %@ nib", [self settingsNibName] );
 			}
 		}
 		
@@ -96,7 +96,8 @@
 
 - (void)setInitialDefaults
 {
-	ENTRY1( @"setInitialDefaults for %@", [self primaryClassName] );
+	ENTRY;
+    INFO( @"setInitialDefaults for %@", [self primaryClassName] );
 	NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
 	
 	[defaults setInitialValues:[NSDictionary dictionaryWithObject:
@@ -112,7 +113,8 @@
 
 - (void)getDefaultValues
 {
-	ENTRY1( @"getDefaultValues for %@", [self primaryClassName] );
+	ENTRY;
+    INFO( @"getDefaultValues for %@", [self primaryClassName] );
 	NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
 
 	NSDictionary *tempDict = [[defaults values] valueForKey:@"EDPlugins" ];	
@@ -125,14 +127,14 @@
 	
 	tempColor = [defaultsDict valueForKey:@"textColor"];
 	if (tempColor) {
-		DEBUG1( @"setting textColor for %@", [self primaryClassName] );
+		DEBUG( @"setting textColor for %@", [self primaryClassName] );
 		[textColor release];
 		textColor = [[NSUnarchiver unarchiveObjectWithData:[defaultsDict valueForKeyPath:@"textColor"]] retain];
 	}
 	
 	tempColor = [defaultsDict valueForKey:@"backgroundColor"];
 	if (tempColor) {
-		DEBUG1( @"setting backgroundColor for %@", [self primaryClassName] );
+		DEBUG( @"setting backgroundColor for %@", [self primaryClassName] );
 		[backgroundColor release];
 		backgroundColor = [[NSUnarchiver unarchiveObjectWithData:[defaultsDict valueForKey:@"backgroundColor"]] retain];
 	}
@@ -149,7 +151,8 @@
 
 - (IBAction)save:(id)sender
 {
-	ENTRY1( @"save: for %@", [self primaryClassName] );
+	ENTRY;
+    INFO( @"save: for %@", [self primaryClassName] );
 	NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
 
 	NSMutableDictionary *values = [defaults values];	

@@ -20,7 +20,7 @@ static int aggregateNumber;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	if ( [self class]==[Aggregate class] ) {
 		aggregateNumber = 0;
 
@@ -48,7 +48,7 @@ static int aggregateNumber;
 
 - (id)initWithPacket:(NSObject<Dissector> *)firstPacket usingSubAggregates:(NSArray *)subAggregates
 {
-	//ENTRY( @"initWithPacket:usingSubAggregates:" );
+	//ENTRY;
 	//INFO( [subAggregates description] ); 
 	self = [super init];
 	if (self) {
@@ -61,12 +61,12 @@ static int aggregateNumber;
 		}
 		
 		if ([subAggregateClass conformsToProtocol:@protocol(Aggregate)]) {
-			//DEBUG1( @"set subAggregate to: %@", [subAggregateClass className] );
+			//DEBUG( @"set subAggregate to: %@", [subAggregateClass className] );
 			subSubAggregateArray = [[subAggregates subarrayWithRange:NSMakeRange( 1, [subAggregates count]-1 )] retain];
 			subAggregateDict  = [[NSMutableDictionary alloc] init];
 		 } else {
 			if (subAggregateClass)
-				ERROR1( @"%@ does not conform to Aggregate protocol", [subAggregateClass className] );
+				ERROR( @"%@ does not conform to Aggregate protocol", [subAggregateClass className] );
 			subAggregateClass = nil;
 			subSubAggregateArray = nil;
 			subAggregateDict = nil;
@@ -104,14 +104,14 @@ static int aggregateNumber;
 
 - (void)_processSubAggregateForPacket:(NSObject<Dissector> *)newPacket
 {
-	//ENTRY( @"_processSubAggregateForPacket:" );
+	//ENTRY;
 	if ([subAggregateClass conformsToProtocol:@protocol(Aggregate)]) {
 		NSString *aggregateIdentifier = [subAggregateClass aggregateIdentifierForPacket:newPacket];
 		NSObject<Aggregate> *aggregate = [subAggregateDict objectForKey:aggregateIdentifier];
 		if (aggregate) {
 			[aggregate addPacket:newPacket];
 		} else {
-			//DEBUG1( @"new ID: %@", aggregateIdentifier );
+			//DEBUG( @"new ID: %@", aggregateIdentifier );
 			aggregate = [[subAggregateClass alloc] initWithPacket:newPacket usingSubAggregates:subSubAggregateArray];
 
 			[subAggregateDict setObject:aggregate forKey:aggregateIdentifier];
@@ -199,7 +199,7 @@ static int aggregateNumber;
 
 - (NSArray *)detailColumnsArray
 {
-	ENTRY( @"detailColumnsArray" );
+	ENTRY;
 	NSString *primaryProtocol = [[[self registeredAggregators] valueForKey:[self className]] valueForKey:@"primaryProtocol"];
 
 	if (!primaryProtocol)

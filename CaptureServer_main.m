@@ -14,6 +14,7 @@
 int main(int argc, char *argv[])
 {
 	NSString *self = @"CaptureServer_main";	//hack for debug macros
+	SEL _cmd = @selector(main);		//hack for debug macros
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	CaptureServer *captureServer;
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
 		startingClient = [NSString stringWithCString:argv[2]];
 	}
 
-	DEBUG1( @"CaptureServer listening with identifier: %@", serverIdentifier );
+	DEBUG( @"CaptureServer listening with identifier: %@", serverIdentifier );
 	captureServer = [[CaptureServer alloc] initWithIdentifier:serverIdentifier client:startingClient];
 	
 	[[NSRunLoop currentRunLoop] run];

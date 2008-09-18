@@ -228,7 +228,7 @@
 		}
 	}
 	@catch (NSException *exception) {
-		WARNING1( @"Exception caught: %@ (flagsDict->{flag}->color may not be defined)", [exception description] );
+		WARNING( @"Exception caught: %@ (flagsDict->{flag}->color may not be defined)", [exception description] );
 	}
 
 	flagString = [[tempString copy] retain];
@@ -247,7 +247,7 @@
 
 - (NSArray *)payloadViewArray
 {
-	ENTRY( @"payloadViewArray" );
+	ENTRY;
 	return [NSArray array];
 }
 

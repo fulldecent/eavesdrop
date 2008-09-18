@@ -15,7 +15,7 @@
 
 - (id)init
 {
-	ENTRY( @"init" );
+	ENTRY;
     self = [super init];
     if (self) {
 		libraryArray = [[NSMutableArray array] retain];

@@ -21,7 +21,7 @@ static NSDictionary *serverPorts;
 
 + (void)resetServerPortsFromDefaults
 {
-	ENTRY( @"resetServerPortsFromDefaults" );
+	ENTRY;
 	if (!defaults)
 		defaults = [[Plugin pluginDefaultsForClass:[self class] ] retain];
 		

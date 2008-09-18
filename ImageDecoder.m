@@ -31,7 +31,8 @@
 
 - (void)awakeFromNib
 {
-	ENTRY1( @"awakeFromNib - image view: %@", [imageDecoderView description] );
+	ENTRY;
+    INFO( @"image view: %@", [imageDecoderView description] );
 }
 
 - (NSString *)decoderNibName
@@ -41,7 +42,7 @@
 
 - (NSView *)imageDecoderView
 {
-	ENTRY( @"imageDecoderView" );
+	ENTRY;
 	return imageDecoderView;
 }
 @end

@@ -14,7 +14,7 @@ static int packetCount;
 
 + (void)initialize
 {
-	ENTRY( @"initialize" );
+	ENTRY;
 	packetCount = 0;
 }
 
