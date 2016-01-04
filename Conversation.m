@@ -16,63 +16,57 @@ static BOOL capturesData;
 {
 
 	// update flags
-	[self setKeys:[NSArray arrayWithObject:@"flags"]
+	[self setKeys:@[@"flags"]
 		triggerChangeNotificationsForDependentKey:@"flagsArray"];
-	[self setKeys:[NSArray arrayWithObject:@"flags"]
+	[self setKeys:@[@"flags"]
 		triggerChangeNotificationsForDependentKey:@"flagsAsAttributedString"];
-	[self setKeys:[NSArray arrayWithObject:@"sflags"]
+	[self setKeys:@[@"sflags"]
 		triggerChangeNotificationsForDependentKey:@"sourceFlagsAsAttributedString"];
-	[self setKeys:[NSArray arrayWithObject:@"dflags"]
+	[self setKeys:@[@"dflags"]
 		triggerChangeNotificationsForDependentKey:@"destinationFlagsAsAttributedString"];
 	
 	// update sequence numbers
-	[self setKeys:[NSArray arrayWithObject:@"seq"]
+	[self setKeys:@[@"seq"]
 		triggerChangeNotificationsForDependentKey:@"sequenceArray"];
 	// update acknowledgements
-	[self setKeys:[NSArray arrayWithObject:@"ack"]
+	[self setKeys:@[@"ack"]
 		triggerChangeNotificationsForDependentKey:@"acknowledgementArray"];
 	// update windows
-	[self setKeys:[NSArray arrayWithObject:@"win"]
+	[self setKeys:@[@"win"]
 		triggerChangeNotificationsForDependentKey:@"windowArray"];
 		
 	// update length
-	[self setKeys:[NSArray arrayWithObject:@"bytes"]
+	[self setKeys:@[@"bytes"]
 		triggerChangeNotificationsForDependentKey:@"lengthArray"];
 	
 	// update timestamp
-	[self setKeys:[NSArray arrayWithObject:@"timestamp"]
+	[self setKeys:@[@"timestamp"]
 		triggerChangeNotificationsForDependentKey:@"timestampArray"];
 	
 	//update payload
-	[self setKeys:[NSArray arrayWithObjects:@"payloadArray", @"representation", @"displayCount", @"bytes", nil]
+	[self setKeys:@[@"payloadArray", @"representation", @"displayCount", @"bytes"]
 		triggerChangeNotificationsForDependentKey:@"payloadAsAttributedString"];
-	[self setKeys:[NSArray arrayWithObjects:@"representation", @"sbytes", nil]
+	[self setKeys:@[@"representation", @"sbytes"]
 		triggerChangeNotificationsForDependentKey:@"clientPayloadAsAttributedString"];
-	[self setKeys:[NSArray arrayWithObjects:@"representation", @"dbytes", nil]
+	[self setKeys:@[@"representation", @"dbytes"]
 		triggerChangeNotificationsForDependentKey:@"serverPayloadAsAttributedString"];
 
 	// not sure if @"representation" needs to be here...
-	[self setKeys:[NSArray arrayWithObjects:@"representation", @"displayCount", @"clientPayloadAsAttributedString", nil]
+	[self setKeys:@[@"representation", @"displayCount", @"clientPayloadAsAttributedString"]
 		triggerChangeNotificationsForDependentKey:@"clientPayloadAsRTFData"];
-	[self setKeys:[NSArray arrayWithObjects:@"representation", @"serverPayloadAsAttributedString", nil]
+	[self setKeys:@[@"representation", @"serverPayloadAsAttributedString"]
 		triggerChangeNotificationsForDependentKey:@"serverPayloadAsRTFData"];
-	[self setKeys:[NSArray arrayWithObjects:@"representation", @"payloadAsAttributedString", nil]
+	[self setKeys:@[@"representation", @"payloadAsAttributedString"]
 		triggerChangeNotificationsForDependentKey:@"payloadAsRTFData"];
 	
-	[self setKeys:[NSArray arrayWithObjects:
-			@"flagsArray", @"sequenceArray", @"acknowledgementArray",
-			@"windowArray", @"lengthArray", @"timestampArray", nil
-		]
+	[self setKeys:@[@"flagsArray", @"sequenceArray", @"acknowledgementArray",
+			@"windowArray", @"lengthArray", @"timestampArray"]
 		triggerChangeNotificationsForDependentKey:@"history"];
-	[self setKeys:[NSArray arrayWithObjects:
-			@"flagsArray", @"sequenceArray", @"acknowledgementArray",
-			@"windowArray", @"lengthArray", @"timestampArray", nil
-		]
+	[self setKeys:@[@"flagsArray", @"sequenceArray", @"acknowledgementArray",
+			@"windowArray", @"lengthArray", @"timestampArray"]
 		triggerChangeNotificationsForDependentKey:@"historyDataSet"];
-	[self setKeys:[NSArray arrayWithObjects:
-			@"flagsArray", @"sequenceArray", @"acknowledgementArray",
-			@"windowArray", @"lengthArray", @"timestampArray", nil
-		]
+	[self setKeys:@[@"flagsArray", @"sequenceArray", @"acknowledgementArray",
+			@"windowArray", @"lengthArray", @"timestampArray"]
 		triggerChangeNotificationsForDependentKey:@"myself"];
 		
 	[ColorizationRules sharedRulesWithDictionary:[[NSDictionary alloc] initWithObjectsAndKeys:
@@ -145,25 +139,25 @@ static BOOL capturesData;
 	return self;
 }
 
-- (id)initWithOrderNumber:(int)number packet:(NSDictionary *)origPacket
+- (instancetype)initWithOrderNumber:(int)number packet:(NSDictionary *)origPacket
 {
 	return [self
 		initWithOrderingNumber:number
-		source:			[origPacket objectForKey:@"source"]
-		port:			[[origPacket objectForKey:@"sport"] intValue]
-		destination:	[origPacket objectForKey:@"destination"]
-		port:			[[origPacket objectForKey:@"dport"] intValue]
-		flags:			[origPacket objectForKey:@"flags"]
-		sequence:		[[origPacket objectForKey:@"sequence"] unsignedLongLongValue]
-		acknowledgment:	[[origPacket objectForKey:@"acknowledgement"] unsignedLongLongValue]
-		window:			[[origPacket objectForKey:@"window"] intValue]
-		length:			[[origPacket objectForKey:@"length"] intValue]
-		timestamp:		[[origPacket objectForKey:@"timestamp"] doubleValue]
-		payload:		[origPacket objectForKey:@"payload"]
+		source:			origPacket[@"source"]
+		port:			[origPacket[@"sport"] intValue]
+		destination:	origPacket[@"destination"]
+		port:			[origPacket[@"dport"] intValue]
+		flags:			origPacket[@"flags"]
+		sequence:		[origPacket[@"sequence"] unsignedLongLongValue]
+		acknowledgment:	[origPacket[@"acknowledgement"] unsignedLongLongValue]
+		window:			[origPacket[@"window"] intValue]
+		length:			[origPacket[@"length"] intValue]
+		timestamp:		[origPacket[@"timestamp"] doubleValue]
+		payload:		origPacket[@"payload"]
 	];
 }
 
-- (id)initWithOrderingNumber:(int)number source:(NSString *)origSource		port:(int)sourcePort
+- (instancetype)initWithOrderingNumber:(int)number source:(NSString *)origSource		port:(int)sourcePort
 									destination:(NSString *)origDestination port:(int)destinationPort
 									flags:(NSString *)origFlags
 									sequence:(unsigned long long)origSequence
@@ -237,14 +231,14 @@ static BOOL capturesData;
 
 - (void)addPacket:(NSDictionary *)newPacket
 {
-	[self addPacketWithSource:	[newPacket objectForKey:@"source"]
-		flags:					[newPacket objectForKey:@"flags"]
-		sequence:				[[newPacket objectForKey:@"sequence"] unsignedLongLongValue]
-		acknowledgement:		[[newPacket objectForKey:@"acknowledgement"] unsignedLongLongValue]
-		window:					[[newPacket objectForKey:@"window"] intValue]
-		length:					[[newPacket objectForKey:@"length"] intValue]
-		timestamp:				[[newPacket objectForKey:@"timestamp"] doubleValue]
-		payload:				[newPacket objectForKey:@"payload"]
+	[self addPacketWithSource:	newPacket[@"source"]
+		flags:					newPacket[@"flags"]
+		sequence:				[newPacket[@"sequence"] unsignedLongLongValue]
+		acknowledgement:		[newPacket[@"acknowledgement"] unsignedLongLongValue]
+		window:					[newPacket[@"window"] intValue]
+		length:					[newPacket[@"length"] intValue]
+		timestamp:				[newPacket[@"timestamp"] doubleValue]
+		payload:				newPacket[@"payload"]
 	];
 }
 
@@ -299,7 +293,7 @@ static BOOL capturesData;
 
 - (void)addSequence:(NSNumber *)newSequence
 {
-	sequence = [newSequence unsignedLongLongValue];
+	sequence = newSequence.unsignedLongLongValue;
 	[sequenceArray addObject:newSequence];
 }
 
@@ -311,7 +305,7 @@ static BOOL capturesData;
 
 - (void)addAcknowledgement:(NSNumber *)newAcknowledgement
 {
-	acknowledgement = [newAcknowledgement unsignedLongLongValue];
+	acknowledgement = newAcknowledgement.unsignedLongLongValue;
 	[acknowledgementArray addObject:newAcknowledgement];
 }
 
@@ -323,14 +317,14 @@ static BOOL capturesData;
 
 - (void)addWindow:(NSNumber *)newWindow
 {
-	window = [newWindow intValue];
+	window = newWindow.intValue;
 	[windowArray addObject:newWindow];
 }
 
 - (void)addWindowAsInt:(int)newWindow
 {
 	window = newWindow;
-	[windowArray addObject:[NSNumber numberWithInt:window]];
+	[windowArray addObject:@(window)];
 }
 
 - (void)addLength:(NSNumber *)newLength
@@ -340,7 +334,7 @@ static BOOL capturesData;
 
 - (void)addLengthAsInt:(int)newLength
 {
-	[lengthArray addObject:[NSNumber numberWithInt:newLength] ];
+	[lengthArray addObject:@(newLength) ];
 }
 
 - (void)addTimestampAsDouble:(double)newTimestamp
@@ -359,11 +353,8 @@ static BOOL capturesData;
 		return;
 	}
 	//NSLog(@"addPayload:%@ withSource:%@",[newPayload description],theSource);
-	[payloadArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-			newPayload,		@"payload",
-			theSource,		@"source",
-			nil
-		]
+	[payloadArray addObject:@{@"payload": newPayload,
+			@"source": theSource}
 	];
 }
 
@@ -374,12 +365,12 @@ static BOOL capturesData;
 
 - (double)timelength
 {
-	return (timestamp - [[timestampArray objectAtIndex:0] timeIntervalSince1970]);
+	return (timestamp - [timestampArray[0] timeIntervalSince1970]);
 }
 
 - (double)starttime
 {
-	return [[timestampArray objectAtIndex:0] timeIntervalSince1970];
+	return [timestampArray[0] timeIntervalSince1970];
 }
 
 - (NSString *)source
@@ -434,57 +425,47 @@ static BOOL capturesData;
 	id currentSource = nil;
 	
 	int i;
-	int packetCount = [payloadArray count];
+	int packetCount = payloadArray.count;
 	for (i=0; i<packetCount; i++) {
 	//while (tempDict = [en nextObject]) {
-		tempDict = [payloadArray objectAtIndex:i];
-		testData = [tempDict objectForKey:@"payload"];
-		if ([testData length]) {
-			if ([[tempDict objectForKey:@"source"] isEqual:currentSource]) {
+		tempDict = payloadArray[i];
+		testData = tempDict[@"payload"];
+		if (testData.length) {
+			if ([tempDict[@"source"] isEqual:currentSource]) {
 				[tempData appendData:testData];
 				payloadCount++;
-				payloadBytes += [tempData length];
+				payloadBytes += tempData.length;
 			} else {
 				if (tempData ) {
-					[returnArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-							currentSource,  @"source",
-							tempData,		@"payload",
-							[NSNumber numberWithInt:payloadCount], @"packetCount",
-							[NSNumber numberWithInt:payloadBytes], @"bytes",
-							[NSNumber numberWithInt:payloadOrder], @"order",
-							[NSNumber numberWithDouble:
-								[[timestampArray objectAtIndex:i]
-									timeIntervalSinceDate:[timestampArray objectAtIndex:startingIndex]
-								]
-							], @"timeDelta",
-							nil
-						]
+					[returnArray addObject:@{@"source": currentSource,
+							@"payload": tempData,
+							@"packetCount": [NSNumber numberWithInt:payloadCount],
+							@"bytes": [NSNumber numberWithInt:payloadBytes],
+							@"order": [NSNumber numberWithInt:payloadOrder],
+							@"timeDelta": @([timestampArray[i]
+									timeIntervalSinceDate:timestampArray[startingIndex]
+								])}
 					];
 				}
 				payloadOrder++;
-				currentSource = [tempDict objectForKey:@"source"];
+				currentSource = tempDict[@"source"];
 				tempData = [NSMutableData dataWithData:testData ];
 				payloadCount = 1;
-				payloadBytes = [tempData length];
+				payloadBytes = tempData.length;
 				startingIndex = i;
 			}
 		}
 	}
 	//do it one more time (for the last bit to be caught)
 	if (tempData ) {
-		[returnArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-				currentSource,  @"source",
-				tempData,		@"payload",
-				[NSNumber numberWithInt:payloadCount], @"packetCount",
-				[NSNumber numberWithInt:payloadBytes], @"bytes",
-				[NSNumber numberWithInt:payloadOrder], @"order",
-				[NSNumber numberWithDouble:
-					[[timestampArray objectAtIndex:i-1]
-						timeIntervalSinceDate:[timestampArray objectAtIndex:startingIndex]
-					]
-				], @"timeDelta",
-				nil
-			]
+		[returnArray addObject:@{@"source": currentSource,
+				@"payload": tempData,
+				@"packetCount": [NSNumber numberWithInt:payloadCount],
+				@"bytes": [NSNumber numberWithInt:payloadBytes],
+				@"order": [NSNumber numberWithInt:payloadOrder],
+				@"timeDelta": @([timestampArray[i-1]
+						timeIntervalSinceDate:timestampArray[startingIndex]
+					])}
 		];
 	}
 
@@ -498,7 +479,7 @@ static BOOL capturesData;
 	NSMutableData *returnData = [NSMutableData data];
 
 	while (tempDict = [en nextObject]) {
-		[returnData appendData:[tempDict objectForKey:@"payload"] ];
+		[returnData appendData:tempDict[@"payload"] ];
 	}
 	return returnData;
 }
@@ -510,8 +491,8 @@ static BOOL capturesData;
 	NSMutableData *returnData = [NSMutableData data];
 
 	while (tempDict = [en nextObject]) {
-		if ([[tempDict objectForKey:@"source"] isEqual:source])
-			[returnData appendData:[tempDict objectForKey:@"payload"] ];
+		if ([tempDict[@"source"] isEqual:source])
+			[returnData appendData:tempDict[@"payload"] ];
 	}
 	return returnData;
 }
@@ -523,8 +504,8 @@ static BOOL capturesData;
 	NSMutableData *returnData = [NSMutableData data];
 
 	while (tempDict = [en nextObject]) {
-		if ([[tempDict objectForKey:@"source"] isEqual:destination])
-			[returnData appendData:[tempDict objectForKey:@"payload"] ];
+		if ([tempDict[@"source"] isEqual:destination])
+			[returnData appendData:tempDict[@"payload"] ];
 	}
 	return returnData;
 }
@@ -563,19 +544,19 @@ static BOOL capturesData;
 
 	
 	while (tempDict = [en nextObject]) {
-		if ([[tempDict objectForKey:@"source"] isEqual:source]) {
+		if ([tempDict[@"source"] isEqual:source]) {
 			textColor = [NSColor redColor];
-		} else if ([[tempDict objectForKey:@"source"] isEqual:destination]) {
+		} else if ([tempDict[@"source"] isEqual:destination]) {
 			textColor = [NSColor blueColor];
 		} else {
 			textColor = [NSColor grayColor];
 		}
-		if (sourceHost==nil || [[tempDict objectForKey:@"source"] isEqual:sourceHost]) {
-			tempData = [tempDict objectForKey:@"payload"];
-			bufferLen = [tempData length];
+		if (sourceHost==nil || [tempDict[@"source"] isEqual:sourceHost]) {
+			tempData = tempDict[@"payload"];
+			bufferLen = tempData.length;
 			buffer = malloc( bufferLen );	//need to make sure this was successful...
 
-			[[tempDict objectForKey:@"payload"] getBytes:buffer];
+			[tempDict[@"payload"] getBytes:buffer];
 
 			if (representation>2 || representation<0) {	//this line needs to change is more types are added
 				NSLog( @"No valid representation specified: using CONVERSATION_ASCII" );
@@ -700,11 +681,8 @@ static BOOL capturesData;
 						initWithData:tempData
 						encoding:NSASCIIStringEncoding
 					]
-					attributes:[NSDictionary dictionaryWithObjectsAndKeys:
-						textColor, NSForegroundColorAttributeName,
-						[NSFont fontWithName:@"Courier" size:12.0], NSFontAttributeName,
-						nil
-					]
+					attributes:@{NSForegroundColorAttributeName: textColor,
+						NSFontAttributeName: [NSFont fontWithName:@"Courier" size:12.0]}
 				]
 			];
 			free( buffer );
@@ -740,19 +718,19 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 - (NSData *)clientPayloadAsRTFData
 {
 	NSAttributedString *tempString = [self clientPayloadAsAttributedString];
-	return [tempString RTFFromRange:NSMakeRange(0,[tempString length]) documentAttributes:[NSDictionary dictionary] ];
+	return [tempString RTFFromRange:NSMakeRange(0,tempString.length) documentAttributes:@{} ];
 }
 
 - (NSData *)serverPayloadAsRTFData
 {
 	NSAttributedString *tempString = [self serverPayloadAsAttributedString];
-	return [tempString RTFFromRange:NSMakeRange(0,[tempString length]) documentAttributes:[NSDictionary dictionary] ];
+	return [tempString RTFFromRange:NSMakeRange(0,tempString.length) documentAttributes:@{} ];
 }
 
 - (NSData *)payloadAsRTFData
 {
 	NSAttributedString *tempString = [self payloadAsAttributedString];
-	return [tempString RTFFromRange:NSMakeRange(0,[tempString length]) documentAttributes:[NSDictionary dictionary] ];
+	return [tempString RTFFromRange:NSMakeRange(0,tempString.length) documentAttributes:@{} ];
 }
 
 // this is experimental (and not used yet)
@@ -787,13 +765,10 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	NSMutableArray *returnArray = [NSMutableArray array];
 	
 	while (tempDict = [en nextObject]) {
-		tempData = [self findImageDataInData:[tempDict objectForKey:@"payload"]];
+		tempData = [self findImageDataInData:tempDict[@"payload"]];
 		if (tempData)
-			[returnArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-					tempData,							@"imageData",
-					[tempDict objectForKey:@"source"],  @"source",
-					nil
-				]
+			[returnArray addObject:@{@"imageData": tempData,
+					@"source": tempDict[@"source"]}
 			];
 	}
 	return [returnArray copy];
@@ -813,7 +788,7 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	BOOL jpeg = NO;
 	BOOL png = NO;
 	
-	len = [searchData length];
+	len = searchData.length;
 	aBuffer = malloc( len );
 	[searchData getBytes:aBuffer];
 	start = -1;
@@ -925,12 +900,10 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 {
 	NSMutableArray *tempArray = [NSMutableArray array];
 	int i;
-	int myCount = [timestampArray count];
+	int myCount = timestampArray.count;
 	for (i=0; i<myCount; i++) {
-		[tempArray addObject:[NSNumber
-			numberWithDouble:[[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-				[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970]
-			]
+		[tempArray addObject:@([timestampArray[i] timeIntervalSince1970] - 
+				[timestampArray[(i?i-1:0)] timeIntervalSince1970])
 		];
 	}
 	return [tempArray copy];
@@ -940,13 +913,11 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 {
 	NSMutableArray *tempArray = [NSMutableArray array];
 	int i;
-	int myCount = [timestampArray count];
+	int myCount = timestampArray.count;
 	for (i=0; i<myCount; i++) {
-		if ( [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqual:destination] ) {
-			[tempArray addObject:[NSNumber
-				numberWithDouble:[[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-					[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970]
-				]
+		if ( [payloadArray[i][@"source"] isEqual:destination] ) {
+			[tempArray addObject:@([timestampArray[i] timeIntervalSince1970] - 
+					[timestampArray[(i?i-1:0)] timeIntervalSince1970])
 			];
 		}
 	}
@@ -957,13 +928,11 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 {
 	NSMutableArray *tempArray = [NSMutableArray array];
 	int i;
-	int myCount = [timestampArray count];
+	int myCount = timestampArray.count;
 	for (i=0; i<myCount; i++) {
-		if ( [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqual:source] ) {
-			[tempArray addObject:[NSNumber
-				numberWithDouble:[[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-					[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970]
-				]
+		if ( [payloadArray[i][@"source"] isEqual:source] ) {
+			[tempArray addObject:@([timestampArray[i] timeIntervalSince1970] - 
+					[timestampArray[(i?i-1:0)] timeIntervalSince1970])
 			];
 		}
 	}
@@ -975,10 +944,10 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	int i;
 	double maxTime = -1;
 	double tempTime;
-	int myCount = [timestampArray count];
+	int myCount = timestampArray.count;
 	for (i=0; i<myCount; i++) {
-		tempTime = [[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-			[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970];
+		tempTime = [timestampArray[i] timeIntervalSince1970] - 
+			[timestampArray[(i?i-1:0)] timeIntervalSince1970];
 		if (tempTime > maxTime)
 			maxTime = tempTime;
 	}
@@ -990,11 +959,11 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	double maxTime = -1;
 	double tempTime;
 	int i;
-	int myCount = [payloadArray count];
+	int myCount = payloadArray.count;
 	for ( i=0; i<myCount; i++ ) {
-		if ( [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqual:destination] ) {
-			tempTime = [[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-				[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970];
+		if ( [payloadArray[i][@"source"] isEqual:destination] ) {
+			tempTime = [timestampArray[i] timeIntervalSince1970] - 
+				[timestampArray[(i?i-1:0)] timeIntervalSince1970];
 			if (tempTime > maxTime)
 				maxTime = tempTime;
 		}
@@ -1007,11 +976,11 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	double maxTime = -1;
 	double tempTime;
 	int i;
-	int myCount = [payloadArray count];
+	int myCount = payloadArray.count;
 	for ( i=0; i<myCount; i++ ) {
-		if ( [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqual:source] ) {
-			tempTime = [[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-				[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970];
+		if ( [payloadArray[i][@"source"] isEqual:source] ) {
+			tempTime = [timestampArray[i] timeIntervalSince1970] - 
+				[timestampArray[(i?i-1:0)] timeIntervalSince1970];
 			if (tempTime > maxTime)
 				maxTime = tempTime;
 		}
@@ -1022,16 +991,16 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 - (double)connectWaitTime
 {
 	//bail if the first packet is not a SYN packet
-	if ( ! [[flagsArray objectAtIndex:0] isEqualToString:@" -S------>"] ) {
+	if ( ! [flagsArray[0] isEqualToString:@" -S------>"] ) {
 		return 0;
 	}
 	//check the next few packets to see if any is a SYN/ACK
 	int i;
-	int myCount = [flagsArray count];
+	int myCount = flagsArray.count;
 	for (i=1; i<6 && i<myCount; i++) {
-		if ( [[flagsArray objectAtIndex:i] isEqualToString:@"<-S--A--- "] ) {
-			return [[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-				[[timestampArray objectAtIndex:0] timeIntervalSince1970];
+		if ( [flagsArray[i] isEqualToString:@"<-S--A--- "] ) {
+			return [timestampArray[i] timeIntervalSince1970] - 
+				[timestampArray[0] timeIntervalSince1970];
 		}
 	}
 	return 0;
@@ -1039,8 +1008,8 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 
 - (double)bytesPerSecond
 {
-	return bytes / ( [[timestampArray objectAtIndex:[timestampArray count]-1] timeIntervalSince1970] - 
-				[[timestampArray objectAtIndex:0] timeIntervalSince1970] );
+	return bytes / ( [timestampArray[timestampArray.count-1] timeIntervalSince1970] - 
+				[timestampArray[0] timeIntervalSince1970] );
 }
 
 #pragma mark meta-information
@@ -1078,25 +1047,21 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 
 - (NSDictionary *)dictionaryForHistoryIndex:(int)index
 {
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		[NSNumber numberWithInt:index],				@"number",
-		[flagsArray objectAtIndex:index],			@"flags",
-		[sequenceArray objectAtIndex:index],		@"sequence",
-		[acknowledgementArray objectAtIndex:index],	@"acknowledgement",
-		[windowArray objectAtIndex:index],			@"window",
-		[lengthArray objectAtIndex:index],			@"bytes",
-		[NSNumber numberWithInt:
-			[(NSData *)[[payloadArray objectAtIndex:index] objectForKey:@"payload"] length]
-		], @"length",
-		[timestampArray objectAtIndex:index],		@"timestamp",
-		[NSNumber numberWithDouble:(
-					[[timestampArray objectAtIndex:index] timeIntervalSince1970] - 
-					[[timestampArray objectAtIndex:(index?index-1:0)] timeIntervalSince1970]
-				)
-		], @"delta",
-		[colorizationRules colorize:[flagsArray objectAtIndex:index] ], @"colorFlags",
-		nil
-	];
+	return @{@"number": @(index),
+		@"flags": flagsArray[index],
+		@"sequence": sequenceArray[index],
+		@"acknowledgement": acknowledgementArray[index],
+		@"window": windowArray[index],
+		@"bytes": lengthArray[index],
+		@"length": [NSNumber numberWithInt:
+			((NSData *)payloadArray[index][@"payload"]).length
+		],
+		@"timestamp": timestampArray[index],
+		@"delta": @(
+					[timestampArray[index] timeIntervalSince1970] - 
+					[timestampArray[(index?index-1:0)] timeIntervalSince1970]
+				),
+		@"colorFlags": [colorizationRules colorize:flagsArray[index] ]};
 }
 
 - (DataSet *)historyDataSet
@@ -1111,7 +1076,7 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	
 	for (i=0; i<count; i++) {
 		// I might be able to set up a seperate array for the hosts... but I don't have to
-		if ( host==nil || [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqualToString:host] )
+		if ( host==nil || [payloadArray[i][@"source"] isEqualToString:host] )
 			[tempArray addObject:[self dictionaryForHistoryDataSetIndex:i] ];
 	}
 	DataSet *tempDataSet = [[[DataSet alloc] init] autorelease];
@@ -1168,96 +1133,90 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 		loopCount = count;
 		
 	for (i=0; i<loopCount; i++) {
-		if ( host==nil || [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqualToString:host] ) {
+		if ( host==nil || [payloadArray[i][@"source"] isEqualToString:host] ) {
 			tempDict = [NSMutableDictionary dictionary];
 			if (useID)
-				[tempDict setObject:[NSNumber numberWithInt:i] forKey:@"id"];
+				tempDict[@"id"] = @(i);
 			if (useNum)
-				[tempDict setObject:[NSNumber numberWithInt:j++] forKey:@"number"];
+				tempDict[@"number"] = @(j++);
 			if (useWin)
-				[tempDict setObject:[windowArray objectAtIndex:i] forKey:@"window"];
+				tempDict[@"window"] = windowArray[i];
 			if (useBytes)
-				[tempDict setObject:[lengthArray objectAtIndex:i] forKey:@"bytes"];
+				tempDict[@"bytes"] = lengthArray[i];
 			if (useLen)
-				[tempDict setObject:[NSNumber numberWithInt:
-					[(NSData *)[[payloadArray objectAtIndex:i]
-						objectForKey:@"payload"] length]
-				] forKey:@"length"];
+				tempDict[@"length"] = [NSNumber numberWithInt:
+					((NSData *)payloadArray[i][@"payload"]).length
+				];
 			if (useTime)
-				[tempDict setObject:[NSNumber numberWithDouble:(
-					[[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-					[[timestampArray objectAtIndex:0] timeIntervalSince1970]
-				)] forKey:@"starttime" ];
+				tempDict[@"starttime"] = @(
+					[timestampArray[i] timeIntervalSince1970] - 
+					[timestampArray[0] timeIntervalSince1970]
+				);
 			if (useDelta)
-				[tempDict setObject:[NSNumber numberWithDouble:(
-					[[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-					[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970]
-				)] forKey:@"delta" ];
+				tempDict[@"delta"] = @(
+					[timestampArray[i] timeIntervalSince1970] - 
+					[timestampArray[(i?i-1:0)] timeIntervalSince1970]
+				);
 			if (useTimestamp)
-				[tempDict setObject:[NSNumber numberWithDouble:
-					[[timestampArray objectAtIndex:i] timeIntervalSince1970]
-				] forKey:@"timestamp" ];
+				tempDict[@"timestamp"] = @([timestampArray[i] timeIntervalSince1970]);
 			if (useSource) {
-				if ( [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqualToString:[self source] ] )
-					[tempDict setObject:[NSNumber numberWithInt:1] forKey:@"source"];
-				else if ( [[[payloadArray objectAtIndex:i] objectForKey:@"source"] isEqualToString:[self destination] ] )
-					[tempDict setObject:[NSNumber numberWithInt:-1] forKey:@"source"];				
+				if ( [payloadArray[i][@"source"] isEqualToString:[self source] ] )
+					tempDict[@"source"] = @1;
+				else if ( [payloadArray[i][@"source"] isEqualToString:[self destination] ] )
+					tempDict[@"source"] = @-1;				
 				else
-					[tempDict setObject:[NSNumber numberWithInt:0] forKey:@"source"];
+					tempDict[@"source"] = @0;
 			}
 			if (useWaitTimes)
-				[tempDict setObject:[NSNumber
-					numberWithDouble:[[timestampArray objectAtIndex:i] timeIntervalSince1970] - 
-						[[timestampArray objectAtIndex:(i?i-1:0)] timeIntervalSince1970]
-					] forKey:@"waittime"
-				];
+				tempDict[@"waittime"] = @([timestampArray[i] timeIntervalSince1970] - 
+						[timestampArray[(i?i-1:0)] timeIntervalSince1970]);
 
 			if (useFlagNums) {
-				NSString *tempString = [flagsArray objectAtIndex:i];
+				NSString *tempString = flagsArray[i];
 				if ( [tempString isEqualToString:@"<-S------ "] || [tempString isEqualToString:@" -S------>"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:0] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @0;
 				} else if ( [tempString isEqualToString:@"<-S--A--- "] || [tempString isEqualToString:@" -S--A--->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:1] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @1;
 				} else if ( [tempString isEqualToString:@"<----A--- "] || [tempString isEqualToString:@" ----A--->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:2] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @2;
 				} else if ( [tempString isEqualToString:@"<---PA--- "] || [tempString isEqualToString:@" ---PA--->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:3] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @3;
 				} else if ( [tempString isEqualToString:@"<F---A--- "] || [tempString isEqualToString:@" F---A--->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:4] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @4;
 				} else if ( [tempString isEqualToString:@"<F------- "] || [tempString isEqualToString:@" F------->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:5] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @5;
 				} else if ( [tempString isEqualToString:@"<--R-A--- "] || [tempString isEqualToString:@" --R-A--->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:6] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @6;
 				} else if ( [tempString isEqualToString:@"<--R----- "] || [tempString isEqualToString:@" --R----->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:7] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @7;
 				} else if ( [tempString isEqualToString:@"<-------- "] || [tempString isEqualToString:@" -------->"] ) {
-					[tempDict setObject:[NSNumber numberWithInt:8] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @8;
 				} else {	//will get here with uncommon flag combinations
-					[tempDict setObject:[NSNumber numberWithInt:-1] forKey:@"flagNums"];
+					tempDict[@"flagNums"] = @-1;
 				}
 			}
 			int gvCounter;
 			for (gvCounter=0; gvCounter<globalValues; gvCounter++) {
 				if (useCount)
-					[tempDict setObject:[self valueForKey:@"count"]				forKey:@"count"];
+					tempDict[@"count"] = [self valueForKey:@"count"];
 				if (useTimeLen)
-					[tempDict setObject:[self valueForKey:@"timelength"]		forKey:@"timelength"];
+					tempDict[@"timelength"] = [self valueForKey:@"timelength"];
 				if (useConvID)
-					[tempDict setObject:[self valueForKey:@"ordering_number"]	forKey:@"ordering_number"];
+					tempDict[@"ordering_number"] = [self valueForKey:@"ordering_number"];
 				if (useMaxWait)
-					[tempDict setObject:[self valueForKey:@"maxWaitTime"]		forKey:@"maxWaitTime"];
+					tempDict[@"maxWaitTime"] = [self valueForKey:@"maxWaitTime"];
 				if (useConTime)
-					[tempDict setObject:[self valueForKey:@"connectWaitTime"]	forKey:@"connectWaitTime"];
+					tempDict[@"connectWaitTime"] = [self valueForKey:@"connectWaitTime"];
 				if (useServerMax)
-					[tempDict setObject:[self valueForKey:@"serverMaxWaitTime"]	forKey:@"serverMaxWaitTime"];
+					tempDict[@"serverMaxWaitTime"] = [self valueForKey:@"serverMaxWaitTime"];
 				if (useClientMax)
-					[tempDict setObject:[self valueForKey:@"clientMaxWaitTime"]	forKey:@"clientMaxWaitTime"];
+					tempDict[@"clientMaxWaitTime"] = [self valueForKey:@"clientMaxWaitTime"];
 				if (useDestPort)
-					[tempDict setObject:[self valueForKey:@"destinationPort"]	forKey:@"destinationPort"];
+					tempDict[@"destinationPort"] = [self valueForKey:@"destinationPort"];
 				if (useSrcPort)
-					[tempDict setObject:[self valueForKey:@"sourcePort"]		forKey:@"sourcePort"];
+					tempDict[@"sourcePort"] = [self valueForKey:@"sourcePort"];
 				if (useBPS)
-					[tempDict setObject:[self valueForKey:@"bytesPerSecond"]	forKey:@"bytesPerSecond"];
+					tempDict[@"bytesPerSecond"] = [self valueForKey:@"bytesPerSecond"];
 				//if (useWaitTimes)
 				//	[tempDict setObject:[self valueForKey:@"waitTimes"]			forKey:@"waitTimes"];
 				//if (useServerWait)
@@ -1275,32 +1234,27 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	[tempDataSet setData:tempArray];
 
 	[tempDataSet setIndependentIdentifier:indKey];
-	[tempDataSet setCurrentIdentifier:[keys objectAtIndex:0] ];
+	[tempDataSet setCurrentIdentifier:keys[0] ];
 
 	return tempDataSet;
 }
 
 - (NSDictionary *)dictionaryForHistoryDataSetIndex:(int)index
 {
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		[NSNumber numberWithInt:index],				@"id",
-		[NSNumber numberWithInt:index],				@"number",
-		[sequenceArray objectAtIndex:index],		@"sequence",
-		[acknowledgementArray objectAtIndex:index],	@"acknowledgement",
-		[windowArray objectAtIndex:index],			@"window",
-		[lengthArray objectAtIndex:index],			@"size",
-		[NSNumber numberWithInt:
-			[(NSData *)[[payloadArray objectAtIndex:index] objectForKey:@"payload"] length]
-		], @"length",
-		[NSNumber numberWithDouble:(
-			[[timestampArray objectAtIndex:index] timeIntervalSince1970] - 
-			[[timestampArray objectAtIndex:0] timeIntervalSince1970]
-		)], @"starttime",
-		[NSNumber numberWithDouble:
-			[[timestampArray objectAtIndex:index] timeIntervalSince1970]
-		], @"timestamp",
-		nil
-	];
+	return @{@"id": @(index),
+		@"number": @(index),
+		@"sequence": sequenceArray[index],
+		@"acknowledgement": acknowledgementArray[index],
+		@"window": windowArray[index],
+		@"size": lengthArray[index],
+		@"length": [NSNumber numberWithInt:
+			((NSData *)payloadArray[index][@"payload"]).length
+		],
+		@"starttime": @(
+			[timestampArray[index] timeIntervalSince1970] - 
+			[timestampArray[0] timeIntervalSince1970]
+		),
+		@"timestamp": @([timestampArray[index] timeIntervalSince1970])};
 }
 
 @end

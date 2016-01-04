@@ -25,7 +25,7 @@ static unsigned int queueID;
 }
 */
 
-- (id)init
+- (instancetype)init
 {
 	self = [super init];
 	
@@ -44,7 +44,7 @@ static unsigned int queueID;
 		removeIdle = NO;
 		maxHide = 10;
 		hideIdle = NO;
-		interface = [[[Capture interfaces] objectAtIndex:0] retain];
+		interface = [[Capture interfaces][0] retain];
 		promiscuous = YES;
 		requireSyn = NO;
 		capturesData = YES;
@@ -64,11 +64,8 @@ static unsigned int queueID;
 		[NSThread
 			detachNewThreadSelector:@selector(queueThreadWithSettings:)
 			toTarget:[CaptureQueue class]
-			withObject:[NSDictionary dictionaryWithObjectsAndKeys:
-				self,					@"CaptureController",
-				captureQueueIdentifier,	@"QueueIdentifier",
-				nil
-			]
+			withObject:@{@"CaptureController": self,
+				@"QueueIdentifier": captureQueueIdentifier}
 		];
 		
 		captureToolIdentifier = [[NSString stringWithFormat:@"captureTool-%d", queueID++] retain];
@@ -104,8 +101,8 @@ static unsigned int queueID;
 
 - (void)setPacketQueueAndLock:(NSDictionary *)aDictionary
 {
-	packetAdditions = [[aDictionary objectForKey:@"additions"] retain];
-	packetLock = [[aDictionary objectForKey:@"lock"] retain];
+	packetAdditions = [aDictionary[@"additions"] retain];
+	packetLock = [aDictionary[@"lock"] retain];
 }
 
 - (void)setReadFilename:(NSString *)newFilename
@@ -117,12 +114,12 @@ static unsigned int queueID;
 
 - (void)setFollowsInserts:(BOOL)followInserts
 {
-	[conversationController setSelectsInsertedObjects:followInserts];
+	conversationController.selectsInsertedObjects = followInserts;
 }
 
 - (BOOL)followsInserts
 {
-	return [conversationController selectsInsertedObjects];
+	return conversationController.selectsInsertedObjects;
 }
 
 - (void)setHideIdle:(BOOL)newSetting
@@ -194,23 +191,23 @@ static unsigned int queueID;
 {
 	if (resetHidden) {
 		[conversationController removeObjectsAtArrangedObjectIndexes:[NSIndexSet
-			indexSetWithIndexesInRange:NSMakeRange(0,[[conversationController arrangedObjects] count])]
+			indexSetWithIndexesInRange:NSMakeRange(0,[conversationController.arrangedObjects count])]
 		];
 		[conversationController addObjects:conversationArray];
 		resetHidden = NO;
 	}
 	
 	if (removeIdle) {
-		double currentTimestamp = [[NSDate date] timeIntervalSince1970];
+		double currentTimestamp = [NSDate date].timeIntervalSince1970;
 		NSMutableArray *removals = [NSMutableArray array];
-		NSEnumerator *en = [[conversationController arrangedObjects] objectEnumerator];
+		NSEnumerator *en = [conversationController.arrangedObjects objectEnumerator];
 		Conversation *tempConv;
 		while (tempConv = [en nextObject]) {
 			if ([tempConv lastTimestamp] < (currentTimestamp-maxIdle)) {
 				[removals addObject:tempConv];
 			}
 		}
-		if ([removals count]>0) {
+		if (removals.count>0) {
 			[conversationController removeObjects:removals];
 			NSMutableArray *tempArray = [conversationArray mutableCopy];
 			[tempArray removeObjectsInArray: removals];
@@ -219,22 +216,22 @@ static unsigned int queueID;
 		}
 	}
 	if (hideIdle) {
-		double currentTimestamp = [[NSDate date] timeIntervalSince1970];
+		double currentTimestamp = [NSDate date].timeIntervalSince1970;
 		NSMutableArray *hides = [NSMutableArray array];
-		NSEnumerator *en = [[conversationController arrangedObjects] objectEnumerator];
+		NSEnumerator *en = [conversationController.arrangedObjects objectEnumerator];
 		Conversation *tempConv;
 		while (tempConv = [en nextObject]) {
 			if ([tempConv lastTimestamp] < (currentTimestamp-maxHide)) {
 				[hides addObject:tempConv];
 			}
 		}
-		if ([hides count]>0) {
+		if (hides.count>0) {
 			[conversationController removeObjects:hides];
 		}
 	}
 	if (searchString) {
 		[conversationController removeObjects:[self
-				processSearchOnArray:[conversationController arrangedObjects]
+				processSearchOnArray:conversationController.arrangedObjects
 				keepMatches:NO
 			]
 		];
@@ -261,12 +258,12 @@ static unsigned int queueID;
 			}
 		}
 		if ( searchCategory==CCClientPortSearchTag || searchCategory==CCPortSearchTag ) {
-			if ([tempConv sourcePort] == [searchString intValue]) {
+			if ([tempConv sourcePort] == searchString.intValue) {
 				found = YES;
 			}
 		}
 		if ( searchCategory==CCServerPortSearchTag || searchCategory==CCPortSearchTag ) {
-			if ([tempConv destinationPort] == [searchString intValue]) {
+			if ([tempConv destinationPort] == searchString.intValue) {
 				found = YES;
 			}
 		}
@@ -361,8 +358,8 @@ static unsigned int queueID;
 - (IBAction)stopCapture:(id)sender
 {
 	ENTRY(NSLog(@"[CaptureController stopCapture:]"));
-	[captureButton setTitle:@"Start Capture"];
-	[captureButton setAction:@selector(startCapture:)];
+	captureButton.title = @"Start Capture";
+	captureButton.action = @selector(startCapture:);
 
 	if ([captureObject isActive]) {
 		[captureObject stopCapture];

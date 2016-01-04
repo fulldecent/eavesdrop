@@ -24,10 +24,10 @@
 
 - (void)setColorForFilter
 {
-	if ( [self isValidFilter:[filterTextField stringValue]] ) {
-		[filterTextField setBackgroundColor:[NSColor colorWithCalibratedRed:0.75 green:1 blue:0.75 alpha:1]];	
+	if ( [self isValidFilter:filterTextField.stringValue] ) {
+		filterTextField.backgroundColor = [NSColor colorWithCalibratedRed:0.75 green:1 blue:0.75 alpha:1];	
 	} else {
-		[filterTextField setBackgroundColor:[NSColor colorWithCalibratedRed:1 green:0.75 blue:0.75 alpha:1]];
+		filterTextField.backgroundColor = [NSColor colorWithCalibratedRed:1 green:0.75 blue:0.75 alpha:1];
 	}
 }
 

@@ -12,52 +12,52 @@
 
 + (void)initialize
 {
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"numberOfBins"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"binSize"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"histogramForCurrentIdentifier"];
 
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"dataPointsForCurrentIdentifier"];
 		
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"count"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"total"];
 
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"arithmeticMean"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"populationStdDev"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"sampleStdDev"];
 
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"mode"];
 
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"domainMinimum"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"globalMinimum"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"minimum"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"firstQuartile"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"median"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"thirdQuartile"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"maximum"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"globalMaximum"];
-	[self setKeys:[NSArray arrayWithObject:@"data"]
+	[self setKeys:@[@"data"]
 		triggerChangeNotificationsForDependentKey:@"domainMaximum"];
 }
 
-- (id)init
+- (instancetype)init
 {
 	self = [super init];
 	if (self) {
@@ -79,8 +79,8 @@
 	
 	while ( tempDict = [en nextObject] ) {
 		[tempString appendFormat:@"%@\t%@\n",
-			[[tempDict objectForKey:independentIdentifier] description],
-			[[tempDict objectForKey:currentIdentifier] description]
+			[tempDict[independentIdentifier] description],
+			[tempDict[currentIdentifier] description]
 		];
 	}
 	return [tempString copy];
@@ -91,21 +91,21 @@
 - (void)setData:(NSArray *)newData
 {
 	//NSLog( @"[DataSet setData]" );
-	if ([newData count]==0)
+	if (newData.count==0)
 		return;
 		
 	[data release];
 	data = [newData retain];
 	
 	[dataIdentifiers release];
-	dataIdentifiers = [[[data objectAtIndex:0] allKeys] retain];
+	dataIdentifiers = [[data[0] allKeys] retain];
 	[self resetViews];
 		
 	[self setNumberOfBins:numberOfBins];
 	
 	[results release];
 	results = [[NSMutableDictionary alloc] init];
-	[results setObject:[NSMutableDictionary dictionary] forKey:DSGlobalIdentifier];
+	results[DSGlobalIdentifier] = [NSMutableDictionary dictionary];
 	//[self sort];
 }
 
@@ -120,8 +120,8 @@
 	[currentIdentifier release];
 	currentIdentifier = [newIdent retain];
 	
-	if (![results objectForKey:currentIdentifier] && currentIdentifier) {
-		[results setObject:[NSMutableDictionary dictionary] forKey:currentIdentifier];
+	if (!results[currentIdentifier] && currentIdentifier) {
+		results[currentIdentifier] = [NSMutableDictionary dictionary];
 	}
 	//NSLog( @"results:\n%@", [results description] );
 	
@@ -180,13 +180,12 @@
 	NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc]
 		initWithKey:independentIdentifier ascending:YES] autorelease
 	];
-	NSArray *tempData = [data sortedArrayUsingDescriptors:[NSArray
-		arrayWithObject:sortDescriptor]
+	NSArray *tempData = [data sortedArrayUsingDescriptors:@[sortDescriptor]
 	];
 	[data release];
 	data = [tempData retain];
 	
-	return [[[data objectAtIndex:inputIndex] objectForKey:outputKey] doubleValue];
+	return [data[(int)inputIndex][outputKey] doubleValue];
 }
 
 #pragma mark view options
@@ -297,7 +296,7 @@
 		binValues[i] = 0;
 	
 	while (tempDict=[en nextObject]) {
-		check =  [[tempDict objectForKey:currentIdentifier] doubleValue];
+		check =  [tempDict[currentIdentifier] doubleValue];
 		foundPlacement = NO;
 		for (i=0; i<numberOfBins; i++) {
 			if ( check>=(globalMin+i*binSize) && check<(globalMin+(i+1)*binSize) ) {
@@ -312,13 +311,10 @@
 	}
 	NSMutableArray *tempArray = [NSMutableArray array];
 	for (i=0; i<numberOfBins; i++) {
-		[tempArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-				[NSNumber numberWithInt:i],								@"bin",
-				[NSNumber numberWithInt:binValues[i] ],					@"value",
-				[NSNumber numberWithDouble:(globalMin+i*binSize)],		@"min",
-				[NSNumber numberWithDouble:(globalMin+(i+1)*binSize)],	@"max",
-				nil
-			]
+		[tempArray addObject:@{@"bin": @(i),
+				@"value": @(binValues[i]),
+				@"min": @(globalMin+i*binSize),
+				@"max": @(globalMin+(i+1)*binSize)}
 		];
 	}
 	return [tempArray copy];
@@ -344,9 +340,7 @@
 		initWithKey:currentIdentifier ascending:YES] autorelease
 	];
 
-	NSArray *tempData = [data sortedArrayUsingDescriptors:[NSArray
-			arrayWithObjects:independentSort, currentSort, nil
-		]
+	NSArray *tempData = [data sortedArrayUsingDescriptors:@[independentSort, currentSort]
 	];
 
 	NSMutableArray *pointTable = [NSMutableArray array];
@@ -358,18 +352,18 @@
 		if (startingNum==endingNum) {
 			[pointTable addObject: NSStringFromPoint(
 					NSMakePoint(
-						[[tempDict objectForKey:independentIdentifier] doubleValue],
-						[[tempDict objectForKey:currentIdentifier] doubleValue]
+						[tempDict[independentIdentifier] doubleValue],
+						[tempDict[currentIdentifier] doubleValue]
 					)
 				)
 			];
 		} else {
-			tempNum = [[tempDict objectForKey:independentIdentifier] doubleValue];
+			tempNum = [tempDict[independentIdentifier] doubleValue];
 			if ( tempNum >= startingNum && tempNum <= endingNum )
 				[pointTable addObject: NSStringFromPoint(
 						NSMakePoint(
-							[[tempDict objectForKey:independentIdentifier] doubleValue],
-							[[tempDict objectForKey:currentIdentifier] doubleValue]
+							[tempDict[independentIdentifier] doubleValue],
+							[tempDict[currentIdentifier] doubleValue]
 						)
 					)
 				];
@@ -395,9 +389,7 @@
 		initWithKey:currentIdentifier ascending:YES] autorelease
 	];
 
-	NSArray *tempData = [data sortedArrayUsingDescriptors:[NSArray
-			arrayWithObjects:independentSort, currentSort, nil
-		]
+	NSArray *tempData = [data sortedArrayUsingDescriptors:@[independentSort, currentSort]
 	];
 
 
@@ -410,13 +402,13 @@
 	double tempNum;
 	int checkNum;
 	while (tempDict=[en nextObject]) {
-		tempNum = [[tempDict objectForKey:independentIdentifier] doubleValue];
-		checkNum = [[tempDict objectForKey:forKey] intValue];
+		tempNum = [tempDict[independentIdentifier] doubleValue];
+		checkNum = [tempDict[forKey] intValue];
 		if ( checkNum==keyValue ) {
 			[pointTable addObject: NSStringFromPoint(
 					NSMakePoint(
-						[[tempDict objectForKey:independentIdentifier] doubleValue],
-						[[tempDict objectForKey:currentIdentifier] doubleValue]
+						[tempDict[independentIdentifier] doubleValue],
+						[tempDict[currentIdentifier] doubleValue]
 					)
 				)
 			];
@@ -437,8 +429,7 @@
 	NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc]
 		initWithKey:currentIdentifier ascending:YES] autorelease
 	];
-	NSArray *tempData = [data sortedArrayUsingDescriptors:[NSArray
-		arrayWithObject:sortDescriptor]
+	NSArray *tempData = [data sortedArrayUsingDescriptors:@[sortDescriptor]
 	];
 	[data release];
 	data = [tempData retain];
@@ -446,13 +437,13 @@
 
 - (int)count
 {	//might not need the cached result here (unless we use it to return all at once)
-	return [data count];
+	return data.count;
 }
 
 - (double)total
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"total"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"total"] doubleValue];
+	if (results[currentIdentifier][@"total"])
+		return [results[currentIdentifier][@"total"] doubleValue];
 		
 	ENTRY(NSLog( @"[DataSet total]" ));
 	NSEnumerator *en = [data objectEnumerator];
@@ -461,26 +452,23 @@
 	double total = 0;
 	
 	while (tempDict=[en nextObject]) {
-		total += [[tempDict objectForKey:currentIdentifier] doubleValue];
+		total += [tempDict[currentIdentifier] doubleValue];
 	}
 	
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:total]
-		forKey:@"total"
-	];
+	results[currentIdentifier][@"total"] = @(total);
 	return total;
 }
 
 - (double)arithmeticMean
 {	//might not need to cached result here (unless we use it to return a large data set all at once)
 	//NSLog( @"[DataSet arithmeticMean] = %f", [self total] / [data count] );
-	return ( [self total] / [data count] );
+	return ( [self total] / data.count );
 }
 
 - (double)populationStdDev
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"populationStdDev"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"populationStdDev"] doubleValue];
+	if (results[currentIdentifier][@"populationStdDev"])
+		return [results[currentIdentifier][@"populationStdDev"] doubleValue];
 		
 	double avg = [self arithmeticMean  ];
 	double total = 0;
@@ -490,21 +478,18 @@
 	NSDictionary *tempDict;
 	
 	while (tempDict=[en nextObject]) {
-		x = [[tempDict objectForKey:currentIdentifier] doubleValue];
+		x = [tempDict[currentIdentifier] doubleValue];
 		total += (x-avg)*(x-avg);
 	}
-	double stddev = sqrt( total / [data count] );
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:stddev]
-		forKey:@"populationStdDev"
-	];
+	double stddev = sqrt( total / data.count );
+	results[currentIdentifier][@"populationStdDev"] = @(stddev);
 	return stddev;
 }
 
 - (double)sampleStdDev
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"sampleStdDev"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"sampleStdDev"] doubleValue];
+	if (results[currentIdentifier][@"sampleStdDev"])
+		return [results[currentIdentifier][@"sampleStdDev"] doubleValue];
 		
 	double avg = [self arithmeticMean  ];
 	double total = 0;
@@ -514,15 +499,12 @@
 	NSDictionary *tempDict;
 	
 	while (tempDict=[en nextObject]) {
-		x = [[tempDict objectForKey:currentIdentifier] doubleValue];
+		x = [tempDict[currentIdentifier] doubleValue];
 		total += (x-avg)*(x-avg);
 	}
 	
-	double stddev = sqrt( total / ([data count]-1) );
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:stddev]
-		forKey:@"sampleStdDev"
-	];
+	double stddev = sqrt( total / (data.count-1) );
+	results[currentIdentifier][@"sampleStdDev"] = @(stddev);
 	return stddev;
 }
 
@@ -534,8 +516,8 @@
 
 - (double)domainMinimum
 {
-	if ([[results objectForKey:independentIdentifier] objectForKey:@"domainMinimum"])
-		return [[[results objectForKey:independentIdentifier] objectForKey:@"domainMinimum"] doubleValue];
+	if (results[independentIdentifier][@"domainMinimum"])
+		return [results[independentIdentifier][@"domainMinimum"] doubleValue];
 
 	if (independentIdentifier==nil || [independentIdentifier isEqualToString:@""])
 		return 0;
@@ -543,54 +525,47 @@
 	NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc]
 		initWithKey:independentIdentifier ascending:YES] autorelease
 	];
-	NSArray *tempData = [data sortedArrayUsingDescriptors:[NSArray
-		arrayWithObject:sortDescriptor]
+	NSArray *tempData = [data sortedArrayUsingDescriptors:@[sortDescriptor]
 	];
 		
-	double domainMinimum = [[[tempData objectAtIndex:0] objectForKey:independentIdentifier] doubleValue];
-	[[results objectForKey:independentIdentifier]
-		setObject:[NSNumber numberWithDouble:domainMinimum]
-		forKey:@"domainMinimum"
-	];
+	double domainMinimum = [tempData[0][independentIdentifier] doubleValue];
+	results[independentIdentifier][@"domainMinimum"] = @(domainMinimum);
 	ENTRY(NSLog( @"[DataSet domainMinimum] = %f", domainMinimum ));
 	return domainMinimum;
 }
 
 - (double)globalMinimum
 {
-	if ([[results objectForKey:DSGlobalIdentifier] objectForKey:@"globalMinimum"])
-		return [[[results objectForKey:DSGlobalIdentifier] objectForKey:@"globalMinimum"] doubleValue];
+	if (results[DSGlobalIdentifier][@"globalMinimum"])
+		return [results[DSGlobalIdentifier][@"globalMinimum"] doubleValue];
 	ENTRY(NSLog( @"[DataSet globalMinimum]" ));
 	[self findGlobalMinAndMax];
 	
-	return [[[results objectForKey:DSGlobalIdentifier] objectForKey:@"globalMinimum"] doubleValue];
+	return [results[DSGlobalIdentifier][@"globalMinimum"] doubleValue];
 }
 
 - (double)minimum
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"minimum"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"minimum"] doubleValue];
+	if (results[currentIdentifier][@"minimum"])
+		return [results[currentIdentifier][@"minimum"] doubleValue];
 
 	[self sort];
 
-	double minimum = [[[data objectAtIndex:0] objectForKey:currentIdentifier] doubleValue];
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:minimum]
-		forKey:@"minimum"
-	];
+	double minimum = [data[0][currentIdentifier] doubleValue];
+	results[currentIdentifier][@"minimum"] = @(minimum);
 	ENTRY(NSLog( @"[DataSet minimum] = %f", minimum ));
 	return minimum;
 }
 
 - (double)firstQuartile
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"firstQuartile"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"firstQuartile"] doubleValue];
+	if (results[currentIdentifier][@"firstQuartile"])
+		return [results[currentIdentifier][@"firstQuartile"] doubleValue];
 
 	ENTRY(NSLog( @"[DataSet firstQuartile]" ));
 	[self sort];
 		
-	int count = [data count];
+	int count = data.count;
 	if (count<2)
 		return [self minimum];
 	int middle = count/4;
@@ -598,70 +573,64 @@
 	switch (count%4) {
 		case 0:
 			firstQuartile = ( 
-				[[[data objectAtIndex:middle-1] objectForKey:currentIdentifier] doubleValue] +
-				[[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue]
+				[data[middle-1][currentIdentifier] doubleValue] +
+				[data[middle][currentIdentifier] doubleValue]
 			) / 2;
 			break;
 		case 1:
 			firstQuartile = ( 
-				[[[data objectAtIndex:middle-1] objectForKey:currentIdentifier] doubleValue] +
-				[[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue]
+				[data[middle-1][currentIdentifier] doubleValue] +
+				[data[middle][currentIdentifier] doubleValue]
 			) / 2;
 			break;
 		case 2:
-			firstQuartile = [[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue];
+			firstQuartile = [data[middle][currentIdentifier] doubleValue];
 			break;
 		case 3:
-			firstQuartile = [[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue];
+			firstQuartile = [data[middle][currentIdentifier] doubleValue];
 			break;
 		default:
 			NSLog( @"should never get here (bad case in [DataSet firstQuartile] - count: %d %% 4 = %d)",count,count%4 );
 			return 0;		
 	}
 	
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:firstQuartile]
-		forKey:@"firstQuartile"
-	];
+	results[currentIdentifier][@"firstQuartile"] = @(firstQuartile);
 	return firstQuartile;
 }
 
 - (double)median
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"median"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"median"] doubleValue];
+	if (results[currentIdentifier][@"median"])
+		return [results[currentIdentifier][@"median"] doubleValue];
 	
 	ENTRY(NSLog( @"[DataSet media]" ));
 	[self sort];
 	
-	int count = [data count];
+	int count = data.count;
 	int middle =  count/2;
 	double median = 0;
 	if (count%2) {
-		median = [[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue];
+		median = [data[middle][currentIdentifier] doubleValue];
 	} else {
 		median = ( 
-			[[[data objectAtIndex:middle-1] objectForKey:currentIdentifier] doubleValue] +
-			[[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue]
+			[data[middle-1][currentIdentifier] doubleValue] +
+			[data[middle][currentIdentifier] doubleValue]
 		) / 2;
 	}
 	
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:median]
-		forKey:@"median"
-	];
+	results[currentIdentifier][@"median"] = @(median);
 	return median;
 }
 
 - (double)thirdQuartile
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"thirdQuartile"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"thirdQuartile"] doubleValue];
+	if (results[currentIdentifier][@"thirdQuartile"])
+		return [results[currentIdentifier][@"thirdQuartile"] doubleValue];
 
 	ENTRY(NSLog( @"[DataSet thirdQuartile]" ));
 	[self sort];
 		
-	int count = [data count];
+	int count = data.count;
 	if (count<2)
 		return [self maximum];
 	int middle = 3*count/4;
@@ -669,86 +638,76 @@
 	switch (count%4) {
 		case 0:
 			thirdQuartile = ( 
-				[[[data objectAtIndex:middle-1] objectForKey:currentIdentifier] doubleValue] +
-				[[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue]
+				[data[middle-1][currentIdentifier] doubleValue] +
+				[data[middle][currentIdentifier] doubleValue]
 			) / 2;
 			break;
 		case 1:
 			thirdQuartile = ( 
-				[[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue] +
-				[[[data objectAtIndex:middle+1] objectForKey:currentIdentifier] doubleValue]
+				[data[middle][currentIdentifier] doubleValue] +
+				[data[middle+1][currentIdentifier] doubleValue]
 			) / 2;
 			break;
 		case 2:
-			thirdQuartile = [[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue];
+			thirdQuartile = [data[middle][currentIdentifier] doubleValue];
 			break;
 		case 3:
-			thirdQuartile = [[[data objectAtIndex:middle] objectForKey:currentIdentifier] doubleValue];
+			thirdQuartile = [data[middle][currentIdentifier] doubleValue];
 			break;
 		default:
 			NSLog( @"should never get here (bad case in [DataSet thirdQuartile] - count: %d %% 4 = %d)",count,count%4 );
 			return 0;
 	}
 	
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:thirdQuartile]
-		forKey:@"thirdQuartile"
-	];
+	results[currentIdentifier][@"thirdQuartile"] = @(thirdQuartile);
 	return thirdQuartile;
 }
 
 - (double)maximum
 {
-	if ([[results objectForKey:currentIdentifier] objectForKey:@"maximum"])
-		return [[[results objectForKey:currentIdentifier] objectForKey:@"maximum"] doubleValue];
+	if (results[currentIdentifier][@"maximum"])
+		return [results[currentIdentifier][@"maximum"] doubleValue];
 
-	if ([data count]<2)
+	if (data.count<2)
 		return [self minimum];
 
 	[self sort];
 	
-	double maximum = [[[data objectAtIndex:[data count]-1] objectForKey:currentIdentifier] doubleValue];
-	[[results objectForKey:currentIdentifier]
-		setObject:[NSNumber numberWithDouble:maximum]
-		forKey:@"maximum"
-	];
+	double maximum = [data[data.count-1][currentIdentifier] doubleValue];
+	results[currentIdentifier][@"maximum"] = @(maximum);
 	ENTRY(NSLog( @"[DataSet maximum] = %f", maximum ));
 	return maximum;
 }
 
 - (double)globalMaximum
 {
-	if ([[results objectForKey:DSGlobalIdentifier] objectForKey:@"globalMaximum"])
-		return [[[results objectForKey:DSGlobalIdentifier] objectForKey:@"globalMaximum"] doubleValue];
+	if (results[DSGlobalIdentifier][@"globalMaximum"])
+		return [results[DSGlobalIdentifier][@"globalMaximum"] doubleValue];
 	INFO(NSLog( @"[DataSet globalMaximum]" ));
 	[self findGlobalMinAndMax];
 	
-	return [[[results objectForKey:DSGlobalIdentifier] objectForKey:@"globalMaximum"] doubleValue];
+	return [results[DSGlobalIdentifier][@"globalMaximum"] doubleValue];
 }
 
 - (double)domainMaximum
 {
-	if ([[results objectForKey:independentIdentifier] objectForKey:@"domainMaximum"])
-		return [[[results objectForKey:independentIdentifier] objectForKey:@"domainMaximum"] doubleValue];
+	if (results[independentIdentifier][@"domainMaximum"])
+		return [results[independentIdentifier][@"domainMaximum"] doubleValue];
 
 	if (independentIdentifier==nil || [independentIdentifier isEqualToString:@""])
 		return 0;
 		
-	if ([data count]<2)
+	if (data.count<2)
 		return [self domainMinimum];
 		
 	NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc]
 		initWithKey:independentIdentifier ascending:YES] autorelease
 	];
-	NSArray *tempData = [data sortedArrayUsingDescriptors:[NSArray
-		arrayWithObject:sortDescriptor]
+	NSArray *tempData = [data sortedArrayUsingDescriptors:@[sortDescriptor]
 	];
 	
-	double domainMaximum = [[[tempData objectAtIndex:[tempData count]-1] objectForKey:independentIdentifier] doubleValue];
-	[[results objectForKey:independentIdentifier]
-		setObject:[NSNumber numberWithDouble:domainMaximum]
-		forKey:@"domainMaximum"
-	];
+	double domainMaximum = [tempData[tempData.count-1][independentIdentifier] doubleValue];
+	results[independentIdentifier][@"domainMaximum"] = @(domainMaximum);
 	ENTRY(NSLog( @"[DataSet domainMaximum] = %f", domainMaximum ));
 	return domainMaximum;
 }
@@ -779,14 +738,8 @@
 	}
 	[self setCurrentIdentifier:origIdent];
 	INFO(NSLog( @"calculated globals( %f, %f )", globalMin, globalMax ));
-	[[results objectForKey:DSGlobalIdentifier]
-		setObject:[NSNumber numberWithDouble:globalMin]
-		forKey:@"globalMinimum"
-	];
-	[[results objectForKey:DSGlobalIdentifier]
-		setObject:[NSNumber numberWithDouble:globalMax]
-		forKey:@"globalMaximum"
-	];
+	results[DSGlobalIdentifier][@"globalMinimum"] = @(globalMin);
+	results[DSGlobalIdentifier][@"globalMaximum"] = @(globalMax);
 }
 
 

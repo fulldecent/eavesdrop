@@ -23,54 +23,48 @@
 	NSMutableDictionary *results;
 }
 
-- (void)setData:(NSArray *)data;
-- (NSArray *)data;
+@property (NS_NONATOMIC_IOSONLY, copy) NSArray *data;
 
-- (void)setCurrentIdentifier:(NSString *)newIdent;
-- (NSString *)currentIdentifier;
-- (NSArray *)dataIdentifiers;
-- (void)setIndependentIdentifier:(NSString *)newIdentifier;
-- (NSString *)independentIdentifier;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *currentIdentifier;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *dataIdentifiers;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *independentIdentifier;
 - (void)removeIndependent;
-- (BOOL)hasIndependent;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasIndependent;
 - (double)valueAtPoint:(double)inputValue forKey:(NSString *)outputKey;
 - (double)valueAtIndex:(double)inputIndex forKey:(NSString *)outputKey;
 
 - (void)addViewIdentifier:(NSString *)newViewIdent;
 - (void)addViewIdentifiersFromArray:(NSArray *)newViewIdents;
-- (void)setViewIdentifiers:(NSArray *)newViewIdents;
 - (void)removeViewIdentifier:(NSString *)oldViewIdent;
 - (void)removeAllViews;
 - (void)resetViews;
-- (NSArray *)viewIdentifiers;
+@property (NS_NONATOMIC_IOSONLY, copy) NSArray *viewIdentifiers;
 
-- (void)setNumberOfBins:(int)newNumberOfBins;
-- (int)numberOfBins;
-- (void)setBinSize:(double)newBinSize;
-- (double)binSize;
+@property (NS_NONATOMIC_IOSONLY) int numberOfBins;
+@property (NS_NONATOMIC_IOSONLY) double binSize;
 
-- (NSArray *)histogramForCurrentIdentifier;
-- (NSArray *)dataPointsForCurrentIdentifier;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *histogramForCurrentIdentifier;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *dataPointsForCurrentIdentifier;
 - (NSArray *)dataPointsForCurrentIdentifierStartingAt:(double)startingNum endingAt:(double)endingNum;
 - (NSArray *)dataPointsForCurrentIdentifierWithKey:(NSString *)forKey equalTo:(int)keyValue;
 
 - (void)sort;
 
-- (int)count;
-- (double)total;
-- (double)arithmeticMean;
-- (double)populationStdDev;
-- (double)sampleStdDev;
-- (double)mode;
-- (double)domainMinimum;
-- (double)globalMinimum;
-- (double)minimum;
-- (double)firstQuartile;
-- (double)median;
-- (double)thirdQuartile;
-- (double)maximum;
-- (double)globalMaximum;
-- (double)domainMaximum;
+@property (NS_NONATOMIC_IOSONLY, readonly) int count;
+@property (NS_NONATOMIC_IOSONLY, readonly) double total;
+@property (NS_NONATOMIC_IOSONLY, readonly) double arithmeticMean;
+@property (NS_NONATOMIC_IOSONLY, readonly) double populationStdDev;
+@property (NS_NONATOMIC_IOSONLY, readonly) double sampleStdDev;
+@property (NS_NONATOMIC_IOSONLY, readonly) double mode;
+@property (NS_NONATOMIC_IOSONLY, readonly) double domainMinimum;
+@property (NS_NONATOMIC_IOSONLY, readonly) double globalMinimum;
+@property (NS_NONATOMIC_IOSONLY, readonly) double minimum;
+@property (NS_NONATOMIC_IOSONLY, readonly) double firstQuartile;
+@property (NS_NONATOMIC_IOSONLY, readonly) double median;
+@property (NS_NONATOMIC_IOSONLY, readonly) double thirdQuartile;
+@property (NS_NONATOMIC_IOSONLY, readonly) double maximum;
+@property (NS_NONATOMIC_IOSONLY, readonly) double globalMaximum;
+@property (NS_NONATOMIC_IOSONLY, readonly) double domainMaximum;
 
 - (void)findGlobalMinAndMax;
 

@@ -6,21 +6,21 @@
 //  Copyright 2004 Eric Shore Baur. All rights reserved.
 //
 
-typedef enum {
+typedef NS_ENUM(unsigned int, GCSourceType) {
 	GCBothHostsTag,
 	GCClientOnlyTag,
 	GCServerOnlyTag,
 	GCAllPacketsTag,
 	GCAllwFlagsTag
-} GCSourceType;
+};
 
-typedef enum {
+typedef NS_ENUM(unsigned int, GCGraphType) {
 	GCBarGraphType,
 	GCLineGraphType,
 	GCScatterPlotType
-} GCGraphType;
+};
 
-typedef enum {
+typedef NS_ENUM(unsigned int, GCVariableType) {
 	GCPacketIDTag			=0,
 	GCPacketNumberTag		=1,
 	GCTimeTag				=2,
@@ -42,7 +42,7 @@ typedef enum {
 	GCAllDeltasTag			=18,
 	GCServerDeltasTag		=19,
 	GCClientDeltasTag		=20
-} GCVariableType;
+};
 
 #define GCPacketIDIdentifier			@"id"
 #define GCPacketNumberIdentifier		@"number"

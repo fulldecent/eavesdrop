@@ -10,7 +10,7 @@
 
 @implementation CaptureDocument
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self) {
@@ -45,16 +45,16 @@
 
 - (void)awakeFromNib
 {
-	[unifiedTable setTarget:self];
-	[unifiedTable setDoubleAction:@selector(openHistory:)];
+	unifiedTable.target = self;
+	unifiedTable.doubleAction = @selector(openHistory:);
 	
-	[dividedTable setTarget:self];
-	[dividedTable setDoubleAction:@selector(openHistory:)];
+	dividedTable.target = self;
+	dividedTable.doubleAction = @selector(openHistory:);
 	
-	[dataTable setTarget:self];
-	[dataTable setDoubleAction:@selector(openHistory:)];
+	dataTable.target = self;
+	dataTable.doubleAction = @selector(openHistory:);
 
-	[captureController setTables:[NSArray arrayWithObjects:unifiedTable, dividedTable, dataTable, nil] ];
+	[captureController setTables:@[unifiedTable, dividedTable, dataTable] ];
 	
 	NSArray *tempArray = [Capture interfaces];
 	NSEnumerator *en = [tempArray objectEnumerator];
@@ -62,11 +62,11 @@
 	while (tempString = [en nextObject]) {
 		[interfaceComboBox addItemWithObjectValue:tempString];
 	}
-	[interfaceComboBox setStringValue:[tempArray objectAtIndex:0] ];
+	interfaceComboBox.stringValue = tempArray[0] ;
 	
 	if (readFilename) {
 		[captureController setReadFilename:readFilename];
-		[readFilenameField setStringValue:readFilename];
+		readFilenameField.stringValue = readFilename;
 		[dataTabView selectTabViewItemWithIdentifier:@"offline"];
 	}
 
@@ -75,7 +75,7 @@
 
 	int i=0;
     NSMenuItem *item;
-    id searchCell = [packetSearchField cell];
+    id searchCell = packetSearchField.cell;
 	//item = [[NSMenuItem alloc] initWithTitle:@"Intelligent Search"
 	//							action:@selector(changeSearchCategory:)
 	//							keyEquivalent:@""];
@@ -88,18 +88,18 @@
 	item = [[NSMenuItem alloc] initWithTitle:@"  Either IP"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-	[item setState:NSOnState];
-    [item setTag:CCHostIPSearchTag];
+	item.state = NSOnState;
+    item.tag = CCHostIPSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"  Client IP"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCClientIPSearchTag];
+    item.tag = CCClientIPSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"  Server IP"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCServerIPSearchTag];
+    item.tag = CCServerIPSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"Ports"
 								action:nil
@@ -108,17 +108,17 @@
 	item = [[NSMenuItem alloc] initWithTitle:@"  Either Port"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCPortSearchTag];
+    item.tag = CCPortSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"  Client Port"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCClientPortSearchTag];
+    item.tag = CCClientPortSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"  Server Port"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCServerPortSearchTag];
+    item.tag = CCServerPortSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"Payloads"
 								action:nil
@@ -127,17 +127,17 @@
 	item = [[NSMenuItem alloc] initWithTitle:@"  Either"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCPayloadSearchTag];
+    item.tag = CCPayloadSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"  Client Payload"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCClientPayloadSearchTag];
+    item.tag = CCClientPayloadSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 	item = [[NSMenuItem alloc] initWithTitle:@"  Server Payload"
 								action:@selector(changeSearchCategory:)
 								keyEquivalent:@""];
-    [item setTag:CCServerPayloadSearchTag];
+    item.tag = CCServerPayloadSearchTag;
 	[packetSearchMenu insertItem:item atIndex:i++];
 /*
     item = [[NSMenuItem alloc] initWithTitle:@"Recent Searches"
@@ -196,12 +196,12 @@
 
 - (IBAction)toggleSelectNew:(id)sender
 {
-	[conversationController setSelectsInsertedObjects:[sender state]];
+	conversationController.selectsInsertedObjects = [sender state];
 }
 
 - (IBAction)toggleFollowHistory:(id)sender
 {
-	[historyController setSelectsInsertedObjects:[sender state]];
+	historyController.selectsInsertedObjects = [sender state];
 }
 
 - (IBAction)toggleRequiresSyn:(id)sender
@@ -211,13 +211,13 @@
 
 - (IBAction)changeThumbnailSize:(id)sender
 {
-	[thumbnailTableView setRowHeight:[sender intValue] ];
+	thumbnailTableView.rowHeight = [sender intValue] ;
 }
 
 - (IBAction)changePayloadView:(id)sender
 {
 	ENTRY(NSLog( @"[CaptureDocument changePayloadView:]" ));
-	switch([[payloadViewPopup selectedItem] tag]) {
+	switch(payloadViewPopup.selectedItem.tag) {
 		case CCAnyHostTag:
 			[payloadTextView bind:@"data" toObject:conversationController
 				withKeyPath:@"selection.payloadAsRTFData" options:nil ];
@@ -238,7 +238,7 @@
 - (IBAction)clearList:(id)sender
 {
 	[conversationController removeObjectsAtArrangedObjectIndexes:[NSIndexSet
-		indexSetWithIndexesInRange:NSMakeRange(0,[[conversationController arrangedObjects] count])]
+		indexSetWithIndexesInRange:NSMakeRange(0,[conversationController.arrangedObjects count])]
 	];
 }
 
@@ -249,7 +249,7 @@
 
 - (IBAction)changeSearchCategory:(id)sender
 {
-	[[[sender menu] itemWithTag:[captureController searchCategory]] setState:NSOffState];
+	[[sender menu] itemWithTag:[captureController searchCategory]].state = NSOffState;
 	[sender setState:NSOnState];
 	[captureController setSearchCategory:[sender tag] ];
 }
@@ -266,7 +266,7 @@
 	NSData *imgAsData;
 	NSSavePanel *sp;
 	
-	imgAsData = [[imageBox image] TIFFRepresentation];
+	imgAsData = imageBox.image.TIFFRepresentation;
 	
 	sp = [NSSavePanel savePanel];
 	[sp setRequiredFileType:@"tiff"];

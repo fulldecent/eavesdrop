@@ -10,8 +10,11 @@
 
 #import "DataSet.h"
 #import "Conversation.h"
-#import <SM2DGraphView/SM2DGraphView.h>
-#import <SM2DGraphView/SMPieChartView.h>
+
+#import "SM2DGraphView.h"
+#import "SMPieChartView.h"
+//#import <SM2DGraphView/SM2DGraphView.h>
+//#import <SM2DGraphView/SMPieChartView.h>
 
 #import "GC-Constants.h"
 

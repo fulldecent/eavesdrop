@@ -56,13 +56,13 @@
 
 + (NSArray *)interfaces;
 
-- (id)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent;
-- (id)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
+- (instancetype)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
 						device:(NSString *)usingDevice filter:(NSString *)usingFilter
-						promiscuous:(BOOL)usingPromiscuous;
-- (id)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
+						promiscuous:(BOOL)usingPromiscuous NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
 						file:(NSString *)usingFile filter:(NSString *)usingFilter
-						promiscuous:(BOOL)usingPromiscuous;
+						promiscuous:(BOOL)usingPromiscuous NS_DESIGNATED_INITIALIZER;
 
 - (void)setKeepAlive;
 - (void)unsetKeepAlive;

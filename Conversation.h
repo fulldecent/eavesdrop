@@ -66,16 +66,16 @@
 
 + (id)blankConversation;
 
-- (id)myself;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) id myself;
 
-- (id)initWithOrderNumber:(int)number packet:(NSDictionary *)origPacket;
-- (id)initWithOrderingNumber:(int)number source:(NSString *)origSource		port:(int)sourcePort
+- (instancetype)initWithOrderNumber:(int)number packet:(NSDictionary *)origPacket;
+- (instancetype)initWithOrderingNumber:(int)number source:(NSString *)origSource		port:(int)sourcePort
 									destination:(NSString *)origDestination port:(int)destinationPort
 									flags:(NSString *)origFlags
 									sequence:(unsigned long long)origSequence
 									acknowledgment:(unsigned long long)origAcknowledgment
 									window:(int)origWindow			length:(int)origLength
-									timestamp:(double)origTimestamp		payload:(NSData *)origPayload;
+									timestamp:(double)origTimestamp		payload:(NSData *)origPayload NS_DESIGNATED_INITIALIZER;
 									
 - (void)addPacket:(NSDictionary *)newPacket;
 - (void)addPacketWithSource:(NSString *)packetSource flags:(NSString *)packetFlags
@@ -93,26 +93,26 @@
 - (void)addTimestampAsDouble:(double)newTimestamp;
 - (void)addPayload:(NSData *)newPayload withSource:(NSString *)theSource;
 
-- (double)lastTimestamp;
-- (double)timelength;
-- (double)starttime;
-- (NSString *)source;
-- (NSString *)destination;
-- (int)sourcePort;
-- (int)destinationPort;
+@property (NS_NONATOMIC_IOSONLY, readonly) double lastTimestamp;
+@property (NS_NONATOMIC_IOSONLY, readonly) double timelength;
+@property (NS_NONATOMIC_IOSONLY, readonly) double starttime;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *source;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *destination;
+@property (NS_NONATOMIC_IOSONLY) int sourcePort;
+@property (NS_NONATOMIC_IOSONLY) int destinationPort;
 
-- (NSAttributedString *)flagsAsAttributedString;
-- (NSAttributedString *)sourceFlagsAsAttributedString;
-- (NSAttributedString *)destinationFlagsAsAttributedString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSAttributedString *flagsAsAttributedString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSAttributedString *sourceFlagsAsAttributedString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSAttributedString *destinationFlagsAsAttributedString;
 
-- (NSArray *)payloadArrayBySource;
-- (NSData *)payload;
-- (NSData *)clientPayload;
-- (NSData *)serverPayload;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *payloadArrayBySource;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *payload;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *clientPayload;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *serverPayload;
 
-- (NSAttributedString *)clientPayloadAsAttributedString;
-- (NSAttributedString *)serverPayloadAsAttributedString;
-- (NSAttributedString *)payloadAsAttributedString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSAttributedString *clientPayloadAsAttributedString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSAttributedString *serverPayloadAsAttributedString;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSAttributedString *payloadAsAttributedString;
 - (NSAttributedString *)_payloadAsAttributedStringForHost:(NSString *)sourceHost;
 /// these four C functions are unused for now ///
 int fill_ascii( unsigned char* buffer, int bufferLen, unsigned char* output );
@@ -120,35 +120,30 @@ int fill_hex( unsigned char* buffer, int bufferLen, unsigned char* output );
 int fill_hex_ascii( unsigned char* buffer, int bufferLen, unsigned char* output );
 int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output );
 
-- (NSData *)clientPayloadAsRTFData;
-- (NSData *)serverPayloadAsRTFData;
-- (NSData *)payloadAsRTFData;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *clientPayloadAsRTFData;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *serverPayloadAsRTFData;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *payloadAsRTFData;
 //- (NSArray *)htmlDictionaries;
-- (NSArray *)imageDictionaries;
-- (NSData *)serverImageData;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *imageDictionaries;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSData *serverImageData;
 - (NSData *)findImageDataInData:(NSData *)searchData;
 
-- (void)setSource:(NSString *)newSource;
-- (void)setDestination:(NSString *)newDestination;
-- (void)setSourcePort:(int)newSourcePort;
-- (void)setDestinationPort:(int)newDestinationPort;
 
-- (BOOL)isHidden;
-- (void)setHidden:(BOOL)state;
+@property (NS_NONATOMIC_IOSONLY, getter=isHidden) BOOL hidden;
 
-- (NSArray *)waitTimes;
-- (NSArray *)serverWaitTimes;
-- (NSArray *)clientWaitTimes;
-- (double)maxWaitTime;
-- (double)serverMaxWaitTime;
-- (double)clientMaxWaitTime;
-- (double)connectWaitTime;
-- (double)bytesPerSecond;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *waitTimes;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *serverWaitTimes;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *clientWaitTimes;
+@property (NS_NONATOMIC_IOSONLY, readonly) double maxWaitTime;
+@property (NS_NONATOMIC_IOSONLY, readonly) double serverMaxWaitTime;
+@property (NS_NONATOMIC_IOSONLY, readonly) double clientMaxWaitTime;
+@property (NS_NONATOMIC_IOSONLY, readonly) double connectWaitTime;
+@property (NS_NONATOMIC_IOSONLY, readonly) double bytesPerSecond;
 
-- (NSString *)conversationID;
-- (NSArray *)history;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *conversationID;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSArray *history;
 - (NSDictionary *)dictionaryForHistoryIndex:(int)index;
-- (DataSet *)historyDataSet;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) DataSet *historyDataSet;
 - (DataSet *)historyDataSetForHost:(NSString *)host;
 - (DataSet *)dataSetWithKeys:(NSArray *)keys independent:(NSString *)indKey forHost:(NSString *)host;
 - (NSDictionary *)dictionaryForHistoryDataSetIndex:(int)index;

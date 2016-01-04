@@ -16,7 +16,7 @@
 //		triggerChangeNotificationsForDependentKey:@"content"];
 }
 
-- (id)init
+- (instancetype)init
 {
 	//NSLog( @"[GraphController init]" );
 	self = [super init];
@@ -124,8 +124,7 @@
 		case GCAllPacketsTag:
 			INFO(NSLog( @"gathering data for all packets" ));
 			dataSet = [conversation
-				dataSetWithKeys:[NSArray
-					arrayWithObject:[self identifierForTag:dependentTag] ]
+				dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 				independent:[self identifierForTag:independentTag]
 				forHost:nil
 			];
@@ -134,8 +133,7 @@
 		case GCClientOnlyTag:
 			ENTRY(NSLog( @"gathering data for client" ));
 			dataSet = [conversation
-				dataSetWithKeys:[NSArray
-					arrayWithObject:[self identifierForTag:dependentTag] ]
+				dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 				independent:[self identifierForTag:independentTag]
 				forHost:[conversation source]
 			];
@@ -144,8 +142,7 @@
 		case GCServerOnlyTag:
 			ENTRY(NSLog( @"gathering data for server" ));
 			dataSet = [conversation
-				dataSetWithKeys:[NSArray
-					arrayWithObject:[self identifierForTag:dependentTag] ]
+				dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 				independent:[self identifierForTag:independentTag]
 				forHost:[conversation destination]
 			];
@@ -155,22 +152,19 @@
 			ENTRY(NSLog( @"gathering data for both hosts" ));
 			if (graphType==GCBarGraphType) {
 				dataSet = [conversation
-					dataSetWithKeys:[NSArray
-						arrayWithObjects:[self identifierForTag:dependentTag],@"source",nil ]
+					dataSetWithKeys:@[[self identifierForTag:dependentTag],@"source"]
 					independent:[self identifierForTag:independentTag]
 					forHost:nil
 				];
 				dataSet2 = nil;
 			} else {
 				dataSet = [conversation
-					dataSetWithKeys:[NSArray
-						arrayWithObject:[self identifierForTag:dependentTag] ]
+					dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 					independent:[self identifierForTag:independentTag]
 					forHost:[conversation source]
 				];
 				dataSet2 = [conversation
-					dataSetWithKeys:[NSArray
-						arrayWithObject:[self identifierForTag:dependentTag] ]
+					dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 					independent:[self identifierForTag:independentTag]
 					forHost:[conversation destination]
 				];
@@ -179,9 +173,7 @@
 		case GCAllwFlagsTag:
 			ENTRY(NSLog( @"gathering data for all packets with tags" ));
 			dataSet = [conversation
-				dataSetWithKeys:[NSArray arrayWithObjects:
-					[self identifierForTag:dependentTag], @"flagNums", nil
-				]
+				dataSetWithKeys:@[[self identifierForTag:dependentTag], @"flagNums"]
 				independent:[self identifierForTag:independentTag]
 				forHost:nil
 			];
@@ -236,34 +228,25 @@
 	[pieChartArray release];
 	switch (chartDisplayTag) {
 		case GCTotalSizeTag:
-			pieChartArray = [NSArray arrayWithObjects:
-				[conversation valueForKey:@"sbytes"],
-				[conversation valueForKey:@"dbytes"],
-				nil
-			];
+			pieChartArray = @[[conversation valueForKey:@"sbytes"],
+				[conversation valueForKey:@"dbytes"]];
 			break;
 		case GCPayloadLengthTag:
-			pieChartArray = [NSArray arrayWithObjects:
-				[NSNumber numberWithInt:[[conversation clientPayload] length] ],
-				[NSNumber numberWithInt:[[conversation serverPayload] length] ],
-				nil
-			];
+			pieChartArray = @[[NSNumber numberWithInt:[conversation clientPayload].length ],
+				[NSNumber numberWithInt:[conversation serverPayload].length ]];
 			break;
 		case GCDeltaTag:
 			en = [[conversation payloadArrayBySource] objectEnumerator];
 			client = [conversation source];
 			server = [conversation destination];
 			while (tempDict=[en nextObject]) {
-				if ([[tempDict objectForKey:@"source"] isEqualToString:client])
-					clientDelta += [[tempDict objectForKey:@"timeDelta"] doubleValue];
-				else if ([[tempDict objectForKey:@"source"] isEqualToString:server])
-					serverDelta += [[tempDict objectForKey:@"timeDelta"] doubleValue];
+				if ([tempDict[@"source"] isEqualToString:client])
+					clientDelta += [tempDict[@"timeDelta"] doubleValue];
+				else if ([tempDict[@"source"] isEqualToString:server])
+					serverDelta += [tempDict[@"timeDelta"] doubleValue];
 			}
-			pieChartArray = [NSArray arrayWithObjects:
-				[NSNumber numberWithDouble:clientDelta],
-				[NSNumber numberWithDouble:serverDelta],
-				nil
-			];
+			pieChartArray = @[@(clientDelta),
+				@(serverDelta)];
 			break;
 		default:
 			pieChartArray = nil;
@@ -326,29 +309,15 @@
 	}
 	
 	if (graphType==GCBarGraphType) {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			graphColor,	NSForegroundColorAttributeName,
-			@"on",		SM2DGraphBarStyleAttributeName,
-			nil
-		];
+		return @{NSForegroundColorAttributeName: graphColor,
+			SM2DGraphBarStyleAttributeName: @"on"};
 	} else if (graphType==GCScatterPlotType) {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			graphColor,
-				NSForegroundColorAttributeName,
-			[NSNumber numberWithInt:kSM2DGraph_Symbol_FilledCircle],
-				SM2DGraphLineSymbolAttributeName,
-			[ NSNumber numberWithInt:kSM2DGraph_Width_None ],
-				SM2DGraphLineWidthAttributeName,
-			nil
-		];
+		return @{NSForegroundColorAttributeName: graphColor,
+			SM2DGraphLineSymbolAttributeName: @(kSM2DGraph_Symbol_FilledCircle),
+			SM2DGraphLineWidthAttributeName: @(kSM2DGraph_Width_None)};
 	} else {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			graphColor,
-				NSForegroundColorAttributeName,
-			[NSNumber numberWithInt:kSM2DGraph_Symbol_FilledCircle],
-				SM2DGraphLineSymbolAttributeName,
-			nil
-		];
+		return @{NSForegroundColorAttributeName: graphColor,
+			SM2DGraphLineSymbolAttributeName: @(kSM2DGraph_Symbol_FilledCircle)};
 	}
 }
 
@@ -413,11 +382,11 @@
 		INFO(NSLog( @"source = %d", source ));
 		if (graphType==GCBarGraphType) {
 			if (source==-1)
-				[attr setObject:[NSColor blueColor] forKey:NSForegroundColorAttributeName];
+				attr[NSForegroundColorAttributeName] = [NSColor blueColor];
 			else if (source==1)
-				[attr setObject:[NSColor redColor] forKey:NSForegroundColorAttributeName];
+				attr[NSForegroundColorAttributeName] = [NSColor redColor];
 			else
-				[attr setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];		
+				attr[NSForegroundColorAttributeName] = [NSColor blackColor];		
 		}
 	}
 }
@@ -432,23 +401,14 @@
 - (NSDictionary *)pieChartView:(SMPieChartView *)inPieChartView attributesForSliceIndex:(unsigned int)inSliceIndex
 {
 	if (inSliceIndex==0) {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			[NSColor redColor], NSBackgroundColorAttributeName,
-			[NSColor clearColor], NSForegroundColorAttributeName,
-			nil
-		];
+		return @{NSBackgroundColorAttributeName: [NSColor redColor],
+			NSForegroundColorAttributeName: [NSColor clearColor]};
 	} else if (inSliceIndex==1) {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			[NSColor blueColor], NSBackgroundColorAttributeName,
-			[NSColor clearColor], NSForegroundColorAttributeName,
-			nil
-		];
+		return @{NSBackgroundColorAttributeName: [NSColor blueColor],
+			NSForegroundColorAttributeName: [NSColor clearColor]};
 	} else {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			[NSColor blackColor], NSBackgroundColorAttributeName,
-			[NSColor clearColor], NSForegroundColorAttributeName,
-			nil
-		];
+		return @{NSBackgroundColorAttributeName: [NSColor blackColor],
+			NSForegroundColorAttributeName: [NSColor clearColor]};
 	}
 }
 - (NSArray *)pieChartViewArrayOfSliceData:(SMPieChartView *)inPieChartView

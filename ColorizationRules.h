@@ -16,20 +16,19 @@
 	BOOL allowPartialMatches;
 }
 
-+ (id)sharedRules;
-+ (id)rulesWithDictionary:(NSDictionary *)newRules;
-+ (id)sharedRulesWithDictionary:(NSDictionary *)newRules;
-+ (id)sharedRulesWithDictionary:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial;
++ (ColorizationRules*)sharedRules;
++ (instancetype)rulesWithDictionary:(NSDictionary *)newRules;
++ (ColorizationRules*)sharedRulesWithDictionary:(NSDictionary *)newRules;
++ (ColorizationRules*)sharedRulesWithDictionary:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial;
 
-- (id)init;
-- (id)initWithRules:(NSDictionary *)newRules;
-- (id)initWithRules:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial;
+- (instancetype)init;
+- (instancetype)initWithRules:(NSDictionary *)newRules;
+- (instancetype)initWithRules:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial NS_DESIGNATED_INITIALIZER;
 
 - (NSColor *)colorForString:(NSString *)string;
 - (NSArray *)stringsForColor:(NSColor *)color;
 
-- (BOOL)allowsPartialMatches;
-- (void)setAllowsPartialMatches:(BOOL)allowPartial;
+@property (NS_NONATOMIC_IOSONLY) BOOL allowsPartialMatches;
 
 - (void)addColor:(NSColor *)color forString:(NSString *)string;
 - (void)setRules:(NSDictionary *)newRules;

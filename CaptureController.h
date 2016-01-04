@@ -17,7 +17,7 @@
 #import "Conversation.h"
 #import "CaptureGraphController.h"
 
-typedef enum {
+typedef NS_ENUM(unsigned int, CCSearchCategory) {
 	CCIntelligentSearchTag,
 	CCHostIPSearchTag,
 	CCClientIPSearchTag,
@@ -28,13 +28,13 @@ typedef enum {
 	CCPayloadSearchTag,
 	CCClientPayloadSearchTag,
 	CCServerPayloadSearchTag
-} CCSearchCategory;
+};
 
-typedef enum {
+typedef NS_ENUM(unsigned int, CCHostCategory) {
 	CCAnyHostTag,
 	CCClientHostTag,
 	CCServerHostTag
-} CCHostCategory;
+};
 
 @interface CaptureController : NSObject
 {
@@ -80,18 +80,16 @@ typedef enum {
 	NSLock *packetLock;
 }
 
-- (id)init;
+- (instancetype)init;
 
 - (void)setUpdateInterval:(int)newUpdateInterval;
 - (void)startTimer;
 - (void)setPacketQueueAndLock:(NSDictionary *)aDictionary;
 - (void)setReadFilename:(NSString *)newFilename;
-- (void)setFollowsInserts:(BOOL)followInserts;
-- (BOOL)followsInserts;
+@property (NS_NONATOMIC_IOSONLY) BOOL followsInserts;
 - (void)setHideIdle:(BOOL)newSetting;
 - (void)setTables:(NSArray *)newTables;
-- (CCSearchCategory)searchCategory;
-- (void)setSearchCategory:(CCSearchCategory)newSearchCategory;
+@property (NS_NONATOMIC_IOSONLY) CCSearchCategory searchCategory;
 
 - (IBAction)flushData:(id)sender;
 - (void)addConversations:(NSArray *)newAdditions;

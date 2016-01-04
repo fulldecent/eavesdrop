@@ -13,19 +13,19 @@
 
 static id sharedRules;
 
-+ (id)sharedRules
++ (ColorizationRules*)sharedRules
 {
 	if (!sharedRules)
 		sharedRules = [[ColorizationRules alloc] init];
 	return sharedRules;
 }
 
-+ (id)rulesWithDictionary:(NSDictionary *)newRules
++ (instancetype)rulesWithDictionary:(NSDictionary *)newRules
 {
 	return [[[ColorizationRules alloc] initWithRules:newRules] autorelease];
 }
 
-+ (id)sharedRulesWithDictionary:(NSDictionary *)newRules
++ (ColorizationRules*)sharedRulesWithDictionary:(NSDictionary *)newRules
 {
 	if (!sharedRules)
 		sharedRules = [ColorizationRules sharedRules];
@@ -33,7 +33,7 @@ static id sharedRules;
 	return sharedRules;
 }
 
-+ (id)sharedRulesWithDictionary:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial
++ (ColorizationRules*)sharedRulesWithDictionary:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial
 {
 	if (!sharedRules)
 		sharedRules = [ColorizationRules sharedRules];
@@ -42,23 +42,23 @@ static id sharedRules;
 	return sharedRules;
 }
 
-- (id)init
+- (instancetype)init
 {
-	return [self initWithRules:[NSDictionary dictionary] allowsPartialMatches:YES];
+	return [self initWithRules:@{} allowsPartialMatches:YES];
 }
 
-- (id)initWithRules:(NSDictionary *)newRules
+- (instancetype)initWithRules:(NSDictionary *)newRules
 {
 	return [self initWithRules:newRules allowsPartialMatches:YES];
 }
 
-- (id)initWithRules:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial
+- (instancetype)initWithRules:(NSDictionary *)newRules allowsPartialMatches:(BOOL)allowPartial
 {
 	self = [super init];
 	if (self) {
 		rules = newRules;
 		[rules retain];
-		cachedResults = [[NSDictionary dictionary] retain];
+		cachedResults = [@{} retain];
 		allowPartialMatches = allowPartial;
 	}
 	return self;
@@ -67,7 +67,7 @@ static id sharedRules;
 
 - (NSColor *)colorForString:(NSString *)string
 {
-	return [rules objectForKey:string];
+	return rules[string];
 }
 
 - (NSArray *)stringsForColor:(NSColor *)color
@@ -89,7 +89,7 @@ static id sharedRules;
 - (void)addColor:(NSColor *)color forString:(NSString *)string
 {
 	NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:rules];
-	[tempDict setObject:color forKey:string];
+	tempDict[string] = color;
 	
 	[rules release];
 	rules = [tempDict copy];
@@ -123,13 +123,13 @@ static id sharedRules;
 - (void)removeAllColors
 {
 	[rules release];
-	rules = [[NSDictionary dictionary] retain];
+	rules = [@{} retain];
 }
 
 - (void)resetCachedResults
 {
 	[cachedResults release];
-	cachedResults = [[NSDictionary dictionary] retain];
+	cachedResults = [@{} retain];
 }
 
 - (void)resetRules
@@ -141,7 +141,7 @@ static id sharedRules;
 
 - (NSAttributedString *)colorize:(NSString *)string
 {
-	NSAttributedString *returnString = [cachedResults objectForKey:string];
+	NSAttributedString *returnString = cachedResults[string];
 	if (!returnString)
 		returnString = [self _colorize:string];
 
@@ -156,7 +156,7 @@ static id sharedRules;
 	if (allowPartialMatches) {
 		while (rule = [en nextObject]) {
 			[tempString
-				setAttributes:[NSDictionary dictionaryWithObject:[rules objectForKey:rule] forKey:NSForegroundColorAttributeName]
+				setAttributes:@{NSForegroundColorAttributeName: rules[rule]}
 				range:[string rangeOfString:rule]
 			];
 		}
@@ -164,15 +164,15 @@ static id sharedRules;
 		while (rule = [en nextObject]) {
 			if ([tempString isEqual:rule]) {
 				[tempString
-					setAttributes:[NSDictionary dictionaryWithObject:[rules objectForKey:rule] forKey:NSForegroundColorAttributeName]
-					range:NSMakeRange(0,[string length])
+					setAttributes:@{NSForegroundColorAttributeName: rules[rule]}
+					range:NSMakeRange(0,string.length)
 				];
 			}
 		}
 	}
 	
 	NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:cachedResults];
-	[tempDict setObject:tempString forKey:string];
+	tempDict[string] = tempString;
 	[cachedResults release];
 	cachedResults = [tempDict copy];
 	[cachedResults retain];

@@ -22,12 +22,12 @@ int main(int argc, const char *argv[])
 		return -1;
 	}
 
-	NSString *serverIdent = [[NSString stringWithCString:argv[1]] retain];
-	NSString *clientIdent = [[NSString stringWithCString:argv[2]] retain];
-	NSString *captureType = [[NSString stringWithCString:argv[3]] retain];
-	NSString *device = [[NSString stringWithCString:argv[4]] retain];
-	NSString *filter = [[NSString stringWithCString:argv[5]] retain];
-	NSString *promiscuousString = [[NSString stringWithCString:argv[6]] retain];
+	NSString *serverIdent = [@(argv[1]) retain];
+	NSString *clientIdent = [@(argv[2]) retain];
+	NSString *captureType = [@(argv[3]) retain];
+	NSString *device = [@(argv[4]) retain];
+	NSString *filter = [@(argv[5]) retain];
+	NSString *promiscuousString = [@(argv[6]) retain];
 	
 	BOOL promiscuous;
 	if ( [promiscuousString isEqualToString:@"nop"] ) {

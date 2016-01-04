@@ -13,7 +13,8 @@
 #import "DataSet.h"
 #import "Conversation.h"
 
-#import <SM2DGraphView/SM2DGraphView.h>
+#import "SM2DGraphView.h"
+//#import <SM2DGraphView/SM2DGraphView.h>
 
 #define allPacketsScopeTag		0
 #define selectedPacketsScopeTag	1
@@ -40,8 +41,7 @@
 - (void)setIndependentTag:(GCVariableType)newTag;
 - (void)setDependentTag:(GCVariableType)newTag;
 - (void)setSourceTag:(int)newTag;
-- (int)scopeTag;
-- (void)setScopeTag:(int)newScope;
+@property (NS_NONATOMIC_IOSONLY) int scopeTag;
 - (NSString *)identifierForTag:(GCVariableType)tag;
 - (NSString *)stringForTag:(GCVariableType)tag;
 

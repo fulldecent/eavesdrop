@@ -36,8 +36,8 @@
 }
 
 + (void)queueThreadWithSettings:(NSDictionary *)settings;
-+ (id)queueWithController:(id)aController;
-- (id)initWithController:(id)aController;
++ (instancetype)queueWithController:(id)aController;
+- (instancetype)initWithController:(id)aController NS_DESIGNATED_INITIALIZER;
 
 - (void)readPackets;
 - (NSDictionary *)dictionaryFromPacket:(NSData *)packetData withHeader:(NSData *)headerData;

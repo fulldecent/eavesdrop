@@ -30,10 +30,10 @@ static NSMutableDictionary *controllers;
 	if (!controllers)
 		controllers = [Capture sharedControllersDictionary];
 		
-	if ([controllers objectForKey:name]) {
+	if (controllers[name]) {
 		return NO;
 	} else {
-		[controllers setObject:controller forKey:name];
+		controllers[name] = controller;
 		return YES;
 	}
 }
@@ -50,7 +50,7 @@ static NSMutableDictionary *controllers;
 {
 	if (!controllers)
 		controllers = [Capture sharedControllersDictionary];
-	return [controllers objectForKey:name];
+	return controllers[name];
 }
 
 + (NSArray *)interfaces
@@ -63,12 +63,10 @@ static NSMutableDictionary *controllers;
 	//need to recover if no interfaces!!!
 	return [NSArray arrayWithObject:[NSString stringWithCString:defaultDev] ];
 */
-	return [NSArray arrayWithObjects:
-		@"en0", @"en1", @"en2", nil
-	];
+	return @[@"en0", @"en1", @"en2"];
 }
 
-- (id)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
+- (instancetype)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
 {
 	self = [super init];
 	queueIdentifier = [clientIdent retain];
@@ -77,7 +75,7 @@ static NSMutableDictionary *controllers;
 	return self;
 }
 
-- (id)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
+- (instancetype)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
 						device:(NSString *)usingDevice filter:(NSString *)usingFilter
 						promiscuous:(BOOL)usingPromiscuous
 {
@@ -86,7 +84,7 @@ static NSMutableDictionary *controllers;
 
 	if (serverIdent) {
 		NSConnection *serverConnection = [NSConnection defaultConnection];
-		[serverConnection setRootObject:self];
+		serverConnection.rootObject = self;
 
 		if ([serverConnection registerName:serverIdent] == NO) {
 			NSLog( @"DistributedObject - registered name %@ taken.", serverIdent );
@@ -112,7 +110,7 @@ static NSMutableDictionary *controllers;
 	return self;
 }
 
-- (id)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
+- (instancetype)initWithServerIdentifier:(NSString *)serverIdent clientIdentifier:(NSString *)clientIdent
 						file:(NSString *)usingFile filter:(NSString *)usingFilter
 						promiscuous:(BOOL)usingPromiscuous
 {
@@ -121,7 +119,7 @@ static NSMutableDictionary *controllers;
 
 	if (serverIdent) {
 		NSConnection *serverConnection = [NSConnection defaultConnection];
-		[serverConnection setRootObject:self];
+		serverConnection.rootObject = self;
 
 		if ([serverConnection registerName:serverIdent] == NO) {
 			NSLog( @"DistributedObject - registered name %@ taken.", serverIdent );
@@ -188,15 +186,12 @@ static NSMutableDictionary *controllers;
 	if (infile) {
 		[NSTask
 			launchedTaskWithLaunchPath:[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"CaptureTool"]
-			arguments:[NSArray arrayWithObjects:
-				toolIdentifier,
+			arguments:@[toolIdentifier,
 				queueIdentifier,
 				typeArg,
 				deviceArg,
 				filter,
-				@"",
-				nil
-			]
+				@""]
 		];
 		return active=YES;
 	} else {
@@ -223,7 +218,7 @@ static NSMutableDictionary *controllers;
 			NULL
 		};
 		// need to launch with root permissions
-		if ( authorize([[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"CaptureTool"] UTF8String],arguments) ) {
+		if ( authorize([[NSBundle mainBundle] pathForAuxiliaryExecutable:@"CaptureTool"].UTF8String,arguments) ) {
 			INFO(NSLog(@"captureTask is NOT running"));
 			return active=NO;	
 		} else {
@@ -318,7 +313,7 @@ static NSMutableDictionary *controllers;
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	[NSThread setThreadPriority:1.0];
 	NSConnection *serverConnection = [NSConnection defaultConnection];
-	[serverConnection setRootObject:self];
+	serverConnection.rootObject = self;
 
 	INFO(NSLog(@"getting queueProxy with ident:%@ capID:%@",queueIdentifier,capID));
 	queueProxy = [[NSConnection
@@ -408,7 +403,7 @@ static NSMutableDictionary *controllers;
 
 void packetHandler( u_char* user, const struct pcap_pkthdr* header, const u_char* packet )
 {
-	[ [controllers objectForKey:[NSString stringWithCString:user]]
+	[ controllers[[NSString stringWithCString:user]]
 		addPacket:[NSData dataWithBytes:packet length:header->caplen]
 		withHeader:[NSData dataWithBytes:header length:sizeof(struct pcap_pkthdr)]
 	];

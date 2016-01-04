@@ -17,7 +17,7 @@ int authorize( const char* path_to_tool, char * const *arguments )
 
     status = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment, kAuthorizationFlagDefaults, &authorizationRef);
     if (status != errAuthorizationSuccess) {
-        IFDEBUG(fprintf(stderr, "Failed to create the authref: %ld.\n", status));
+        IFDEBUG(fprintf(stderr, "Failed to create the authref: %d.\n", (int)status));
         return kMyAuthorizedCommandInternalError;
     } else {
 		if (AuthorizationExecuteWithPrivileges(authorizationRef,path_to_tool,kAuthorizationFlagDefaults,arguments,NULL)) {

@@ -10,9 +10,8 @@
 - (oneway void)addPacket:(NSData *)packetData withHeader:(NSData *)headerData;
 - (oneway void)addPacket:(NSDictionary *)packetDict;
 - (void)retreivedAdditions;
-- (BOOL)dataQueued;
-- (BOOL)updateNeeded;
-- (void)setUpdateNeeded:(BOOL)newState;
-- (int)queueDepth;
+@property (NS_NONATOMIC_IOSONLY, readonly) BOOL dataQueued;
+@property (NS_NONATOMIC_IOSONLY) BOOL updateNeeded;
+@property (NS_NONATOMIC_IOSONLY, readonly) int queueDepth;
 - (oneway void)stopCapture;
 @end

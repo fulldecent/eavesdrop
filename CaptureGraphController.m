@@ -16,7 +16,7 @@
 //		triggerChangeNotificationsForDependentKey:@"content"];
 }
 
-- (id)init
+- (instancetype)init
 {
 	//NSLog( @"[GraphController init]" );
 	self = [super init];
@@ -154,8 +154,8 @@
 - (IBAction)refreshGraph:(id)sender
 {
 	ENTRY(NSLog( @"[CaptureGraphController refresh]" ));
-	[refreshProgress setDoubleValue:0];
-	[refreshProgress setMaxValue:[[conversationController arrangedObjects] count] ];
+	refreshProgress.doubleValue = 0;
+	refreshProgress.maxValue = [conversationController.arrangedObjects count] ;
 	[refreshProgress setHidden:NO];
 	[refreshProgress displayIfNeeded];
 	
@@ -164,9 +164,9 @@
 	
 	NSEnumerator *en;
 	if ( scopeTag == allPacketsScopeTag )
-		en = [[conversationController arrangedObjects] objectEnumerator];
+		en = [conversationController.arrangedObjects objectEnumerator];
 	else
-		en = [[conversationController selectedObjects] objectEnumerator];
+		en = [conversationController.selectedObjects objectEnumerator];
 		
 	Conversation *tempConv;
 	NSMutableArray *tempArray1 = [NSMutableArray array];
@@ -181,7 +181,7 @@
 				ENTRY(NSLog( @"gathering data for all packets" ));
 				[tempArray1 addObjectsFromArray:
 							[ [tempConv
-								dataSetWithKeys:[NSArray arrayWithObject:dependentKey]
+								dataSetWithKeys:@[dependentKey]
 								independent:independentKey
 								forHost:nil]
 							data ]
@@ -192,7 +192,7 @@
 				ENTRY(NSLog( @"gathering data for client" ));
 				[tempArray1 addObjectsFromArray:
 							[ [tempConv
-								dataSetWithKeys:[NSArray arrayWithObject:dependentKey]
+								dataSetWithKeys:@[dependentKey]
 								independent:independentKey
 								forHost:[tempConv source] ]
 							data ]
@@ -203,7 +203,7 @@
 				ENTRY(NSLog( @"gathering data for server" ));
 				[tempArray1 addObjectsFromArray:
 							[ [tempConv
-								dataSetWithKeys:[NSArray arrayWithObject:dependentKey]
+								dataSetWithKeys:@[dependentKey]
 								independent:independentKey
 								forHost:[tempConv destination] ]
 							data ]
@@ -215,7 +215,7 @@
 				if (graphType==GCBarGraphType) {
 					[tempArray1 addObjectsFromArray:
 						[ [tempConv
-							dataSetWithKeys:[NSArray arrayWithObject:dependentKey]
+							dataSetWithKeys:@[dependentKey]
 							independent:independentKey
 							forHost:nil]
 						data ]
@@ -224,14 +224,14 @@
 				} else {
 					[tempArray1 addObjectsFromArray:
 						[ [tempConv
-							dataSetWithKeys:[NSArray arrayWithObject:dependentKey]
+							dataSetWithKeys:@[dependentKey]
 							independent:independentKey
 							forHost:[tempConv source] ]
 						data ]
 					];
 					[tempArray2 addObjectsFromArray:
 						[ [tempConv
-							dataSetWithKeys:[NSArray arrayWithObject:dependentKey]
+							dataSetWithKeys:@[dependentKey]
 							independent:independentKey
 							forHost:[tempConv destination] ]
 						data ]
@@ -250,14 +250,14 @@
 	[refreshProgress startAnimation:self];
 	[refreshProgress displayIfNeeded];
 
-	if ([tempArray1 count]) {
+	if (tempArray1.count) {
 		ENTRY(NSLog( @"setting dataSet with %d objects", [tempArray1 count] ));
 		[dataSet setData:[tempArray1 copy] ];
 	} else {
 		[dataSet setData:nil];
 	}
 
-	if ([tempArray2 count]) {
+	if (tempArray2.count) {
 		ENTRY(NSLog( @"setting dataSet2 with %d objects", [tempArray2 count] ));
 		[dataSet2 setData:[tempArray2 copy] ];
 	} else {
@@ -316,7 +316,7 @@
 	int runResult = [savePanel runModal];
 	
 	if (runResult == NSOKButton) {
-		if (![[[dataSet description] dataUsingEncoding:NSASCIIStringEncoding] writeToFile:[savePanel filename] atomically:YES])
+		if (![[dataSet.description dataUsingEncoding:NSASCIIStringEncoding] writeToFile:[savePanel filename] atomically:YES])
 			NSBeep();
 	}
 }
@@ -356,29 +356,15 @@
 	}
 	
 	if (graphType==GCBarGraphType) {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			graphColor,	NSForegroundColorAttributeName,
-			@"on",		SM2DGraphBarStyleAttributeName,
-			nil
-		];
+		return @{NSForegroundColorAttributeName: graphColor,
+			SM2DGraphBarStyleAttributeName: @"on"};
 	} else if (graphType==GCScatterPlotType) {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			graphColor,
-				NSForegroundColorAttributeName,
-			[NSNumber numberWithInt:kSM2DGraph_Symbol_FilledCircle],
-				SM2DGraphLineSymbolAttributeName,
-			[ NSNumber numberWithInt:kSM2DGraph_Width_None ],
-				SM2DGraphLineWidthAttributeName,
-			nil
-		];
+		return @{NSForegroundColorAttributeName: graphColor,
+			SM2DGraphLineSymbolAttributeName: @(kSM2DGraph_Symbol_FilledCircle),
+			SM2DGraphLineWidthAttributeName: @(kSM2DGraph_Width_None)};
 	} else {
-		return [NSDictionary dictionaryWithObjectsAndKeys:
-			graphColor,
-				NSForegroundColorAttributeName,
-			[NSNumber numberWithInt:kSM2DGraph_Symbol_FilledCircle],
-				SM2DGraphLineSymbolAttributeName,
-			nil
-		];
+		return @{NSForegroundColorAttributeName: graphColor,
+			SM2DGraphLineSymbolAttributeName: @(kSM2DGraph_Symbol_FilledCircle)};
 	}
 }
 
@@ -386,11 +372,11 @@
 {
 	ENTRY(NSLog( @"[CaptureGraphController twoDGraphView:dataForLineIndex:]" ));
 	if (inLineIndex==0) {
-		if ([[dataSet data] count]) {
+		if ([dataSet data].count) {
 			return [dataSet dataPointsForCurrentIdentifier];
 		}
 	} else if (inLineIndex==1) {
-		if ([[dataSet2 data] count]) {
+		if ([dataSet2 data].count) {
 			return [dataSet2 dataPointsForCurrentIdentifier];
 		}
 	}
@@ -430,11 +416,11 @@
 	INFO(NSLog( @"source = %d", source ));
 	if (graphType==GCBarGraphType) {
 		if (source==-1)
-			[attr setObject:[NSColor blueColor] forKey:NSForegroundColorAttributeName];
+			attr[NSForegroundColorAttributeName] = [NSColor blueColor];
 		else if (source==1)
-			[attr setObject:[NSColor redColor] forKey:NSForegroundColorAttributeName];
+			attr[NSForegroundColorAttributeName] = [NSColor redColor];
 		else
-			[attr setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName];		
+			attr[NSForegroundColorAttributeName] = [NSColor blackColor];		
 	}
 }
 

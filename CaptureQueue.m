@@ -17,14 +17,14 @@
 	CaptureQueue *serverObject;
 
 	serverObject = [self
-		queueWithController:[settings objectForKey:@"CaptureController"]
+		queueWithController:settings[@"CaptureController"]
 	];
 
 	serverConnection = [NSConnection defaultConnection];
-	[serverConnection setRootObject:serverObject];
+	serverConnection.rootObject = serverObject;
 
-	if ([serverConnection registerName:[settings objectForKey:@"QueueIdentifier"]] == NO) {
-		NSLog( @"DistributedObject - registered name %@ taken.", [settings objectForKey:@"QueueIdentifier"] );
+	if ([serverConnection registerName:settings[@"QueueIdentifier"]] == NO) {
+		NSLog( @"DistributedObject - registered name %@ taken.", settings[@"QueueIdentifier"] );
 		return;
 	}
 
@@ -40,12 +40,12 @@
 	return;
 }
 
-+ (id)queueWithController:(id)aController
++ (instancetype)queueWithController:(id)aController
 {
 	return [[[CaptureQueue alloc] initWithController:aController] autorelease];
 }
 
-- (id)initWithController:(id)aController
+- (instancetype)initWithController:(id)aController
 {
 	self = [super init];
 	if (self) {
@@ -59,11 +59,8 @@
 		
 		[aController
 			performSelectorOnMainThread:@selector(setPacketQueueAndLock:)
-			withObject:[NSDictionary dictionaryWithObjectsAndKeys:
-				additions,		@"additions",
-				additionsLock,	@"lock",
-				nil
-			]
+			withObject:@{@"additions": additions,
+				@"lock": additionsLock}
 			waitUntilDone:NO
 		];
 		
@@ -100,11 +97,11 @@
 	NSData *tempHeader;
 	while (read) {
 		[queueLock lockWhenCondition:HAS_DATA];
-		tempPacket = [packetQueue objectAtIndex:0];
-		tempHeader = [headerQueue objectAtIndex:0];
+		tempPacket = packetQueue[0];
+		tempHeader = headerQueue[0];
 		[packetQueue removeObjectAtIndex:0];
 		[headerQueue removeObjectAtIndex:0];
-		if ([packetQueue count]) {
+		if (packetQueue.count) {
 			[queueLock unlockWithCondition:HAS_DATA];
 		} else {
 			[queueLock unlockWithCondition:NO_DATA];
@@ -134,8 +131,8 @@
 	int size_ip = sizeof(struct sniff_ip);
 	//int size_tcp = sizeof(struct sniff_tcp);
 	
-	packet = (u_char*)[packetData bytes];
-	header = (struct pcap_pkthdr*)[headerData bytes];
+	packet = (u_char*)packetData.bytes;
+	header = (struct pcap_pkthdr*)headerData.bytes;
 	
 	int payload_size;
 	NSData *payloadData;
@@ -171,23 +168,18 @@
 	if (tcp->th_flags & TH_CWR)
 		flags[7] = 'C';
 	
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		//[NSData dataWithBytes:packet length:header->caplen],@"packet",
-		[NSNumber numberWithInt:count],						@"number",
-		[NSString stringWithCString:inet_ntoa(ip->ip_src)],	@"source",
-		[NSNumber numberWithInt:ntohs(tcp->th_sport)],		@"sport",
-		[NSString stringWithCString:inet_ntoa(ip->ip_dst)],	@"destination",
-		[NSNumber numberWithInt:ntohs(tcp->th_dport)],		@"dport",
-		[NSString stringWithCString:flags],					@"flags",
-		[NSNumber numberWithUnsignedLongLong:tcp->th_seq],	@"sequence",
-		[NSNumber numberWithUnsignedLongLong:tcp->th_ack],	@"acknowledgement",
-		[NSNumber numberWithInt:tcp->th_win],				@"window",
-		[NSNumber numberWithInt:header->len],				@"length",
-		[NSNumber numberWithDouble:
-			header->ts.tv_sec + header->ts.tv_usec*1.0e-6],	@"timestamp",
-		payloadData,										@"payload",
-		nil
-	];
+	return @{@"number": @(count),
+		@"source": @(inet_ntoa(ip->ip_src)),
+		@"sport": [NSNumber numberWithInt:ntohs(tcp->th_sport)],
+		@"destination": @(inet_ntoa(ip->ip_dst)),
+		@"dport": [NSNumber numberWithInt:ntohs(tcp->th_dport)],
+		@"flags": @(flags),
+		@"sequence": [NSNumber numberWithUnsignedLongLong:tcp->th_seq],
+		@"acknowledgement": [NSNumber numberWithUnsignedLongLong:tcp->th_ack],
+		@"window": [NSNumber numberWithInt:tcp->th_win],
+		@"length": [NSNumber numberWithInt:header->len],
+		@"timestamp": @(header->ts.tv_sec + header->ts.tv_usec*1.0e-6),
+		@"payload": payloadData};
 
 	count++;
 }
@@ -195,23 +187,23 @@
 - (void)addPacketDictionary:(NSDictionary *)packetDict
 {
 	NSString *packetID = [Conversation
-		calculateIDFromSource:  [packetDict objectForKey:@"source"]
-		port:					[[packetDict objectForKey:@"sport"] intValue]
-		destination:			[packetDict objectForKey:@"destination"]
-		port:					[[packetDict objectForKey:@"dport"] intValue]
+		calculateIDFromSource:  packetDict[@"source"]
+		port:					[packetDict[@"sport"] intValue]
+		destination:			packetDict[@"destination"]
+		port:					[packetDict[@"dport"] intValue]
 	];
 	
-	Conversation *conversation = [conversations objectForKey:packetID];
+	Conversation *conversation = conversations[packetID];
 	if (conversation) {
 		[conversation addPacket:packetDict];
 		updateNeeded = YES;
 	} else {
 		conversation = [[Conversation alloc]
-			initWithOrderNumber:([conversations count]+1)
+			initWithOrderNumber:(conversations.count+1)
 			packet:packetDict
 		];
 		if (conversation) {
-			[conversations setObject:conversation forKey:packetID];
+			conversations[packetID] = conversation;
 			[additionsLock lock];
 			[additions addObject:conversation];
 			updateNeeded = YES;
@@ -244,7 +236,7 @@
 
 - (int)queueDepth
 {
-	return [packetQueue count];
+	return packetQueue.count;
 }
 
 - (oneway void)noMorePackets
