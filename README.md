@@ -1,5 +1,7 @@
 ![](<logo.png>)
 
+<img src="http://i.imgur.com/Ti7XflK.png">
+
 Eavesdrop
 =========
 
