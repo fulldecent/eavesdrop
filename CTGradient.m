@@ -9,6 +9,7 @@
 
 #import "CTGradient.h"
 #import "CTGradient.h"
+#import "math.h"
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
 
@@ -650,7 +651,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
   	CGFloat deltax,
   		  deltay;
 	
-  	CGFloat rangle = angle * (CGFloat)pi/(CGFloat)180;	//convert the angle to radians
+  	CGFloat rangle = angle * M_PI/(CGFloat)180;	//convert the angle to radians
 	
   	if(CGFloatAbs(CGFloatTan(rangle))<=1)	//for range [-45,45], [135,225]
 		{
@@ -671,9 +672,9 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 		x = NSHeight(rect);
 		y = NSWidth(rect);
 		
-		sina = CGFloatSin(rangle - (CGFloat)90*(CGFloat)pi/(CGFloat)180);
-		cosa = CGFloatCos(rangle - (CGFloat)90*(CGFloat)pi/(CGFloat)180);
-		tana = CGFloatTan(rangle - (CGFloat)90*(CGFloat)pi/(CGFloat)180);
+		sina = CGFloatSin(rangle - (CGFloat)90* M_PI /(CGFloat)180);
+		cosa = CGFloatCos(rangle - (CGFloat)90* M_PI /(CGFloat)180);
+		tana = CGFloatTan(rangle - (CGFloat)90* M_PI /(CGFloat)180);
 		
 		length = x/CGFloatAbs(cosa)+(y-x*CGFloatAbs(tana))*CGFloatAbs(sina);
 		

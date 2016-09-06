@@ -103,16 +103,6 @@ typedef enum _SMLabelPosition {
 
 // -------- Basic settings that can be changed. --------------------
 
-/*!	@method	setTag:
-    @discussion	Sets the tag of the receiver to inTag.  This is an integer you can use for whatever you'd like.
-    @param	inTag	The new tag of the receiver.
-*/
-/*!	@method	tag
-    @discussion	Returns the tag of the receiver.  This is an integer you can use for whatever you'd like.
-    @result	The tag of the receiver.
-*/
-@property (NS_NONATOMIC_IOSONLY) int tag;
-
 /*!	@method	setBackgroundColor:
     @discussion	Sets the receiver's background color to aColor.  The default is white.  If set to nil, no
                 background is drawn.
