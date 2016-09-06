@@ -100,7 +100,7 @@ extern NSString *SM2DGraphLineDashAttributeName;
 	@constant	kSM2DGraph_Dash_Mixed		Mixed dash : one small, one large, ...
 	@constant	kSM2DGraph_Dash_Default		Default dash style for lines - equal to kSM2DGraph_Dash_None.
 */
-typedef enum
+typedef NS_ENUM(unsigned int, SM2DGraphLineDashStyleEnum)
 {
 	kSM2DGraph_Dash_None = 0,
 	kSM2DGraph_Dash_Small,
@@ -108,7 +108,7 @@ typedef enum
 	kSM2DGraph_Dash_Mixed,
 
 	kSM2DGraph_Dash_Default = kSM2DGraph_Dash_None
-} SM2DGraphLineDashStyleEnum;
+};
 
 /*!	@enum	SM2DGraphSymbolTypeEnum
     @discussion	Symbols that can be used on line style graphs.  Does nothing for bar style lines.
@@ -129,7 +129,7 @@ typedef enum
 	@constant	kSM2DGraph_Symbol_FilledStar		Filled star marking line points.
 	@constant	kSM2DGraph_Symbol_Default		Default symbol for lines - equal to kSM2DGraph_Symbol_None.
 */
-typedef enum
+typedef NS_ENUM(unsigned int, SM2DGraphSymbolTypeEnum)
 {
     kSM2DGraph_Symbol_None = 0,
     kSM2DGraph_Symbol_Triangle,
@@ -148,7 +148,7 @@ typedef enum
     kSM2DGraph_Symbol_FilledStar,
 
     kSM2DGraph_Symbol_Default = kSM2DGraph_Symbol_None
-} SM2DGraphSymbolTypeEnum;
+};
 
 /*!	@enum	SM2DGraphLineWidthEnum
     @discussion	Width of lines in the graph.
@@ -160,7 +160,7 @@ typedef enum
                                             and darker line below main line.
     @constant	kSM2DGraph_Width_Default	Default width of lines - equal to kSM2DGraph_Width_3D.
 */
-typedef enum 
+typedef NS_ENUM(unsigned int, SM2DGraphLineWidthEnum) 
 {
     kSM2DGraph_Width_None = 0,
     kSM2DGraph_Width_Fine = 1,
@@ -169,7 +169,7 @@ typedef enum
     kSM2DGraph_Width_3D,
 
     kSM2DGraph_Width_Default = kSM2DGraph_Width_3D
-} SM2DGraphLineWidthEnum;
+};
 
 /*!	@enum	SM2DGraphAxisEnum
     @discussion	When dealing with various properties of graph axis, these constants should be used.
@@ -178,14 +178,14 @@ typedef enum
     @constant	kSM2DGraph_Axis_Y_Right	Y axis on the right side of the graph.
     @constant	kSM2DGraph_Axis_Y_Left	Y axis on left side of graph - equal to kSM2DGraph_Axis_Y.
 */
-typedef enum
+typedef NS_ENUM(unsigned int, SM2DGraphAxisEnum)
 {
     kSM2DGraph_Axis_Y = 0,
     kSM2DGraph_Axis_X = 1,
 
     kSM2DGraph_Axis_Y_Right = 2,
     kSM2DGraph_Axis_Y_Left = kSM2DGraph_Axis_Y
-} SM2DGraphAxisEnum;
+};
 
 /*!	@class	SM2DGraphView
     @discussion	NSView subclass that conforms to the NSCoding protocol.
@@ -221,12 +221,11 @@ typedef enum
                 The data source is checked to see if responds to methods in the SM2DGraphDataSource category.
     @param	inDataSource	The new data source.
 */
-- (void)setDataSource:(id)inDataSource;
 /*!	@method	dataSource
     @discussion Returns the object that line data is pulled from.
     @result	The data source object of the graph view.
 */
-- (id)dataSource;
+@property (NS_NONATOMIC_IOSONLY, assign) id dataSource;
 
 /*!	@method	setDelegate:
     @discussion Set the delegate object for the graph view.
@@ -234,12 +233,11 @@ typedef enum
                 The delegate is checked to see if responds to any of the methods in the SM2DGraphDelegate category.
     @param	inDelegate	The new delegate object.
 */
-- (void)setDelegate:(id)inDelegate;
 /*!	@method	delegate
     @discussion Returns the delegate object for the graph view.
     @result	The delegate object.
 */
-- (id)delegate;
+@property (NS_NONATOMIC_IOSONLY, assign) id delegate;
 
 // -------- Basic settings that can be changed. --------------------
 
@@ -247,12 +245,11 @@ typedef enum
     @discussion	Sets the tag of the receiver to inTag.  This is an integer you can use for whatever you'd like.
     @param	inTag	The new tag of the receiver.
 */
-- (void)setTag:(NSInteger)inTag;
 /*!	@method	tag
     @discussion	Returns the tag of the receiver.  This is an integer you can use for whatever you'd like.
     @result	The tag of the receiver.
 */
-- (NSInteger)tag;
+@property (NS_NONATOMIC_IOSONLY) NSInteger tag;
 
 /*!	@method	setDrawsGrid:
     @discussion	Controls whether the receiver draws grid lines on the graph. The default is NO.
@@ -260,12 +257,11 @@ typedef enum
                 <B>See Also:</B> -drawsGrid, -setGridColor:, -gridColor, -setBackgroundColor: and -backgroundColor.
     @param	inFlag	If YES the receiver draws grid lines; if NO it doesn't.
 */
-- (void)setDrawsGrid:(BOOL)inFlag;
 /*!	@method	drawsGrid
     @discussion Returns YES if the receiver draws grid lines on the graph, NO if it doesn't. The default is NO.
     @result	YES if the receiver draws grid lines, NO if it doesn't.
 */
-- (BOOL)drawsGrid;
+@property (NS_NONATOMIC_IOSONLY) BOOL drawsGrid;
 /*!	@method	setBackgroundColor:
     @discussion	Sets the receiver's background color to aColor.  The default is white.  If set to nil, no
                 background is drawn.
@@ -273,12 +269,11 @@ typedef enum
                 <B>See Also:</B> -setDrawsGrid:, -drawsGrid, -setGridColor:, -gridColor, and -backgroundColor.
     @param	inColor	The new background color.
 */
-- (void)setBackgroundColor:(NSColor *)inColor;
 /*!	@method	backgroundColor
     @discussion Returns the color used to draw the background of the receiver. The default background color is white.
     @result	The color used to draw the background.
 */
-- (NSColor *)backgroundColor;
+@property (NS_NONATOMIC_IOSONLY, copy) NSColor *backgroundColor;
 
 /*!	@method	setGridColor:
     @discussion	Sets the color used to draw grid lines. The default color is blue.
@@ -286,12 +281,11 @@ typedef enum
                 <B>See Also:</B> -setDrawsGrid:, -drawsGrid, -gridColor, -setBackgroundColor:, and -backgroundColor.
     @param	inColor	The color to draw grid lines.
 */
-- (void)setGridColor:(NSColor *)inColor;
 /*!	@method	gridColor
     @discussion Returns the color used to draw grid lines. The default color is blue.
     @result	The color used to draw grid lines.
 */
-- (NSColor *)gridColor;
+@property (NS_NONATOMIC_IOSONLY, copy) NSColor *gridColor;
 
 /*!	@method	setBorderColor:
     @discussion	Sets the color used to draw the border of the graph area. The default color is black.
@@ -299,34 +293,31 @@ typedef enum
                 <B>See Also:</B> -setDrawsGrid:, -drawsGrid, -gridColor, -setBackgroundColor:, and -backgroundColor.
     @param	inColor	The color to draw grid lines.
 */
-- (void)setBorderColor:(NSColor *)inColor;
 /*!	@method	borderColor
     @discussion Returns the color used to draw the border of the graph area. The default color is black.
     @result	The color used to draw the border of the graph area.
 */
-- (NSColor *)borderColor;
+@property (NS_NONATOMIC_IOSONLY, copy) NSColor *borderColor;
 
 /*!	@method	setTitle:
     @discussion Set the title drawn at the top of the graph.  The default title is blank.
     @param	inTitle		The title of the graph.  If nil, any existing title is removed.
 */
-- (void)setTitle:(NSString *)inTitle;
 /*!	@method	title
     @discussion Returns the title drawn at the top of the graph.  The default title is blank.
     @result	The title of the graph.
 */
-- (NSString *)title;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *title;
 
 /*!	@method	setAttributedTitle:
     @discussion Set the title as an attributed string drawn at the top of the graph.  The default title is blank.
     @param	inTitle		The title of the graph.  If nil, any existing title is removed.
 */
-- (void)setAttributedTitle:(NSAttributedString *)inTitle;
 /*!	@method	attributedTitle
     @discussion Returns the attributed string title drawn at the top of the graph.  The default title is blank.
     @result	The title of the graph as an attributed string.
 */
-- (NSAttributedString *)attributedTitle;
+@property (NS_NONATOMIC_IOSONLY, copy) NSAttributedString *attributedTitle;
 
 /*!	@method	setLabel:forAxis:
     @discussion Sets the axis label for an axis.  The default is no label (nil).
@@ -424,14 +415,13 @@ typedef enum
                 redrawn or not.  The default value is NO.
     @param	inFlag	The desired state of the <i>liveRefresh</i> flag.
 */
-- (void)setLiveRefresh:(BOOL)inFlag;
 /*!	@method	liveRefresh
     @discussion Returns the state of the <i>liveRefresh</i> flag.  This flag is only used in the
                 <b>-addDataPoint:toLineIndex:</b> method to determine if the graph should be automatically
                 redrawn or not.  The default value is NO.
     @result	The state of the <i>liveRefresh</i> flag.
 */
-- (BOOL)liveRefresh;
+@property (NS_NONATOMIC_IOSONLY) BOOL liveRefresh;
 
 /*!	@method	refreshDisplay:
     @discussion Simple cover method that calls -reloadData, then -reloadAttributes.
@@ -479,13 +469,13 @@ typedef enum
                 background first, so it should not have any transparent parts.
     @result	An NSImage object of the entire graph view.
 */
-- (NSImage *)imageOfView;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSImage *imageOfView;
 
 /*!	@method	graphPaperRect
     @discussion Returns the area the will be taken up by the graph itself.  Labels will be drawn outside of this rectangle, but within the view's area.
     @result	An NSRect in the receivers coordinates which is contains the actual graph area.
 */
-- (NSRect)graphPaperRect;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSRect graphPaperRect;
 
 /*!	@method	convertPoint:fromView:toLineIndex:
     @discussion Converts a point from a given window/view coordinate system to a point in the coordinate system

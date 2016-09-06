@@ -64,7 +64,7 @@ typedef enum  _CTBlendingMode
 	CGFunctionRef gradientFunction;
 	}
 
-+ (id)gradientWithBeginningColor:(NSColor *)begin endingColor:(NSColor *)end;
++ (instancetype)gradientWithBeginningColor:(NSColor *)begin endingColor:(NSColor *)end;
 
 + (id)aquaSelectedGradient;
 + (id)aquaNormalGradient;
@@ -87,7 +87,7 @@ typedef enum  _CTBlendingMode
 - (CTGradient *)removeColorStopAtIndex:(NSUInteger)index;
 - (CTGradient *)removeColorStopAtPosition:(CGFloat)position;
 
-- (CTGradientBlendingMode)blendingMode;
+@property (NS_NONATOMIC_IOSONLY, readonly) CTGradientBlendingMode blendingMode;
 - (NSColor *)colorStopAtIndex:(NSUInteger)index;
 - (NSColor *)colorAtPosition:(CGFloat)position;
 

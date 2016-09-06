@@ -249,9 +249,9 @@
 
 - (IBAction)changeSearchCategory:(id)sender
 {
-	[[sender menu] itemWithTag:[captureController searchCategory]].state = NSOffState;
+	[[sender menu] itemWithTag:captureController.searchCategory].state = NSOffState;
 	[sender setState:NSOnState];
-	[captureController setSearchCategory:[sender tag] ];
+	captureController.searchCategory = [sender tag] ;
 }
 
 - (id)valueForUndefinedKey:(NSString *)key

@@ -24,13 +24,13 @@
     @constant	kSM2DGraphScaleType_Log10	Log base 10 scale.
     @constant	kSM2DGraphScaleType_Default	Default scale for both axis - equal to linear.
 */
-typedef enum
+typedef NS_ENUM(unsigned int, SM2DGraphScaleTypeEnum)
 {
     kSM2DGraphScaleType_Linear,
     kSM2DGraphScaleType_Log10,
 
     kSM2DGraphScaleType_Default = kSM2DGraphScaleType_Linear
-} SM2DGraphScaleTypeEnum;
+};
 
 // Some unimplemented methods.
 //- (void)setScaleType:(SM2DGraphScaleTypeEnum)inNewValue forAxis:(SM2DGraphAxisEnum)inAxis;
@@ -156,7 +156,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     return (CGFloat)10.0;
 }
 
-- (id)initWithFrame:(NSRect)frame
+- (instancetype)initWithFrame:(NSRect)frame
 {
     self = [ super initWithFrame:frame ];
     if ( nil != self )
@@ -226,7 +226,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 
 #pragma mark -
 
-- (id)initWithCoder:(NSCoder *)decoder
+- (instancetype)initWithCoder:(NSCoder *)decoder
 {
     BOOL			tempBool;
     int				tempInt;
@@ -397,7 +397,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 {
     NSUInteger		lineCount, lineIndex, dataCount, dataIndex;
     id				dataObj;
-    CGContextRef	context = (CGContextRef)[ [ NSGraphicsContext currentContext ] graphicsPort ];
+    CGContextRef	context = (CGContextRef) [ NSGraphicsContext currentContext ].graphicsPort ;
 #if defined( SM2D_TIMER ) && ( SM2D_TIMER != 0 )
     NSDate			*timer;
     NSTimeInterval	timeInterval;
@@ -413,7 +413,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     NSMutableDictionary *attr;
     NSPoint			*dataLinePoints;
     NSPoint			fromPoint, toPoint;
-    NSRect			bounds = [ self bounds ], graphRect, graphPaperRect, drawRect;
+    NSRect			bounds = self.bounds , graphRect, graphPaperRect, drawRect;
     CGFloat			xScale, minX, yScale, minY;
     NSInteger		i, barNumber;
     BOOL			drawBar;
@@ -421,7 +421,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     graphPaperRect = myPrivateData->graphPaperRect;
     graphRect = myPrivateData->graphRect;
 
-	if ( nil != myPrivateData->title && [ (NSString *)myPrivateData->title length ] != 0 )
+	if ( nil != myPrivateData->title && ((NSString *)myPrivateData->title).length != 0 )
 	{
 		if ( [ myPrivateData->title isKindOfClass:[ NSAttributedString class ] ] )
 			drawRect.size = [ (NSAttributedString *)myPrivateData->title size ];
@@ -695,8 +695,8 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             [ NSBezierPath strokeLineFromPoint:fromPoint toPoint:toPoint ];
         }
 
-        if ( nil != myPrivateData->lineData && [ myPrivateData->lineData count ] > 0
-                    && ![ self inLiveResize ] )
+        if ( nil != myPrivateData->lineData && myPrivateData->lineData.count > 0
+                    && ! self.inLiveResize )
         {
 #if defined( SM2D_TIMER ) && ( SM2D_TIMER == 1 )
             timer = [ NSDate date ];
@@ -705,19 +705,19 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             // Draw the data (but not when we're in a live resize).
             [ NSBezierPath clipRect:NSInsetRect( graphPaperRect, (CGFloat)1.0, (CGFloat)1.0 ) ];
 
-            lineCount = [ myPrivateData->lineData count ];
+            lineCount = myPrivateData->lineData.count ;
             barNumber = 0;
             for ( lineIndex = 0; lineIndex < lineCount; lineIndex++ )
             {
-                dataObj = [ myPrivateData->lineData objectAtIndex:lineIndex ];
+                dataObj = myPrivateData->lineData[lineIndex];
                 if ( [ dataObj isKindOfClass:[ NSArray class ] ] )
                 {
-                    dataCount = [ (NSArray *)dataObj count ];
+                    dataCount = ((NSArray *)dataObj).count ;
                     dataLinePoints = nil;
                 }
                 else
                 {
-                    dataCount = [ (NSData *)dataObj length ] / sizeof(NSPoint);
+                    dataCount = ((NSData *)dataObj).length / sizeof(NSPoint);
                     dataLinePoints = (NSPoint *)[ dataObj bytes ];
                 }
 
@@ -767,7 +767,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
                 {
                     // Get the values out of the string and into an array of NSPoints.
                     for ( dataIndex = 0; dataIndex < dataCount; dataIndex++ )
-                        points[ dataIndex ] = NSPointFromString( [ (NSArray *)dataObj objectAtIndex:dataIndex ] );
+                        points[ dataIndex ] = NSPointFromString( ((NSArray *)dataObj)[dataIndex] );
                 }
 
 #if defined( SM2D_TIMER ) && ( SM2D_TIMER == 2 )
@@ -803,14 +803,12 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 #if !SM2D_USE_CORE_GRAPHICS
                 line = nil;
 #endif
-                drawBar =  ( nil != [ [ myPrivateData->lineAttributes objectAtIndex:lineIndex ]
-                            objectForKey:SM2DGraphBarStyleAttributeName ] );
+                drawBar =  ( nil != myPrivateData->lineAttributes[lineIndex][SM2DGraphBarStyleAttributeName] );
                 if ( drawBar )
                 {
                     // If we're drawing a bar graph, that's a simple loop and draw each bar.
                     barNumber++;
-                    tempColor = [ [ myPrivateData->lineAttributes objectAtIndex:lineIndex ]
-                                objectForKey:NSForegroundColorAttributeName ];
+                    tempColor = myPrivateData->lineAttributes[lineIndex][NSForegroundColorAttributeName];
                     if ( tempColor == nil )
                         tempColor = [ NSColor blackColor ];
 
@@ -835,7 +833,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
                         {
                             [ delegate twoDGraphView:self willDisplayBarIndex:dataIndex forLineIndex:lineIndex
                                         withAttributes:attr ];
-                            tempColor = [ attr objectForKey:NSForegroundColorAttributeName ];
+                            tempColor = attr[NSForegroundColorAttributeName];
                             if ( tempColor == nil )
                                 tempColor = [ NSColor blackColor ];
                         }
@@ -874,28 +872,26 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
                     BOOL		tempBool = YES;
 
                     // Possibly turn off anti-aliasing for this line.
-                    CGContextSetShouldAntialias( context, ( nil == [ [ myPrivateData->lineAttributes
-                            objectAtIndex:lineIndex ] objectForKey:SM2DGraphDontAntialiasAttributeName ] ) );
+                    CGContextSetShouldAntialias( context, ( nil == myPrivateData->lineAttributes[lineIndex][SM2DGraphDontAntialiasAttributeName] ) );
 
-                    tempNumber = [ [ myPrivateData->lineAttributes objectAtIndex:lineIndex ]
-                                objectForKey:SM2DGraphLineWidthAttributeName ];
+                    tempNumber = myPrivateData->lineAttributes[lineIndex][SM2DGraphLineWidthAttributeName];
 
                     if ( nil != tempNumber )
                     {
-                        switch ( [ tempNumber intValue ] )
+                        switch ( tempNumber.intValue )
                         {
                         case kSM2DGraph_Width_Fine:
 #if SM2D_USE_CORE_GRAPHICS
                             CGContextSetLineWidth( context, (CGFloat)0.5 );
 #else
-                            [ line setLineWidth:(CGFloat)0.5 ];
+                            line.lineWidth = (CGFloat)0.5 ;
 #endif
                             break;
                         case kSM2DGraph_Width_Wide:
 #if SM2D_USE_CORE_GRAPHICS
                             CGContextSetLineWidth( context, (CGFloat)2.0 );
 #else
-                            [ line setLineWidth:(CGFloat)2.0 ];
+                            line.lineWidth = (CGFloat)2.0 ;
 #endif
                             break;
                         case kSM2DGraph_Width_None:
@@ -905,14 +901,13 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 #if SM2D_USE_CORE_GRAPHICS
                             CGContextSetLineWidth( context, (CGFloat)1.0 );
 #else
-                            [ line setLineWidth:(CGFloat)1.0 ];
+                            line.lineWidth = (CGFloat)1.0 ;
 #endif
                             break;
                         }
                     }
 
-					tempNumber = [ [ myPrivateData->lineAttributes objectAtIndex:lineIndex ]
-								objectForKey:SM2DGraphLineDashAttributeName ];
+					tempNumber = myPrivateData->lineAttributes[lineIndex][SM2DGraphLineDashAttributeName];
 
 					if ( nil != tempNumber )
 					{
@@ -920,7 +915,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 						const CGFloat smallStep = 8.0;
 						const CGFloat largeStep = 16.0;
 
-						switch ( [ tempNumber intValue ] )
+						switch ( tempNumber.intValue )
 						{
 						case kSM2DGraph_Dash_Small:
 							lengths[0] = lengths[1] = lengths[2] = lengths[3] = smallStep;
@@ -934,7 +929,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 							lengths[1] = lengths[2] = lengths[3] = smallStep;
 							break;
 						}
-						if ( [ tempNumber intValue ] != kSM2DGraph_Dash_None )
+						if ( tempNumber.intValue != kSM2DGraph_Dash_None )
 						{
 #if SM2D_USE_CORE_GRAPHICS
 							CGContextSetLineDash( context, 0.0, lengths, 4 );
@@ -945,8 +940,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 					}
 
                     // Go ahead and draw the line as an NSBezierPath.
-                    tempColor = [ [ myPrivateData->lineAttributes objectAtIndex:lineIndex ]
-                                objectForKey:NSForegroundColorAttributeName ];
+                    tempColor = myPrivateData->lineAttributes[lineIndex][NSForegroundColorAttributeName];
                     if ( nil != tempColor )
                         [ tempColor set ];
                     else
@@ -964,7 +958,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
                         [ line stroke ];
 #endif
 
-                        if ( nil == tempNumber || kSM2DGraph_Width_3D == [ tempNumber intValue ] )
+                        if ( nil == tempNumber || kSM2DGraph_Width_3D == tempNumber.intValue )
                         {
 #if !SM2D_USE_CORE_GRAPHICS
                             id	offsetUp = [ NSClassFromString( @"NSAffineTransform" ) transform ];
@@ -1007,8 +1001,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
                     CGContextSetShouldAntialias( context, YES );
 
                     // Possibly draw symbols on the line.
-                    tempNumber = [ [ myPrivateData->lineAttributes objectAtIndex:lineIndex ]
-                                objectForKey:SM2DGraphLineSymbolAttributeName ];
+                    tempNumber = myPrivateData->lineAttributes[lineIndex][SM2DGraphLineSymbolAttributeName];
 #if SM2D_USE_CORE_GRAPHICS
                     if ( nil != tempNumber && [ tempNumber intValue ] != kSM2DGraph_Symbol_None )
                         [ self _sm_drawSymbol:[ tempNumber intValue ] onLine:points
@@ -1020,8 +1013,8 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 //                    free( points );
 //                    points = nil;
 #else
-                    if ( nil != tempNumber && [ tempNumber intValue ] != kSM2DGraph_Symbol_None )
-                        [ self _sm_drawSymbol:[ tempNumber intValue ] onLine:line inColor:tempColor inRect:rect ];
+                    if ( nil != tempNumber && tempNumber.intValue != kSM2DGraph_Symbol_None )
+                        [ self _sm_drawSymbol: tempNumber.intValue onLine:line inColor:tempColor inRect:rect ];
 #endif
                 } // if bezier path ( line != nil ) or ( points != nil )
 
@@ -1053,7 +1046,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     {
         NSPoint		curPoint;
 
-        curPoint = [ self convertPoint:[ inEvent locationInWindow ] fromView:nil ];
+        curPoint = [ self convertPoint: inEvent.locationInWindow fromView:nil ];
 
         // Do we want to track until mouse up and THEN call the delegate?
         [ [ self delegate ] twoDGraphView:self didClickPoint:curPoint ];
@@ -1068,8 +1061,8 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 
 	// Set the pagination so that we will be scaled down to fit on a page if necessary.
 	print_info = [ NSPrintInfo sharedPrintInfo ];
-	[ print_info setHorizontalPagination:NSFitPagination ];
-	[ print_info setVerticalPagination:NSFitPagination ];
+	print_info.horizontalPagination = NSFitPagination ;
+	print_info.verticalPagination = NSFitPagination ;
 
 	[ [ NSPrintOperation printOperationWithView:self printInfo:print_info ] runOperation ];
 }
@@ -1444,7 +1437,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             // Didn't get anything...make it into an NSMutableData for speed purposes.
             lineData = [ NSMutableData dataWithLength:0 ];
 
-        [ myPrivateData->lineData replaceObjectAtIndex:inLineIndex withObject:lineData ];
+        myPrivateData->lineData[inLineIndex] = lineData;
 
         [ self _sm_calculateGraphPaperRect ];
         [ self setNeedsDisplay:YES ];
@@ -1471,7 +1464,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             [ myPrivateData->lineAttributes addObject:lineData ];
 
             // Count the number of bars to show.
-            if ( nil != [ lineData objectForKey:SM2DGraphBarStyleAttributeName ] )
+            if ( nil != lineData[SM2DGraphBarStyleAttributeName] )
                 myPrivateData->barCount++;
         }
     }
@@ -1483,7 +1476,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             [ myPrivateData->lineAttributes addObject:lineData ];
 
             // Count the number of bars to show.
-            if ( nil != [ lineData objectForKey:SM2DGraphBarStyleAttributeName ] )
+            if ( nil != lineData[SM2DGraphBarStyleAttributeName] )
                 myPrivateData->barCount++;
         }
     }
@@ -1498,8 +1491,8 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     BOOL			wasBar;
 
     // Determine if the attribute being replaced was a bar or not (so we can keep the bar count correct).
-    replacingData = [ myPrivateData->lineAttributes objectAtIndex:inLineIndex ];
-    wasBar = ( nil != [ replacingData objectForKey:SM2DGraphBarStyleAttributeName ] );
+    replacingData = myPrivateData->lineAttributes[inLineIndex];
+    wasBar = ( nil != replacingData[SM2DGraphBarStyleAttributeName] );
 
     if ( myPrivateData->flags.dataSourceDecidesAttributes )
     {
@@ -1511,10 +1504,10 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     else
         lineData = _sm_local_defaultLineAttributes( inLineIndex );
 
-    [ myPrivateData->lineAttributes replaceObjectAtIndex:inLineIndex withObject:lineData ];
+    myPrivateData->lineAttributes[inLineIndex] = lineData;
 
     // Count the number of bars to show.
-    if ( nil != [ lineData objectForKey:SM2DGraphBarStyleAttributeName ] )
+    if ( nil != lineData[SM2DGraphBarStyleAttributeName] )
     {
         // New line attribute is a bar...
         if ( !wasBar )
@@ -1537,7 +1530,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 {
     id		dataObj;
 
-    dataObj = [ myPrivateData->lineData objectAtIndex:inLineIndex ];
+    dataObj = myPrivateData->lineData[inLineIndex];
     if ( [ dataObj isKindOfClass:[ NSMutableArray class ] ] )
         [ (NSMutableArray *)dataObj addObject:NSStringFromPoint( inPoint ) ];
     else if ( [ dataObj isKindOfClass:[ NSMutableData class ] ] )
@@ -1556,17 +1549,17 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 {
     NSImage		*result = nil;
 
-    result = [ [ [ NSImage alloc ] initWithSize:[ self bounds ].size ] autorelease ];
+    result = [ [ [ NSImage alloc ] initWithSize: self.bounds .size ] autorelease ];
 
     // This provides a cached representation.
     [ result lockFocus ];
 
     // Fill with a white background.
     [ [ NSColor whiteColor ] set ];
-    NSRectFill( [ self bounds ] );
+    NSRectFill( self.bounds );
 
     // Draw the graph.
-    [ self drawRect:[ self bounds ] ];
+    [ self drawRect: self.bounds ];
 
     [ result unlockFocus ];
 
@@ -1631,7 +1624,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 - (void)_sm_calculateGraphPaperRect
 {
     NSString	*t_string = nil, *lowerString = nil;
-    NSRect		bounds = [ self bounds ], graphPaperRect;
+    NSRect		bounds = self.bounds , graphPaperRect;
     NSRect		tempRect = NSZeroRect;
     NSInteger	i;
     CGFloat		tempDouble;
@@ -1639,7 +1632,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     graphPaperRect = bounds;
 
 	// Make room for overall title.
-	if ( nil != myPrivateData->title && [ (NSString *)myPrivateData->title length ] != 0 )
+	if ( nil != myPrivateData->title && ((NSString *)myPrivateData->title).length != 0 )
 	{
 		if ( [ myPrivateData->title isKindOfClass:[ NSAttributedString class ] ] )
 			tempRect.size = [ (NSAttributedString *)myPrivateData->title size ];
@@ -2092,7 +2085,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
     {
         coloredAttributes = [ [ myPrivateData->textAttributes mutableCopy ]
                     autorelease ];
-        [ coloredAttributes setObject:inColor forKey:NSForegroundColorAttributeName ];
+        coloredAttributes[NSForegroundColorAttributeName] = inColor;
     }
     else
         coloredAttributes = myPrivateData->textAttributes;
@@ -2113,7 +2106,7 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             [ t_string drawInRect:drawRect withAttributes:coloredAttributes ];
     } // for all elements in inLine
 #else
-    pointCount = [ inLine elementCount ];
+    pointCount = inLine.elementCount ;
     for ( pointIndex = 0; pointIndex < pointCount; pointIndex++ )
     {
         element = [ inLine elementAtIndex:pointIndex associatedPoints:pointArray ];
@@ -2320,7 +2313,7 @@ static NSDictionary *_sm_local_defaultLineAttributes( NSUInteger inLineIndex )
     case 6:		tempColor = [ NSColor magentaColor ];	break;
     }
 
-    return [ NSDictionary dictionaryWithObject:tempColor forKey:NSForegroundColorAttributeName ];
+    return @{NSForegroundColorAttributeName: tempColor};
 }
 
 static NSString *kSM2DGraph_Key_Label = @"Label";
@@ -2336,15 +2329,15 @@ static NSDictionary *_sm_local_encodeAxisInfo( SM2DGraphAxisRecord *inAxis )
     NSMutableDictionary	*result = [ NSMutableDictionary dictionaryWithCapacity:7 ];
 
     if ( nil != inAxis->label )
-        if ( 0 != [ inAxis->label length ] )
-            [ result setObject:inAxis->label forKey:kSM2DGraph_Key_Label ];
+        if ( 0 != inAxis->label.length )
+            result[kSM2DGraph_Key_Label] = inAxis->label;
 
-    [ result setObject:[ NSNumber numberWithInt:inAxis->scaleType ] forKey:kSM2DGraph_Key_ScaleType ];
-    [ result setObject:[ NSNumber numberWithInteger:inAxis->numberOfTickMarks ] forKey:kSM2DGraph_Key_NumberOfTicks ];
-    [ result setObject:[ NSNumber numberWithInteger:inAxis->numberOfMinorTickMarks ] forKey:kSM2DGraph_Key_NumberOfMinorTicks ];
-    [ result setObject:[ NSNumber numberWithDouble:inAxis->inset ] forKey:kSM2DGraph_Key_Inset ];
-    [ result setObject:[ NSNumber numberWithBool:inAxis->drawLineAtZero ] forKey:kSM2DGraph_Key_DrawLineAtZero ];
-    [ result setObject:[ NSNumber numberWithInteger:inAxis->tickMarkPosition ] forKey:kSM2DGraph_Key_TickMarkPosition ];
+    result[kSM2DGraph_Key_ScaleType] = [ NSNumber numberWithInt:inAxis->scaleType ];
+    result[kSM2DGraph_Key_NumberOfTicks] = @(inAxis->numberOfTickMarks);
+    result[kSM2DGraph_Key_NumberOfMinorTicks] = @(inAxis->numberOfMinorTickMarks);
+    result[kSM2DGraph_Key_Inset] = @(inAxis->inset);
+    result[kSM2DGraph_Key_DrawLineAtZero] = @(inAxis->drawLineAtZero);
+    result[kSM2DGraph_Key_TickMarkPosition] = @(inAxis->tickMarkPosition);
 
     return [ [ result copy ] autorelease ];
 }
@@ -2353,13 +2346,13 @@ static void _sm_local_decodeAxisInfo( NSDictionary *inInfo, SM2DGraphAxisRecord 
 {
     if ( nil != inInfo && nil != outAxis )
     {
-        outAxis->label = [ [ inInfo objectForKey:kSM2DGraph_Key_Label ] retain ];
-        outAxis->scaleType = [ [ inInfo objectForKey:kSM2DGraph_Key_ScaleType ] intValue ];
-        outAxis->numberOfTickMarks = [ [ inInfo objectForKey:kSM2DGraph_Key_NumberOfTicks ] intValue ];
-        outAxis->numberOfMinorTickMarks = [ [ inInfo objectForKey:kSM2DGraph_Key_NumberOfMinorTicks ] intValue ];
-        outAxis->inset = [ [ inInfo objectForKey:kSM2DGraph_Key_Inset ] CGFloatValue ];
-        outAxis->drawLineAtZero = [ [ inInfo objectForKey:kSM2DGraph_Key_DrawLineAtZero ] boolValue ];
-        outAxis->tickMarkPosition = [ [ inInfo objectForKey:kSM2DGraph_Key_TickMarkPosition ] boolValue ];
+        outAxis->label = [ inInfo[kSM2DGraph_Key_Label] retain ];
+        outAxis->scaleType = [ inInfo[kSM2DGraph_Key_ScaleType] intValue ];
+        outAxis->numberOfTickMarks = [ inInfo[kSM2DGraph_Key_NumberOfTicks] intValue ];
+        outAxis->numberOfMinorTickMarks = [ inInfo[kSM2DGraph_Key_NumberOfMinorTicks] intValue ];
+        outAxis->inset = [ inInfo[kSM2DGraph_Key_Inset] CGFloatValue ];
+        outAxis->drawLineAtZero = [ inInfo[kSM2DGraph_Key_DrawLineAtZero] boolValue ];
+        outAxis->tickMarkPosition = [ inInfo[kSM2DGraph_Key_TickMarkPosition] boolValue ];
     }
 }
 

@@ -83,12 +83,11 @@ typedef enum _SMLabelPosition {
                 The data source is checked to see if responds to methods in the SMPieChartDataSource category.
     @param	inDataSource	The new data source.
 */
-- (void)setDataSource:(id)inDataSource;
 /*!	@method	dataSource
     @discussion Returns the object that slice data is pulled from.
     @result	The data source object of the pie view.
 */
-- (id)dataSource;
+@property (NS_NONATOMIC_IOSONLY, assign) id dataSource;
 
 /*!	@method	setDelegate:
     @discussion Set the delegate object for the pie view.
@@ -96,12 +95,11 @@ typedef enum _SMLabelPosition {
                 The delegate is checked to see if responds to any of the methods in the SMPieChartDelegate category.
     @param	inDelegate	The new delegate object.
 */
-- (void)setDelegate:(id)inDelegate;
 /*!	@method	delegate
     @discussion Returns the delegate object for the pie view.
     @result	The delegate object.
 */
-- (id)delegate;
+@property (NS_NONATOMIC_IOSONLY, assign) id delegate;
 
 // -------- Basic settings that can be changed. --------------------
 
@@ -109,12 +107,11 @@ typedef enum _SMLabelPosition {
     @discussion	Sets the tag of the receiver to inTag.  This is an integer you can use for whatever you'd like.
     @param	inTag	The new tag of the receiver.
 */
-- (void)setTag:(int)inTag;
 /*!	@method	tag
     @discussion	Returns the tag of the receiver.  This is an integer you can use for whatever you'd like.
     @result	The tag of the receiver.
 */
-- (int)tag;
+@property (NS_NONATOMIC_IOSONLY) int tag;
 
 /*!	@method	setBackgroundColor:
     @discussion	Sets the receiver's background color to aColor.  The default is white.  If set to nil, no
@@ -123,12 +120,11 @@ typedef enum _SMLabelPosition {
                 <B>See Also:</B> -setDrawsGrid:, -drawsGrid, -setGridColor:, -gridColor, and -backgroundColor.
     @param	inColor	The new background color.
 */
-- (void)setBackgroundColor:(NSColor *)inColor;
 /*!	@method	backgroundColor
     @discussion Returns the color used to draw the background of the receiver. The default background color is white.
     @result	The color used to draw the background.
 */
-- (NSColor *)backgroundColor;
+@property (NS_NONATOMIC_IOSONLY, copy) NSColor *backgroundColor;
 
 /*!	@method	setBorderColor:
     @discussion	Sets the color used to draw the border of each slice. The default color is black.
@@ -136,70 +132,64 @@ typedef enum _SMLabelPosition {
                 <B>See Also:</B> -setBackgroundColor:, and -backgroundColor.
     @param	inColor	The color to draw the border of each slice.
 */
-- (void)setBorderColor:(NSColor *)inColor;
 /*!	@method	borderColor
     @discussion Returns the color used to draw the border of each slice. The default color is black.
     @result	The color used to draw the border of each slice.
 */
-- (NSColor *)borderColor;
+@property (NS_NONATOMIC_IOSONLY, copy) NSColor *borderColor;
 
 /*!	@method	setTitle:
     @discussion Sets the title of the pie chart.  The default is no title (nil).
     @param	inNewTitle	The new title.  If nil, any existing title is removed.
 */
-- (void)setTitle:(NSString *)inNewTitle;
 /*!	@method	title
     @discussion Returns the title of the pie chart.  The default is no title (nil).
     @result	An autoreleased string or nil.
 */
-- (NSString *)title;
+@property (NS_NONATOMIC_IOSONLY, copy) NSString *title;
 
 /*!	@method	setAttributedTitle:
     @discussion Sets the attributed title of the pie chart.  The default is no title (nil).
     @param	inNewTitle	The new title.  If nil, any existing title is removed.
 */
-- (void)setAttributedTitle:(NSAttributedString *)inNewTitle;
 /*!	@method	attributedTitle
     @discussion Returns the attributed title of the pie chart.  The default is no title (nil).
     @result	An autoreleased string or nil.
 */
-- (NSAttributedString *)attributedTitle;
+@property (NS_NONATOMIC_IOSONLY, copy) NSAttributedString *attributedTitle;
 
 /*!	@method	setLabelPosition:
     @discussion Sets the position of labels for the pie chart.  The default is no labels.
     @param	inNewValue	The new label position value.
 */
-- (void)setLabelPosition:(SMLabelPositionEnum)inNewValue;
 /*!	@method	labelPosition
     @discussion Returns the position of labels for the pie chart.  The default is no labels.
     @result The position of labels.
 */
-- (SMLabelPositionEnum)labelPosition;
+@property (NS_NONATOMIC_IOSONLY) SMLabelPositionEnum labelPosition;
 
 
 /*!	@method	setTitlePosition:
     @discussion Sets the position of the title.  The default is SMTitlePositionBelow.
     @param	inPosition		The position to draw the title in.
 */
-- (void)setTitlePosition:(SMTitlePosition)inPosition;
 /*!	@method	titlePosition
     @discussion Returns the position of the title.  The default is SMTitlePositionBelow.
     @result The number of position to draw the title in.
 */
-- (SMTitlePosition)titlePosition;
+@property (NS_NONATOMIC_IOSONLY) SMTitlePosition titlePosition;
 
 /*!	@method	setExplodeDistance:
     @discussion Sets the pixel offset from the center of the chart to draw exploded slices of the pie.
                 The default is zero.
     @param	inDistance		The number of pixels to offset exploded parts of the pie.
 */
-- (void)setExplodeDistance:(float)inDistance;
 /*!	@method	explodeDistance
     @discussion Returns the pixel offset from the center of the chart to draw exploded slices of the pie.
                 The default is zero.
     @result The number of pixels to offset exploded parts of the pie.
 */
-- (float)explodeDistance;
+@property (NS_NONATOMIC_IOSONLY) float explodeDistance;
 
 /*!	@method	refreshDisplay:
     @discussion Simple cover method that calls -reloadData, then -reloadAttributes.
@@ -229,7 +219,7 @@ typedef enum _SMLabelPosition {
                 background first, so it should not have any transparent parts.
     @result	An NSImage object of the entire chart view.
 */
-- (NSImage *)imageOfView;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSImage *imageOfView;
 
 /*!	@method	convertToSliceFromPoint:fromView:
     @discussion Converts a point from a given window/view coordinate system to a slice of the pie, or

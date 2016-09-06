@@ -135,7 +135,7 @@
 			dataSet = [conversation
 				dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 				independent:[self identifierForTag:independentTag]
-				forHost:[conversation source]
+				forHost:conversation.source
 			];
 			dataSet2 = nil;
 			break;
@@ -144,7 +144,7 @@
 			dataSet = [conversation
 				dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 				independent:[self identifierForTag:independentTag]
-				forHost:[conversation destination]
+				forHost:conversation.destination
 			];
 			dataSet2 = nil;
 			break;
@@ -161,12 +161,12 @@
 				dataSet = [conversation
 					dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 					independent:[self identifierForTag:independentTag]
-					forHost:[conversation source]
+					forHost:conversation.source
 				];
 				dataSet2 = [conversation
 					dataSetWithKeys:@[[self identifierForTag:dependentTag]]
 					independent:[self identifierForTag:independentTag]
-					forHost:[conversation destination]
+					forHost:conversation.destination
 				];
 			}
 			break;
@@ -185,12 +185,12 @@
 			dataSet2 = nil;
 			return;
 	}
-	if ([dataSet count])
+	if (dataSet.count)
 		[dataSet retain];
 	else
 		dataSet = nil;
 		
-	if ([dataSet2 count])
+	if (dataSet2.count)
 		[dataSet2 retain];
 	else
 		dataSet2 = nil;
@@ -198,15 +198,15 @@
 	minX = 0;
 	minY = 0;
 	
-	if ([dataSet maximum]<[dataSet2 maximum])
-		maxY = [dataSet2 maximum] * 1.1;
+	if (dataSet.maximum<dataSet2.maximum)
+		maxY = dataSet2.maximum * 1.1;
 	else
-		maxY = [dataSet maximum] * 1.1;
+		maxY = dataSet.maximum * 1.1;
 		
-	if ([dataSet domainMaximum]<[dataSet2 domainMaximum])
-		maxX = [dataSet2 domainMaximum];
+	if (dataSet.domainMaximum<dataSet2.domainMaximum)
+		maxX = dataSet2.domainMaximum;
 	else
-		maxX = [dataSet domainMaximum];
+		maxX = dataSet.domainMaximum;
 		
 	INFO(NSLog( @"\n X range: %f -> %f\n Y range: %f -> %f\n", minX, maxX, minY, maxY ));
 
@@ -232,13 +232,13 @@
 				[conversation valueForKey:@"dbytes"]];
 			break;
 		case GCPayloadLengthTag:
-			pieChartArray = @[[NSNumber numberWithInt:[conversation clientPayload].length ],
-				[NSNumber numberWithInt:[conversation serverPayload].length ]];
+			pieChartArray = @[[NSNumber numberWithInt:conversation.clientPayload.length ],
+				[NSNumber numberWithInt:conversation.serverPayload.length ]];
 			break;
 		case GCDeltaTag:
-			en = [[conversation payloadArrayBySource] objectEnumerator];
-			client = [conversation source];
-			server = [conversation destination];
+			en = [conversation.payloadArrayBySource objectEnumerator];
+			client = conversation.source;
+			server = conversation.destination;
 			while (tempDict=[en nextObject]) {
 				if ([tempDict[@"source"] isEqualToString:client])
 					clientDelta += [tempDict[@"timeDelta"] doubleValue];
@@ -326,13 +326,13 @@
 	ENTRY(NSLog( @"[GraphController twoDGraphView:dataForLineIndex:]" ));
 	if ( sourceTag!=GCAllwFlagsTag && inLineIndex==0 ) {
 		if (dataSet) {
-			return [dataSet dataPointsForCurrentIdentifier];
+			return dataSet.dataPointsForCurrentIdentifier;
 		} else {
 			return nil;
 		}
 	} else if ( sourceTag!=GCAllwFlagsTag && inLineIndex==1 ) {
 		if (dataSet2) {
-			return [dataSet2 dataPointsForCurrentIdentifier];
+			return dataSet2.dataPointsForCurrentIdentifier;
 		} else {
 			return nil;
 		}

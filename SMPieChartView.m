@@ -83,7 +83,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     }
 }
 
-- (id)initWithFrame:(NSRect)frame
+- (instancetype)initWithFrame:(NSRect)frame
 {
     self = [ super initWithFrame:frame ];
     if ( nil != self )
@@ -140,7 +140,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 
 #pragma mark -
 
-- (id)initWithCoder:(NSCoder *)decoder
+- (instancetype)initWithCoder:(NSCoder *)decoder
 {
     unsigned		versionNumber;
     float           tempFloat;
@@ -286,11 +286,11 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 	NSGraphicsContext	*context = [ NSGraphicsContext currentContext ];
 	CTGradient			*gradient;
 #endif
-    NSRect			bounds = [ self bounds ], pieRect, drawRect;
+    NSRect			bounds = self.bounds , pieRect, drawRect;
 
     pieRect = myPrivateData->pieRect;
 
-    if ( nil != [ self title ] && 0 != [ [ self title ] length ] )
+    if ( nil != [ self title ] && 0 != [ self title ].length )
     {
         // Draw the title.
         tempAttrString = [ self attributedTitle ];
@@ -312,22 +312,21 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 
     if ( NSIntersectsRect( pieRect, rect ) )
     {
-        if ( nil != myPrivateData->slicePaths && [ myPrivateData->slicePaths count ] > 0 )
+        if ( nil != myPrivateData->slicePaths && myPrivateData->slicePaths.count > 0 )
 //                    && ![ self inLiveResize ] )
         {
 #if defined( SMPIE_TIMER ) && ( SMPIE_TIMER == 1 )
             timer = [ NSDate date ];
 #endif
 
-            sliceCount = [ myPrivateData->slicePaths count ];
+            sliceCount = myPrivateData->slicePaths.count ;
             for ( sliceIndex = 0; sliceIndex < sliceCount; sliceIndex++ )
             {
                 BOOL		tempBool = YES;
-                path = [ myPrivateData->slicePaths objectAtIndex:sliceIndex ];
+                path = myPrivateData->slicePaths[sliceIndex];
 
                 // Go ahead and fill the slice.
-                t_color = [ [ myPrivateData->sliceAttributes objectAtIndex:sliceIndex ]
-                            objectForKey:NSBackgroundColorAttributeName ];
+                t_color = myPrivateData->sliceAttributes[sliceIndex][NSBackgroundColorAttributeName];
                 if ( nil == t_color )
 					t_color = [ self backgroundColor ];
 
@@ -349,12 +348,11 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
                 [ path fill ];
 #endif // highlights with CTGradient
 
-                [ path setLineWidth:1.0 ];
-				[ path setMiterLimit:2.0 ];
+                path.lineWidth = 1.0 ;
+				path.miterLimit = 2.0 ;
 
                 // Go ahead and draw the border of the slice.
-                t_color = [ [ myPrivateData->sliceAttributes objectAtIndex:sliceIndex ]
-                            objectForKey:NSForegroundColorAttributeName ];
+                t_color = myPrivateData->sliceAttributes[sliceIndex][NSForegroundColorAttributeName];
                 if ( nil != t_color )
                     [ t_color set ];
                 else
@@ -400,10 +398,10 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 
     if ( myPrivateData->labelPosition != SMLabelPositionNone )
     {
-        if ( nil != myPrivateData->slicePaths && [ myPrivateData->slicePaths count ] > 0 )
+        if ( nil != myPrivateData->slicePaths && myPrivateData->slicePaths.count > 0 )
 //                    && ![ self inLiveResize ] )
         {
-            sliceCount = [ myPrivateData->slicePaths count ];
+            sliceCount = myPrivateData->slicePaths.count ;
             for ( sliceIndex = 0; sliceIndex < sliceCount; sliceIndex++ )
             {
                 if ( myPrivateData->flags.delegateLabelsSlices )
@@ -414,8 +412,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
                 if ( nil == tempString )
                     tempString = [ NSString stringWithFormat:@"%d", sliceIndex ];
 
-                t_color = [ [ myPrivateData->sliceAttributes objectAtIndex:sliceIndex ]
-                            objectForKey:NSBackgroundColorAttributeName ];
+                t_color = myPrivateData->sliceAttributes[sliceIndex][NSBackgroundColorAttributeName];
                 if ( nil == t_color )
                     t_color = [ self backgroundColor ];
 
@@ -465,7 +462,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     {
         NSPoint		curPoint;
 
-        curPoint = [ self convertPoint:[ inEvent locationInWindow ] fromView:nil ];
+        curPoint = [ self convertPoint: inEvent.locationInWindow fromView:nil ];
 
         // Do we want to track until mouse up and THEN call the delegate?
         [ [ self delegate ] pieChartView:self didClickPoint:curPoint ];
@@ -480,8 +477,8 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 
 	// Set the pagination so that we will be scaled down to fit on a page if necessary.
 	print_info = [ NSPrintInfo sharedPrintInfo ];
-	[ print_info setHorizontalPagination:NSFitPagination ];
-	[ print_info setVerticalPagination:NSFitPagination ];
+	print_info.horizontalPagination = NSFitPagination ;
+	print_info.verticalPagination = NSFitPagination ;
 
 	[ [ NSPrintOperation printOperationWithView:self printInfo:print_info ] runOperation ];
 }
@@ -700,14 +697,14 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
         {
             // Try grabbing an NSArray of NSNumbers.
             sliceData = [ [ self dataSource ] pieChartViewArrayOfSliceData:self ];
-            if ( [ sliceData count ] == numSlices )
+            if ( sliceData.count == numSlices )
             {
                 // Make a copy of the data for my use.
                 myPrivateData->sliceData = [ sliceData copy ];
 
                 // Total up the amount in the pie.
                 for ( i = 0; i < numSlices; i++ )
-                    total += [ [ myPrivateData->sliceData objectAtIndex:i ] doubleValue ];
+                    total += [ myPrivateData->sliceData[i] doubleValue ];
             }
             else if ( nil != sliceData )
                 NSLog( @"SMPieChartView: The slice data array does not contain the correct number of slices" );
@@ -727,7 +724,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
                 total += sliceSize;
 
                 // Add the slice data to the array.
-                [ myPrivateData->sliceData addObject:[ NSNumber numberWithDouble:sliceSize ] ];
+                [ myPrivateData->sliceData addObject:@(sliceSize) ];
             }
         }
 
@@ -776,7 +773,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     NSDictionary	*sliceData, *replacingData;
 
     // Determine if the attribute being replaced was a bar or not (so we can keep the bar count correct).
-    replacingData = [ myPrivateData->sliceAttributes objectAtIndex:inSliceIndex ];
+    replacingData = myPrivateData->sliceAttributes[inSliceIndex];
 
     if ( myPrivateData->flags.dataSourceDecidesAttributes )
     {
@@ -788,7 +785,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     else
         sliceData = _sm_local_defaultSliceAttributes( inSliceIndex );
 
-    [ myPrivateData->sliceAttributes replaceObjectAtIndex:inSliceIndex withObject:sliceData ];
+    myPrivateData->sliceAttributes[inSliceIndex] = sliceData;
 
     [ self _sm_calculatePieRect ];
     [ self setNeedsDisplay:YES ];
@@ -798,17 +795,17 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 {
     NSImage		*result = nil;
 
-    result = [ [ [ NSImage alloc ] initWithSize:[ self bounds ].size ] autorelease ];
+    result = [ [ [ NSImage alloc ] initWithSize: self.bounds .size ] autorelease ];
 
     // This provides a cached representation.
     [ result lockFocus ];
 
     // Fill with a white background.
     [ [ NSColor whiteColor ] set ];
-    NSRectFill( [ self bounds ] );
+    NSRectFill( self.bounds );
 
     // Draw the graph.
-    [ self drawRect:[ self bounds ] ];
+    [ self drawRect: self.bounds ];
 
     [ result unlockFocus ];
 
@@ -825,13 +822,13 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     if ( inView != self )
         inPoint = [ self convertPoint:inPoint fromView:inView ];
 
-    if ( nil != myPrivateData->slicePaths && [ myPrivateData->slicePaths count ] > 0 )
+    if ( nil != myPrivateData->slicePaths && myPrivateData->slicePaths.count > 0 )
     {
         // Now, determine which slice it was in.
-        sliceCount = [ myPrivateData->slicePaths count ];
+        sliceCount = myPrivateData->slicePaths.count ;
         for ( sliceIndex = 0; sliceIndex < sliceCount; sliceIndex++ )
         {
-            path = [ myPrivateData->slicePaths objectAtIndex:sliceIndex ];
+            path = myPrivateData->slicePaths[sliceIndex];
             if ( [ path containsPoint:inPoint ] )
             {
                 result = sliceIndex;
@@ -854,23 +851,23 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 
 - (void)_sm_calculatePieRect
 {
-    NSRect		bounds = [ self bounds ], pieRect, labelRect;
+    NSRect		bounds = self.bounds , pieRect, labelRect;
     NSRect		tempRect, frame;
 
     labelRect = pieRect = bounds;
     // Calculate how much room we need.
-    labelRect.size.height = [ myPrivateData->slicePaths count ] * ( kLabelSquareSize + 2.0 );
+    labelRect.size.height = myPrivateData->slicePaths.count * ( kLabelSquareSize + 2.0 );
 
     if ( myPrivateData->labelPosition == SMLabelPositionAbove )
     {
         pieRect.size.height = pieRect.size.width;
         if ( bounds.size.height < pieRect.size.height + labelRect.size.height )
         {
-            frame = [ self frame ];
+            frame = self.frame ;
             frame.origin.y -= ( pieRect.size.height + labelRect.size.height ) - bounds.size.height;
             frame.size.height = pieRect.size.height + labelRect.size.height;
-            [ self setFrame:frame ];
-            bounds = [ self bounds ];
+            self.frame = frame ;
+            bounds = self.bounds ;
         }
         labelRect.origin.y = pieRect.size.height + 1.0;
     }
@@ -879,11 +876,11 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
         pieRect.size.height = pieRect.size.width;
         if ( bounds.size.height < pieRect.size.height + labelRect.size.height )
         {
-            frame = [ self frame ];
+            frame = self.frame ;
             frame.origin.y -= ( pieRect.size.height + labelRect.size.height ) - bounds.size.height;
             frame.size.height = pieRect.size.height + labelRect.size.height;
-            [ self setFrame:frame ];
-            bounds = [ self bounds ];
+            self.frame = frame ;
+            bounds = self.bounds ;
         }
         pieRect.origin.y = bounds.size.height - pieRect.size.height - 1.0;
     }
@@ -902,7 +899,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     if ( [ self explodeDistance ] >= 0.5 )
         pieRect = NSInsetRect( pieRect, [ self explodeDistance ], [ self explodeDistance ] );
 
-    if ( nil != [ self title ] && 0 != [ [ self title ] length ] )
+    if ( nil != [ self title ] && 0 != [ self title ].length )
     {
         // Leave room for the title.
         tempRect.size = [ [ self attributedTitle ] size ];
@@ -939,7 +936,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     [ myPrivateData->slicePaths release ];
     myPrivateData->slicePaths = nil;
 
-    if ( nil == myPrivateData->sliceData || [ myPrivateData->sliceData count ] == 0 )
+    if ( nil == myPrivateData->sliceData || myPrivateData->sliceData.count == 0 )
 	{
 //		[ self _sm_calculateToolTips ];
         return;
@@ -954,12 +951,12 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     centerPoint.x = NSMidX( pieRect );
     centerPoint.y = NSMidY( pieRect );
 
-    sliceCount = [ myPrivateData->sliceData count ];
+    sliceCount = myPrivateData->sliceData.count ;
     myPrivateData->slicePaths = [ [ NSMutableArray arrayWithCapacity:sliceCount ] retain ];
 
     for ( sliceIndex = 0; sliceIndex < sliceCount; sliceIndex++ )
     {
-        dataObj = [ myPrivateData->sliceData objectAtIndex:sliceIndex ];
+        dataObj = myPrivateData->sliceData[sliceIndex];
 
         // Scale the dataPoint into the whole pie correctly.
         if ( 0.0 != myPrivateData->totalPieScale )
@@ -997,7 +994,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
             currentDegrees = 0.0;
             for ( sliceIndex = 0; sliceIndex < sliceCount; sliceIndex++ )
             {
-                dataObj = [ myPrivateData->sliceData objectAtIndex:sliceIndex ];
+                dataObj = myPrivateData->sliceData[sliceIndex];
 
                 if ( 0.0 != myPrivateData->totalPieScale )
                     sliceDegrees = [ dataObj doubleValue ] * 360.0 / myPrivateData->totalPieScale;
@@ -1026,7 +1023,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
                         sliceIndex < explodeRange.location + explodeRange.length; sliceIndex++ )
             {
                 // Transform each of the slice paths in this explode group.
-                path = [ myPrivateData->slicePaths objectAtIndex:sliceIndex ];
+                path = myPrivateData->slicePaths[sliceIndex];
                 [ path transformUsingAffineTransform:transform ];
             }
         }
@@ -1088,7 +1085,7 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     case 6:		t_color = [ NSColor magentaColor ];	break;
     }
 
-    return [ NSDictionary dictionaryWithObject:t_color forKey:NSBackgroundColorAttributeName ];
+    return @{NSBackgroundColorAttributeName: t_color};
 }
 
 @end

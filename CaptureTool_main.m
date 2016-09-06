@@ -66,7 +66,7 @@ int main(int argc, const char *argv[])
 		return -1;
 	}
 	
-	if (![captureObject _startCapture]) {
+	if (!captureObject._startCapture) {
 		NSLog( @"CaptureTool failed to start capture." );
 		[captureObject release];
 		[pool release];

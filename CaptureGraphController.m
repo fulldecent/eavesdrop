@@ -180,33 +180,30 @@
 			case GCAllPacketsTag:
 				ENTRY(NSLog( @"gathering data for all packets" ));
 				[tempArray1 addObjectsFromArray:
-							[ [tempConv
+							[tempConv
 								dataSetWithKeys:@[dependentKey]
 								independent:independentKey
-								forHost:nil]
-							data ]
+								forHost:nil].data 
 				];
 				tempArray2 = nil;
 				break;
 			case GCClientOnlyTag:
 				ENTRY(NSLog( @"gathering data for client" ));
 				[tempArray1 addObjectsFromArray:
-							[ [tempConv
+							[tempConv
 								dataSetWithKeys:@[dependentKey]
 								independent:independentKey
-								forHost:[tempConv source] ]
-							data ]
+								forHost:tempConv.source ].data 
 				];
 				tempArray2 = nil;
 				break;
 			case GCServerOnlyTag:
 				ENTRY(NSLog( @"gathering data for server" ));
 				[tempArray1 addObjectsFromArray:
-							[ [tempConv
+							[tempConv
 								dataSetWithKeys:@[dependentKey]
 								independent:independentKey
-								forHost:[tempConv destination] ]
-							data ]
+								forHost:tempConv.destination ].data 
 				];
 				tempArray2 = nil;
 				break;
@@ -214,27 +211,24 @@
 				ENTRY(NSLog( @"gathering data for both hosts" ));
 				if (graphType==GCBarGraphType) {
 					[tempArray1 addObjectsFromArray:
-						[ [tempConv
+						[tempConv
 							dataSetWithKeys:@[dependentKey]
 							independent:independentKey
-							forHost:nil]
-						data ]
+							forHost:nil].data 
 					];
 					tempArray2 = nil;
 				} else {
 					[tempArray1 addObjectsFromArray:
-						[ [tempConv
+						[tempConv
 							dataSetWithKeys:@[dependentKey]
 							independent:independentKey
-							forHost:[tempConv source] ]
-						data ]
+							forHost:tempConv.source ].data 
 					];
 					[tempArray2 addObjectsFromArray:
-						[ [tempConv
+						[tempConv
 							dataSetWithKeys:@[dependentKey]
 							independent:independentKey
-							forHost:[tempConv destination] ]
-						data ]
+							forHost:tempConv.destination ].data 
 					];
 				}
 				break;
@@ -252,36 +246,36 @@
 
 	if (tempArray1.count) {
 		ENTRY(NSLog( @"setting dataSet with %d objects", [tempArray1 count] ));
-		[dataSet setData:[tempArray1 copy] ];
+		dataSet.data = [tempArray1 copy] ;
 	} else {
 		[dataSet setData:nil];
 	}
 
 	if (tempArray2.count) {
 		ENTRY(NSLog( @"setting dataSet2 with %d objects", [tempArray2 count] ));
-		[dataSet2 setData:[tempArray2 copy] ];
+		dataSet2.data = [tempArray2 copy] ;
 	} else {
 		[dataSet2 setData:nil];
 	}
 	
-	[dataSet setIndependentIdentifier:independentKey ];
-	[dataSet setCurrentIdentifier:dependentKey ];
+	dataSet.independentIdentifier = independentKey ;
+	dataSet.currentIdentifier = dependentKey ;
 	
-	[dataSet2 setIndependentIdentifier:independentKey ];
-	[dataSet2 setCurrentIdentifier:dependentKey ];
+	dataSet2.independentIdentifier = independentKey ;
+	dataSet2.currentIdentifier = dependentKey ;
 	
 	if (independentTag==GCTimeTag)
-		minX = [dataSet domainMinimum];
+		minX = dataSet.domainMinimum;
 	else
 		minX = 0;
 
 	if (independentTag==GCTimeTag)
-		minY = [dataSet minimum] * 0.9;
+		minY = dataSet.minimum * 0.9;
 	else
 		minY = 0;
 	
-	maxX = [dataSet domainMaximum];
-	maxY = [dataSet maximum] * 1.1;
+	maxX = dataSet.domainMaximum;
+	maxY = dataSet.maximum * 1.1;
 		
 	INFO(NSLog( @"\n X range: %f -> %f\n Y range: %f -> %f\n", minX, maxX, minY, maxY ));
 
@@ -372,12 +366,12 @@
 {
 	ENTRY(NSLog( @"[CaptureGraphController twoDGraphView:dataForLineIndex:]" ));
 	if (inLineIndex==0) {
-		if ([dataSet data].count) {
-			return [dataSet dataPointsForCurrentIdentifier];
+		if (dataSet.data.count) {
+			return dataSet.dataPointsForCurrentIdentifier;
 		}
 	} else if (inLineIndex==1) {
-		if ([dataSet2 data].count) {
-			return [dataSet2 dataPointsForCurrentIdentifier];
+		if (dataSet2.data.count) {
+			return dataSet2.dataPointsForCurrentIdentifier;
 		}
 	}
 	return nil;

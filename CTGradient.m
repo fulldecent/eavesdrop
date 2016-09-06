@@ -17,7 +17,7 @@
 - (void)setBlendingMode:(CTGradientBlendingMode)mode;
 - (void)addElement:(CTGradientElement*)newElement;
 
-- (CTGradientElement *)elementAtIndex:(NSUInteger)index1;
+- (CTGradientElement *)elementAtIndex:(NSUInteger)index1 NS_RETURNS_INNER_POINTER;
 
 - (CTGradientElement)removeElementAtIndex:(NSUInteger)index1;
 - (CTGradientElement)removeElementAtPosition:(CGFloat)position;
@@ -34,7 +34,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 
 @implementation CTGradient
 /////////////////////////////////////Initialization Type Stuff
-- (id)init
+- (instancetype)init
   {
   self = [super init];
   
@@ -85,7 +85,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 
 - (void)encodeWithCoder:(NSCoder *)coder
   {
-  if([coder allowsKeyedCoding])
+  if(coder.allowsKeyedCoding)
 	{
 	NSUInteger count = 0;
 	CTGradientElement *currentElement = elementList;
@@ -107,7 +107,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 	[NSException raise:NSInvalidArchiveOperationException format:@"Only supports NSKeyedArchiver coders"];
   }
 
-- (id)initWithCoder:(NSCoder *)coder
+- (instancetype)initWithCoder:(NSCoder *)coder
   {
   [self _commonInit];
   
@@ -134,7 +134,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 
 
 #pragma mark Creation
-+ (id)gradientWithBeginningColor:(NSColor *)begin endingColor:(NSColor *)end
++ (instancetype)gradientWithBeginningColor:(NSColor *)begin endingColor:(NSColor *)end
   {
   id newInstance = [[[self class] alloc] init];
   
@@ -686,7 +686,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 	}
   
   //Calls to CoreGraphics
-  CGContextRef currentContext = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+  CGContextRef currentContext = (CGContextRef)[NSGraphicsContext currentContext].graphicsPort;
   CGContextSaveGState(currentContext);
 
 	CGColorSpaceRef colorspace;
@@ -736,7 +736,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 	}
   
   //Calls to CoreGraphics
-  CGContextRef currentContext = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+  CGContextRef currentContext = (CGContextRef)[NSGraphicsContext currentContext].graphicsPort;
   CGContextSaveGState(currentContext);
 	CGColorSpaceRef colorspace;
 
@@ -772,7 +772,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 	[transform concat];
 	
 	[path addClip];
-	[self fillRect:[path bounds] angle:0];
+	[self fillRect:path.bounds angle:0];
 	[path transformUsingAffineTransform:transform];
 	[transform release];
   [currentContext restoreGraphicsState];
@@ -782,7 +782,7 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
   NSGraphicsContext *currentContext = [NSGraphicsContext currentContext];
   [currentContext saveGraphicsState];
 	[path addClip];
-	[self radialFillRect:[path bounds]];
+	[self radialFillRect:path.bounds];
   [currentContext restoreGraphicsState];
   }
 #pragma mark -

@@ -171,10 +171,10 @@ static BOOL capturesData;
 	self = [super init];
 	if (self) {
 		ordering_number = number;
-		[self setSource:origSource];
-		[self setSourcePort:sourcePort];
-		[self setDestination:origDestination];
-		[self setDestinationPort:destinationPort];
+		self.source = origSource;
+		self.sourcePort = sourcePort;
+		self.destination = origDestination;
+		self.destinationPort = destinationPort;
 		
 		if (requireSyn && ![origFlags isEqual:@"-S------"])
 			hidden = YES;
@@ -717,19 +717,19 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 
 - (NSData *)clientPayloadAsRTFData
 {
-	NSAttributedString *tempString = [self clientPayloadAsAttributedString];
+	NSAttributedString *tempString = self.clientPayloadAsAttributedString;
 	return [tempString RTFFromRange:NSMakeRange(0,tempString.length) documentAttributes:@{} ];
 }
 
 - (NSData *)serverPayloadAsRTFData
 {
-	NSAttributedString *tempString = [self serverPayloadAsAttributedString];
+	NSAttributedString *tempString = self.serverPayloadAsAttributedString;
 	return [tempString RTFFromRange:NSMakeRange(0,tempString.length) documentAttributes:@{} ];
 }
 
 - (NSData *)payloadAsRTFData
 {
-	NSAttributedString *tempString = [self payloadAsAttributedString];
+	NSAttributedString *tempString = self.payloadAsAttributedString;
 	return [tempString RTFFromRange:NSMakeRange(0,tempString.length) documentAttributes:@{} ];
 }
 
@@ -758,7 +758,7 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 */
 - (NSArray *)imageDictionaries
 {
-	NSArray *payloadChunksArray = [self payloadArrayBySource];
+	NSArray *payloadChunksArray = self.payloadArrayBySource;
 	NSData *tempData = nil;
 	NSEnumerator *en = [payloadChunksArray objectEnumerator];
 	NSDictionary *tempDict;
@@ -776,7 +776,7 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 
 - (NSData *)serverImageData
 {
-	return [self findImageDataInData:[self serverPayload] ];
+	return [self findImageDataInData:self.serverPayload ];
 }
 
 - (NSData *)findImageDataInData:(NSData *)searchData
@@ -1030,7 +1030,7 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%@ (%d packets)",
-		[self conversationID], count
+		self.conversationID, count
 	];
 }
 
@@ -1080,9 +1080,9 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 			[tempArray addObject:[self dictionaryForHistoryDataSetIndex:i] ];
 	}
 	DataSet *tempDataSet = [[[DataSet alloc] init] autorelease];
-	[tempDataSet setData:tempArray];
-	[tempDataSet setIndependentIdentifier:@"number"];
-	[tempDataSet setCurrentIdentifier:@"bytes"];
+	tempDataSet.data = tempArray;
+	tempDataSet.independentIdentifier = @"number";
+	tempDataSet.currentIdentifier = @"bytes";
 	return tempDataSet;
 }
 
@@ -1160,9 +1160,9 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 			if (useTimestamp)
 				tempDict[@"timestamp"] = @([timestampArray[i] timeIntervalSince1970]);
 			if (useSource) {
-				if ( [payloadArray[i][@"source"] isEqualToString:[self source] ] )
+				if ( [payloadArray[i][@"source"] isEqualToString:self.source ] )
 					tempDict[@"source"] = @1;
-				else if ( [payloadArray[i][@"source"] isEqualToString:[self destination] ] )
+				else if ( [payloadArray[i][@"source"] isEqualToString:self.destination ] )
 					tempDict[@"source"] = @-1;				
 				else
 					tempDict[@"source"] = @0;
@@ -1231,10 +1231,10 @@ int fill_count( unsigned char* buffer, int bufferLen, unsigned char* output )
 	}
 
 	DataSet *tempDataSet = [[[DataSet alloc] init] autorelease];
-	[tempDataSet setData:tempArray];
+	tempDataSet.data = tempArray;
 
-	[tempDataSet setIndependentIdentifier:indKey];
-	[tempDataSet setCurrentIdentifier:keys[0] ];
+	tempDataSet.independentIdentifier = indKey;
+	tempDataSet.currentIdentifier = keys[0] ;
 
 	return tempDataSet;
 }

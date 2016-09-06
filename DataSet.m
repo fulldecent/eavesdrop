@@ -101,7 +101,7 @@
 	dataIdentifiers = [[data[0] allKeys] retain];
 	[self resetViews];
 		
-	[self setNumberOfBins:numberOfBins];
+	self.numberOfBins = numberOfBins;
 	
 	[results release];
 	results = [[NSMutableDictionary alloc] init];
@@ -252,7 +252,7 @@
 {
 	ENTRY(NSLog( @"[DataSet setNumberOfBins:%d", newNumberOfBins ));
 	numberOfBins = newNumberOfBins;
-	binSize = ([self globalMaximum]-[self globalMinimum])/numberOfBins;
+	binSize = (self.globalMaximum-self.globalMinimum)/numberOfBins;
 }
 
 - (int)numberOfBins
@@ -264,7 +264,7 @@
 {
 	ENTRY(NSLog( @"[DataSet setBinSize:%f]", newBinSize ));
 	binSize = newBinSize;
-	numberOfBins = ([self globalMaximum]-[self globalMinimum])/binSize + 1;	//do I need the +1?
+	numberOfBins = (self.globalMaximum-self.globalMinimum)/binSize + 1;	//do I need the +1?
 }
 
 - (double)binSize
@@ -287,8 +287,8 @@
 	double check;
 	int i;
 	BOOL foundPlacement;
-	double globalMin = [self globalMinimum];
-	double globalMax = [self globalMaximum];
+	double globalMin = self.globalMinimum;
+	double globalMax = self.globalMaximum;
 	
 	INFO(NSLog( @"Globals: ( %f, %f )", globalMin, globalMax ));
 	INFO(NSLog( @"Histogram using %d bins of size: %f", numberOfBins, binSize ));
@@ -462,7 +462,7 @@
 - (double)arithmeticMean
 {	//might not need to cached result here (unless we use it to return a large data set all at once)
 	//NSLog( @"[DataSet arithmeticMean] = %f", [self total] / [data count] );
-	return ( [self total] / data.count );
+	return ( self.total / data.count );
 }
 
 - (double)populationStdDev
@@ -470,7 +470,7 @@
 	if (results[currentIdentifier][@"populationStdDev"])
 		return [results[currentIdentifier][@"populationStdDev"] doubleValue];
 		
-	double avg = [self arithmeticMean  ];
+	double avg = self.arithmeticMean  ;
 	double total = 0;
 	double x;
 	
@@ -491,7 +491,7 @@
 	if (results[currentIdentifier][@"sampleStdDev"])
 		return [results[currentIdentifier][@"sampleStdDev"] doubleValue];
 		
-	double avg = [self arithmeticMean  ];
+	double avg = self.arithmeticMean  ;
 	double total = 0;
 	double x;
 	
@@ -567,7 +567,7 @@
 		
 	int count = data.count;
 	if (count<2)
-		return [self minimum];
+		return self.minimum;
 	int middle = count/4;
 	double firstQuartile;
 	switch (count%4) {
@@ -632,7 +632,7 @@
 		
 	int count = data.count;
 	if (count<2)
-		return [self maximum];
+		return self.maximum;
 	int middle = 3*count/4;
 	double thirdQuartile;
 	switch (count%4) {
@@ -669,7 +669,7 @@
 		return [results[currentIdentifier][@"maximum"] doubleValue];
 
 	if (data.count<2)
-		return [self minimum];
+		return self.minimum;
 
 	[self sort];
 	
@@ -698,7 +698,7 @@
 		return 0;
 		
 	if (data.count<2)
-		return [self domainMinimum];
+		return self.domainMinimum;
 		
 	NSSortDescriptor *sortDescriptor = [[[NSSortDescriptor alloc]
 		initWithKey:independentIdentifier ascending:YES] autorelease
@@ -722,21 +722,21 @@
 	tempString = [en nextObject];
 	if ([tempString isEqualToString:independentIdentifier])
 		tempString = [en nextObject];
-	[self setCurrentIdentifier:tempString];
-	globalMin = [self minimum];
-	globalMax = [self maximum];
+	self.currentIdentifier = tempString;
+	globalMin = self.minimum;
+	globalMax = self.maximum;
 	while (tempString=[en nextObject]) {
 		if (![tempString isEqualToString:independentIdentifier]) {		
-			[self setCurrentIdentifier:tempString];
-			check = [self minimum];
+			self.currentIdentifier = tempString;
+			check = self.minimum;
 			if (check<globalMin)
 				globalMin = check;
-			check = [self maximum];
+			check = self.maximum;
 			if (check>globalMax)
 				globalMax = check;
 		}
 	}
-	[self setCurrentIdentifier:origIdent];
+	self.currentIdentifier = origIdent;
 	INFO(NSLog( @"calculated globals( %f, %f )", globalMin, globalMax ));
 	results[DSGlobalIdentifier][@"globalMinimum"] = @(globalMin);
 	results[DSGlobalIdentifier][@"globalMaximum"] = @(globalMax);

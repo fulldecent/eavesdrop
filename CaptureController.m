@@ -203,7 +203,7 @@ static unsigned int queueID;
 		NSEnumerator *en = [conversationController.arrangedObjects objectEnumerator];
 		Conversation *tempConv;
 		while (tempConv = [en nextObject]) {
-			if ([tempConv lastTimestamp] < (currentTimestamp-maxIdle)) {
+			if (tempConv.lastTimestamp < (currentTimestamp-maxIdle)) {
 				[removals addObject:tempConv];
 			}
 		}
@@ -221,7 +221,7 @@ static unsigned int queueID;
 		NSEnumerator *en = [conversationController.arrangedObjects objectEnumerator];
 		Conversation *tempConv;
 		while (tempConv = [en nextObject]) {
-			if ([tempConv lastTimestamp] < (currentTimestamp-maxHide)) {
+			if (tempConv.lastTimestamp < (currentTimestamp-maxHide)) {
 				[hides addObject:tempConv];
 			}
 		}
@@ -248,28 +248,28 @@ static unsigned int queueID;
 	while (tempConv = [en nextObject]) {
 		found = NO;
 		if ( searchCategory==CCClientIPSearchTag || searchCategory==CCHostIPSearchTag ) {
-			if ([[tempConv source] rangeOfString:searchString options:NSCaseInsensitiveSearch].location!=NSNotFound) {
+			if ([tempConv.source rangeOfString:searchString options:NSCaseInsensitiveSearch].location!=NSNotFound) {
 				found = YES;
 			}
 		}
 		if ( searchCategory==CCServerIPSearchTag || searchCategory==CCHostIPSearchTag ) {
-			if ([[tempConv destination] rangeOfString:searchString options:NSCaseInsensitiveSearch].location!=NSNotFound) {
+			if ([tempConv.destination rangeOfString:searchString options:NSCaseInsensitiveSearch].location!=NSNotFound) {
 				found = YES;
 			}
 		}
 		if ( searchCategory==CCClientPortSearchTag || searchCategory==CCPortSearchTag ) {
-			if ([tempConv sourcePort] == searchString.intValue) {
+			if (tempConv.sourcePort == searchString.intValue) {
 				found = YES;
 			}
 		}
 		if ( searchCategory==CCServerPortSearchTag || searchCategory==CCPortSearchTag ) {
-			if ([tempConv destinationPort] == searchString.intValue) {
+			if (tempConv.destinationPort == searchString.intValue) {
 				found = YES;
 			}
 		}
 		if ( searchCategory==CCClientPayloadSearchTag || searchCategory==CCPayloadSearchTag ) {
 			NSString *tempString = [[[NSString alloc]
-				initWithData:[tempConv clientPayload] encoding:NSASCIIStringEncoding ]
+				initWithData:tempConv.clientPayload encoding:NSASCIIStringEncoding ]
 					autorelease];
 			if ([tempString rangeOfString:searchString options:NSCaseInsensitiveSearch].location!=NSNotFound) {
 				found = YES;
@@ -277,7 +277,7 @@ static unsigned int queueID;
 		}
 		if ( searchCategory==CCServerPayloadSearchTag || searchCategory==CCPayloadSearchTag ) {
 			NSString *tempString = [[[NSString alloc]
-				initWithData:[tempConv serverPayload] encoding:NSASCIIStringEncoding ]
+				initWithData:tempConv.serverPayload encoding:NSASCIIStringEncoding ]
 					autorelease];
 			if ([tempString rangeOfString:searchString options:NSCaseInsensitiveSearch].location!=NSNotFound) {
 				found = YES;
@@ -337,9 +337,9 @@ static unsigned int queueID;
 	if ( ![readFilename isEqual:@""] )
 		[captureObject setReadFile:readFilename];
 	
-	[captureObject startCapture];
+	captureObject.startCapture;
 	
-	if ([captureObject isActive]) {
+	if (captureObject.active) {
 		[sender setTitle:@"Stop Capture"];
 		[sender setAction:@selector(stopCapture:)];
 		captureButton = sender;
@@ -361,7 +361,7 @@ static unsigned int queueID;
 	captureButton.title = @"Start Capture";
 	captureButton.action = @selector(startCapture:);
 
-	if ([captureObject isActive]) {
+	if (captureObject.active) {
 		[captureObject stopCapture];
 	}
 	
