@@ -196,19 +196,16 @@ static NSMutableDictionary *controllers;
 		return active=YES;
 	} else {
 		// need to bulid the arguments into C-Strings
-		char toolString[ [toolIdentifier cStringLength] ];		[toolIdentifier getCString:toolString];
-		char queueString[ [queueIdentifier cStringLength] ];	[queueIdentifier getCString:queueString];
-		char typeString[ [typeArg cStringLength] ];				[typeArg getCString:typeString];
-		char deviceString[ [deviceArg cStringLength] ];			[deviceArg getCString:deviceString];
-		char filterString[ [filter cStringLength] ];			[filter getCString:filterString];
-		char promiscuousString[ 4 ] = "nop";
-		if ( promiscuous ) {
-			promiscuousString[0]='p';	promiscuousString[1]='\0';
-		} //else {
-		//	promiscuousString[0]='p';	promiscuousString[1]='\0';
-		//}
+        const char *toolString = [toolIdentifier UTF8String];
+        const char *queueString = [queueIdentifier UTF8String];
+        const char *typeString = [typeArg UTF8String];
+        const char *deviceString = [deviceArg UTF8String];
+        const char *filterString = [filter UTF8String];
+        const char *promiscuousString = promiscuous
+        ? [@"p" UTF8String]
+        : [@"nop" UTF8String];
 		
-		char *arguments[] = {
+		const char *arguments[] = {
 			toolString,
 			queueString,
 			typeString,

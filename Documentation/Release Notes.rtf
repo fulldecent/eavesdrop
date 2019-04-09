@@ -1,32 +1,27 @@
-{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf380
-{\fonttbl\f0\fswiss\fcharset77 Helvetica-Bold;\f1\fswiss\fcharset77 Helvetica;\f2\fswiss\fcharset77 Helvetica-Oblique;
-\f3\froman\fcharset77 Times-Bold;\f4\froman\fcharset77 Times-Roman;}
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Oblique;
+\f3\froman\fcharset0 Times-Bold;\f4\froman\fcharset0 Times-Roman;}
 {\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
 \vieww12060\viewh12740\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\partightenfactor0
 
 \f0\b\fs72 \cf0 Eavesdrop
 \f1\b0\fs24 \
 
-\f2\i listen in on your network\
+\f2\i Listen in on your network\
 \
 
-\f1\i0 \'a9 
-\fs20 Copyright 2006 Eric Shore Baur\
-This application is licensed under the GPL.  Please see GPL.txt (distributed with this file) for more information on the license. If this distribution did not come with source, you can get it at\
-	http://www.baurhome.net/software/\
-or contact the author at:\
-	baurfamily@gmail.com\
-	
+\f1\i0\fs20 Originally written by Eric Baur, now maintained by William Entriken. Original license unknown, but most everything will be rewritten and licensed MIT.
 \fs24 \
 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\partightenfactor0
 
 \f3\b\fs28 \cf0 Eavesdrop
 \f4\b0  is an application for listening in on TCP conversations on the network your computer is attached to.  It can also open up tcpdump / Ethereal capture files for analysis.
 \fs24 \
 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\partightenfactor0
 
 \f3\b\fs28 \cf0 \ul \ulc0 Quick Start:
 \f4\b0\fs24 \ulnone \
@@ -53,46 +48,46 @@ or contact the author at:\
 \f3\b\fs28 \ul \
 Requirements:
 \f4\b0\fs24 \ulnone \
-	\'a5 Mac OS X 10.3 or greater (well, 10.3 should work, I haven't tested it in awhile)\
-	\'a5 administrative rights (for live captures)\
-	\'a5 network connection (ethernet/airport) or tcpdump capture files\
+	\'95 Mac OS X 10.10 or greater\
+	\'95 administrative rights (for live captures)\
+	\'95 network connection (ethernet/airport) or tcpdump capture files\
 \
 
 \f3\b\fs28 \ul Features:
 \f4\b0\fs24 \ulnone \
-	\'a5 TCP conversation tracking\
-	\'a5 show last TCP flags sent and flag history\
-	\'a5 tcpdump filter syntax\
-	\'a5 live syntax checking\
-	\'a5 payload reconstruction - display in ASCII or HEX\
-	\'a5 read tcpdump files\
-	\'a5 remove or hide idle conversations to save memory or simplify the interface\
-	\'a5 display images contained in the capture\
-	\'a5 search for an IP or payload contents\
-	\'a5 graphing of conversation meta-data (can also export data)\
+	\'95 TCP conversation tracking\
+	\'95 show last TCP flags sent and flag history\
+	\'95 tcpdump filter syntax\
+	\'95 live syntax checking\
+	\'95 payload reconstruction - display in ASCII or HEX\
+	\'95 read tcpdump files\
+	\'95 remove or hide idle conversations to save memory or simplify the interface\
+	\'95 display images contained in the capture\
+	\'95 search for an IP or payload contents\
+	\'95 graphing of conversation meta-data (can also export data)\
 \
 
 \f3\b\fs28 \ul To-Do List:
 \f4\b0\fs24 \ulnone \
-	\'a5 save images in different formats\
-	\'a5\'caTCP sequence analysis\
-	\'a5 preferences (for font, colors & maybe more...)\
-	\'a5 better statistical data\
-	\'a5 better graphs (more than one dependent variable, for example)\
-	\'a5 dynamic data columns in capture window\
+	\'95 save images in different formats\
+	\'95\'a0TCP sequence analysis\
+	\'95 preferences (for font, colors & maybe more...)\
+	\'95 better statistical data\
+	\'95 better graphs (more than one dependent variable, for example)\
+	\'95 dynamic data columns in capture window\
 	... and I'm open to suggestions!\
 \
 
 \f3\b\fs28 \ul Known Issues:
 \f4\b0\fs24 \ulnone \
-	\'a5 packet info can be edited in conversation window\
-	\'a5 no image details\
-	\'a5 missing statistics\
-	\'a5 "CaptureTool" process can get zombied when app crashes or window is closed during a capture\
-	\'a5 a capture file can be processed by re-running the capture, this results in duplicated information\
-	\'a5 no ability to save\
+	\'95 packet info can be edited in conversation window\
+	\'95 no image details\
+	\'95 missing statistics\
+	\'95 "CaptureTool" process can get zombied when app crashes or window is closed during a capture\
+	\'95 a capture file can be processed by re-running the capture, this results in duplicated information\
+	\'95 no ability to save\
 \
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\partightenfactor0
 
 \f3\b \cf0 \ul v0.5a4
 \f4\b0 \ulnone \
