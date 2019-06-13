@@ -121,7 +121,7 @@ static NSMutableDictionary *controllers;
 		NSConnection *serverConnection = [NSConnection defaultConnection];
 		serverConnection.rootObject = self;
 
-		if ([serverConnection registerName:serverIdent] == NO) {
+		if (![serverConnection registerName:serverIdent]) {
 			NSLog( @"DistributedObject - registered name %@ taken.", serverIdent );
 			return nil;
 		}
@@ -217,7 +217,7 @@ static NSMutableDictionary *controllers;
 		// need to launch with root permissions
 		if ( authorize([[NSBundle mainBundle] pathForAuxiliaryExecutable:@"CaptureTool"].UTF8String,arguments) ) {
 			INFO(NSLog(@"captureTask is NOT running"));
-			return active=NO;	
+			return active=NO;
 		} else {
 			INFO(NSLog(@"captureTask is running"));
 			return active=YES;

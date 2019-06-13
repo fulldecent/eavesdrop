@@ -69,18 +69,17 @@ static BOOL capturesData;
 			@"windowArray", @"lengthArray", @"timestampArray"]
 		triggerChangeNotificationsForDependentKey:@"myself"];
 		
-	[ColorizationRules sharedRulesWithDictionary:[[NSDictionary alloc] initWithObjectsAndKeys:
-			[NSColor greenColor],   @"-S------",
-			[NSColor yellowColor],  @"-S--A---",
-			[NSColor brownColor],	@"----A---",
-			[NSColor blueColor],	@"---PA---",
-			[NSColor blackColor],   @"F---A---",
-			[NSColor blackColor],   @"F-------",
-			[NSColor magentaColor],	@"--R-A---",
-			[NSColor redColor],		@"--R-----",
-			[NSColor grayColor],	@"--------",
-			nil
-		]
+	[ColorizationRules sharedRulesWithDictionary:@{
+		@"-S------": [NSColor greenColor],
+		@"-S--A---": [NSColor yellowColor],
+		@"----A---": [NSColor brownColor],
+		@"---PA---": [NSColor blueColor],
+		@"F---A---": [NSColor blackColor],
+		@"F-------": [NSColor blackColor],
+		@"--R-A---": [NSColor magentaColor],
+		@"--R-----": [NSColor redColor],
+		@"--------": [NSColor grayColor]
+	}
 	];
 	
 	requireSyn = NO;
