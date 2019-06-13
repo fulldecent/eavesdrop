@@ -27,16 +27,9 @@ Version 0.5a4:
 Project status
 --------------
 
-Originally written by Eric Baur, now maintained by William Entriken. Original
-license unknown, but most everything will be rewritten and licensed MIT.
+Originally written by Eric Baur, now maintained by William Entriken. Licensed under GPL, version 2.
 
-This project requires XCode 2.5 and OSX 10.4 Tiger to compile.
-
-If you have access to a machine with OSX 10.4, please get in touch with
-eavesdrop\@phor.net and we would appreciate a little assstiance.
+This project runs on modern versions of Xcode, but produces many deprecation warnings.
 
 The latest download binary is published here
 https://github.com/fulldecent/eavesdrop/releases
-
-The first step in this project is to compile the code as is and then start
-working on modernizing it.

@@ -1206,13 +1206,13 @@ void transformRGB_HSV(CGFloat *components) //H,S,B -> R,G,B
 	CGFloat R, G, B, MIN, MAX;
 	
 	// DFH
-	H = NAN;
-	R = components[0],
-	G = components[1],
-	B = components[2];
+    H = NAN;
+    R = components[0];
+    G = components[1];
+    B = components[2];
 	
-	MAX = R > G ? (R > B ? R : B) : (G > B ? G : B), 
-	MIN = R < G ? (R < B ? R : B) : (G < B ? G : B);
+    MAX = R > G ? (R > B ? R : B) : (G > B ? G : B);
+    MIN = R < G ? (R < B ? R : B) : (G < B ? G : B);
 	
 	//if(MAX == MIN)
 	if(CGFloatAbs(MAX - MIN) < SM2D_EPSILON)
