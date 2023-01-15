@@ -11,8 +11,6 @@
 #import "CTGradient.h"
 #import "math.h"
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
-
 @interface CTGradient (Private)
 - (void)_commonInit;
 - (void)setBlendingMode:(CTGradientBlendingMode)mode;
@@ -692,13 +690,8 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
 
 	CGColorSpaceRef colorspace;
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_4
 	// If we require 10.4 or later, use this function because we know we have it.
 	colorspace = CGColorSpaceCreateWithName( kCGColorSpaceGenericRGB );
-#else
-	// Otherwise we may be on an old system so use this old call.
-	colorspace = CGColorSpaceCreateDeviceRGB( );
-#endif
 
 	  CGShadingRef myCGShading = CGShadingCreateAxial(colorspace, startPoint, endPoint, gradientFunction, false, false);
 	  
@@ -741,13 +734,8 @@ static void resolveHSV(CGFloat *color1, CGFloat *color2);
   CGContextSaveGState(currentContext);
 	CGColorSpaceRef colorspace;
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_4
 	// If we require 10.4 or later, use this function because we know we have it.
 	colorspace = CGColorSpaceCreateWithName( kCGColorSpaceGenericRGB );
-#else
-	// Otherwise we may be on an old system so use this old call.
-	colorspace = CGColorSpaceCreateDeviceRGB( );
-#endif
 
   	  CGShadingRef myCGShading = CGShadingCreateRadial(colorspace, startPoint, startRadius, endPoint, endRadius, gradientFunction, true, true);
 
@@ -1279,5 +1267,3 @@ void resolveHSV(CGFloat *color1, CGFloat *color2)	//H value may be undefined (i.
 	}
 
 @end
-
-#endif // #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2

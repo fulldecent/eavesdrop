@@ -38,8 +38,6 @@
 #define CGFloatMod(x,y)	fmodf(x,y)
 #endif
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
-
 typedef struct _CTGradientElement 
 	{
 	CGFloat red, green, blue, alpha;
@@ -101,5 +99,3 @@ typedef enum  _CTBlendingMode
 - (void)radialFillBezierPath:(NSBezierPath *)path;
 
 @end
-
-#endif // #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2

@@ -2126,10 +2126,8 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
             of:(NSInteger)inBarCount inColor:(NSColor *)inColor
 {
 	NSBezierPath		*t_path;
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
 	NSGraphicsContext	*context;
 	CTGradient			*gradient;
-#endif
 	NSRect				t_draw_rect;
 
     t_draw_rect.size.width = [ SM2DGraphView barWidth ];
@@ -2163,8 +2161,6 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 
 	[ inColor set ];
 	[ t_path fill ];
-
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
 
 	// Now to do some highlights with CTGradient (requires 10.2 as a minimum version)
 
@@ -2206,8 +2202,6 @@ static NSBezierPath *_sm_local_bar_bezier_path( NSRect inRect, unsigned char inR
 	[ gradient fillRect:t_draw_rect angle:(CGFloat)0.0 ];
 
 	[ context restoreGraphicsState ];
-
-#endif // highlights with CTGradient
 }
 
 #pragma mark -

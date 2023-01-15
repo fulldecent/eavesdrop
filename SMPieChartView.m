@@ -282,10 +282,8 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
     NSString        *tempString;
     NSAttributedString		*tempAttrString;
     NSColor			*t_color = nil;
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
 	NSGraphicsContext	*context = [ NSGraphicsContext currentContext ];
 	CTGradient			*gradient;
-#endif
     NSRect			bounds = self.bounds , pieRect, drawRect;
 
     pieRect = myPrivateData->pieRect;
@@ -330,7 +328,6 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
                 if ( nil == t_color )
 					t_color = [ self backgroundColor ];
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_2
 				// Now to do some highlights with CTGradient (requires 10.2 as a minimum version)
 				[ context saveGraphicsState ];
 
@@ -342,11 +339,6 @@ static NSDictionary *_sm_local_defaultSliceAttributes( unsigned int inSliceIndex
 
 				[ gradient fillBezierPath:path angle:90.0 ];	// light on top, dark on bottom.
 				[ context restoreGraphicsState ];
-#else
-				// Basic color fill.
-				[ t_color set ];
-                [ path fill ];
-#endif // highlights with CTGradient
 
                 path.lineWidth = 1.0 ;
 				path.miterLimit = 2.0 ;
